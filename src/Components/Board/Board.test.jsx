@@ -1,5 +1,9 @@
 import React from "react";
+<<<<<<< HEAD
 import Board from "./board.jsx";
+=======
+import Board from "./Board";
+>>>>>>> eb3f3535bc4f68617accc8af116f2d832947220c
 import {shallow, mount} from "enzyme";
 
 // Tests the rendering of Components

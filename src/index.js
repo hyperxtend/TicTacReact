@@ -2,7 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+<<<<<<< HEAD
 import Game from './components/game/game';
+=======
+import Game from './Components/Game/Game';
+>>>>>>> eb3f3535bc4f68617accc8af116f2d832947220c
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<Game />, document.getElementById('root'));
