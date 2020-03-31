@@ -1,27 +1,13 @@
 
 import React from "react";
-<<<<<<< HEAD
 import Game from "./game.jsx";
 import {shallow, mount} from "enzyme";
 
 // Tests the rendering of Components
-=======
-import Game from "./Game";
-import {shallow, mount} from "enzyme";
-import { select } from 'qa-utilities';
-
-// Tests the rendering of Components
-    
->>>>>>> eb3f3535bc4f68617accc8af116f2d832947220c
 it("<Game/> renders without error", () => {
     shallow(<Game/> )
 });
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> eb3f3535bc4f68617accc8af116f2d832947220c
 // Game status test for which player is next
 it("<Game/> status is correct", () => {
     const wrapper = mount(<Game/>);
