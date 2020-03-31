@@ -1,6 +1,6 @@
-import React, {Component} from "react";
-import Board from "./Board";
-import {Container, Button } from "react-bootstrap";
+import React, { Component } from 'react';
+import Board from '../board/board.jsx';
+import { Container, Button } from 'react-bootstrap';
 
 export default class Game extends Component {
   constructor(props) {
@@ -8,11 +8,11 @@ export default class Game extends Component {
     this.state = {
       history: [
         {
-          squares: Array(9).fill(null)
-        }
+          squares: Array(9).fill(null),
+        },
       ],
       stepNumber: 0,
-      xIsNext: true
+      xIsNext: true,
     };
   }
 
@@ -23,22 +23,22 @@ export default class Game extends Component {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-    squares[i] = this.state.xIsNext ? "X" : "O";
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
       history: history.concat([
         {
-          squares: squares
-        }
+          squares: squares,
+        },
       ]),
       stepNumber: history.length,
-      xIsNext: !this.state.xIsNext
+      xIsNext: !this.state.xIsNext,
     });
   }
 
   jumpTo(step) {
     this.setState({
       stepNumber: step,
-      xIsNext: (step % 2) === 0
+      xIsNext: step % 2 === 0,
     });
   }
 
@@ -48,30 +48,27 @@ export default class Game extends Component {
     const winner = calculateWinner(current.squares);
 
     const moves = history.map((step, move) => {
-      const desc = move ?
-        "Go to move #" + move :
-        "Restart";
+      const desc = move ? 'Go to move #' + move : 'Restart';
       return (
         <span key={move}>
-          <Button size="sm" variant="outline-dark" onClick={() => this.jumpTo(move)}>{desc}</Button>
+          <Button size="sm" variant="outline-dark" onClick={() => this.jumpTo(move)}>
+            {desc}
+          </Button>
         </span>
       );
     });
 
     let status;
     if (winner) {
-      status = winner + " is the Winner!";
+      status = winner + ' is the Winner!';
     } else {
-      status = "Next player is " + (this.state.xIsNext ? "X" : "O");
+      status = 'Next player is ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
     return (
       <Container className="game">
         <div className="gameBoard">
-          <Board
-            squares={current.squares}
-            onClick={i => this.handleClick(i)}
-          />
+          <Board squares={current.squares} onClick={i => this.handleClick(i)} />
         </div>
         <div className="gameInfo">
           <div className="playerStatus">{status}</div>
@@ -80,7 +77,6 @@ export default class Game extends Component {
       </Container>
     );
   }
-
 }
 function calculateWinner(squares) {
   const lines = [
@@ -91,7 +87,7 @@ function calculateWinner(squares) {
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
-    [2, 4, 6]
+    [2, 4, 6],
   ];
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
