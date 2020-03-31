@@ -1,9 +1,5 @@
 import React, {Component} from "react";
-<<<<<<< HEAD:src/Components/Board/Board.jsx
 import Square from "../square/square.jsx";
-=======
-import Square from "../Square/Square";
->>>>>>> eb3f3535bc4f68617accc8af116f2d832947220c:src/Components/Board.js
 import {Container, Row} from "react-bootstrap";
 
 export default class Board extends Component {
