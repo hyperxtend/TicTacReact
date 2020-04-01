@@ -2,12 +2,10 @@ import React from 'react';
 import Game from './game.jsx';
 import { shallow, mount } from 'enzyme';
 
-// Tests the rendering of Components
 it('<Game/> renders without error', () => {
   shallow(<Game />);
 });
 
-// Game status test for which player is next
 it('<Game/> status is correct', () => {
   const wrapper = mount(<Game />);
   const firstPlayer = wrapper
@@ -17,7 +15,6 @@ it('<Game/> status is correct', () => {
     .text();
   expect(firstPlayer).toEqual('Next player is X');
 
-  // Checks if onClick changes player status
   const button = wrapper
     .find('button.square')
     .first()
@@ -29,7 +26,6 @@ it('<Game/> status is correct', () => {
     .text();
   expect(secondPlayer).toEqual('Next player is O');
 
-  //Simulates a game of Tic-Tac-Toe
   const move2 = wrapper.find('button.square').at(1);
   move2.simulate('click');
   const move3 = wrapper.find('button.square').at(4);
