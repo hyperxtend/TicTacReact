@@ -2,13 +2,11 @@ import React from 'react';
 import Board from './board.jsx';
 import { shallow, mount } from 'enzyme';
 
-// Tests the rendering of Components
 it('<Board/> renders without error', () => {
   let squares = Array(9).fill(null);
   shallow(<Board squares={squares} />);
 });
 
-// Tests onClick event of buttons
 it('onClick event works on buttons', () => {
   let squares = Array(9).fill(null);
   const onClick = jest.fn();
