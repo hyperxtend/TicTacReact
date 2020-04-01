@@ -1,4 +1,3 @@
-
 import React from "react";
 import Game from "./game.jsx";
 import {shallow, mount} from "enzyme";
