@@ -2,18 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-<<<<<<< HEAD
 import Game from './components/game/game';
-=======
-import Game from './Components/Game/Game';
->>>>>>> eb3f3535bc4f68617accc8af116f2d832947220c
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<Game />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
 

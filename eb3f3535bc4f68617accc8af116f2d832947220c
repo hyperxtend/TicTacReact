@@ -1,0 +1,55 @@
+[33mcommit 5f4f269e8eeedd028528128fb061c9f543672c92[m[33m ([m[1;36mHEAD -> [m[1;32mfeature/project-setup[m[33m)[m
+Merge: f8fe48b 3517f8b
+Author: Alex Joshua <ialexjoshua@gmail.com>
+Date:   Tue Mar 31 16:26:41 2020 +0200
+
+    Merge branch 'feature/project-setup' of https://github.com/hyperxtend/TicTacReact into feature/project-setup
+
+[33mcommit f8fe48b5c016b13dfc33820d839964ad8d7ae3d2[m
+Author: Alex Joshua <ialexjoshua@gmail.com>
+Date:   Tue Mar 31 14:32:08 2020 +0200
+
+    Fix: Changed file names into kebab-case
+
+[33mcommit 5dbd71211e48547ce761229f1c8d0b5b15b5eefe[m
+Author: Alex Joshua <ialexjoshua@gmail.com>
+Date:   Tue Mar 31 14:32:08 2020 +0200
+
+    Fix: Changed file names into kebab-case
+
+[33mcommit 3517f8b8d678b4c5c72df7666a10cd6e7a876986[m[33m ([m[1;31morigin/feature/project-setup[m[33m)[m
+Author: Alex Joshua <ialexjoshua@gmail.com>
+Date:   Tue Mar 31 14:32:08 2020 +0200
+
+    Fix: Changed file names into kebab-case
+
+[33mcommit 4e136e464d2df57ee20aab74a1e21f0136b15eac[m
+Merge: 21284a3 eb3f353
+Author: Alex Joshua <ialexjoshua@gmail.com>
+Date:   Tue Mar 31 13:13:12 2020 +0200
+
+    Fix: Restructured test files
+
+[33mcommit 21284a31573678e47d94e43c9e89d189176f61f3[m
+Author: Alex Joshua <ialexjoshua@gmail.com>
+Date:   Tue Mar 31 10:45:57 2020 +0200
+
+    Fix: Restructured test files
+
+[33mcommit eb3f3535bc4f68617accc8af116f2d832947220c[m
+Author: Alex Joshua <ialexjoshua@gmail.com>
+Date:   Tue Mar 31 10:45:57 2020 +0200
+
+    Rearranged test file structure
+
+[33mcommit 5ea63f7564edbdc572471d746ff159e400bb957b[m[33m ([m[1;32mdevelop[m[33m)[m
+Author: Alex Joshua <ialexjoshua@gmail.com>
+Date:   Thu Mar 26 15:17:04 2020 +0200
+
+    1st Commit
+
+[33mcommit df059cc493ceddb0d89e5e3ba9eded1239bf16cb[m[33m ([m[1;31morigin/release[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/devlope[m[33m, [m[1;31morigin/develop[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mrelease[m[33m, [m[1;32mmaster[m[33m)[m
+Author: AlexJ <43654720+hyperxtend@users.noreply.github.com>
+Date:   Thu Mar 26 15:00:27 2020 +0200
+
+    Add files via upload
