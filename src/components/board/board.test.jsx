@@ -1,5 +1,5 @@
 import React from 'react';
-import Board from './board.jsx';
+import Board from './board';
 import { shallow, mount } from 'enzyme';
 
 it('<Board/> renders without error', () => {

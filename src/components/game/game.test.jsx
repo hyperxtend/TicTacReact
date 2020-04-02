@@ -1,5 +1,5 @@
 import React from 'react';
-import Game from './game.jsx';
+import Game from './game';
 import { shallow, mount } from 'enzyme';
 
 it('<Game/> renders without error', () => {
@@ -35,7 +35,6 @@ it('<Game/> status is correct', () => {
   const move5 = wrapper.find('button.square').at(8);
   move5.simulate('click');
 
-  // Expect the winner
   const winner = wrapper
     .find('div.gameInfo')
     .children()
