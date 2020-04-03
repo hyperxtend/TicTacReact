@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Square from '../square/index';
+import Square from '../square';
 import { Container, Row } from 'react-bootstrap';
 
 export default class Board extends Component {
