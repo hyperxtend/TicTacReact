@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Board from '../board/board';
+import Board from '../board';
 import { Container, Button } from 'react-bootstrap';
 
 export default class Game extends Component {
