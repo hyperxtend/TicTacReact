@@ -6,8 +6,8 @@ import { Container, Row } from 'react-bootstrap';
 export default class Board extends Component {
   renderSquare(int) {
     Board.propTypes = {
-      onClick: PropTypes.onClick,
-      squares: PropTypes.squares
+      onClick: PropTypes.func.isRequired,
+      squares: PropTypes.func.isRequired
     };
     return <Square
      value={this.props.squares[int]}
