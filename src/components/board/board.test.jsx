@@ -3,14 +3,14 @@ import Board from './board';
 import { shallow, mount } from 'enzyme';
 
 it('<Board/> renders without error', () => {
-  let squares = Array(9).fill(null);
+  const squares = Array(9).fill(null);
   shallow(<Board squares={squares} />);
 });
 
 it('onClick event works on buttons', () => {
-  let squares = Array(9).fill(null);
-  const onClick = jest.fn();
-  let wrapper = mount(<Board squares={squares} onClick={onClick} />);
+  const onClick = jest.fn(),
+   squares = Array(9).fill(null),
+   wrapper = mount(<Board squares={squares} onClick={onClick} />);
   wrapper
     .find('button.square')
     .first()
