@@ -13,7 +13,11 @@ module.exports = {
   moduleFileExtensions: ['js', 'json', 'jsx'],
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  setupFiles: [<rootDir/>/setup-tests.js],
+  setupFiles: [<rootDir/>/src/setup-tests.js],
+  setupTestFrameworkScriptFile: "<rootDir>/src/setupTests.ts",
+  setupFilesAfterEnv: [
+    "<rootDir>/src/setup-tests.ts"
+  ],
 
   // The test environment that will be used for testing
   testEnvironment: 'jsdom',

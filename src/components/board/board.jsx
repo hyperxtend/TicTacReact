@@ -5,10 +5,6 @@ import { Container, Row } from 'react-bootstrap';
 
 export default class Board extends Component {
   renderSquare(int) {
-    Board.propTypes = {
-      onClick: PropTypes.func.isRequired,
-      squares: PropTypes.func.isRequired
-    };
     return <Square
      value={this.props.squares[int]}
      onClick={() => this.props.onClick(int)}

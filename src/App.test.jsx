@@ -1,7 +1,10 @@
 import React from 'react';
-import Game from './components/game';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
+import App from './App';
+import './setup-tests';
 
-it('<Game/> renders without error', () => {
-  shallow(<Game />);
+test('renders learn react link', () => {
+  const { getByText } = render(<App />);
+  const linkElement = getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
 });
