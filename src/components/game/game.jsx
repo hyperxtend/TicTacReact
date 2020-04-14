@@ -16,19 +16,19 @@ export default class Game extends Component {
     };
   }
 
-  handleClick(int) {
-    const history = this.state.history.slice(0, this.state.stepNumber + 1),
-     current = history[history.length - 1],
-     squares = current.squares.slice();
-    if (calculateWinner(squares) || squares[int]) {
+  handleClick(i) {
+    const history = this.state.history.slice(0, this.state.stepNumber + 1);
+    const current = history[history.length - 1];
+    const squares = current.squares.slice();
+    if (calculateWinner(squares) || squares[i]) {
       return;
     }
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
       history: history.concat([
         {
-          squares
-        }
+          squares: squares,
+        },
       ]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext
@@ -43,11 +43,12 @@ export default class Game extends Component {
   }
 
   render() {
-    const { history } = this.state,
-     current = history[this.state.stepNumber],
-     winner = calculateWinner(current.squares),
-      moves = history.map((step, move) => {
-      const desc = move ? `Go to move #${move}` : 'Restart';
+    const history = this.state.history;
+    const current = history[this.state.stepNumber];
+    const winner = calculateWinner(current.squares);
+
+    const moves = history.map((step, move) => {
+      const desc = move ? 'Go to move #' + move : 'Restart';
       return (
         <span key={move}>
           <Button size="sm" variant="outline-dark" onClick={() => this.jumpTo(move)}>
