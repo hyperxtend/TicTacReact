@@ -3,14 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.13.0",
+    "core-js": "^3.6.5",
+    "react": "^16.13.1",
     "react-bootstrap": "^1.0.0-beta.17",
-<<<<<<< HEAD
     "react-dom": "^16.13.1",
 <<<<<<< HEAD
-=======
-    "react-dom": "^16.13.0",
->>>>>>> parent of d1ccfb1... fix: Updated JSON to include setup-test for tests files
     "react-scripts": "3.4.0",
     "react-test-renderer": "^16.13.1"
 =======
@@ -19,7 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom --setupFiles ./src/setup-tests.js",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
@@ -40,18 +37,16 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.5.0",
+    "bootstrap": "^4.4.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.4.4",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
     "gh-pages": "^2.2.0",
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "bootstrap": "^4.4.1",
->>>>>>> parent of d1ccfb1... fix: Updated JSON to include setup-test for tests files
     "qa-utilities": "^1.1.0"
 =======
     "qa-utilities": "^1.1.0",
