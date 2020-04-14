@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Row } from 'react-bootstrap';
 import Square from '../square';
+import PropTypes from 'prop-types';
+import { Container, Row } from 'react-bootstrap';
 
 export default class Board extends Component {
   renderSquare(int) {

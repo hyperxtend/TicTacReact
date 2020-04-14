@@ -8,7 +8,7 @@ module.exports = {
     'extends': [
         'eslint:recommended',
         'plugin:react/recommended',
-        'airbnb-base'
+        'airbnb'
     ],
     'globals': {
         'Atomics': 'readonly',
@@ -25,6 +25,19 @@ module.exports = {
         'sourceType': 'module'
     },
     'plugins': ['react'],
+    settings: {
+        react: {
+            version: 'detect'
+        },
+        createClass: 'createReactClass',
+        pragma: 'React',
+        flowVersion: '0.53',
+        'import/resolver': {
+            node: {
+                moduleDirectory: ['node_modules', 'src'],
+            },
+        },
+    },
     'rules': {
         'accessor-pairs': 'error',
         'array-bracket-newline': 'error',
@@ -97,9 +110,6 @@ module.exports = {
         'id-blacklist': 'error',
         'id-length': 'error',
         'id-match': 'error',
-        'import/extensions': 'off',
-        'import/no-extraneous-dependencies': 'off',
-        'import/no-unresolved': 'off',
         'implicit-arrow-linebreak': 'error',
         'indent': 'off',
         'indent-legacy': 'off',
@@ -115,7 +125,7 @@ module.exports = {
         ],
         'line-comment-position': 'error',
         'linebreak-style': [
-            'off',
+            'error',
             'windows'
         ],
         'lines-around-comment': 'error',
@@ -123,12 +133,12 @@ module.exports = {
         'lines-between-class-members': 'error',
         'max-classes-per-file': 'error',
         'max-depth': 'error',
-        'max-len': 'off',
+        'max-len': 'error',
         'max-lines': 'error',
         'max-lines-per-function': 'error',
         'max-nested-callbacks': 'error',
         'max-params': 'error',
-        'max-statements': 'off',
+        'max-statements': 'error',
         'max-statements-per-line': 'error',
         'multiline-comment-style': 'error',
         'multiline-ternary': 'off',
@@ -189,7 +199,7 @@ module.exports = {
         'no-new-require': 'error',
         'no-new-wrappers': 'error',
         'no-octal-escape': 'error',
-        'no-param-reassign': 'off',
+        'no-param-reassign': 'error',
         'no-path-concat': 'error',
         'no-plusplus': 'off',
         'no-process-env': 'off',
@@ -264,7 +274,6 @@ module.exports = {
             'single'
         ],
         'radix': 'error',
-        'react/prop-types': 'off',
         'require-atomic-updates': 'error',
         'require-await': 'error',
         'require-jsdoc': 'off',
