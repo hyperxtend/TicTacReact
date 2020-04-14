@@ -7,12 +7,8 @@
     "react-bootstrap": "^1.0.0-beta.17",
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
     "react-dom": "^16.13.1",
 <<<<<<< HEAD
-=======
-    "react-dom": "^16.13.0",
->>>>>>> parent of d1ccfb1... fix: Updated JSON to include setup-test for tests files
 =======
     "react-dom": "^16.13.0",
 >>>>>>> parent of d1ccfb1... fix: Updated JSON to include setup-test for tests files
@@ -55,10 +51,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
-=======
->>>>>>> parent of d1ccfb1... fix: Updated JSON to include setup-test for tests files
 =======
 >>>>>>> parent of d1ccfb1... fix: Updated JSON to include setup-test for tests files
     "@testing-library/jest-dom": "^4.2.4",
@@ -66,9 +59,6 @@
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.4.1",
 <<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of d1ccfb1... fix: Updated JSON to include setup-test for tests files
-=======
 >>>>>>> parent of d1ccfb1... fix: Updated JSON to include setup-test for tests files
 =======
 >>>>>>> parent of d1ccfb1... fix: Updated JSON to include setup-test for tests files
