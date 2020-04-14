@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Board from '../board';
 import { Container, Button } from 'react-bootstrap';
+import Board from '../board';
 
 export default class Game extends Component {
   constructor(props) {
@@ -8,18 +8,18 @@ export default class Game extends Component {
     this.state = {
       history: [
         {
-          squares: Array(9).fill(null)
-        }
+          squares: Array(9).fill(null),
+        },
       ],
       stepNumber: 0,
-      xIsNext: true
+      xIsNext: true,
     };
   }
 
   handleClick(int) {
-    const history = this.state.history.slice(0, this.state.stepNumber + 1),
-     current = history[history.length - 1],
-     squares = current.squares.slice();
+    const history = this.state.history.slice(0, this.state.stepNumber + 1);
+     const current = history[history.length - 1];
+     const squares = current.squares.slice();
     if (calculateWinner(squares) || squares[int]) {
       return;
     }
@@ -27,26 +27,26 @@ export default class Game extends Component {
     this.setState({
       history: history.concat([
         {
-          squares
-        }
+          squares,
+        },
       ]),
       stepNumber: history.length,
-      xIsNext: !this.state.xIsNext
+      xIsNext: !this.state.xIsNext,
     });
   }
 
   jumpTo(step) {
     this.setState({
       stepNumber: step,
-      xIsNext: step % 2 === 0
+      xIsNext: step % 2 === 0,
     });
   }
 
   render() {
-    const { history } = this.state,
-     current = history[this.state.stepNumber],
-     winner = calculateWinner(current.squares),
-      moves = history.map((step, move) => {
+    const { history } = this.state;
+     const current = history[this.state.stepNumber];
+     const winner = calculateWinner(current.squares);
+      const moves = history.map((step, move) => {
       const desc = move ? `Go to move #${move}` : 'Restart';
       return (
         <span key={move}>
@@ -90,7 +90,7 @@ function calculateWinner(squares) {
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
-    [2, 4, 6]
+    [2, 4, 6],
   ];
   for (let num = 0; num < lines.length; num++) {
     const [a, b, c] = lines[num];

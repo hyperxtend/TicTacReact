@@ -1,3 +1,7 @@
+/*
+ * For a detailed explanation regarding each configuration property, visit:
+ * https://jestjs.io/docs/en/configuration.html
+ */
 
 module.exports = {
   // Automatically clear mock calls and instances between every test
@@ -13,11 +17,8 @@ module.exports = {
   moduleFileExtensions: ['js', 'json', 'jsx'],
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  setupFiles: [<rootDir/>/src/setup-tests.js],
-  setupTestFrameworkScriptFile: "<rootDir>/src/setupTests.ts",
-  setupFilesAfterEnv: [
-    "<rootDir>/src/setup-tests.ts"
-  ],
+  setupFiles: ['<rootDir>/src/setup-tests.js'],
+  setupFilesAfterEnv: ['<rootDir>/src/setup-tests.js'],
 
   // The test environment that will be used for testing
   testEnvironment: 'jsdom',
@@ -33,7 +34,7 @@ module.exports = {
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
-  
+
   // Indicates whether each individual test should be reported during the run
-  verbose: false,
+  verbose: true,
 };
