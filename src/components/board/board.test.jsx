@@ -1,8 +1,6 @@
 import React from 'react';
 import Board from './board';
 import { shallow, mount } from 'enzyme';
-import '../../setup-tests';
-
 
 it('<Board/> renders without error', () => {
   const squares = Array(9).fill(null);

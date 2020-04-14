@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 
+Square.propTypes = {
+  onClick: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired
+};
 
 export default function Square(props) {
   return (
