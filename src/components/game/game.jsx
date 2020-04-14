@@ -23,7 +23,7 @@ export default class Game extends Component {
     if (calculateWinner(squares) || squares[int]) {
       return;
     }
-    squares[int] = this.state.xIsNext ? 'X' : 'O';
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
       history: history.concat([
         {
@@ -50,9 +50,7 @@ export default class Game extends Component {
       const desc = move ? `Go to move #${move}` : 'Restart';
       return (
         <span key={move}>
-          <Button size="sm"
-          variant="outline-dark"
-          onClick={() => this.jumpTo(move)}>
+          <Button size="sm" variant="outline-dark" onClick={() => this.jumpTo(move)}>
             {desc}
           </Button>
         </span>
@@ -61,17 +59,15 @@ export default class Game extends Component {
 
     let status;
     if (winner) {
-      status = `${winner} is the Winner!`;
+      status = winner + ' is the Winner!';
     } else {
-      status = `Next player is ${this.state.xIsNext ? 'X' : 'O'}`;
+      status = 'Next player is ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
     return (
       <Container className="game">
         <div className="gameBoard">
-          <Board
-          squares={current.squares}
-          onClick={int => this.handleClick(int)} />
+          <Board squares={current.squares} onClick={i => this.handleClick(i)} />
         </div>
         <div className="gameInfo">
           <div className="playerStatus">{status}</div>
@@ -92,8 +88,8 @@ function calculateWinner(squares) {
     [0, 4, 8],
     [2, 4, 6]
   ];
-  for (let num = 0; num < lines.length; num++) {
-    const [a, b, c] = lines[num];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a];
     }

@@ -1,5 +1,4 @@
-
-// eslint-disable-next-line import/no-extraneous-dependencies
+import '@testing-library/jest-dom/extend-expect';
 import { configure } from 'enzyme';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Adapter from 'enzyme-adapter-react-16';

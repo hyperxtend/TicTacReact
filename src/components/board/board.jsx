@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
 import Square from '../square';
-import PropTypes from 'prop-types';
 import { Container, Row } from 'react-bootstrap';
 
 export default class Board extends Component {
-  renderSquare(int) {
-    Board.propTypes = {
-      onClick: PropTypes.func.isRequired,
-      squares: PropTypes.func.isRequired
-    };
-    return <Square
-     value={this.props.squares[int]}
-     onClick={() => this.props.onClick(int)}
-      />;
+  renderSquare(i) {
+    return <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />;
   }
 
   render() {
