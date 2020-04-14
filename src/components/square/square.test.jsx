@@ -1,7 +1,9 @@
 import React from 'react';
-import Square from './square';
 import { shallow } from 'enzyme';
+import Square from './square';
 
-it('<Square/> renders without error', () => {
+describe('Square', () => {
+it('renders without error', () => {
   shallow(<Square />);
+});
 });
