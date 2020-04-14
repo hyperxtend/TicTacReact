@@ -7,11 +7,8 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0-beta.17",
     "react-dom": "^16.13.1",
-<<<<<<< HEAD
     "react-scripts": "3.4.0",
     "react-test-renderer": "^16.13.1"
-=======
->>>>>>> b8ff0aabb96627747ca2da31aa7e66da41a04daa
   },
   "scripts": {
     "start": "react-scripts start",
@@ -46,11 +43,6 @@
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "gh-pages": "^2.2.0",
-<<<<<<< HEAD
     "qa-utilities": "^1.1.0"
-=======
-    "qa-utilities": "^1.1.0",
-    "react-test-renderer": "^16.13.1"
->>>>>>> b8ff0aabb96627747ca2da31aa7e66da41a04daa
   }
 }
