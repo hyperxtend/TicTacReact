@@ -3,13 +3,14 @@ import { shallow, mount } from 'enzyme';
 import Game from './game';
 
 
-describe('Game', () => {
-  it('renders without error', () => {
-    shallow(<Game />);
+describe('<Game/>', () => {
+  it('checks if component exists', () => {
+    const component = shallow(<Game />);
+    expect(component.exists());
   });
 
   it('status is correct', () => {
-    const comp = mount(<Game />);
+    const comp = shallow(<Game />);
      const firstPlayer = comp
       .find('div.gameInfo')
       .children()

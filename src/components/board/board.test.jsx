@@ -2,10 +2,11 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Board from './board';
 
-describe('Board', () => {
-  it('renders without error', () => {
+describe('<Board/>', () => {
+  it('checks if component exists', () => {
     const squares = Array(9).fill(null);
-    shallow(<Board squares={squares} />);
+    const component = shallow(<Board squares={squares} />);
+    expect(component.exists());
   });
 
   it('onClick event works on buttons', () => {
