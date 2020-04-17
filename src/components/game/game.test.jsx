@@ -50,6 +50,7 @@ describe('<Game/>', () => {
       .text();
     expect(winner).toBe('X is the Winner!');
     });
+    
     it('determines if there is a Draw', () => {
       const comp = mount(<Game />);
        const move1 = comp.find('button.square').at(0);
