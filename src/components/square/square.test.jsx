@@ -5,6 +5,6 @@ import Square from './square';
 describe('<Square/>', () => {
 it('checks if component exists', () => {
   const component = shallow(<Square />);
-  expect(component.exists());
+  expect(component.exists()).toBe(true);
 });
 });

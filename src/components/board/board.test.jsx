@@ -6,7 +6,7 @@ describe('<Board/>', () => {
   it('checks if component exists', () => {
     const squares = Array(9).fill(null);
     const component = shallow(<Board squares={squares} />);
-    expect(component.exists());
+    expect(component.exists()).toBe(true);
   });
 
   it('onClick event works on buttons', () => {
