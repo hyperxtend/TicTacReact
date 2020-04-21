@@ -5,11 +5,8 @@ module.exports = {
         'node': true,
         'jest': true
     },
-    'extends': [
-        'eslint:recommended',
-        'plugin:react/recommended',
-        'airbnb-base'
-    ],
+    "extends": "airbnb",
+    "parser": "babel-eslint",
     'globals': {
         'Atomics': 'readonly',
         'SharedArrayBuffer': 'readonly',
@@ -26,7 +23,7 @@ module.exports = {
     },
     'plugins': ['react'],
     'rules': {
-        'array-element-newline': 'off',
+        'array-element-newline': 'error',
         'function-paren-newline': 'off',
         'import/extensions': 'off',
         'import/no-extraneous-dependencies': 'off',
@@ -57,7 +54,7 @@ module.exports = {
         'react/prop-types': 'off',
         'require-jsdoc': 'off',
         'require-unicode-regexp': 'off',
-        'sort-vars': 'off',
+        'sort-vars': 'error',
         'space-before-function-paren': 'off',
     }
 };
