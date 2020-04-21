@@ -65,6 +65,9 @@ export default class Game extends Component {
     } else {
       status = `Next player is ${this.state.xIsNext ? 'X' : 'O'}`;
     }
+    if(!winner && this.state.stepNumber === 9){
+      status = `It's a Draw!`;
+    }
 
     return (
       <Container className="game">
