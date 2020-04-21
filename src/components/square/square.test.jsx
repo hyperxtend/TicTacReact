@@ -1,7 +1,10 @@
 import React from 'react';
-import Square from './square';
 import { shallow } from 'enzyme';
+import Square from './square';
 
-it('<Square/> renders without error', () => {
-  shallow(<Square />);
+describe('<Square/>', () => {
+it('checks if component exists', () => {
+  const component = shallow(<Square />);
+  expect(component.exists()).toBe(true);
+});
 });

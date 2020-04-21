@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import Square from '../square';
 import { Container, Row } from 'react-bootstrap';
+import Square from '../square';
 
 export default class Board extends Component {
-  renderSquare(i) {
-    return <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />;
+  renderSquare(int) {
+    return <Square
+     value={this.props.squares[int]}
+     onClick={() => this.props.onClick(int)}
+      />;
   }
 
   render() {
