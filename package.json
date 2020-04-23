@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.4.1",
     "core-js": "^3.6.5",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0-beta.17",
@@ -10,7 +11,7 @@
     "react-scripts": "3.4.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start --NODE_ENV=production&&node index.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom --setupFiles ./src/setup-tests.js",
     "eject": "react-scripts eject",
@@ -39,7 +40,6 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
-    "gh-pages": "^2.2.0",
-    "qa-utilities": "^1.1.0"
+    "gh-pages": "^2.2.0"
   }
 }

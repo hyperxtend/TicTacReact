@@ -22,7 +22,7 @@ module.exports = {
     },
     'plugins': ['react'],
     'rules': {
-        'array-element-newline': 'off',
+        'array-element-newline': 'error',
         'function-paren-newline': 'off',
         'import/extensions': 'off',
         'import/no-extraneous-dependencies': 'off',
@@ -53,7 +53,7 @@ module.exports = {
         'react/prop-types': 'off',
         'require-jsdoc': 'off',
         'require-unicode-regexp': 'off',
-        'sort-vars': 'off',
+        'sort-vars': 'error',
         'space-before-function-paren': 'off',
         'function-paren-newline': ['error', 'consistent'],
         'implicit-arrow-linebreak': 'off',
