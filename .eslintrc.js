@@ -1,18 +1,17 @@
 module.exports = {
     'env': {
         'browser': true,
-        'es6': true,
         'node': true,
         'jest': true
     },
-    "extends": "airbnb",
-    "parser": "babel-eslint",
+    'extends': 'airbnb',
+    'parser': 'babel-eslint',
     'globals': {
         'Atomics': 'readonly',
         'SharedArrayBuffer': 'readonly',
-        "shallow": true,
-        "render": true,
-        "mount": true
+        'shallow': true,
+        'render': true,
+        'mount': true
     },
     'parserOptions': {
         'ecmaFeatures': {
@@ -35,7 +34,7 @@ module.exports = {
             'off',
             'windows'
         ],
-        'max-len': 'off',
+        'max-len': 'error',
         'max-statements': 'off',
         'multiline-ternary': 'off',
         'newline-after-var': 'off',
@@ -56,5 +55,30 @@ module.exports = {
         'require-unicode-regexp': 'off',
         'sort-vars': 'error',
         'space-before-function-paren': 'off',
+        'function-paren-newline': ['error', 'consistent'],
+        'implicit-arrow-linebreak': 'off',
+        'import/order': [
+        'error',
+        {
+        'groups': [
+        'builtin',
+        'external',
+        'internal',
+        'parent',
+        'sibling',
+        'index'
+        ],
+        'newlines-between': 'always'
+        }
+        ],
+        'jsx-a11y/anchor-is-valid': 'off',
+        'lines-between-class-members': 'off',
+        'object-curly-newline': ['error', { 'consistent': true }],
+        'operator-linebreak': 'off',
+        'react/destructuring-assignment': 'off',
+        'react/jsx-one-expression-per-line': 'off',
+        'react/no-typos': 'off',
+        'arrow-parens': 'off',
+        'comma-dangle': 'off'
     }
 };
