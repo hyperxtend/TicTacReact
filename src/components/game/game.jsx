@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { Container, Button } from 'react-bootstrap';
+
 import Board from '../board';
 
  class Game extends Component {
@@ -42,7 +43,6 @@ import Board from '../board';
       xIsNext: step % 2 === 0,
     });
   }
-
   render() {
     const { history } = this.state;
     const current = history[this.state.stepNumber];
@@ -53,6 +53,7 @@ import Board from '../board';
     Game.propTypes ={
       squares: PropTypes.array.isRequired,
       history: PropTypes.array.isRequired,
+      current: PropTypes.object.isRequired,
       stepNumber: PropTypes.number.isRequired,
       xIsNext: PropTypes.bool.isRequired,
       move: PropTypes.number.isRequired,
