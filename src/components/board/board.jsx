@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { Container, Row } from 'react-bootstrap';
 import Square from '../square';
 
 
