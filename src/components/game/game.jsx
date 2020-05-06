@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import { Container, Button } from 'react-bootstrap';
+
 import Board from '../board';
 
-export default class Game extends Component {
+ class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,13 +43,26 @@ export default class Game extends Component {
       xIsNext: step % 2 === 0,
     });
   }
-
   render() {
     const { history } = this.state;
-     const current = history[this.state.stepNumber];
-     const winner = calculateWinner(current.squares);
-      const moves = history.map((step, move) => {
-      const desc = move ? `Go to move #${move}` : 'Restart';
+    const current = history[this.state.stepNumber];
+    const winner = calculateWinner(current.squares);
+    const moves = history.map((step, move) => {
+    const desc = move ? `Go to move #${move}` : 'Restart';
+
+    Game.propTypes ={
+      squares: PropTypes.array.isRequired,
+      history: PropTypes.array.isRequired,
+      current: PropTypes.object.isRequired,
+      stepNumber: PropTypes.number.isRequired,
+      xIsNext: PropTypes.bool.isRequired,
+      move: PropTypes.number.isRequired,
+      desc: PropTypes.string.isRequired,
+      jumpTo: PropTypes.func.isRequired,
+      handleClick: PropTypes.func.isRequired,
+      calculateWinner: PropTypes.func.isRequired
+    }
+
       return (
         <span key={move}>
           <Button size="sm"
@@ -103,3 +118,4 @@ function calculateWinner(squares) {
   }
   return null;
 }
+export default Game;

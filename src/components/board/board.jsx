@@ -1,34 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Container, Row } from 'react-bootstrap';
 import Square from '../square';
 
-export default class Board extends Component {
-  renderSquare(int) {
-    return <Square
-     value={this.props.squares[int]}
-     onClick={() => this.props.onClick(int)}
-      />;
-  }
+const renderSquare = (int, squares, onClick) =>
+   <Square value={squares[int]} onClick={() => onClick(int)}/>;
+  
 
-  render() {
-    return (
+ const Board = ({squares, onClick}) => 
+ 
       <Container>
         <Row>
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
+          {renderSquare(0, squares, onClick)}
+          {renderSquare(1, squares, onClick)}
+          {renderSquare(2, squares, onClick)}
         </Row>
         <Row>
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
+          {renderSquare(3, squares, onClick)}
+          {renderSquare(4, squares, onClick)}
+          {renderSquare(5, squares, onClick)}
         </Row>
         <Row>
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
+          {renderSquare(6, squares, onClick)}
+          {renderSquare(7, squares, onClick)}
+          {renderSquare(8, squares, onClick)}
         </Row>
-      </Container>
-    );
-  }
+      </Container> 
+ Board.propTypes = {
+  renderSquare: PropTypes.func.isRequired,
+  int: PropTypes.number.isRequired,
+  onClick: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired
 }
+   
+export default Board
