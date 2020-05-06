@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Square from '../square';
 
-export default class Board extends Component {
-  
-  renderSquare(int) {
+
+ const Board = (props) => {
+  function renderSquare(int) {
     return <Square
-     value={this.props.squares[int]}
-     onClick={() => this.props.onClick(int)}
+      value={props.squares[int]}
+      onClick={() => props.onClick(int)}
       />;
   }
-  render() {
     Board.propTypes = {
       renderSquare: PropTypes.func.isRequired,
       int: PropTypes.number.isRequired,
@@ -21,21 +20,21 @@ export default class Board extends Component {
     return (
       <Container>
         <Row>
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
+          {renderSquare(0)}
+          {renderSquare(1)}
+          {renderSquare(2)}
         </Row>
         <Row>
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
+          {renderSquare(3)}
+          {renderSquare(4)}
+          {renderSquare(5)}
         </Row>
         <Row>
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
+          {renderSquare(6)}
+          {renderSquare(7)}
+          {renderSquare(8)}
         </Row>
       </Container>
     );
   }
-}
+export default Board

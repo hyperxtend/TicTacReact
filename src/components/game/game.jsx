@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import { Container, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Board from '../board';
 
-export default class Game extends Component {
+ class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -117,3 +117,4 @@ function calculateWinner(squares) {
   }
   return null;
 }
+export default Game;
