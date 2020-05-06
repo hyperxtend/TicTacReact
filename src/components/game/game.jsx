@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import Board from '../board';
 
 export default class Game extends Component {
@@ -44,10 +45,23 @@ export default class Game extends Component {
 
   render() {
     const { history } = this.state;
-     const current = history[this.state.stepNumber];
-     const winner = calculateWinner(current.squares);
-      const moves = history.map((step, move) => {
-      const desc = move ? `Go to move #${move}` : 'Restart';
+    const current = history[this.state.stepNumber];
+    const winner = calculateWinner(current.squares);
+    const moves = history.map((step, move) => {
+    const desc = move ? `Go to move #${move}` : 'Restart';
+
+    Game.propTypes ={
+      squares: PropTypes.array.isRequired,
+      history: PropTypes.array.isRequired,
+      stepNumber: PropTypes.number.isRequired,
+      xIsNext: PropTypes.bool.isRequired,
+      move: PropTypes.number.isRequired,
+      desc: PropTypes.string.isRequired,
+      jumpTo: PropTypes.func.isRequired,
+      handleClick: PropTypes.func.isRequired,
+      calculateWinner: PropTypes.func.isRequired
+    }
+
       return (
         <span key={move}>
           <Button size="sm"
