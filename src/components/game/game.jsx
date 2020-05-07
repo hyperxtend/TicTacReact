@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Container, Button } from 'react-bootstrap';
-import PropTypes from 'prop-types';
 import Board from '../board';
 
  class Game extends Component {

@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Container, Row } from 'react-bootstrap';
-import PropTypes from 'prop-types';
 import Square from '../square';
 
 
- const Board = (props) => {
+ function Board (props)  {
   function renderSquare(int) {
     return <Square
       value={props.squares[int]}
