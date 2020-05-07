@@ -1,121 +1,59 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import { Container, Button } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 
 import Board from '../board';
 
- class Game extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      history: [
-        {
-          squares: Array(9).fill(null),
-        },
-      ],
-      stepNumber: 0,
-      xIsNext: true,
-    };
-  }
+import { calculateWinner } from '../../utilities/game-utilities';
 
-  handleClick(int) {
-    const history = this.state.history.slice(0, this.state.stepNumber + 1);
-     const current = history[history.length - 1];
-     const squares = current.squares.slice();
-    if (calculateWinner(squares) || squares[int]) {
-      return;
-    }
-    squares[int] = this.state.xIsNext ? 'X' : 'O';
-    this.setState({
-      history: history.concat([
-        {
-          squares,
-        },
-      ]),
-      stepNumber: history.length,
-      xIsNext: !this.state.xIsNext,
-    });
-  }
-
-  jumpTo(step) {
-    this.setState({
-      stepNumber: step,
-      xIsNext: step % 2 === 0,
-    });
-  }
-  render() {
-    const { history } = this.state;
-    const current = history[this.state.stepNumber];
+class Game extends Component {
+  render () {
+    const history = this.props.history;
+    const current = history[this.props.stepNumber];
     const winner = calculateWinner(current.squares);
     const moves = history.map((step, move) => {
-    const desc = move ? `Go to move #${move}` : 'Restart';
-
-    Game.propTypes ={
-      squares: PropTypes.array.isRequired,
-      history: PropTypes.array.isRequired,
-      current: PropTypes.object.isRequired,
-      stepNumber: PropTypes.number.isRequired,
-      xIsNext: PropTypes.bool.isRequired,
-      move: PropTypes.number.isRequired,
-      desc: PropTypes.string.isRequired,
-      jumpTo: PropTypes.func.isRequired,
-      handleClick: PropTypes.func.isRequired,
-      calculateWinner: PropTypes.func.isRequired
-    }
+    const desc = move ? 'Go to move #' + move : 'Restart';
 
       return (
-        <span key={move}>
-          <Button size="sm"
-          variant="outline-dark"
-          onClick={() => this.jumpTo(move)}>
+        <span key={move} className={(this.props.stepNumber === move ? 'current' : '')}>
+          <Button 
+          size='sm'
+          variant='outline-dark'
+           onClick={() => this.props.jumpTo(move)}>
             {desc}
           </Button>
         </span>
-      );
+      )
     });
 
-    let status;
+    let status
     if (winner) {
-      status = `${winner} is the Winner!`;
+      status = `${winner['winner']} is the Winner!`
     } else {
-      status = `Next player is ${this.state.xIsNext ? 'X' : 'O'}`;
+      status = `Next player is  ${this.props.xIsNext ? 'X' : 'O'}`
     }
-    if(!winner && this.state.stepNumber === 9){
+    if(!winner && this.props.stepNumber === 9){
       status = `It's a Draw!`;
-    }
+    };
 
     return (
-      <Container className="game">
-        <div className="gameBoard">
+      <Container className='game'>
+        <div className='gameBoard'>
           <Board
-          squares={current.squares}
-          onClick={int => this.handleClick(int)} />
+            squares={current.squares}
+            onClick={(i) => this.props.onClick(i)}
+            winner_combination={(winner ? winner['winner_combination'] : [])}
+          />
         </div>
-        <div className="gameInfo">
-          <div className="playerStatus">{status}</div>
-          <span className="playerMoves">{moves}</span>
+        <div className='gameInfo'>
+          <div className='playerStatus'>{status}</div>
+          <span className='playerMoves'>{this.props.movesAscOrder ? moves : moves.reverse()}</span>
+          <Button size='sm' variant='dark' onClick={() => this.props.sortMoves()} className="sortButton">
+            Change order
+            </Button>
         </div>
       </Container>
-    );
+    )
   }
-}
-function calculateWinner(squares) {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
-  for (let num = 0; num < lines.length; num++) {
-    const [a, b, c] = lines[num];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
-    }
-  }
-  return null;
-}
+};
+
 export default Game;

@@ -46,3 +46,7 @@ code {
   margin-top: 2%;
   margin-left: 3%;
 }
+.sortButton{
+  position: relative;
+  left: 3%;
+}

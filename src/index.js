@@ -1,9 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Game from './components/game';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<Game />, document.getElementById('root'));
-serviceWorker.unregister();
+import './index.css';
+import ticTacToeApp from './reducers';
+
+import GamePlay from './components/game/container';
+
+
+let store = createStore(ticTacToeApp)
+
+render(
+  <Provider store={store}>
+    <GamePlay />
+  </Provider>,
+  document.getElementById('root')
+)

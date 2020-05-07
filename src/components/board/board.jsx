@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row } from 'react-bootstrap';
+
 import Square from '../square';
 
 const renderSquare = (int, squares, onClick) =>
@@ -31,6 +32,6 @@ const renderSquare = (int, squares, onClick) =>
   int: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired
-}
+};
    
-export default Board
+export default Board;
