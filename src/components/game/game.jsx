@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Button } from 'react-bootstrap';
 
@@ -49,19 +49,6 @@ import Board from '../board';
     const winner = calculateWinner(current.squares);
     const moves = history.map((step, move) => {
     const desc = move ? `Go to move #${move}` : 'Restart';
-
-    Game.propTypes ={
-      squares: PropTypes.array.isRequired,
-      history: PropTypes.array.isRequired,
-      current: PropTypes.object.isRequired,
-      stepNumber: PropTypes.number.isRequired,
-      xIsNext: PropTypes.bool.isRequired,
-      move: PropTypes.number.isRequired,
-      desc: PropTypes.string.isRequired,
-      jumpTo: PropTypes.func.isRequired,
-      handleClick: PropTypes.func.isRequired,
-      calculateWinner: PropTypes.func.isRequired
-    }
 
       return (
         <span key={move}>
@@ -117,5 +104,19 @@ function calculateWinner(squares) {
     }
   }
   return null;
-}
+};
+
+Game.propTypes ={
+  squares: PropTypes.array,
+  history: PropTypes.array,
+  current: PropTypes.object,
+  stepNumber: PropTypes.number,
+  xIsNext: PropTypes.bool,
+  move: PropTypes.number,
+  desc: PropTypes.string,
+  jumpTo: PropTypes.func,
+  handleClick: PropTypes.func,
+  calculateWinner: PropTypes.func
+};
+
 export default Game;

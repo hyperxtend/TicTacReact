@@ -4,33 +4,41 @@ import { Container, Row } from 'react-bootstrap';
 
 import Square from '../square';
 
-const renderSquare = (int, squares, onClick) =>
-   <Square value={squares[int]} onClick={() => onClick(int)}/>;
+
+ const Board = (props) => {
   
- const Board = ({squares, onClick}) => 
-      <Container>
+  function renderSquare (int){
+    return <Square 
+    value={props.squares[int]} 
+    onClick={() => props.onClick(int)}/>;
+   }
+     return ( 
+     <Container>
         <Row>
-          {renderSquare(0, squares, onClick)}
-          {renderSquare(1, squares, onClick)}
-          {renderSquare(2, squares, onClick)}
+          {renderSquare(0)}
+          {renderSquare(1)}
+          {renderSquare(2)}
         </Row>
         <Row>
-          {renderSquare(3, squares, onClick)}
-          {renderSquare(4, squares, onClick)}
-          {renderSquare(5, squares, onClick)}
+          {renderSquare(3)}
+          {renderSquare(4)}
+          {renderSquare(5)}
         </Row>
         <Row>
-          {renderSquare(6, squares, onClick)}
-          {renderSquare(7, squares, onClick)}
-          {renderSquare(8, squares, onClick)}
+          {renderSquare(6)}
+          {renderSquare(7)}
+          {renderSquare(8)}
         </Row>
       </Container>
-      Board.propTypes = {
-        renderSquare: PropTypes.func.isRequired,
-        int: PropTypes.number.isRequired,
-        squares: PropTypes.array.isRequired,
-        onClick: PropTypes.func.isRequired,
-        value: PropTypes.string.isRequired
-      };
+      )
+};
+
+Board.propTypes = {
+  renderSquare: PropTypes.func,
+  int: PropTypes.number,
+  squares: PropTypes.array,
+  onClick: PropTypes.func,
+  value: PropTypes.string
+};
 
 export default Board;
