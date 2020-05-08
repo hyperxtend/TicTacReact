@@ -49,19 +49,6 @@ import Board from '../board';
     const winner = calculateWinner(current.squares);
     const moves = history.map((step, move) => {
     const desc = move ? `Go to move #${move}` : 'Restart';
-
-    Game.propTypes ={
-      squares: PropTypes.array.isRequired,
-      history: PropTypes.array.isRequired,
-      stepNumber: PropTypes.number.isRequired,
-      xIsNext: PropTypes.bool.isRequired,
-      move: PropTypes.number.isRequired,
-      desc: PropTypes.string.isRequired,
-      jumpTo: PropTypes.func.isRequired,
-      handleClick: PropTypes.func.isRequired,
-      calculateWinner: PropTypes.func.isRequired
-    }
-
       return (
         <span key={move}>
           <Button size="sm"
@@ -117,4 +104,15 @@ function calculateWinner(squares) {
   }
   return null;
 }
+Game.propTypes ={
+  squares: PropTypes.array.isRequired,
+  history: PropTypes.array.isRequired,
+  stepNumber: PropTypes.number.isRequired,
+  xIsNext: PropTypes.bool.isRequired,
+  move: PropTypes.number.isRequired,
+  desc: PropTypes.string.isRequired,
+  jumpTo: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  calculateWinner: PropTypes.func.isRequired
+};
 export default Game;

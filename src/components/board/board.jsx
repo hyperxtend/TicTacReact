@@ -12,12 +12,6 @@ export default class Board extends Component {
       />;
   }
   render() {
-    Board.propTypes = {
-      renderSquare: PropTypes.func.isRequired,
-      int: PropTypes.number.isRequired,
-      onClick: PropTypes.func.isRequired,
-      value: PropTypes.string.isRequired
-    }
     return (
       <Container>
         <Row>
@@ -37,6 +31,12 @@ export default class Board extends Component {
         </Row>
       </Container>
     );
+
   }
- 
+}
+Board.propTypes = {
+  renderSquare: PropTypes.func.isRequired,
+  int: PropTypes.number.isRequired,
+  onClick: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired
 }
