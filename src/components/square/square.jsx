@@ -4,8 +4,8 @@ import { Button } from 'react-bootstrap';
 
 export default function Square (props) {
   Square.propTypes = {
-    onClick: PropTypes.func.isRequired,
-    value: PropTypes.string.isRequired
+    onClick: PropTypes.func,
+    value: PropTypes.string
   }
   return (
     <Button
