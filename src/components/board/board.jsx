@@ -6,13 +6,7 @@ import Square from '../square';
 
 
  const Board = (props) => {
-  Board.propTypes = {
-    renderSquare: PropTypes.func.isRequired,
-    int: PropTypes.number.isRequired,
-    squares: PropTypes.array.isRequired,
-    onClick: PropTypes.func.isRequired,
-    value: PropTypes.string.isRequired
-  };
+  
   function renderSquare (int){
     return <Square 
     value={props.squares[int]} 
@@ -37,5 +31,14 @@ import Square from '../square';
         </Row>
       </Container>
       )
-}
+};
+
+Board.propTypes = {
+  renderSquare: PropTypes.func,
+  int: PropTypes.number,
+  squares: PropTypes.array,
+  onClick: PropTypes.func,
+  value: PropTypes.string
+};
+
 export default Board;
