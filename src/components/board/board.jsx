@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Container, Row } from 'react-bootstrap';
 
 import Square from '../square';
@@ -26,11 +27,12 @@ const renderSquare = (int, squares, onClick) =>
           {renderSquare(8, squares, onClick)}
         </Row>
       </Container> 
+      
  Board.propTypes = {
-  renderSquare: PropTypes.func.isRequired,
-  int: PropTypes.number.isRequired,
-  onClick: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired
+  renderSquare: PropTypes.func,
+  int: PropTypes.number,
+  onClick: PropTypes.func,
+  value: PropTypes.string
 }
    
 export default Board

@@ -1,5 +1,5 @@
-import React, { PropTypes } from 'react';
-
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 
  const Square = (props) => 
@@ -9,8 +9,8 @@ import { Button } from 'react-bootstrap';
     </Button>
     
     Square.propTypes = {
-      onClick: PropTypes.func.isRequired,
-      value: PropTypes.string.isRequired
+      onClick: PropTypes.func,
+      value: PropTypes.string
     };
 
 
