@@ -1,7 +1,8 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 
- function Square (props) {
+export default function Square (props) {
   Square.propTypes = {
     onClick: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired
@@ -17,4 +18,3 @@ import { Button } from 'react-bootstrap';
 }
 
 
-export default Square;
