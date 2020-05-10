@@ -1,9 +1,9 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import { selectSquare, goToMove, changeMovesOrder } from '../../actions';
 import Game from './game';
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return state
 };
 
