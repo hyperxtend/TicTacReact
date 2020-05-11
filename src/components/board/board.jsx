@@ -1,15 +1,17 @@
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row } from 'react-bootstrap';
 
 import Square from '../square';
 
+
 const renderSquare = (int, squares, onClick) =>
    <Square value={squares[int]} onClick={() => onClick(int)}/>;
   
 
  const Board = ({squares, onClick}) => 
- 
+
       <Container>
         <Row>
           {renderSquare(0, squares, onClick)}
@@ -35,4 +37,5 @@ const renderSquare = (int, squares, onClick) =>
   value: PropTypes.string
 }
    
-export default Board
+export default Board;
+    

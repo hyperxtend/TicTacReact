@@ -49,7 +49,6 @@ import Board from '../board';
     const winner = calculateWinner(current.squares);
     const moves = history.map((step, move) => {
     const desc = move ? `Go to move #${move}` : 'Restart';
-
       return (
         <span key={move}>
           <Button size="sm"
@@ -106,10 +105,9 @@ function calculateWinner(squares) {
   return null;
 }
 
-Game.propTypes ={
+Game.propTypes = {
   squares: PropTypes.array,
   history: PropTypes.array,
-  current: PropTypes.object,
   stepNumber: PropTypes.number,
   xIsNext: PropTypes.bool,
   move: PropTypes.number,
