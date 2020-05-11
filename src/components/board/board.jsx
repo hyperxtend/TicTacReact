@@ -6,7 +6,7 @@ import Square from '../square';
 
 
 const renderSquare = (int, squares, onClick) =>{
-  return( <Square value={squares[int]} onClick={() => onClick(int)}/>);
+   <Square value={squares[int]} onClick={() => onClick(int)}/>;
 }
 
  const Board = ({squares, onClick}) => 
