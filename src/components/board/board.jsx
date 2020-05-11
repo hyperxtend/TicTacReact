@@ -27,11 +27,12 @@ const renderSquare = (int, squares, onClick) =>
           {renderSquare(8, squares, onClick)}
         </Row>
       </Container> 
+      
  Board.propTypes = {
-  renderSquare: PropTypes.func.isRequired,
-  int: PropTypes.number.isRequired,
-  onClick: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired
+  renderSquare: PropTypes.func,
+  int: PropTypes.number,
+  onClick: PropTypes.func,
+  value: PropTypes.string
 };
    
 export default Board;

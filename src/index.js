@@ -7,10 +7,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import ticTacToeApp from './reducers';
 
-import GamePlay from './components/game/container';
+import { GamePlay } from './components/game/container';
 
 
-let store = createStore(ticTacToeApp)
+const store = createStore(ticTacToeApp)
 
 render(
   <Provider store={store}>

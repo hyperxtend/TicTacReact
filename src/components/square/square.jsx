@@ -8,8 +8,8 @@ import { Button } from 'react-bootstrap';
     </Button>
     
     Square.propTypes = {
-      onClick: PropTypes.func.isRequired,
-      value: PropTypes.string.isRequired
+      onClick: PropTypes.func,
+      value: PropTypes.string
     };
 
 
