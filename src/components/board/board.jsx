@@ -1,3 +1,4 @@
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row } from 'react-bootstrap';
@@ -14,19 +15,19 @@ import Square from '../square';
      return ( 
      <Container>
         <Row>
-          {renderSquare(0)}
-          {renderSquare(1)}
-          {renderSquare(2)}
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
         </Row>
         <Row>
-          {renderSquare(3)}
-          {renderSquare(4)}
-          {renderSquare(5)}
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
         </Row>
         <Row>
-          {renderSquare(6)}
-          {renderSquare(7)}
-          {renderSquare(8)}
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
         </Row>
       </Container>
       )
@@ -41,3 +42,4 @@ Board.propTypes = {
 };
 
 export default Board;
+\
