@@ -6,15 +6,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './index.css';
 import ticTacToeApp from './reducers';
+import * as serviceWorker from './serviceWorker';
 
-import { GamePlay } from './components/game/container';
+import GamePlay from './components/game/container';
 
-
-const store = createStore(ticTacToeApp)
+const store = createStore(ticTacToeApp);
+const root = document.getElementById('root');
 
 render(
   <Provider store={store}>
     <GamePlay />
   </Provider>,
-  document.getElementById('root')
-)
+  root
+);
+ serviceWorker.unregister();

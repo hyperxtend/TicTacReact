@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { Button, Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Container, Button } from 'react-bootstrap';
 
 import Board from '../board';
 
 import { calculateWinner } from '../../utilities/game-utilities';
-
 
 class Game extends Component {
   render () {
