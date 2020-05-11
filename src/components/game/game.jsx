@@ -4,7 +4,7 @@ import { Container, Button } from 'react-bootstrap';
 
 import Board from '../board';
 
- class Game extends Component {
+class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -49,6 +49,7 @@ import Board from '../board';
     const winner = calculateWinner(current.squares);
     const moves = history.map((step, move) => {
     const desc = move ? `Go to move #${move}` : 'Restart';
+      
       return (
         <span key={move}>
           <Button size="sm"
@@ -85,6 +86,7 @@ import Board from '../board';
     );
   }
 }
+
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
@@ -115,6 +117,6 @@ Game.propTypes = {
   jumpTo: PropTypes.func,
   handleClick: PropTypes.func,
   calculateWinner: PropTypes.func
-}
+};
 
 export default Game;
