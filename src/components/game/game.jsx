@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { Container, Button } from 'react-bootstrap';
 
 import Board from '../board';
-
-export default class Game extends Component {
+class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -119,4 +118,4 @@ Game.propTypes = {
   calculateWinner: PropTypes.func
 };
 
-
+export default Game;
