@@ -86,6 +86,7 @@ export default class Game extends Component {
     );
   }
 }
+
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
@@ -105,6 +106,7 @@ function calculateWinner(squares) {
   }
   return null;
 }
+
 Game.propTypes = {
   squares: PropTypes.array,
   history: PropTypes.array,
@@ -117,6 +119,4 @@ Game.propTypes = {
   calculateWinner: PropTypes.func
 };
 
-
-export default Game;
 
