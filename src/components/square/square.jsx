@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 
-
-export default function Square(props) {
+export default function Square (props) {
   return (
     <Button
     variant="secondary outline-dark"
@@ -12,3 +12,9 @@ export default function Square(props) {
     </Button>
   );
 }
+Square.propTypes = {
+  onClick: PropTypes.func,
+  value: PropTypes.string
+}
+
+

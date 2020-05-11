@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import { Container, Row } from 'react-bootstrap';
 import Square from '../square';
+
 
 export default class Board extends Component {
   renderSquare(int) {
@@ -9,7 +11,6 @@ export default class Board extends Component {
      onClick={() => this.props.onClick(int)}
       />;
   }
-
   render() {
     return (
       <Container>
@@ -30,5 +31,12 @@ export default class Board extends Component {
         </Row>
       </Container>
     );
+
   }
+}
+Board.propTypes = {
+  renderSquare: PropTypes.func,
+  int: PropTypes.number,
+  onClick: PropTypes.func,
+  value: PropTypes.string
 }
