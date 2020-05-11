@@ -4,7 +4,6 @@ import { Container, Row } from 'react-bootstrap';
 
 import Square from '../square';
 
-
  const Board = (props) => {
   
   function renderSquare (int){
