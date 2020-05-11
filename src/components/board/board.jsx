@@ -36,3 +36,4 @@ const renderSquare = (int, squares, onClick) =>
 };
    
 export default Board;
+  

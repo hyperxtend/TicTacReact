@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Button, Container } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import { Container, Button } from 'react-bootstrap';
 
 import Board from '../board';
 
 import { calculateWinner } from '../../utilities/game-utilities';
+
 
 class Game extends Component {
   render () {
@@ -12,7 +15,6 @@ class Game extends Component {
     const winner = calculateWinner(current.squares);
     const moves = history.map((step, move) => {
     const desc = move ? 'Go to move #' + move : 'Restart';
-
       return (
         <span key={move} className={(this.props.stepNumber === move ? 'current' : '')}>
           <Button 
@@ -57,3 +59,16 @@ class Game extends Component {
 };
 
 export default Game;
+
+Game.propTypes = {
+  squares: PropTypes.array,
+  history: PropTypes.array,
+  stepNumber: PropTypes.number,
+  xIsNext: PropTypes.bool,
+  move: PropTypes.number,
+  desc: PropTypes.string,
+  jumpTo: PropTypes.func,
+  handleClick: PropTypes.func,
+  calculateWinner: PropTypes.func
+};
+
