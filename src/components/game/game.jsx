@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import { Button, Container } from 'react-bootstrap';
+=======
+import PropTypes from 'prop-types';
+import { Container, Button } from 'react-bootstrap';
+>>>>>>> fix: Fixed default export and import statements
 
 import Board from '../board';
 import { calculateWinner } from '../../utilities/game-utilities';

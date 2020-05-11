@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { selectSquare, goToMove, changeMovesOrder } from '../../actions';
 import Game from './game';
@@ -21,8 +20,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-export const GamePlay = connect(
+const GamePlay = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Game);
 
+export default GamePlay;
