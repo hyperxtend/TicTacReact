@@ -9,7 +9,6 @@ const renderSquare = (int, squares, onClick) =>
   
 
  const Board = ({squares, onClick}) => 
- 
       <Container>
         <Row>
           {renderSquare(0, squares, onClick)}
