@@ -21,9 +21,8 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-const GamePlay = connect(
+export const GamePlay = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Game);
 
-export default GamePlay;

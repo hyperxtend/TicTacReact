@@ -36,4 +36,5 @@ const renderSquare = (int, squares, onClick) =>
       Board.defaultProps = {
         onClick: () => {}
       };
+      
 export default Board;
