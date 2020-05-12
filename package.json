@@ -2,6 +2,15 @@
   "name": "reacttactoe",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start --NODE_ENV=production&&node index.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom --setupFiles ./src/setup-tests.js",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "lint": "eslint src/**/*.js src/**/*.jsx"
+  },
   "dependencies": {
     "bootstrap": "^4.4.1",
     "core-js": "^3.6.5",
@@ -10,37 +19,15 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.0"
   },
-  "scripts": {
-    "start": "react-scripts start --NODE_ENV=production&&node index.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --setupFiles ./src/setup-tests.js",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build", 
-    "lint": "eslint src/**/*.js src/**/*.jsx"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.4.4",
     "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-react": "^7.19.0",
     "gh-pages": "^2.2.0"
   }
 }
