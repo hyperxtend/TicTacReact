@@ -8,10 +8,10 @@ import { Button } from 'react-bootstrap';
       {props.value}
     </Button>)
     }
+
     Square.propTypes = {
       onClick: PropTypes.func,
       value: PropTypes.string
     };
-
 
 export default Square;
