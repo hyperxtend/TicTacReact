@@ -16,7 +16,8 @@
     "test": "react-scripts test --env=jsdom --setupFiles ./src/setup-tests.js",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build", 
+    "lint": "eslint src/**/*.js src/**/*.jsx"
   },
   "eslintConfig": {
     "extends": "react-app"
