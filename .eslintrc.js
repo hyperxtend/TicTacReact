@@ -22,9 +22,9 @@ module.exports = {
     },
     'plugins': ['react'],
     'rules': {
-        'array-element-newline': 'error',
+        'array-element-newline': 'off',
         'function-paren-newline': 'off',
-        'import/extensions': 'off',
+        'import/extensions': 'off',  
         'import/no-extraneous-dependencies': 'off',
         'import/no-unresolved': 'off',
         'indent': 'off',
@@ -77,6 +77,7 @@ module.exports = {
         'operator-linebreak': 'off',
         'react/destructuring-assignment': 'off',
         'react/jsx-one-expression-per-line': 'off',
+        'react/no-access-state-in-setstate':'off',
         'react/no-typos': 'off',
         'arrow-parens': 'off',
         'comma-dangle': 'off'

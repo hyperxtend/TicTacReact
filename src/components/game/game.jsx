@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Container, Button } from 'react-bootstrap';
 
 import Board from '../board';
@@ -49,12 +48,13 @@ class Game extends Component {
     const winner = calculateWinner(current.squares);
     const moves = history.map((step, move) => {
     const desc = move ? `Go to move #${move}` : 'Restart';
-      
       return (
-        <span key={move}>
-          <Button size="sm"
-          variant="outline-dark"
-          onClick={() => this.jumpTo(move)}>
+        <span key={[move]}>
+          <Button
+            size="sm"
+            variant="outline-dark"
+            onClick={() => this.jumpTo(move)}
+          >
             {desc}
           </Button>
         </span>
@@ -67,16 +67,17 @@ class Game extends Component {
     } else {
       status = `Next player is ${this.state.xIsNext ? 'X' : 'O'}`;
     }
-    if(!winner && this.state.stepNumber === 9){
-      status = `It's a Draw!`;
+    if (!winner && this.state.stepNumber === 9) {
+      status = 'It\'s a Draw!';
     }
 
     return (
       <Container className="game">
         <div className="gameBoard">
           <Board
-          squares={current.squares}
-          onClick={int => this.handleClick(int)} />
+            squares={current.squares}
+            onClick={int => this.handleClick(int)}
+          />
         </div>
         <div className="gameInfo">
           <div className="playerStatus">{status}</div>
@@ -106,17 +107,5 @@ function calculateWinner(squares) {
   }
   return null;
 }
-
-Game.propTypes = {
-  squares: PropTypes.array,
-  history: PropTypes.array,
-  stepNumber: PropTypes.number,
-  xIsNext: PropTypes.bool,
-  move: PropTypes.number,
-  desc: PropTypes.string,
-  jumpTo: PropTypes.func,
-  handleClick: PropTypes.func,
-  calculateWinner: PropTypes.func
-};
 
 export default Game;
