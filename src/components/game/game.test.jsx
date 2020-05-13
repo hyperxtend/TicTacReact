@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+
 import Game from './game';
 
 
@@ -50,7 +51,7 @@ describe('<Game/>', () => {
       .text();
     expect(winner).toBe('X is the Winner!');
     });
-    
+
     it('determines if there is a Draw', () => {
       const comp = mount(<Game />);
        const move1 = comp.find('button.square').at(0);
@@ -76,6 +77,6 @@ describe('<Game/>', () => {
         .children()
         .first()
         .text();
-      expect(winner).toBe(`It's a Draw!`);
+      expect(winner).toBe('It\'s a Draw!');
       });
 });
