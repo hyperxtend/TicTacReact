@@ -4,9 +4,8 @@ import { Container, Row } from 'react-bootstrap';
 
 import Square from '../square';
 
-
 const renderSquare = (int, squares, onClick) =>
-(<Square value={squares[int]} onClick={() => onClick(int)} />);
+  <Square value={squares[int]} onClick={() => onClick(int)} />;
 
  const Board = ({ squares, onClick }) => (
    <Container>
@@ -28,13 +27,13 @@ const renderSquare = (int, squares, onClick) =>
    </Container>
     );
 
-      Board.propTypes = {
-        squares: PropTypes.arrayOf(PropTypes.string).isRequired,
-        onClick: PropTypes.func,
-      };
+    Board.propTypes = {
+      squares: PropTypes.arrayOf(PropTypes.string).isRequired,
+      onClick: PropTypes.func,
+    };
 
-      Board.defaultProps = {
-        onClick: () => {}
-      };
-      
+    Board.defaultProps = {
+      onClick: () => {}
+    };
+
 export default Board;
