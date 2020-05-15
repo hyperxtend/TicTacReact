@@ -6,7 +6,7 @@ import Board from '../board';
 import calculateWinner from '../../utilities/game-utilities';
 
 const Game = (props) => {
-    const { history } = props;
+    const { history } = props.history;
     const current = history[props.stepNumber];
     const winner = calculateWinner(current.squares);
     const moves = history.map((step, move) => {
@@ -55,15 +55,21 @@ const Game = (props) => {
   };
 
 Game.propTypes = {
-  history: PropTypes.shape({
-    map: PropTypes.func.isRequired
-  }).isRequired,
-  jumpTo: PropTypes.func.isRequired,
-  movesAscOrder: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
-  sortMoves: PropTypes.func.isRequired,
-  stepNumber: PropTypes.number.isRequired,
-  xIsNext: PropTypes.bool.isRequired
+  jumpTo: PropTypes.func,
+  movesAscOrder: PropTypes.func,
+  onClick: PropTypes.func,
+  sortMoves: PropTypes.func,
+  stepNumber: PropTypes.number,
+  xIsNext: PropTypes.bool
+};
+
+Game.defaultProps = {
+  jumpTo: () => {},
+  movesAscOrder: () => {},
+  onClick: () => {},
+  sortMoves: () => {},
+  stepNumber: 0,
+  xIsNext: true
 };
 
 export default Game;
