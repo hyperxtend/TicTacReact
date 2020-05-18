@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Container, Button } from 'react-bootstrap';
 
 import Board from '../board';
-import calculateWinner from '../../utilities/game-utilities';
+import calculateWinner from '../../utilities';
 
 const Game = (props) => {
     const { history } = props.history;
