@@ -3,7 +3,7 @@ import calculateWinner from '../utilities';
 
 const initialState = {
   history: [{
-    squares: Array(9).fill(null)
+    squares: Array(9).fill('')
   }],
   movesAscOrder: true,
   xIsNext: true,
