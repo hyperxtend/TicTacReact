@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './index.css';
 import ticTacToeApp from './reducers';
-import GamePlay from './components/game/container';
+import GamePlay from './components/game';
 import * as serviceWorker from './serviceWorker';
 
 const store = createStore(ticTacToeApp);
