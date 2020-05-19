@@ -5,18 +5,26 @@ import { Container, Button } from 'react-bootstrap';
 import Board from '../board';
 import calculateWinner from '../../utilities';
 
-const Game = (props) => {
-    const { history } = props.history;
-    const current = history[props.stepNumber];
+
+const Game = ({ history,
+  jumpTo,
+  movesAscendingOrder,
+  onClick,
+  sortMoves,
+  stepNumber,
+  xIsNext },
+  props) => {
+    const { moveHistory } = props.history;
+    const current = moveHistory[stepNumber];
     const winner = calculateWinner(current.squares);
     const moves = history.map((step, move) => {
     const desc = move ? `Go to move #${move}` : 'Restart';
       return (
-        <span key={[move]} className={(props.stepNumber === move ? 'current' : '')}>
+        <span key={[move]} className={(stepNumber === move ? 'current' : '')}>
           <Button
             size="sm"
             variant="outline-dark"
-            onClick={() => props.jumpTo(move)}
+            onClick={() => jumpTo(move)}
           >
             {desc}
           </Button>
@@ -24,29 +32,31 @@ const Game = (props) => {
       );
     });
 
-    let status;
-    if (winner) {
-      status = `${winner.winner} is the Winner!`;
-    } else {
-      status = `Next player is  ${props.xIsNext ? 'X' : 'O'}`;
-    }
-    if (!winner && props.stepNumber === 9) {
-      status = 'It\'s a Draw!';
-    }
+    let status = calculateWinnerStatus(winner);
 
+    function calculateWinnerStatus() {
+        if (winner) {
+          status = `${winner.winnerName} is the Winner!`;
+        } else {
+          status = `Next player is  ${xIsNext ? 'X' : 'O'}`;
+        }
+        if (!winner && stepNumber === 9) {
+          status = 'It\'s a Draw!';
+        }
+    }
     return (
       <Container className="game">
         <div className="gameBoard">
           <Board
             squares={current.squares}
-            onClick={(i) => props.onClick(i)}
+            onClick={(i) => onClick(i)}
             winnerCombination={(winner ? winner.winnerCombination : [])}
           />
         </div>
         <div className="gameInfo">
           <div className="playerStatus">{status}</div>
-          <span className="playerMoves">{props.movesAscOrder ? moves : moves.reverse()}</span>
-          <Button size="sm" variant="dark" onClick={() => props.sortMoves()} className="sortButton">
+          <span className="playerMoves">{movesAscendingOrder ? moves : moves.reverse()}</span>
+          <Button size="sm" variant="dark" onClick={() => sortMoves()} className="sortButton">
             Change order
           </Button>
         </div>
@@ -54,18 +64,18 @@ const Game = (props) => {
     );
   };
 
-Game.propTypes = {
-  jumpTo: PropTypes.func,
-  movesAscOrder: PropTypes.func,
-  onClick: PropTypes.func,
-  sortMoves: PropTypes.func,
-  stepNumber: PropTypes.number,
-  xIsNext: PropTypes.bool
-};
+  Game.propTypes = {
+    jumpTo: PropTypes.func,
+    movesAscendingOrder: PropTypes.func,
+    onClick: PropTypes.func,
+    sortMoves: PropTypes.func,
+    stepNumber: PropTypes.number,
+    xIsNext: PropTypes.bool
+  };
 
 Game.defaultProps = {
   jumpTo: () => {},
-  movesAscOrder: () => {},
+  movesAscendingOrder: () => {},
   onClick: () => {},
   sortMoves: () => {},
   stepNumber: 0,

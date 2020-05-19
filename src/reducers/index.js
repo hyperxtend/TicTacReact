@@ -5,7 +5,7 @@ const initialState = {
   history: [{
     squares: Array(9).fill('')
   }],
-  movesAscOrder: true,
+  movesAscendingOrder: true,
   xIsNext: true,
   stepNumber: 0
 };
@@ -16,7 +16,7 @@ const TicTacToeApp = (state = initialState, action) => {
   const squares = current.squares.slice();
   switch (action.type) {
     case MOVES_ORDER:
-      return { ...state, movesAscOrder: !state.movesAscOrder };
+      return { ...state, movesAscendingOrder: !state.movesAscendingOrder };
 
     case GO_TO_MOVE:
       return { ...state,
