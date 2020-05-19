@@ -5,11 +5,11 @@ import { createStore } from 'redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './index.css';
-import ticTacToeApp from './reducers';
+import TicTacToeApp from './reducers';
 import GamePlay from './components/game';
 import * as serviceWorker from './serviceWorker';
 
-const store = createStore(ticTacToeApp);
+const store = createStore(TicTacToeApp);
 const root = document.getElementById('root');
 
 render(

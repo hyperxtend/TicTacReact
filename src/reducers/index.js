@@ -10,7 +10,7 @@ const initialState = {
   stepNumber: 0
 };
 
-const ticTacToeApp = (state = initialState, action) => {
+const TicTacToeApp = (state = initialState, action) => {
   const history = state.history.slice(0, state.stepNumber + 1);
   const current = history[state.stepNumber];
   const squares = current.squares.slice();
@@ -20,7 +20,7 @@ const ticTacToeApp = (state = initialState, action) => {
 
     case GO_TO_MOVE:
       return { ...state,
-history: state.history.slice(0, action.step + 1),
+        history: state.history.slice(0, action.step + 1),
         stepNumber: action.step,
         xIsNext: !((action.step % 2)) };
 
@@ -30,7 +30,7 @@ history: state.history.slice(0, action.step + 1),
       }
       squares[action.index] = state.xIsNext ? 'X' : 'O';
       return { ...state,
-history: [
+        history: [
           ...state.history,
           {
             squares
@@ -44,4 +44,4 @@ history: [
   }
 };
 
-export default ticTacToeApp;
+export default TicTacToeApp;

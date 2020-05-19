@@ -12,7 +12,7 @@
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        return { winner_combination: [a, b, c], winner: squares[a] };
+        return { winnerCombination: [a, b, c], winner: squares[a] };
       }
     }
     return null;
