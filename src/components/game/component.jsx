@@ -49,7 +49,7 @@ const gameStatus = calculateWinnerStatus(winner);
         <div className="gameBoard">
           <Board
             squares={current.squares}
-            onClick={(i) => onClick(i)}
+            onClick={(squareIndex) => onClick(squareIndex)}
             winnerCombination={(winner ? winner.winnerCombination : [])}
           />
         </div>

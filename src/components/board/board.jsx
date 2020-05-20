@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row } from 'react-bootstrap';
 
-import Square from '../square';
+import Square from '../square'; 
 
-const renderSquare = (int, squares, onClick) =>
-  <Square value={squares[int]} onClick={() => onClick(int)} />;
+const renderSquare = (squareIndex, squares, onClick) =>
+  <Square value={squares[squareIndex]} onClick={() => onClick(squareIndex)} />;
 
  const Board = ({ squares, onClick }) => (
    <Container>
