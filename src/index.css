@@ -20,7 +20,7 @@ code {
 .gameBoard{
   margin-top: 3%;
   height: 30vh;
-  width: 50vw;
+  width: 30vw;
   position: relative;
   float: right;
 }

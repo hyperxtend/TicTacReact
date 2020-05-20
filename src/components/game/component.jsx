@@ -12,11 +12,13 @@ const Game = ({
   sortMoves,
   xIsNext,
   movesAscendingOrder,
-  onClick
+  onClick,
 }) => {
     const movesHistory = history;
     const current = movesHistory[stepNumber];
+    console.log('Current is: ', current);
     const winner = calculateWinner(current.squares);
+    console.log('Winner is: ', winner);
     const moves = movesHistory.map((step, move) => {
     const desc = move ? `Go to move #${move}` : 'Restart';
 
