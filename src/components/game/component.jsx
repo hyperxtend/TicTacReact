@@ -33,16 +33,17 @@ const Game = ({
       );
     });
 
-    let status;
-    if (winner) {
-      status = `${winner.winnerName} is the Winner!`;
-    } else {
-      status = `Next player is  ${xIsNext ? 'X' : 'O'}`;
-    }
-    if (!winner && stepNumber === 9) {
-      status = 'It\'s a Draw!';
-    }
+    const calculateWinnerStatus = () => {
+      if (winner) {
+        return <span>{winner.winnerName} is the Winner!</span>;
+      }
+      if (!winner && stepNumber === 9) {
+        return <span>Its a Draw!</span>;
+      }
+        return <span>Next player is {xIsNext ? 'X' : 'O'}</span>;
 
+    };
+const gameStatus = calculateWinnerStatus(winner);
     return (
       <Container className="game">
         <div className="gameBoard">
@@ -53,7 +54,7 @@ const Game = ({
           />
         </div>
         <div className="gameInfo">
-          <div className="playerStatus">{status}</div>
+          <div className="playerStatus">{gameStatus}</div>
           <span className="playerMoves">{movesAscendingOrder ? moves : moves.reverse()}</span>
           <Button size="sm" variant="dark" onClick={() => sortMoves()} className="sortButton">
             Change order

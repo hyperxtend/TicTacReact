@@ -5,8 +5,8 @@ import Game from './component';
 
 
 describe('<Game/>', () => {
-  it('checks if component exists', (props) => {
-    const component = shallow(<Game props={props} />);
+  it('checks if component exists', () => {
+    const component = shallow(<Game />);
     expect(component.exists()).toBe(true);
   });
 
