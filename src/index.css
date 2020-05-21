@@ -20,7 +20,7 @@ code {
 .gameBoard{
   margin-top: 3%;
   height: 30vh;
-  width: 50vw;
+  width: 30vw;
   position: relative;
   float: right;
 }
@@ -45,4 +45,8 @@ code {
   flex-direction: column;
   margin-top: 2%;
   margin-left: 3%;
+}
+.sortButton{
+  position: relative;
+  left: 3%;
 }
