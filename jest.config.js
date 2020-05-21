@@ -19,7 +19,7 @@ module.exports = {
 
   testMatch: ['**/__tests__/**/*.js?(x)', '**/?(*.)+(spec|test).js?(x)'],
 
-  testPathIgnorePatterns: ['\\\\node_modules\\\\'],
+  testPathIgnorePatterns: ['\\\\node_modules\\\\', '<rootDir>/src/index.jsx'],
 
   testURL: 'http://localhost',
 

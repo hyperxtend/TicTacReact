@@ -5,11 +5,17 @@
   "scripts": {
     "start": "react-scripts start --NODE_ENV=production&&node index.jsx",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --setupFiles ./src/setup-tests.js",
+    "test": "react-scripts test --env=jsdom --setupFiles ./src/setup-tests.js --coverage --watchAll=true",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "lint": "eslint src/**/*.js src/**/*.jsx"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "/src/serviceWorker.js",
+      "/src/index.jsx"
+    ]
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
