@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row } from 'react-bootstrap';
 
-import Square from '../square'; 
+import Square from '../square';
 
 const renderSquare = (squareIndex, squares, onClick) =>
   <Square value={squares[squareIndex]} onClick={() => onClick(squareIndex)} />;
