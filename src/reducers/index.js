@@ -2,12 +2,14 @@ import { SELECT_SQUARE, MOVES_ORDER, GO_TO_MOVE } from '../actions';
 import calculateWinner from '../utilities';
 
 const initialState = {
-  history: [{
-    squares: Array(9).fill('')
-  }],
+  history: [
+    {
+      squares: Array(9).fill(''),
+    },
+  ],
   movesAscendingOrder: true,
   xIsNext: true,
-  stepNumber: 0
+  stepNumber: 0,
 };
 
 const TicTacToeApp = (state = initialState, action) => {
@@ -19,25 +21,29 @@ const TicTacToeApp = (state = initialState, action) => {
       return { ...state, movesAscendingOrder: !state.movesAscendingOrder };
 
     case GO_TO_MOVE:
-      return { ...state,
+      return {
+        ...state,
         history: state.history.slice(0, action.step + 1),
         stepNumber: action.step,
-        xIsNext: !((action.step % 2)) };
+        xIsNext: !(action.step % 2),
+      };
 
     case SELECT_SQUARE:
       if (calculateWinner(squares) || squares[action.index]) {
         return state;
       }
       squares[action.index] = state.xIsNext ? 'X' : 'O';
-      return { ...state,
+      return {
+        ...state,
         history: [
           ...state.history,
           {
-            squares
-          }
+            squares,
+          },
         ],
         xIsNext: !state.xIsNext,
-        stepNumber: history.length };
+        stepNumber: history.length,
+      };
 
     default:
       return state;

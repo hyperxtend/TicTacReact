@@ -7,14 +7,11 @@ import Game from './component';
 const mapStateToProps = (state) => state;
 
 const mapDispatchToProps = (dispatch) => ({
-    onClick: (id) => dispatch(selectSquare(id)),
-    jumpTo: (step) => dispatch(goToMove(step)),
-    sortMoves: () => dispatch(changeMovesOrder())
-  });
+  onClick: (id) => dispatch(selectSquare(id)),
+  jumpTo: (step) => dispatch(goToMove(step)),
+  sortMoves: () => dispatch(changeMovesOrder()),
+});
 
-const GamePlay = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Game);
+const GamePlay = connect(mapStateToProps, mapDispatchToProps)(Game);
 
 export default GamePlay;
