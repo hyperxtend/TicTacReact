@@ -4,26 +4,22 @@ import { Container, Row } from 'react-bootstrap';
 
 import Square from '../square';
 
-const renderSquare = (squareIndex, squares, onClick) => (
-  <Square value={squares[squareIndex]} onClick={() => onClick(squareIndex)} />
-);
-
 const Board = ({ squares, onClick }) => (
   <Container>
     <Row>
-      {renderSquare(0, squares, onClick)}
-      {renderSquare(1, squares, onClick)}
-      {renderSquare(2, squares, onClick)}
+      <Square value={squares[0]} onClick={() => onClick(0)} />
+      <Square value={squares[1]} onClick={() => onClick(1)} />
+      <Square value={squares[2]} onClick={() => onClick(2)} />
     </Row>
     <Row>
-      {renderSquare(3, squares, onClick)}
-      {renderSquare(4, squares, onClick)}
-      {renderSquare(5, squares, onClick)}
+      <Square value={squares[3]} onClick={() => onClick(3)} />
+      <Square value={squares[4]} onClick={() => onClick(4)} />
+      <Square value={squares[5]} onClick={() => onClick(5)} />
     </Row>
     <Row>
-      {renderSquare(6, squares, onClick)}
-      {renderSquare(7, squares, onClick)}
-      {renderSquare(8, squares, onClick)}
+      <Square value={squares[6]} onClick={() => onClick(6)} />
+      <Square value={squares[7]} onClick={() => onClick(7)} />
+      <Square value={squares[8]} onClick={() => onClick(8)} />
     </Row>
   </Container>
 );
