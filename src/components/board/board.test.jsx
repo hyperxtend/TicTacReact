@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Board from './board';
+import Board from './component';
 
 describe('<Board/>', () => {
   it('onClick event works on buttons', () => {
