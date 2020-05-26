@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Square from './square';
+import Square from './component';
 
 describe('<Square/>', () => {
   it('checks if component exists', () => {
