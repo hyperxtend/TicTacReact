@@ -4,28 +4,31 @@ import PropTypes from 'prop-types';
 
 import Board from '../board';
 
-const Game = ({ history, stepNumber, onClick }) => {
-  const current = history[stepNumber];
+const Game = ({ history, moveNumber }) => {
+  const current = history[moveNumber];
   return (
     <Container className="game">
-      <Board
-        squares={current.squares}
-        onClick={(currentSquare) => onClick(currentSquare)}
-      />
+      <Board squares={current.squares} />
+
     </Container>
   );
 };
 
 Game.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.object),
-  squares: PropTypes.arrayOf(PropTypes.string),
-  stepNumber: PropTypes.number,
+  history: PropTypes.arrayOf(
+    PropTypes.shape({
+      squares: PropTypes.arrayOf(PropTypes.string),
+    })
+  ),
+  moveNumber: PropTypes.number,
 };
-
 Game.defaultProps = {
-  history: [{}],
-  squares: [''],
-  stepNumber: 0,
+  history: [
+    {
+      squares: [],
+    },
+  ],
+  moveNumber: 0,
 };
 
 export default Game;
