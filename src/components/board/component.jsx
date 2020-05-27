@@ -30,7 +30,7 @@ Board.propTypes = {
 };
 
 Board.defaultProps = {
-  squares: [''],
+  squares: [],
   onClick: () => {},
 };
 
