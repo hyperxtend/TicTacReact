@@ -4,12 +4,15 @@ import PropTypes from 'prop-types';
 
 import Board from '../board';
 
-const Game = ({ history, moveNumber }) => {
+const Game = ({ history, moveNumber, onClick }) => {
   const current = history[moveNumber];
+
   return (
     <Container className="game">
-      <Board squares={current.squares} />
-
+      <Board
+        squares={current.squares}
+        onClick={(currentSquare) => onClick(currentSquare)}
+      />
     </Container>
   );
 };
@@ -21,6 +24,7 @@ Game.propTypes = {
     })
   ),
   moveNumber: PropTypes.number,
+  onClick: PropTypes.func,
 };
 Game.defaultProps = {
   history: [
@@ -29,6 +33,7 @@ Game.defaultProps = {
     },
   ],
   moveNumber: 0,
+  onClick: () => {},
 };
 
 export default Game;
