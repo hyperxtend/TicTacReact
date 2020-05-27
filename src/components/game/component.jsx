@@ -6,14 +6,14 @@ import Board from '../board';
 
 const Game = ({ history, moveNumber, onClick, jumpTo }) => {
   const current = history[moveNumber];
-  const moveMap = history.map((eachMove, moveNumber) => {
-    const moveHistory = moveNumber ? `Go to move #${moveNumber}` : 'Restart';
+  const moveMap = history.map((eachMove, move) => {
+    const moveHistory = move ? `Go to move #${move}` : 'Restart';
     return (
       <Button
         size="sm"
         variant="outline-dark"
-        key={[moveNumber]}
-        onClick={() => jumpTo(moveNumber)}
+        key={[move]}
+        onClick={() => jumpTo(move)}
       >
         {moveHistory}
       </Button>
