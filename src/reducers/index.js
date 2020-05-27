@@ -9,12 +9,12 @@ const initialState = {
   ],
   movesAscendingOrder: true,
   xIsNext: true,
-  stepNumber: 0,
+  moveNumber: 0,
 };
 
 const TicTacToeApp = (state = initialState, action) => {
-  const history = state.history.slice(0, state.stepNumber + 1);
-  const current = history[state.stepNumber];
+  const history = state.history.slice(0, state.moveNumber + 1);
+  const current = history[state.moveNumber];
   const squares = current.squares.slice();
   switch (action.type) {
     case MOVES_ORDER:
@@ -24,12 +24,13 @@ const TicTacToeApp = (state = initialState, action) => {
       return {
         ...state,
         history: state.history.slice(0, action.step + 1),
-        stepNumber: action.step,
+        moveNumber: action.step,
         xIsNext: !(action.step % 2),
       };
 
     case SELECT_SQUARE:
       if (calculateWinner(squares) || squares[action.index]) {
+        console.log('State', state);
         return state;
       }
       squares[action.index] = state.xIsNext ? 'X' : 'O';
@@ -42,7 +43,7 @@ const TicTacToeApp = (state = initialState, action) => {
           },
         ],
         xIsNext: !state.xIsNext,
-        stepNumber: history.length,
+        moveNumber: history.length,
       };
 
     default:

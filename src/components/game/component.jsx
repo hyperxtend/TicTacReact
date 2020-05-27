@@ -1,67 +1,47 @@
 import React from 'react';
-import { Button, Container } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import Board from '../board';
 import calculateWinner from '../../utilities';
 
-const Game = ({
-  history,
-  stepNumber,
-  jumpTo,
-  sortMoves,
-  xIsNext,
-  movesAscendingOrder,
-  onClick,
-}) => {
-  const movesHistory = history;
-  const current = movesHistory[stepNumber];
+const Game = ({ history, moveNumber, onClick, jumpTo, xIsNext }) => {
+  const current = history[moveNumber];
   const winner = calculateWinner(current.squares);
-  const moves = movesHistory.map((step, move) => {
-    const desc = move ? `Go to move #${move}` : 'Restart';
-
+  const moveMap = history.map((eachMove, move) => {
+    const moveHistory = move ? `Go to move #${move}` : 'Restart';
     return (
-      <span key={[move]}>
-        <Button size="sm" variant="outline-dark" onClick={() => jumpTo(move)}>
-          {desc}
-        </Button>
-      </span>
+      <Button
+        size="sm"
+        variant="outline-dark"
+        key={[move]}
+        onClick={() => jumpTo(move)}
+      >
+        {moveHistory}
+      </Button>
     );
   });
-
-  const calculateWinnerStatus = () => {
+  const GameStatus = () => {
     if (winner) {
       return <p>{winner.winnerName} is the Winner!</p>;
     }
-    if (!winner && stepNumber === 9) {
+    if (!winner && moveNumber === 9) {
       return <p>Its a Draw!</p>;
     }
-    return <p>Next player is {xIsNext ? 'X' : 'O'}</p>;
+    return <p>Next Player is {xIsNext ? 'X' : 'O'}</p>;
   };
-  const gameStatus = calculateWinnerStatus(winner);
   return (
     <Container className="game">
+      <div className="gameInfo">
+        <span className="playerStatus">{GameStatus()}</span>
+        <div className="playerMoves">{moveMap}</div>
+      </div>
       <div className="gameBoard">
         <Board
           squares={current.squares}
-          onClick={(squareIndex) => onClick(squareIndex)}
-          winnerCombination={winner ? winner.winnerCombination : []}
+          onClick={(currentSquare) => onClick(currentSquare)}
         />
       </div>
-      <div className="gameInfo">
-        <div className="playerStatus">{gameStatus}</div>
-      </div>
-      <span className="playerMoves">
-        {movesAscendingOrder ? moves : moves.reverse()}
-      </span>
-      <Button
-        size="sm"
-        variant="dark"
-        onClick={() => sortMoves()}
-        className="sortButton"
-      >
-        Change order
-      </Button>
     </Container>
   );
 };
@@ -72,26 +52,20 @@ Game.propTypes = {
       squares: PropTypes.arrayOf(PropTypes.string),
     })
   ),
-  jumpTo: PropTypes.func,
-  movesAscendingOrder: PropTypes.bool,
+  moveNumber: PropTypes.number,
   onClick: PropTypes.func,
-  sortMoves: PropTypes.func,
-  stepNumber: PropTypes.number,
-  xIsNext: PropTypes.bool,
+  jumpTo: PropTypes.func,
 };
 
 Game.defaultProps = {
   history: [
     {
-      squares: [''],
+      squares: [],
     },
   ],
-  jumpTo: () => {},
-  movesAscendingOrder: true,
+  moveNumber: 0,
   onClick: () => {},
-  sortMoves: () => {},
-  stepNumber: 0,
-  xIsNext: true,
+  jumpTo: () => {},
 };
 
 export default Game;

@@ -13,6 +13,7 @@ code {
     monospace;
 }
 .game {
+  display: flex;
   margin-top: 5%;
   justify-content: center;
 }
@@ -22,6 +23,9 @@ code {
   width: 30vw;
   position: relative;
   float: right;
+}
+.gameInfo {
+  margin-right: 10%;
 }
 
 .square {
@@ -41,8 +45,7 @@ code {
 .playerMoves {
   display: flex;
   flex-direction: column;
-  margin-top: 2%;
-  margin-left: 3%;
+  margin-right: 10%;
 }
 .sortButton {
   position: relative;
