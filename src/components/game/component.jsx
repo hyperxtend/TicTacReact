@@ -3,6 +3,7 @@ import { Container, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import Board from '../board';
+import calculateWinner from '../../utilities';
 
 const Game = ({ history, moveNumber, onClick, jumpTo, xIsNext }) => {
   const current = history[moveNumber];
@@ -52,6 +53,8 @@ Game.propTypes = {
     })
   ),
   moveNumber: PropTypes.number,
+  onClick: PropTypes.func,
+  jumpTo: PropTypes.func,
 };
 
 Game.defaultProps = {
