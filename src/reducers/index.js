@@ -1,5 +1,5 @@
 import { SELECT_SQUARE, MOVES_ORDER, GO_TO_MOVE } from '../actions';
-import calculateWinner from '../utilities';
+import { calculateWinner } from '../utilities';
 
 const initialState = {
   history: [
@@ -30,7 +30,6 @@ const TicTacToeApp = (state = initialState, action) => {
 
     case SELECT_SQUARE:
       if (calculateWinner(squares) || squares[action.index]) {
-        console.log('State', state);
         return state;
       }
       squares[action.index] = state.xIsNext ? 'X' : 'O';

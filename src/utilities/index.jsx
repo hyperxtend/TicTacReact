@@ -1,4 +1,6 @@
-function calculateWinner(squares) {
+import React from 'react';
+
+export const calculateWinner = (squares) => {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -16,6 +18,16 @@ function calculateWinner(squares) {
     }
   }
   return null;
-}
+};
 
-export default calculateWinner;
+const GameStatus = (winner, moveNumber, xIsNext) => {
+  if (winner) {
+    return <p>{winner.winnerName} is the Winner!</p>;
+  }
+  if (!winner && moveNumber === 9) {
+    return <p>Its a Draw!</p>;
+  }
+  return <p>Next Player is {xIsNext ? 'X' : 'O'}</p>;
+};
+
+export default GameStatus;
