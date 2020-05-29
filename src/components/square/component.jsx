@@ -15,7 +15,7 @@ Square.propTypes = {
 
 Square.defaultProps = {
   onClick: () => {},
-  value: 'X',
+  value: '',
 };
 
 export default Square;
