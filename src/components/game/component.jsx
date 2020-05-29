@@ -6,7 +6,6 @@ import Board from '../board';
 
 const Game = ({ history, moveNumber, onClick }) => {
   const current = history[moveNumber];
-
   return (
     <Container className="game">
       <Board
