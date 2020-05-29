@@ -4,9 +4,8 @@ import PropTypes from 'prop-types';
 
 import Board from '../board';
 
-const Game = ({ history, moveNumber, onClick, jumpTo }) => {
-  const current = history[moveNumber];
-  const moveMap = history.map((eachMove, move) => {
+const moveMap = (history, jumpTo) =>
+  history.map((eachMove, move) => {
     const moveHistory = move ? `Go to move #${move}` : 'Restart';
     return (
       <Button
@@ -20,9 +19,11 @@ const Game = ({ history, moveNumber, onClick, jumpTo }) => {
     );
   });
 
+const Game = ({ history, moveNumber, onClick, jumpTo }) => {
+  const current = history[moveNumber];
   return (
     <Container className="game">
-      <div className="playerMoves">{moveMap}</div>
+      <div className="playerMoves">{moveMap(history, jumpTo)}</div>
       <Board
         squares={current.squares}
         onClick={(currentSquare) => onClick(currentSquare)}
