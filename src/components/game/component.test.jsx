@@ -12,11 +12,12 @@ describe('<Game/>', () => {
     wrapper = mount(<Game onClick={mockOnClick} />);
   });
   it('checks if component exists', () => {
-    expect(component.exists()).toBe(true);
+    expect(wrapper.exists()).toBe(true);
   });
   it('checks onClick event on button', () => {
     wrapper.find('button.square').first().simulate('click');
-    expect(mockOnClick).toHaveBeenCalled();
+    expect(mockOnClick).toBeCalledWith(0);
+    console.log('debug: ', wrapper.find('div.game').html());
   });
   it('checks if click renders an X', () => {
     wrapper.find('button.square').at(0).simulate('click');
