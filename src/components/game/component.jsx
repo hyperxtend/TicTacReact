@@ -4,30 +4,28 @@ import PropTypes from 'prop-types';
 
 import Board from '../board';
 
-const moveMap = (history, jumpTo) =>
-  history.map((eachMove, move) => {
-    const moveHistory = move ? `Go to move #${move}` : 'Restart';
-    return (
-      <Button
-        size="sm"
-        variant="outline-dark"
-        key={[move]}
-        onClick={() => jumpTo(move)}
-      >
-        {moveHistory}
-      </Button>
-    );
-  });
-
 const Game = ({ history, moveNumber, onClick, jumpTo }) => {
   const current = history[moveNumber];
+  const currentSquare = current.squares;
   return (
     <Container className="game">
-      <div className="playerMoves">{moveMap(history, jumpTo)}</div>
-      <Board
-        squares={current.squares}
-        onClick={(currentSquare) => onClick(currentSquare)}
-      />
+      <div className="playerMoves">
+        {history.map((eachMove, move) => {
+          const moveHistory = move ? `Go to move #${move}` : 'Restart';
+          return (
+            <Button
+              className="moveHistory"
+              size="sm"
+              variant="outline-dark"
+              key={[move]}
+              onClick={() => jumpTo(move)}
+            >
+              {moveHistory}
+            </Button>
+          );
+        })}
+      </div>
+      <Board squares={currentSquare} onClick={(int) => onClick(int)} />
     </Container>
   );
 };
