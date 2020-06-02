@@ -9,7 +9,7 @@ describe('<Game/>', () => {
   let wrapper;
   const mockOnClick = jest.fn();
   const MoveValuesOne = ['X', '', '', '', '', '', '', '', ''];
-  const MoveONE = { squares: MoveValuesOne };
+  const MoveOne = { squares: MoveValuesOne };
 
   const MoveValuesTwo = ['X', 'O', '', '', '', '', '', '', ''];
   const MoveTwo = { squares: MoveValuesTwo };
@@ -36,7 +36,7 @@ describe('<Game/>', () => {
   const MoveNine = { squares: MoveValuesNine };
 
   const HistoryOfMoves = [
-    MoveONE,
+    MoveOne,
     MoveTwo,
     MoveThree,
     MoveFour,
