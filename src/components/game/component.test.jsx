@@ -8,55 +8,55 @@ import Game from './component';
 describe('<Game/>', () => {
   let wrapper;
   const mockOnClick = jest.fn();
-  const MoveValuesOne = ['X', '', '', '', '', '', '', '', ''];
-  const MoveOne = { squares: MoveValuesOne };
+  const moveValuesOne = ['X', '', '', '', '', '', '', '', ''];
+  const moveOne = { squares: moveValuesOne };
 
-  const MoveValuesTwo = ['X', 'O', '', '', '', '', '', '', ''];
-  const MoveTwo = { squares: MoveValuesTwo };
+  const moveValuesTwo = ['X', 'O', '', '', '', '', '', '', ''];
+  const moveTwo = { squares: moveValuesTwo };
 
-  const MoveValuesThree = ['X', 'O', 'X', '', '', '', '', '', ''];
-  const MoveThree = { squares: MoveValuesThree };
+  const moveValuesThree = ['X', 'O', 'X', '', '', '', '', '', ''];
+  const moveThree = { squares: moveValuesThree };
 
-  const MoveValuesFour = ['X', 'O', 'X', '', 'O', '', '', '', ''];
-  const MoveFour = { squares: MoveValuesFour };
+  const moveValuesFour = ['X', 'O', 'X', '', 'O', '', '', '', ''];
+  const moveFour = { squares: moveValuesFour };
 
-  const MoveValuesFive = ['X', 'O', 'X', '', 'O', '', '', 'X', ''];
-  const MoveFive = { squares: MoveValuesFive };
+  const moveValuesFive = ['X', 'O', 'X', '', 'O', '', '', 'X', ''];
+  const moveFive = { squares: moveValuesFive };
 
-  const MoveValuesSix = ['X', 'O', 'X', '', 'O', 'O', '', 'X', ''];
-  const MoveSix = { squares: MoveValuesSix };
+  const moveValuesSix = ['X', 'O', 'X', '', 'O', 'O', '', 'X', ''];
+  const moveSix = { squares: moveValuesSix };
 
-  const MoveValuesSeven = ['X', 'O', 'X', 'X', 'O', 'O', '', 'X', ''];
-  const MoveSeven = { squares: MoveValuesSeven };
+  const moveValuesSeven = ['X', 'O', 'X', 'X', 'O', 'O', '', 'X', ''];
+  const moveSeven = { squares: moveValuesSeven };
 
-  const MoveValuesEight = ['X', 'O', 'X', 'X', 'O', 'O', '', 'X', 'O'];
-  const MoveEight = { squares: MoveValuesEight };
+  const moveValuesEight = ['X', 'O', 'X', 'X', 'O', 'O', '', 'X', 'O'];
+  const moveEight = { squares: moveValuesEight };
 
-  const MoveValuesNine = ['X', 'O', 'X', 'X', 'O', 'O', 'X', 'X', 'O'];
-  const MoveNine = { squares: MoveValuesNine };
+  const moveValuesNine = ['X', 'O', 'X', 'X', 'O', 'O', 'X', 'X', 'O'];
+  const moveNine = { squares: moveValuesNine };
 
-  const HistoryOfMoves = [
-    MoveOne,
-    MoveTwo,
-    MoveThree,
-    MoveFour,
-    MoveFive,
-    MoveSix,
-    MoveSeven,
-    MoveEight,
-    MoveNine,
+  const historyOfMoves = [
+    moveOne,
+    moveTwo,
+    moveThree,
+    moveFour,
+    moveFive,
+    moveSix,
+    moveSeven,
+    moveEight,
+    moveNine,
   ];
 
   beforeAll(() => {
     wrapper = mount(
-      <Game history={HistoryOfMoves} moveNumber={8} onClick={mockOnClick} />
+      <Game history={historyOfMoves} moveNumber={8} onClick={mockOnClick} />
     );
   });
   it('checks if board exists', () => {
     expect(wrapper.find(Board).exists()).toBe(true);
   });
   it('checks if board has squares props', () => {
-    expect(wrapper.find(Board).props().squares).toEqual(MoveValuesNine);
+    expect(wrapper.find(Board).props().squares).toEqual(moveValuesNine);
   });
   it('checks onClick event on button', () => {
     wrapper.find('button.square').at(0).simulate('click');
