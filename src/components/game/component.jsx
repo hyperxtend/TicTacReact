@@ -40,6 +40,7 @@ Game.propTypes = {
   onClick: PropTypes.func,
   jumpTo: PropTypes.func,
 };
+
 Game.defaultProps = {
   history: [
     {
