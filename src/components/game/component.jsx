@@ -4,9 +4,13 @@ import PropTypes from 'prop-types';
 
 import Board from '../board';
 
-import { previousPlayerMoves } from './controller';
-
-const Game = ({ history, moveNumber, onClick, jumpTo }) => {
+const Game = ({
+  history,
+  moveNumber,
+  onClick,
+  jumpTo,
+  previousPlayerMoves,
+}) => {
   const current = history[moveNumber];
   const currentSquare = current.squares;
   return (
@@ -18,7 +22,7 @@ const Game = ({ history, moveNumber, onClick, jumpTo }) => {
               className="moveHistory"
               size="sm"
               variant="outline-dark"
-              key={`${index}-${buttonName}`}
+              key={`${[index]}-${buttonName}`}
               onClick={buttonClick}
             >
               {buttonName}
@@ -26,7 +30,10 @@ const Game = ({ history, moveNumber, onClick, jumpTo }) => {
           )
         )}
       </div>
-      <Board squares={currentSquare} onClick={(int) => onClick(int)} />
+      <Board
+        squares={currentSquare}
+        onClick={(squareIndex) => onClick(squareIndex)}
+      />
     </Container>
   );
 };
