@@ -8,6 +8,9 @@ import Game from './component';
 describe('<Game/>', () => {
   let wrapper;
   const mockOnClick = jest.fn();
+  const noPlayedMoves = ['', '', '', '', '', '', '', '', ''];
+  const moveZero = { square: noPlayedMoves };
+
   const moveValuesOne = ['X', '', '', '', '', '', '', '', ''];
   const moveOne = { squares: moveValuesOne };
 
@@ -29,13 +32,14 @@ describe('<Game/>', () => {
   const moveValuesSeven = ['X', 'O', 'X', 'X', 'O', 'O', '', 'X', ''];
   const moveSeven = { squares: moveValuesSeven };
 
-  const moveValuesEight = ['X', 'O', 'X', 'X', 'O', 'O', '', 'X', 'O'];
+  const moveValuesEight = ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', ''];
   const moveEight = { squares: moveValuesEight };
 
-  const moveValuesNine = ['X', 'O', 'X', 'X', 'O', 'O', 'X', 'X', 'O'];
+  const moveValuesNine = ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'];
   const moveNine = { squares: moveValuesNine };
 
   const historyOfMoves = [
+    moveZero,
     moveOne,
     moveTwo,
     moveThree,
@@ -49,7 +53,7 @@ describe('<Game/>', () => {
 
   beforeAll(() => {
     wrapper = mount(
-      <Game history={historyOfMoves} moveNumber={8} onClick={mockOnClick} />
+      <Game history={historyOfMoves} moveNumber={9} onClick={mockOnClick} />
     );
   });
   it('checks if board exists', () => {
@@ -81,5 +85,35 @@ describe('<Game/>', () => {
       .first()
       .text();
     expect(buttonText).toBe('O');
+  });
+  it('checks the text for 1st move history button', () => {
+    const buttonName = wrapper
+      .find('button.moveHistory')
+      .at(0)
+      .children()
+      .first()
+      .text();
+    expect(buttonName).toBe('Restart');
+  });
+  it('check the jump to move function for Restart', () => {
+    wrapper.find('button.moveHistory').at(0).simulate('click');
+    expect(historyOfMoves[0]).toBe(moveZero);
+  });
+  it('check the jump to move function for move 6', () => {
+    wrapper.find('button.moveHistory').at(6).simulate('click');
+    expect(historyOfMoves[6]).toBe(moveSix);
+  });
+  it('checks the text for last move history button', () => {
+    const buttonName = wrapper
+      .find('button.moveHistory')
+      .at(9)
+      .children()
+      .first()
+      .text();
+    expect(buttonName).toBe('Go to move #9');
+  });
+  it('check the jump to move function for last button', () => {
+    wrapper.find('button.moveHistory').at(8).simulate('click');
+    expect(historyOfMoves[9]).toBe(moveNine);
   });
 });

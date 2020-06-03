@@ -18,3 +18,8 @@ export const calculateWinner = (squares) => {
   }
   return null;
 };
+export const previousPlayerMoves = (history, jumpTo) =>
+  history.map((_eachMove, moveId) => ({
+    buttonName: moveId ? `Go to move #${moveId}` : 'Restart',
+    onClick: () => jumpTo(moveId),
+  }));
