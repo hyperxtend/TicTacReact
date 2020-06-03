@@ -4,11 +4,16 @@ import PropTypes from 'prop-types';
 
 import Board from '../board';
 
-import { previousPlayerMoves } from './controller';
+// import { previousPlayerMoves } from './controller';
 
-const Game = ({ history, moveNumber, onClick, jumpTo }) => {
+const Game = ({
+  history,
+  moveNumber,
+  onClick,
+  jumpTo,
+  previousPlayerMoves,
+}) => {
   const current = history[moveNumber];
-  console.log('history: ', moveNumber);
   const currentSquare = current.squares;
   return (
     <Container className="game">
