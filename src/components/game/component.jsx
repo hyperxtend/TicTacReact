@@ -4,62 +4,36 @@ import PropTypes from 'prop-types';
 
 import Board from '../board';
 
-// import { previousPlayerMoves } from './controller';
-
-const Game = ({
-  history,
-  moveNumber,
-  onClick,
-  jumpTo,
-  previousPlayerMoves,
-}) => {
-  const current = history[moveNumber];
-  const currentSquare = current.squares;
-  return (
-    <Container className="game">
-      <div className="playerMoves">
-        {previousPlayerMoves(history, jumpTo).map(
-          ({ buttonName, onClick: buttonClick }, index) => (
-            <Button
-              className="moveHistory"
-              size="sm"
-              variant="outline-dark"
-              key={`${[index]}-${buttonName}`}
-              onClick={buttonClick}
-            >
-              {buttonName}
-            </Button>
-          )
-        )}
-      </div>
-      <Board
-        squares={currentSquare}
-        onClick={(squareIndex) => onClick(squareIndex)}
-      />
-    </Container>
-  );
-};
+const Game = ({ onSelectSquare, squares, previousPlayerMoves }) => (
+  <Container className="game">
+    <div className="playerMoves">
+      {previousPlayerMoves.map(({ buttonName, buttonClick }, index) => (
+        <Button
+          className="moveHistory"
+          size="sm"
+          variant="outline-dark"
+          key={`${[index]}-${buttonName}`}
+          onClick={buttonClick}
+          data-qa="reset-to-move-history"
+        >
+          {buttonName}
+        </Button>
+      ))}
+    </div>
+    <Board
+      squares={squares}
+      onClick={(squareIndex) => onSelectSquare(squareIndex)}
+      data-qa="game-board"
+    />
+  </Container>
+);
 
 Game.propTypes = {
-  history: PropTypes.arrayOf(
-    PropTypes.shape({
-      squares: PropTypes.arrayOf(PropTypes.string),
-    })
-  ),
-  moveNumber: PropTypes.number,
-  onClick: PropTypes.func,
-  jumpTo: PropTypes.func,
+  onSelectSquare: PropTypes.func,
 };
 
 Game.defaultProps = {
-  history: [
-    {
-      squares: [],
-    },
-  ],
-  moveNumber: 0,
-  onClick: () => {},
-  jumpTo: () => {},
+  onSelectSquare: () => {},
 };
 
 export default Game;

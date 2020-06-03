@@ -4,17 +4,23 @@ import { selectSquare, goToMove, changeMovesOrder } from '../../actions';
 
 import Game from './component';
 
-const mapStateToProps = ({ history, moveNumber }) => ({ history, moveNumber });
-
-const mapDispatchToProps = (dispatch) => ({
-  onClick: (id) => dispatch(selectSquare(id)),
-  jumpTo: (step) => dispatch(goToMove(step)),
-  sortMoves: () => dispatch(changeMovesOrder()),
-  previousPlayerMoves: (history, jumpTo) =>
-    history.map((_eachMove, moveId) => ({
-      buttonName: moveId ? `Go to move #${moveId}` : 'Restart',
-      onClick: () => jumpTo(moveId),
-    })),
+const mapStateToProps = ({ history, moveNumber }) => ({
+  squares: history[moveNumber].squares,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Game);
+const mapDispatchToProps = (dispatch) => ({
+  onSelectSquare: (id) => dispatch(selectSquare(id)),
+  jumpTo: (step) => dispatch(goToMove(step)),
+  sortMoves: () => dispatch(changeMovesOrder()),
+});
+
+const mergeProps = (stateProps, dispatchProps) => ({
+  ...stateProps,
+  ...dispatchProps,
+  previousPlayerMoves: stateProps.history.map((_, moveId) => ({
+    buttonName: moveId ? `Go to move #${moveId}` : 'Restart',
+    buttonClick: () => dispatchProps.jumpTo(moveId),
+  })),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Game);
