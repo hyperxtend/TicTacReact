@@ -4,7 +4,7 @@ import { selectSquare, goToMove, changeMovesOrder } from '../../actions';
 
 import Game from './component';
 
-const mapStateToProps = (state) => state;
+const mapStateToProps = ({ history, moveNumber }) => ({ history, moveNumber });
 
 const mapDispatchToProps = (dispatch) => ({
   onClick: (id) => dispatch(selectSquare(id)),
@@ -12,6 +12,4 @@ const mapDispatchToProps = (dispatch) => ({
   sortMoves: () => dispatch(changeMovesOrder()),
 });
 
-const GamePlay = connect(mapStateToProps, mapDispatchToProps)(Game);
-
-export default GamePlay;
+export default connect(mapStateToProps, mapDispatchToProps)(Game);
