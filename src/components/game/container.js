@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => ({
 const mergeProps = (stateProps, dispatchProps) => ({
   ...stateProps,
   ...dispatchProps,
-  previousPlayerMoves: stateProps.history.map((_, moveId) => ({
+  previousPlayerMoves: stateProps.squares.map((_, moveId) => ({
     buttonName: moveId ? `Go to move #${moveId}` : 'Restart',
     buttonClick: () => dispatchProps.jumpTo(moveId),
   })),
