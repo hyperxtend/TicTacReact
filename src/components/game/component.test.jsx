@@ -1,85 +1,41 @@
 import React from 'react';
-import { mount } from 'enzyme';
-
-import Board from '../board';
+import { shallow } from 'enzyme';
+import { select } from 'qa-utilities';
 
 import Game from './component';
 
 describe('<Game/>', () => {
   let wrapper;
-  const mockOnClick = jest.fn();
-  const moveValuesOne = ['X', '', '', '', '', '', '', '', ''];
-  const moveOne = { squares: moveValuesOne };
-
-  const moveValuesTwo = ['X', 'O', '', '', '', '', '', '', ''];
-  const moveTwo = { squares: moveValuesTwo };
-
-  const moveValuesThree = ['X', 'O', 'X', '', '', '', '', '', ''];
-  const moveThree = { squares: moveValuesThree };
-
-  const moveValuesFour = ['X', 'O', 'X', '', 'O', '', '', '', ''];
-  const moveFour = { squares: moveValuesFour };
-
-  const moveValuesFive = ['X', 'O', 'X', '', 'O', '', '', 'X', ''];
-  const moveFive = { squares: moveValuesFive };
-
-  const moveValuesSix = ['X', 'O', 'X', '', 'O', 'O', '', 'X', ''];
-  const moveSix = { squares: moveValuesSix };
-
-  const moveValuesSeven = ['X', 'O', 'X', 'X', 'O', 'O', '', 'X', ''];
-  const moveSeven = { squares: moveValuesSeven };
-
-  const moveValuesEight = ['X', 'O', 'X', 'X', 'O', 'O', '', 'X', 'O'];
-  const moveEight = { squares: moveValuesEight };
-
-  const moveValuesNine = ['X', 'O', 'X', 'X', 'O', 'O', 'X', 'X', 'O'];
-  const moveNine = { squares: moveValuesNine };
-
-  const historyOfMoves = [
-    moveOne,
-    moveTwo,
-    moveThree,
-    moveFour,
-    moveFive,
-    moveSix,
-    moveSeven,
-    moveEight,
-    moveNine,
-  ];
+  let onSelectSquare;
+  let squares;
+  let previousPlayerMoves;
 
   beforeAll(() => {
-    wrapper = mount(
-      <Game history={historyOfMoves} moveNumber={8} onClick={mockOnClick} />
+    onSelectSquare = jest.fn();
+    squares = ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'];
+    previousPlayerMoves = [
+      { buttonName: 'Test button 1', buttonClick: jest.fn() },
+      { buttonName: 'Test button 2', buttonClick: jest.fn() },
+      { buttonName: 'Test button 3', buttonClick: jest.fn() },
+      { buttonName: 'Test button 4', buttonClick: jest.fn() },
+      { buttonName: 'Test button 5', buttonClick: jest.fn() },
+      { buttonName: 'Test button 6', buttonClick: jest.fn() },
+      { buttonName: 'Test button 7', buttonClick: jest.fn() },
+      { buttonName: 'Test button 8', buttonClick: jest.fn() },
+      { buttonName: 'Test button 9', buttonClick: jest.fn() },
+      { buttonName: 'Test button 10', buttonClick: jest.fn() },
+    ];
+
+    wrapper = shallow(
+      <Game
+        onSelectSquare={onSelectSquare}
+        squares={squares}
+        previousPlayerMoves={previousPlayerMoves}
+      />
     );
   });
-  it('checks if board exists', () => {
-    expect(wrapper.find(Board).exists()).toBe(true);
-  });
-  it('checks if board has squares props', () => {
-    expect(wrapper.find(Board).props().squares).toEqual(moveValuesNine);
-  });
-  it('checks onClick event on button', () => {
-    wrapper.find('button.square').at(0).simulate('click');
-    expect(mockOnClick).toHaveBeenCalled();
-  });
-  it('checks if first square renders an X', () => {
-    wrapper.find('button.square').at(0).simulate('click');
-    const buttonText = wrapper
-      .find('button.square')
-      .at(0)
-      .children()
-      .first()
-      .text();
-    expect(buttonText).toBe('X');
-  });
-  it('checks if seconds square renders an O', () => {
-    wrapper.find('button.square').at(1).simulate('click');
-    const buttonText = wrapper
-      .find('button.square')
-      .at(1)
-      .children()
-      .first()
-      .text();
-    expect(buttonText).toBe('O');
+
+  it('renders move history buttons', () => {
+    expect(wrapper.find(select('reset-to-move-history')).length).toBe(10);
   });
 });

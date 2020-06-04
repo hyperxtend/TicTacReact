@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './index.css';
 import TicTacToeApp from './reducers';
-import GamePlay from './components/game';
+import Game from './components/game';
 import * as serviceWorker from './serviceWorker';
 
 const store = createStore(TicTacToeApp);
@@ -14,7 +14,7 @@ const root = document.getElementById('root');
 
 render(
   <Provider store={store}>
-    <GamePlay />
+    <Game />
   </Provider>,
   root
 );

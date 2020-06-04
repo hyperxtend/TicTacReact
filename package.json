@@ -39,7 +39,8 @@
 		"eslint-config-airbnb-base": "^14.1.0",
 		"eslint-plugin-import": "^2.20.2",
 		"eslint-plugin-react": "^7.19.0",
-		"gh-pages": "^2.2.0"
+		"gh-pages": "^2.2.0",
+		"qa-utilities": "^1.1.0"
 	},
 	"browserslist": {
 		"production": [

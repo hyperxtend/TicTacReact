@@ -1,5 +1,5 @@
 import { SELECT_SQUARE, MOVES_ORDER, GO_TO_MOVE } from '../actions';
-import calculateWinner from '../utilities';
+import { calculateWinner } from '../components/game/controller';
 
 const initialState = {
   history: [
