@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export const calculateWinner = (squares) => {
   const lines = [
     [0, 1, 2],
@@ -18,6 +17,7 @@ export const calculateWinner = (squares) => {
   }
   return null;
 };
+
 export const previousPlayerMoves = (history, jumpTo) =>
   history.map((_eachMove, moveId) => ({
     buttonName: moveId ? `Go to move #${moveId}` : 'Restart',
