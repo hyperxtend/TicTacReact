@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const calculateWinner = (squares) => {
   const lines = [
     [0, 1, 2],
@@ -18,8 +20,12 @@ export const calculateWinner = (squares) => {
   return null;
 };
 
-export const previousPlayerMoves = (history, jumpTo) =>
-  history.map((_eachMove, moveId) => ({
-    buttonName: moveId ? `Go to move #${moveId}` : 'Restart',
-    onClick: () => jumpTo(moveId),
-  }));
+export const determineGameStatus = (winner, moveNumber, xIsNext) => {
+  if (winner) {
+    return <p>{winner.winnerName} is the Winner!</p>;
+  }
+  if (!winner && moveNumber === 9) {
+    return <p>Its a Draw!</p>;
+  }
+  return <p>Next player is {xIsNext ? 'X' : 'O'}</p>;
+};

@@ -4,8 +4,18 @@ import PropTypes from 'prop-types';
 
 import Board from '../board';
 
-const Game = ({ onSelectSquare, squares, previousPlayerMoves }) => (
+import { determineGameStatus } from './controller';
+
+const Game = (
+  { onSelectSquare, squares, previousPlayerMoves },
+  history,
+  moveNumber,
+  xIsNext
+) => (
   <Container className="game">
+    <div className="playerStatus">
+      {determineGameStatus(moveNumber, xIsNext)}
+    </div>
     <div className="playerMoves">
       {previousPlayerMoves.map(({ buttonName, buttonClick }, index) => (
         <Button
