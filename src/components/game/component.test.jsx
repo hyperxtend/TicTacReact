@@ -16,6 +16,14 @@ describe('<Game/>', () => {
     previousPlayerMoves = [
       { buttonName: 'Test button 1', buttonClick: jest.fn() },
       { buttonName: 'Test button 2', buttonClick: jest.fn() },
+      { buttonName: 'Test button 3', buttonClick: jest.fn() },
+      { buttonName: 'Test button 4', buttonClick: jest.fn() },
+      { buttonName: 'Test button 5', buttonClick: jest.fn() },
+      { buttonName: 'Test button 6', buttonClick: jest.fn() },
+      { buttonName: 'Test button 7', buttonClick: jest.fn() },
+      { buttonName: 'Test button 8', buttonClick: jest.fn() },
+      { buttonName: 'Test button 9', buttonClick: jest.fn() },
+      { buttonName: 'Test button 10', buttonClick: jest.fn() },
     ];
 
     wrapper = shallow(
@@ -28,6 +36,6 @@ describe('<Game/>', () => {
   });
 
   it('renders move history buttons', () => {
-    expect(wrapper.find(select('reset-to-move-history')).length).toBe(2);
+    expect(wrapper.find(select('reset-to-move-history')).length).toBe(10);
   });
 });

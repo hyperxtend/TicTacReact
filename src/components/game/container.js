@@ -6,6 +6,7 @@ import Game from './component';
 
 const mapStateToProps = ({ history, moveNumber }) => ({
   squares: history[moveNumber].squares,
+  history,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -17,7 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
 const mergeProps = (stateProps, dispatchProps) => ({
   ...stateProps,
   ...dispatchProps,
-  previousPlayerMoves: stateProps.squares.map((_, moveId) => ({
+  previousPlayerMoves: stateProps.history.map((_, moveId) => ({
     buttonName: moveId ? `Go to move #${moveId}` : 'Restart',
     buttonClick: () => dispatchProps.jumpTo(moveId),
   })),
