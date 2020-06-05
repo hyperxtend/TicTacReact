@@ -46,10 +46,16 @@ const Game = ({
 
 Game.propTypes = {
   onSelectSquare: PropTypes.func,
+  squares: PropTypes.arrayOf(PropTypes.string),
+  xIsNext: PropTypes.bool,
+  moveNumber: PropTypes.number,
 };
 
 Game.defaultProps = {
   onSelectSquare: () => {},
+  squares: [],
+  xIsNext: true,
+  moveNumber: 0,
 };
 
 export default Game;
