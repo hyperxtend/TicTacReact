@@ -9,9 +9,16 @@ describe('<Game/>', () => {
   let onSelectSquare;
   let squares;
   let previousPlayerMoves;
+  let playerX;
+  let playerO;
+  let squaresO;
+  let comp;
 
   beforeAll(() => {
     onSelectSquare = jest.fn();
+    playerX = 'Next player is X';
+    playerO = 'Next player is O';
+    squaresO = ['X', '', '', '', '', '', '', '', ''];
     squares = ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'];
     previousPlayerMoves = [
       { buttonName: 'Test button 1', buttonClick: jest.fn() },
@@ -33,9 +40,18 @@ describe('<Game/>', () => {
         previousPlayerMoves={previousPlayerMoves}
       />
     );
+    comp = shallow(<Game squares={squaresO} />);
   });
 
   it('renders move history buttons', () => {
     expect(wrapper.find(select('reset-to-move-history')).length).toBe(10);
+  });
+  it('checks initial game status rendering', () => {
+    const gameStatus = wrapper
+      .find('div.playerStatus')
+      .children()
+      .first()
+      .text();
+    expect(gameStatus).toBe(playerX);
   });
 });

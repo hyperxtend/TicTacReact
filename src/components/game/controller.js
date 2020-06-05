@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const calculateWinner = (squares) => {
   const lines = [
     [0, 1, 2],
@@ -22,10 +20,10 @@ export const calculateWinner = (squares) => {
 
 export const determineGameStatus = (winner, moveNumber, xIsNext) => {
   if (winner) {
-    return <p>{winner.winnerName} is the Winner!</p>;
+    return `${winner.winnerName} is the Winner!`;
   }
   if (!winner && moveNumber === 9) {
-    return <p>Its a Draw!</p>;
+    return 'Its a Draw!';
   }
-  return <p>Next player is {xIsNext ? 'X' : 'O'}</p>;
+  return `Next player is ${xIsNext ? 'X' : 'O'}`;
 };

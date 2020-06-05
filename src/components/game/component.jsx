@@ -17,7 +17,7 @@ const Game = ({
   return (
     <Container className="game">
       <div className="playerMoves">
-        <div className="playerStatus">
+        <div className="playerStatus" data-qa="game-status">
           {determineGameStatus(winner, moveNumber, xIsNext)}
         </div>
         {previousPlayerMoves.map(({ buttonName, buttonClick }, index) => (
