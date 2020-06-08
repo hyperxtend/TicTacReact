@@ -12,7 +12,7 @@ export const calculateWinner = (squares) => {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return { winnerCombination: [a, b, c], winnerName: squares[a] };
+      return squares[a];
     }
   }
   return null;
@@ -20,7 +20,7 @@ export const calculateWinner = (squares) => {
 
 export const determineGameStatus = (winner, moveNumber, xIsNext) => {
   if (winner) {
-    return `${winner.winnerName} is the Winner!`;
+    return `${winner} is the Winner!`;
   }
   if (!winner && moveNumber === 9) {
     return 'Its a Draw!';
