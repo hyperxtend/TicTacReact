@@ -2,23 +2,52 @@ import { determineGameStatus, calculateWinner } from './controller';
 
 describe('calculateWinner', () => {
   let squares;
-  it('checks array for winner from 1st position in the array', () => {
-    squares = ['X', '', '', 'X', 'O', '', 'X', 'O', ''];
-    expect(calculateWinner(squares)).toBe(squares[0]);
-  });
+  describe('winner scenarios for player 1(player X)', () => {
+    it('checks 1st winner combination for player', () => {
+      squares = ['X', 'X', 'X', '', '', '', '', 'O', 'O'];
+      expect(calculateWinner(squares)).toBe('X');
+    });
 
-  it('checks array for winner from 2nd position in the array', () => {
-    squares = ['', 'X', 'O', 'O', 'X', 'X', '', 'X', 'O'];
-    expect(calculateWinner(squares)).toBe(squares[1]);
-  });
+    it('checks 2nd winner combination for player', () => {
+      squares = ['', '', '', 'X', 'X', 'X', '', 'O', 'O'];
+      expect(calculateWinner(squares)).toBe('X');
+    });
 
-  it('checks array for winner from 3rd position in the array', () => {
-    squares = ['', '', 'X', 'O', 'X', '', 'X', 'O', ''];
-    expect(calculateWinner(squares)).toBe(squares[2]);
+    it('checks 3rd winner combination for player', () => {
+      squares = ['', '', '', 'O', 'O', '', 'X', 'X', 'X'];
+      expect(calculateWinner(squares)).toBe('X');
+    });
+
+    it('checks 4th winner combination for player', () => {
+      squares = ['X', '', '', 'O', 'X', '', '', 'O', 'X'];
+      expect(calculateWinner(squares)).toBe('X');
+    });
   });
-  /*  Can't test for the winner of the 4th position and
-   onwards as it would just return the 1st position of that winning combination
-   */
+  describe('winner scenarios for player 2(player O)', () => {
+    it('checks 5th winner combination for player', () => {
+      squares = ['X', 'O', '', 'X', 'O', 'X', '', 'O', ''];
+      expect(calculateWinner(squares)).toBe('O');
+    });
+
+    it('checks 6th winner combination for player', () => {
+      squares = ['X', 'X', 'O', '', 'X', 'O', '', '', 'O'];
+      expect(calculateWinner(squares)).toBe('O');
+    });
+
+    it('checks 7th winner combination for player', () => {
+      squares = ['O', 'X', 'X', 'X', 'O', '', '', '', 'O'];
+      expect(calculateWinner(squares)).toBe('O');
+    });
+
+    it('checks 8th winner combination for player', () => {
+      squares = ['X', 'X', 'O', 'X', 'O', '', 'O', '', ''];
+      expect(calculateWinner(squares)).toBe('O');
+    });
+  });
+  it('checks for a draw game between players', () => {
+    squares = ['X', 'X', 'O', 'O', 'X', 'X', 'X', 'O', 'O'];
+    expect(calculateWinner(squares)).toBe(undefined);
+  });
 });
 
 describe('determineGameStatus', () => {
