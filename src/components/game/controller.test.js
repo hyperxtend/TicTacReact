@@ -2,11 +2,11 @@ import { determineGameStatus } from './controller';
 
 describe('determineGameStatus', () => {
   it('checks if player 2 is next', () => {
-    expect(determineGameStatus(null, 1, false)).toBe('Next player is O');
+    expect(determineGameStatus(undefined, 1, false)).toBe('Next player is O');
   });
 
   it('checks if player 1 is next', () => {
-    expect(determineGameStatus(null, 2, true)).toBe('Next player is X');
+    expect(determineGameStatus(undefined, 2, true)).toBe('Next player is X');
   });
 
   it('checks if player 1 is the winner', () => {
