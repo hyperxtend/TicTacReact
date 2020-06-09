@@ -13,11 +13,11 @@ export const calculateWinner = (currentlyPlayedMoves) => {
   /* For loop that goes through & checks that the array has the
    winner combination positions in it */
   for (
-    let winnerArray = 0;
-    winnerArray < possibleWinningCombinations.length;
-    winnerArray++
+    let positionInWinnerArray = 0;
+    positionInWinnerArray < possibleWinningCombinations.length;
+    positionInWinnerArray++
   ) {
-    const [a, b, c] = possibleWinningCombinations[winnerArray];
+    const [a, b, c] = possibleWinningCombinations[positionInWinnerArray];
     /* If statement checks the 1st winning position in the array
      equals the other 2 positions the returns the 1st position */
     if (
