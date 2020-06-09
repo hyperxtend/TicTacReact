@@ -44,9 +44,11 @@ describe('calculateWinner', () => {
       expect(calculateWinner(squares)).toBe('O');
     });
   });
-  it('checks for a draw game between players', () => {
-    squares = ['X', 'X', 'O', 'O', 'X', 'X', 'X', 'O', 'O'];
-    expect(calculateWinner(squares)).toBe(undefined);
+  describe('draw scenario for both players', () => {
+    it('checks for a draw game between players', () => {
+      squares = ['X', 'X', 'O', 'O', 'X', 'X', 'X', 'O', 'O'];
+      expect(calculateWinner(squares)).toBe(undefined);
+    });
   });
 });
 
