@@ -4,9 +4,11 @@ import { selectSquare, goToMove, changeMovesOrder } from '../../actions';
 
 import Game from './component';
 
-const mapStateToProps = ({ history, moveNumber }) => ({
+const mapStateToProps = ({ history, moveNumber, xIsNext }) => ({
   squares: history[moveNumber].squares,
   history,
+  moveNumber,
+  xIsNext,
 });
 
 const mapDispatchToProps = (dispatch) => ({

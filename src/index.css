@@ -40,11 +40,11 @@ code {
   text-decoration: underline;
 }
 .playerMoves {
-  width: 15%;
+  width: 20%;
   display: flex;
   flex-direction: column;
-  margin-top: 2%;
-  margin-right: 10%;
+  margin-right: 5%;
+  margin-left: 5%;
 }
 .sortButton {
   position: relative;
