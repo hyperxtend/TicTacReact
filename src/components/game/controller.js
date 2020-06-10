@@ -1,6 +1,5 @@
 export const calculateWinner = (currentlyPlayedMoves) => {
   const possibleWinningCombinations = [
-    // a, b, c - positions in the array for a winning combinations in the array
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -13,11 +12,11 @@ export const calculateWinner = (currentlyPlayedMoves) => {
   /* For loop that goes through & checks that the array has the
    winner combination positions in it */
   for (
-    let positionInWinnerArray = 0;
-    positionInWinnerArray < possibleWinningCombinations.length;
-    positionInWinnerArray++
+    let winningCombinationIndex = 0;
+    winningCombinationIndex < possibleWinningCombinations.length;
+    winningCombinationIndex++
   ) {
-    const [a, b, c] = possibleWinningCombinations[positionInWinnerArray];
+    const [a, b, c] = possibleWinningCombinations[winningCombinationIndex];
     /* If statement checks the 1st winning position in the array
      equals the other 2 positions the returns the 1st position */
     if (
