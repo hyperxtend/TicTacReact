@@ -4,8 +4,9 @@ import { selectSquare, goToMove } from '../../actions';
 
 import Game from './component';
 
-const mapStateToProps = (history) => ({
+const mapStateToProps = (history, { move }) => ({
   history: history.app.status.history,
+  squares: console.log('Track: ', history.app.status.history[move]),
 });
 
 const mapDispatchToProps = (dispatch) => ({
