@@ -5,7 +5,7 @@ import { selectSquare, goToMove } from '../../actions';
 import Game from './component';
 
 const mapStateToProps = (history) => ({
-  history: history.app.system.history,
+  history: history.app.status.history,
 });
 
 const mapDispatchToProps = (dispatch) => ({
