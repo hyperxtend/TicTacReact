@@ -1,4 +1,4 @@
-import { SELECT_SQUARE, MOVES_ORDER, GO_TO_MOVE } from '../actions';
+import { SELECT_SQUARE, GO_TO_MOVE } from '../actions';
 import { calculateWinner } from '../components/game/controller';
 
 const initialState = {
@@ -12,14 +12,11 @@ const initialState = {
   moveNumber: 0,
 };
 
-const TicTacToeApp = (state = initialState, action) => {
+const TicTacToeApp = (state = initialState, action = {}) => {
   const history = state.history.slice(0, state.moveNumber + 1);
   const current = history[state.moveNumber];
   const squares = current.squares.slice();
   switch (action.type) {
-    case MOVES_ORDER:
-      return { ...state, movesAscendingOrder: !state.movesAscendingOrder };
-
     case GO_TO_MOVE:
       return {
         ...state,

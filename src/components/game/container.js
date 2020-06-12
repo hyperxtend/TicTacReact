@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { selectSquare, goToMove, changeMovesOrder } from '../../actions';
+import { selectSquare, goToMove } from '../../actions';
 
 import Game from './component';
 
@@ -14,7 +14,6 @@ const mapStateToProps = ({ history, moveNumber, xIsNext }) => ({
 const mapDispatchToProps = (dispatch) => ({
   onSelectSquare: (id) => dispatch(selectSquare(id)),
   jumpTo: (step) => dispatch(goToMove(step)),
-  sortMoves: () => dispatch(changeMovesOrder()),
 });
 
 const mergeProps = (stateProps, dispatchProps) => ({
