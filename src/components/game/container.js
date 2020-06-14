@@ -4,9 +4,10 @@ import { selectSquare, goToMove } from '../../actions';
 
 import Game from './component';
 
-const mapStateToProps = (history, { move }) => ({
+const mapStateToProps = (history) => ({
   history: history.app.status.history,
-  squares: console.log('Track: ', history.app.status.history[move]),
+  moveNumber: history.app.status.moveNumber,
+  xIsNext: history.app.status.xIsNext,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -21,6 +22,7 @@ const mergeProps = (stateProps, dispatchProps) => ({
     buttonName: moveId ? `Go to move #${moveId}` : 'Restart',
     buttonClick: () => dispatchProps.jumpTo(moveId),
   })),
+  squares: stateProps.history[stateProps.moveNumber].squares,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Game);
