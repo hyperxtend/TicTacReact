@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
 
-import status from './status';
+import status from './state-of-game';
 
 export default combineReducers({ status });
