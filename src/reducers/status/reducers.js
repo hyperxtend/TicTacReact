@@ -2,7 +2,7 @@ import { calculateWinner } from '../../components/game/controller';
 
 import { SELECT_SQUARE, GO_TO_MOVE } from './actions';
 
-const initialState = {
+export const initialState = {
   history: [
     {
       squares: Array(9).fill(''),
@@ -12,7 +12,7 @@ const initialState = {
   moveNumber: 0,
 };
 
-const TicTacToeApp = (state = initialState, action = {}) => {
+export default (state = initialState, action = {}) => {
   const history = state.history.slice(0, state.moveNumber + 1);
   const current = history[state.moveNumber];
   const squares = current.squares.slice();
@@ -46,5 +46,3 @@ const TicTacToeApp = (state = initialState, action = {}) => {
       return state;
   }
 };
-
-export default TicTacToeApp;

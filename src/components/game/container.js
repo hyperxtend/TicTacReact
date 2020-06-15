@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { selectSquare, goToMove } from '../../actions';
+import { selectSquare, goToMove } from '../../reducers/status/actions';
 
 import Game from './component';
 
