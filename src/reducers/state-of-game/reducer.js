@@ -16,6 +16,13 @@ export default (state = initialState, action = {}) => {
   const history = state.history.slice(0, state.moveNumber + 1);
   const current = history[state.moveNumber];
   const squares = current.squares.slice();
+
+  if (calculateWinner(squares) || squares[action.index]) {
+    return state;
+  }
+
+  squares[action.index] = state.xIsNext ? 'X' : 'O';
+
   switch (action.type) {
     case GO_TO_MOVE:
       return {
@@ -26,10 +33,6 @@ export default (state = initialState, action = {}) => {
       };
 
     case SELECT_SQUARE:
-      if (calculateWinner(squares) || squares[action.index]) {
-        return state;
-      }
-      squares[action.index] = state.xIsNext ? 'X' : 'O';
       return {
         ...state,
         history: [
