@@ -11,8 +11,8 @@ const mapStateToProps = (history) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onSelectSquare: (id) => dispatch(selectSquare(id)),
-  jumpTo: (step) => dispatch(goToMove(step)),
+  onSelectSquare: (id) => dispatch(selectSquare(id)()),
+  jumpTo: (step) => dispatch(goToMove(step)()),
 });
 
 const mergeProps = (stateProps, dispatchProps) => ({
