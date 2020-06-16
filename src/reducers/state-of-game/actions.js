@@ -11,7 +11,7 @@ export const selectSquareInt = (index) => ({
 
 export const selectSquare = action(SELECT_SQUARE);
 // console.log('GO', action);
-export const goToMove = (step) => action(GO_TO_MOVE)(step);
+export const goToMove = action(GO_TO_MOVE);
 
 // function actionType(type) {
 //   return function actionPayload(payload) {
@@ -23,5 +23,5 @@ export const goToMove = (step) => action(GO_TO_MOVE)(step);
 //     };
 //   };
 // }
-// const pai = 'papi';
+// const pai = 9;
 // console.log(selectSquare(pai));
