@@ -10,9 +10,10 @@ const mapStateToProps = (history) => ({
   xIsNext: history.app.status.xIsNext,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onSelectSquare: (id) => dispatch(selectSquare(id)()),
-  jumpTo: (step) => dispatch(goToMove(step)()),
+const mapDispatchToProps = (dispatch, id) => ({
+  onSelectSquare: (id) => dispatch(selectSquare(id)),
+  jumpTo: (step) => dispatch(goToMove(step)),
+  // check: console.log('LIL', selectSquare(id)),
 });
 
 const mergeProps = (stateProps, dispatchProps) => ({
