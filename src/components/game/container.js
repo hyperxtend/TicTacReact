@@ -11,7 +11,7 @@ const mapStateToProps = (history) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onSelectSquare: (squareId) => console.log(selectSquare(squareId)),
+  onSelectSquare: (squareId) => dispatch(selectSquare(squareId)),
   jumpTo: (step) => dispatch(goToMove(step)),
   // mockSelect: (squareId) => console.log(selectSquare(squareId)),
 });
