@@ -14,6 +14,7 @@ export const initialState = {
 
 export default (state = initialState, action = {}) => {
   const squares = gameState(state);
+
   squares[action.payload] = state.xIsNext ? 'X' : 'O';
   switch (action.type) {
     case GO_TO_MOVE:
