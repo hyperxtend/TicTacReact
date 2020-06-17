@@ -22,5 +22,5 @@ export const goToMove = action(GO_TO_MOVE);
 //     };
 //   };
 // }
-const mockNum = 9;
-console.log('Mock Call:', selectSquare(mockNum));
+// const mockNum = 9;
+// console.log('Mock Call:', action(SELECT_SQUARE)(mockNum));
