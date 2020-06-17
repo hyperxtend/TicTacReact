@@ -3,7 +3,7 @@ import action from 'payload-action-creator';
 export const SELECT_SQUARE = 'SELECT_SQUARE';
 export const GO_TO_MOVE = 'GO_TO_MOVE';
 
-// export const selectSquareInt = (index) => ({
+// export const selectSquare = (index) => ({
 //   type: SELECT_SQUARE,
 //   index,
 // });
