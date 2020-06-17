@@ -1,3 +1,5 @@
+import { initialState } from '../../reducers/state-of-game/reducer';
+
 export const calculateWinner = (currentlyPlayedMoves) => {
   const possibleWinningCombinations = [
     [0, 1, 2],
@@ -40,13 +42,9 @@ export const determineGameStatus = (winner, moveNumber, xIsNext) => {
   return `Next player is ${xIsNext ? 'X' : 'O'}`;
 };
 
-export const gameState = (state, action) => {
+export const gameState = (state = initialState) => {
   const history = state.history.slice(0, state.moveNumber + 1);
   const current = history[state.moveNumber];
   const squares = current.squares.slice();
-  if (calculateWinner(squares) || squares[action.index]) {
-    return state;
-  }
-
-  squares[action.index] = state.xIsNext ? 'X' : 'O';
+  return squares;
 };

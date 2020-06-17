@@ -1,3 +1,5 @@
+import { gameState } from '../../components/game/controller';
+
 import { SELECT_SQUARE, GO_TO_MOVE } from './actions';
 
 export const initialState = {
@@ -11,10 +13,8 @@ export const initialState = {
 };
 
 export default (state = initialState, action = {}) => {
-  const squares = state.history
-    .slice(0, state.moveNumber + 1)
-    [state.moveNumber].squares.slice();
-  squares[action.index] = state.xIsNext ? 'X' : 'O';
+  const squares = gameState(state);
+  squares[action.payload] = state.xIsNext ? 'X' : 'O';
   switch (action.type) {
     case GO_TO_MOVE:
       return {
