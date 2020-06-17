@@ -19,9 +19,9 @@ export default (state = initialState, action = {}) => {
     case GO_TO_MOVE:
       return {
         ...state,
-        history: state.history.slice(0, action.step + 1),
-        moveNumber: action.step,
-        xIsNext: !(action.step % 2),
+        history: state.history.slice(0, action.payload + 1),
+        moveNumber: action.payload,
+        xIsNext: !(action.payload % 2),
       };
 
     case SELECT_SQUARE:
