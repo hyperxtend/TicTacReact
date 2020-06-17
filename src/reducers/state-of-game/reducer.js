@@ -10,13 +10,13 @@ export const initialState = {
   moveNumber: 0,
 };
 
-export default (state, action = {}) => {
+export default (state = initialState, action = {}) => {
   switch (action.type) {
     case SELECT_SQUARE:
       return { ...state, ...action.payload };
     case GO_TO_MOVE:
       return { ...state, ...action.payload };
     default:
-      return initialState;
+      return state;
   }
 };
