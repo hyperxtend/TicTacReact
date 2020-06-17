@@ -1,3 +1,5 @@
+import { gameState } from '../../components/game/controller';
+
 import { SELECT_SQUARE, GO_TO_MOVE } from './actions';
 
 export const initialState = {
@@ -10,13 +12,13 @@ export const initialState = {
   moveNumber: 0,
 };
 
-export default (state = initialState, action = {}) => {
+export default (state = gameState, action = {}) => {
   switch (action.type) {
     case SELECT_SQUARE:
       return { ...state, ...action.payload };
     case GO_TO_MOVE:
       return { ...state, ...action.payload };
     default:
-      return state;
+      return initialState;
   }
 };
