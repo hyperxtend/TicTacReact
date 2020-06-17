@@ -14,6 +14,7 @@ const Game = ({
   xIsNext,
 }) => {
   const winner = calculateWinner(squares);
+  console.log(squares);
   return (
     <Container className="game">
       <div className="playerMoves">

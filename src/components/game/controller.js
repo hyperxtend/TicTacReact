@@ -1,8 +1,3 @@
-import {
-  SELECT_SQUARE,
-  GO_TO_MOVE,
-} from '../../reducers/state-of-game/actions';
-
 export const calculateWinner = (currentlyPlayedMoves) => {
   const possibleWinningCombinations = [
     [0, 1, 2],
@@ -54,30 +49,4 @@ export const gameState = (state, action) => {
   }
 
   squares[action.index] = state.xIsNext ? 'X' : 'O';
-
-  switch (action.type) {
-    case GO_TO_MOVE:
-      return {
-        ...state,
-        history: state.history.slice(0, action.step + 1),
-        moveNumber: action.step,
-        xIsNext: !(action.step % 2),
-      };
-
-    case SELECT_SQUARE:
-      return {
-        ...state,
-        history: [
-          ...state.history,
-          {
-            squares,
-          },
-        ],
-        xIsNext: !state.xIsNext,
-        moveNumber: history.length,
-      };
-
-    default:
-      return state;
-  }
 };
