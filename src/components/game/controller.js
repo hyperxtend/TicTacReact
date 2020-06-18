@@ -40,10 +40,9 @@ export const determineGameStatus = (winner, moveNumber, xIsNext) => {
   return `Next player is ${xIsNext ? 'X' : 'O'}`;
 };
 
-export const gameState = (state, action = {}) => {
+export const gameState = (state) => {
   const history = state.history.slice(0, state.moveNumber + 1);
   const current = history[state.moveNumber];
   const squares = current.squares.slice();
-  squares[action.payload] = state.xIsNext ? 'X' : 'O';
   return squares;
 };
