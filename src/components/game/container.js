@@ -2,21 +2,20 @@ import { connect } from 'react-redux';
 
 import { selectSquare, goToMove } from '../../reducers/state-of-game/actions';
 
+import { gameState, calculateWinner } from './controller';
 import Game from './component';
 
 const mapStateToProps = (history) => ({
   history: history.app.status.history,
   moveNumber: history.app.status.moveNumber,
   xIsNext: history.app.status.xIsNext,
+  gameState: history.app.status,
 });
 
-const mapDispatchToProps = (dispatch, action) => ({
-  onSelectSquare: (squareId) => {
-    if (squareId !== selectSquare(squareId[action.payload])) {
-      console.log('check', squareId);
-      dispatch(selectSquare(squareId));
-    }
-  },
+const mapDispatchToProps = (dispatch, stateProps, mergeProps) => ({
+  winner: () => calculateWinner(mergeProps.squares),
+  gameState: () => gameState(stateProps.state),
+  onSelectSquare: (squareId) => dispatch(selectSquare(squareId)),
   jumpTo: (step) => dispatch(goToMove(step)),
 });
 
