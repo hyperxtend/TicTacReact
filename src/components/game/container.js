@@ -12,9 +12,14 @@ const mapStateToProps = (history) => ({
   gameState: history.app.status,
 });
 
-const mapDispatchToProps = (dispatch, stateProps) => ({
-  gameState: () => gameState(stateProps.state),
-  onSelectSquare: (squareId) => dispatch(selectSquare(squareId)),
+const mapDispatchToProps = (dispatch, mergedProps) => ({
+  onSelectSquare: (squareId, state, action = {}) => {
+    if (!mergedProps.winner) {
+      const squares = gameState(state);
+      squares[action.payload] = mergeProps.nextPlayer ? 'X' : 'O';
+      dispatch(selectSquare({ squareId, state }));
+    }
+  },
   jumpTo: (step) => dispatch(goToMove(step)),
 });
 
@@ -27,6 +32,7 @@ const mergeProps = (stateProps, dispatchProps) => ({
   })),
   squares: stateProps.history[stateProps.moveNumber].squares,
   winner: calculateWinner(stateProps.history[stateProps.moveNumber].squares),
+  nextPlayer: stateProps.xIsNext,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Game);
