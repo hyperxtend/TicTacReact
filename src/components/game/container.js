@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { selectSquare, goToMove } from '../../reducers/state-of-game/actions';
 
-import { gameState, calculateWinner } from './controller';
+import { gameState } from './controller';
 import Game from './component';
 
 const mapStateToProps = (history) => ({
@@ -31,7 +31,6 @@ const mergeProps = (stateProps, dispatchProps) => ({
     buttonClick: () => dispatchProps.jumpTo(moveId),
   })),
   squares: stateProps.history[stateProps.moveNumber].squares.squaresPlayed,
-  winner: calculateWinner(stateProps.history[stateProps.moveNumber].squares),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Game);
