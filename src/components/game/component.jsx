@@ -48,14 +48,14 @@ const Game = ({
 
 Game.propTypes = {
   onSelectSquare: PropTypes.func,
-  squares: PropTypes.arrayOf(PropTypes.string),
+  squares: PropTypes.func,
   xIsNext: PropTypes.bool,
   moveNumber: PropTypes.number,
 };
 
 Game.defaultProps = {
   onSelectSquare: () => {},
-  squares: [],
+  squares: () => {},
   xIsNext: true,
   moveNumber: 0,
 };
