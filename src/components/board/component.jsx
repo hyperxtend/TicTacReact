@@ -25,12 +25,12 @@ const Board = ({ squares, onClick }) => (
 );
 
 Board.propTypes = {
-  squares: PropTypes.func,
+  squares: PropTypes.arrayOf(PropTypes.string),
   onClick: PropTypes.func,
 };
 
 Board.defaultProps = {
-  squares: () => {},
+  squares: [],
   onClick: () => {},
 };
 
