@@ -26,7 +26,7 @@ export default (state = initialState, action = {}) => {
         history: [
           ...state.history,
           {
-            squares: state.history[state.moveNumber].squares,
+            squares: action.payload,
           },
         ],
         xIsNext: !state.xIsNext,

@@ -9,15 +9,15 @@ const mapStateToProps = (history) => ({
   history: history.app.status.history,
   moveNumber: history.app.status.moveNumber,
   xIsNext: history.app.status.xIsNext,
-  gameState: history.app.status,
+  state: history.app.status,
 });
 
-const mapDispatchToProps = (dispatch, action = {}) => ({
-  onSelectSquare: (squareId, state, stateValues) => {
-    if (!mergeProps.winner) {
-      const squares = gameState(state);
-      squares[action.payload] = mapStateToProps.xIsNext ? 'X' : 'O';
-      dispatch(selectSquare({ squareId, state, stateValues }));
+const mapDispatchToProps = (dispatch) => ({
+  onSelectSquare: (squareId, xIsNext) => {
+    const squaresPlayed = gameState;
+    if (!squaresPlayed[squareId]) {
+      squaresPlayed[squareId] = xIsNext ? 'X' : 'O';
+      dispatch(selectSquare({ squareId, squaresPlayed, xIsNext }));
     }
   },
   jumpTo: (step) => dispatch(goToMove(step)),
@@ -30,7 +30,7 @@ const mergeProps = (stateProps, dispatchProps) => ({
     buttonName: moveId ? `Go to move #${moveId}` : 'Restart',
     buttonClick: () => dispatchProps.jumpTo(moveId),
   })),
-  squares: stateProps.history[stateProps.moveNumber].squares,
+  squares: stateProps.history[stateProps.moveNumber].squares.squaresPlayed,
   winner: calculateWinner(stateProps.history[stateProps.moveNumber].squares),
 });
 

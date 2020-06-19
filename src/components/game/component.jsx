@@ -35,12 +35,13 @@ const Game = ({
     <div className="gameBoard">
       <Board
         squares={squares}
-        onClick={(squareIndex) => onSelectSquare(squareIndex)}
+        onClick={(squareIndex) => onSelectSquare(squareIndex, xIsNext, squares)}
         data-qa="game-board"
       />
     </div>
   </Container>
 );
+
 Game.propTypes = {
   onSelectSquare: PropTypes.func,
   squares: PropTypes.arrayOf(PropTypes.string),
