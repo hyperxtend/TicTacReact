@@ -42,12 +42,12 @@ export const determineGameStatus = (winner, moveNumber, xIsNext) => {
   return `Next player is ${xIsNext ? 'X' : 'O'}`;
 };
 
-export const gameState = (state = initialState) => {
+export const currentMovesPlayed = (state = initialState) => {
   const history = state.history.slice(0, state.moveNumber + 1);
-  const current = history[state.moveNumber];
-  const { squares } = current;
+  const currentMoves = history[state.moveNumber];
+  const { squares } = currentMoves;
   if (calculateWinner(squares)) {
-    return state;
+    return currentMoves;
   }
   return squares;
 };
