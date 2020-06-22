@@ -11,7 +11,7 @@ export const initialState = {
 };
 
 export default (state = initialState, action) => {
-  // console.log(state);
+  console.log(state);
   switch (action.type) {
     case GO_TO_MOVE:
       return {
@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
           },
         ],
         xIsNext: !state.xIsNext,
-        moveNumber: state.history.slice(0, state.moveNumber + 1).length,
+        moveNumber: state.history.length,
       };
 
     default:
