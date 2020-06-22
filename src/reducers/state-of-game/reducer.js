@@ -3,7 +3,7 @@ import { SELECT_SQUARE, GO_TO_MOVE } from './actions';
 export const initialState = {
   history: [
     {
-      squares: { squaresPlayed: Array(9).fill('') },
+      squares: Array(9).fill(''),
     },
   ],
   xIsNext: true,
@@ -26,7 +26,7 @@ export default (state = initialState, action = {}) => {
         history: [
           ...state.history,
           {
-            squares: action.payload,
+            squares: state.history[state.moveNumber].squares,
           },
         ],
         xIsNext: !state.xIsNext,

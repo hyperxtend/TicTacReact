@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => ({
     const squaresPlayed = gameState(mapStateToProps.history);
     if (!squaresPlayed[squareId]) {
       squaresPlayed[squareId] = xIsNext ? 'X' : 'O';
-      dispatch(selectSquare({ squareId, squaresPlayed, xIsNext }));
+      dispatch(selectSquare(squareId, squaresPlayed));
     }
   },
   jumpTo: (step) => dispatch(goToMove(step)),
@@ -30,7 +30,7 @@ const mergeProps = (stateProps, dispatchProps) => ({
     buttonName: moveId ? `Go to move #${moveId}` : 'Restart',
     buttonClick: () => dispatchProps.jumpTo(moveId),
   })),
-  squares: stateProps.history[stateProps.moveNumber].squares.squaresPlayed,
+  squares: stateProps.history[stateProps.moveNumber].squares,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Game);
