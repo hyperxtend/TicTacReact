@@ -14,7 +14,7 @@ const mapStateToProps = (history) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onSelectSquare: (squareId, xIsNext) => {
-    const squaresPlayed = gameState;
+    const squaresPlayed = gameState(mapStateToProps.history);
     if (!squaresPlayed[squareId]) {
       squaresPlayed[squareId] = xIsNext ? 'X' : 'O';
       dispatch(selectSquare({ squareId, squaresPlayed, xIsNext }));

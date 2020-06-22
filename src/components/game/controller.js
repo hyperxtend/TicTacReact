@@ -45,6 +45,9 @@ export const determineGameStatus = (winner, moveNumber, xIsNext) => {
 export const gameState = (state = initialState) => {
   const history = state.history.slice(0, state.moveNumber + 1);
   const current = history[state.moveNumber];
-  const squares = current.squares.slice();
+  const squares = current.squares.squaresPlayed;
+  if (calculateWinner(squares)) {
+    return state;
+  }
   return squares;
 };
