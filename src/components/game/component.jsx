@@ -36,7 +36,9 @@ const Game = ({
       <div className="gameBoard">
         <Board
           squares={squares}
-          onClick={(squareIndex) => onSelectSquare(squareIndex, xIsNext)}
+          onClick={(squareIndex, currentMovesPlayed) =>
+            onSelectSquare(squareIndex, xIsNext, currentMovesPlayed)
+          }
           data-qa="game-board"
         />
       </div>

@@ -10,8 +10,8 @@ export const initialState = {
   moveNumber: 0,
 };
 
-export default (state = initialState, action) => {
-  console.log(state);
+export default (state = initialState, action = {}) => {
+  // console.log(state);
   switch (action.type) {
     case GO_TO_MOVE:
       return {
