@@ -49,5 +49,6 @@ export const getCurrentMovesPlayed = (state = initialState) => {
   if (calculateWinner(squares)) {
     return currentMoves;
   }
+  // console.log(squares);
   return squares;
 };
