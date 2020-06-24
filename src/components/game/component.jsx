@@ -12,6 +12,7 @@ const Game = ({
   previousPlayerMoves,
   moveNumber,
   xIsNext,
+  history,
 }) => {
   const winner = calculateWinner(squares);
   return (
@@ -34,10 +35,12 @@ const Game = ({
         ))}
       </div>
       <div className="gameBoard">
-        {/* {console.log(squares)} */}
+        {console.log(squares)}
         <Board
-          onClick={(squareIndex) => onSelectSquare(squareIndex, xIsNext)}
           squares={squares}
+          onClick={(squareIndex) =>
+            onSelectSquare(squareIndex, xIsNext, history, moveNumber)
+          }
           data-qa="game-board"
         />
       </div>

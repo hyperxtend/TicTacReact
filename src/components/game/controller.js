@@ -40,9 +40,9 @@ export const determineGameStatus = (winner, moveNumber, xIsNext) => {
   return `Next player is ${xIsNext ? 'X' : 'O'}`;
 };
 
-export const getCurrentMovesPlayed = (state) => {
-  const history = state.history.slice(0, state.moveNumber + 1);
-  const currentMoves = history[state.moveNumber];
+export const getCurrentMovesPlayed = (stateHistory, stateMoveNumber) => {
+  const history = stateHistory.slice(0, stateMoveNumber + 1);
+  const currentMoves = history[stateMoveNumber];
   const squares = currentMoves.squares.slice();
   return squares;
 };
