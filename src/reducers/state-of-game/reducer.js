@@ -1,3 +1,5 @@
+// import { getCurrentMovesPlayed } from '../../components/game/controller';
+
 import { SELECT_SQUARE, GO_TO_MOVE } from './actions';
 
 export const initialState = {
@@ -10,8 +12,14 @@ export const initialState = {
   moveNumber: 0,
 };
 
-export default (state = initialState, action = {}) => {
-  // console.log(state);
+export default (state = initialState, action) => {
+  // const squares = getCurrentMovesPlayed(
+  //   state.history,
+  //   state.moveNumber,
+  //   action.payload,
+  //   state.xIsNext
+  // );
+  // console.log(squares);
   switch (action.type) {
     case GO_TO_MOVE:
       return {
@@ -20,7 +28,6 @@ export default (state = initialState, action = {}) => {
         moveNumber: action.payload,
         xIsNext: !(action.payload % 2),
       };
-
     case SELECT_SQUARE:
       return {
         ...state,

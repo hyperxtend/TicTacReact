@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { selectSquare, goToMove } from '../../reducers/state-of-game/actions';
 
-import { getCurrentMovesPlayed } from './controller';
+import { getCurrentMovesPlayed, calculateWinner } from './controller';
 import Game from './component';
 
 const mapStateToProps = (state) => ({
@@ -11,6 +11,9 @@ const mapStateToProps = (state) => ({
   xIsNext: state.app.status.xIsNext,
   state: state.app.status,
   squares: state.app.status.history[state.app.status.moveNumber].squares,
+  winner: calculateWinner(
+    state.app.status.history[state.app.status.moveNumber].squares
+  ),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -21,8 +24,8 @@ const mapDispatchToProps = (dispatch) => ({
       squareIndex,
       nextPlayer
     );
+    console.log('container', currentMovesPlayed);
     dispatch(selectSquare(squareIndex));
-    console.log(currentMovesPlayed);
   },
   jumpTo: (step) => dispatch(goToMove(step)),
 });
