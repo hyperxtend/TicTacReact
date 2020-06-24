@@ -14,10 +14,14 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onSelectSquare: (squareId, nextPlayer, history, moveNumber) => {
-    const currentMovesPlayed = getCurrentMovesPlayed(history, moveNumber);
-    currentMovesPlayed[squareId] = nextPlayer ? 'X' : 'O';
-    dispatch(selectSquare(squareId));
+  onSelectSquare: (squareIndex, nextPlayer, history, moveNumber) => {
+    const currentMovesPlayed = getCurrentMovesPlayed(
+      history,
+      moveNumber,
+      squareIndex,
+      nextPlayer
+    );
+    dispatch(selectSquare(squareIndex));
     console.log(currentMovesPlayed);
   },
   jumpTo: (step) => dispatch(goToMove(step)),
