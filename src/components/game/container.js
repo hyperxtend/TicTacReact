@@ -10,9 +10,12 @@ const mapStateToProps = (state) => ({
   moveNumber: state.app.status.moveNumber,
   xIsNext: state.app.status.xIsNext,
   state: state.app.status,
-  squares: state.app.status.history[state.app.status.moveNumber].squares,
+  squares:
+    state.app.status.history[state.app.status.moveNumber].squares
+      .currentMovesPlayed,
   winner: calculateWinner(
     state.app.status.history[state.app.status.moveNumber].squares
+      .currentMovesPlayed
   ),
 });
 
@@ -24,8 +27,7 @@ const mapDispatchToProps = (dispatch) => ({
       squareIndex,
       nextPlayer
     );
-    console.log('container', currentMovesPlayed);
-    dispatch(selectSquare(squareIndex));
+    dispatch(selectSquare({ squareIndex, currentMovesPlayed }));
   },
   jumpTo: (step) => dispatch(goToMove(step)),
 });

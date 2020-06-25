@@ -48,7 +48,7 @@ export const getCurrentMovesPlayed = (
 ) => {
   const currentHistory = history.slice(0, moveNumber + 1);
   const currentMoves = currentHistory[moveNumber];
-  const currentSquaresPlayed = currentMoves.squares.slice();
+  const currentSquaresPlayed = currentMoves.squares.currentMovesPlayed.slice();
   currentSquaresPlayed[moveIndex] = nextPlayer ? 'X' : 'O';
   return currentSquaresPlayed;
 };
