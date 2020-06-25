@@ -3,14 +3,14 @@ import { SELECT_SQUARE, GO_TO_MOVE } from './actions';
 export const initialState = {
   history: [
     {
-      squares: { currentMovesPlayed: Array(9).fill('') },
+      currentMovesPlayed: Array(9).fill(''),
     },
   ],
   xIsNext: true,
   moveNumber: 0,
 };
 
-export default (state = initialState, action) => {
+export default (state = initialState, action = {}) => {
   switch (action.type) {
     case GO_TO_MOVE:
       return {
@@ -24,9 +24,7 @@ export default (state = initialState, action) => {
         ...state,
         history: [
           ...state.history,
-          {
-            squares: { currentMovesPlayed: action.payload.currentMovesPlayed },
-          },
+          { currentMovesPlayed: action.payload.currentMovesPlayed },
         ],
         xIsNext: !state.xIsNext,
         moveNumber: state.history.length,
