@@ -24,7 +24,10 @@ const mapDispatchToProps = (dispatch) => ({
       squareIndex,
       nextPlayer
     );
-    dispatch(selectSquare({ squareIndex, currentMovesPlayed }));
+    if (!currentMovesPlayed[squareIndex]) {
+      currentMovesPlayed[squareIndex] = nextPlayer ? 'X' : 'O';
+      dispatch(selectSquare({ squareIndex, currentMovesPlayed }));
+    }
   },
   jumpTo: (step) => dispatch(goToMove(step)),
 });
