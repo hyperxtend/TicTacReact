@@ -1,4 +1,8 @@
-import { determineGameStatus, calculateWinner } from './controller';
+import {
+  determineGameStatus,
+  calculateWinner,
+  getCurrentMovesPlayed,
+} from './controller';
 
 describe('calculateWinner', () => {
   let squares;
@@ -71,5 +75,25 @@ describe('determineGameStatus', () => {
 
   it('checks game status for a draw game', () => {
     expect(determineGameStatus(false, 9, undefined)).toBe('Its a Draw!');
+  });
+
+  describe('getCurrentMovesPlayed', () => {
+    let arrayOfMoves;
+    let arrayIndex;
+    it('checks initial array and no move played', () => {
+      arrayOfMoves = ['', '', '', '', '', '', '', '', ''];
+      arrayIndex = 0;
+      expect(getCurrentMovesPlayed(arrayOfMoves, arrayIndex)).toBe('');
+    });
+    it('checks arry index and array value at that index', () => {
+      arrayOfMoves = ['', 'X', 'O', '', '', '', '', 'X', 'O'];
+      arrayIndex = 1;
+      expect(getCurrentMovesPlayed(arrayOfMoves, arrayIndex)).toBe('X');
+    });
+    it('checks arry index and array value at that index', () => {
+      arrayOfMoves = ['', 'X', 'O', '', '', '', '', 'X', 'O'];
+      arrayIndex = 2;
+      expect(getCurrentMovesPlayed(arrayOfMoves, arrayIndex)).toBe('O');
+    });
   });
 });
