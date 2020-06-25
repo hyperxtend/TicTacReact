@@ -10,10 +10,9 @@ const mapStateToProps = (state) => ({
   moveNumber: state.app.status.moveNumber,
   xIsNext: state.app.status.xIsNext,
   state: state.app.status,
-  squares:
-    state.app.status.history[state.app.status.moveNumber].currentMovesPlayed,
+  squares: state.app.status.history[state.app.status.moveNumber],
   winner: calculateWinner(
-    state.app.status.history[state.app.status.moveNumber].currentMovesPlayed
+    state.app.status.history[state.app.status.moveNumber]
   ),
 });
 

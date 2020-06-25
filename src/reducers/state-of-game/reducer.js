@@ -1,11 +1,7 @@
 import { SELECT_SQUARE, GO_TO_MOVE } from './actions';
 
 export const initialState = {
-  history: [
-    {
-      currentMovesPlayed: Array(9).fill(''),
-    },
-  ],
+  history: [Array(9).fill('')],
   xIsNext: true,
   moveNumber: 0,
 };
@@ -22,10 +18,7 @@ export default (state = initialState, action = {}) => {
     case SELECT_SQUARE:
       return {
         ...state,
-        history: [
-          ...state.history,
-          { currentMovesPlayed: action.payload.currentMovesPlayed },
-        ],
+        history: [...state.history, action.payload.currentMovesPlayed],
         xIsNext: !state.xIsNext,
         moveNumber: state.history.length,
       };

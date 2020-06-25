@@ -34,7 +34,6 @@ const Game = ({
       ))}
     </div>
     <div className="gameBoard">
-      {/* {console.log('component', squares)} */}
       <Board
         squares={squares}
         onClick={(squareIndex) => {
