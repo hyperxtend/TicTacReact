@@ -45,7 +45,7 @@ export const getCurrentMovesPlayed = (history, moveNumber) => {
   const currentMoves = currentHistory[moveNumber];
   const currentSquaresPlayed = currentMoves.slice();
   if (calculateWinner(currentSquaresPlayed)) {
-    return history;
+    return currentHistory.slice(0)[0];
   }
   return currentSquaresPlayed;
 };
