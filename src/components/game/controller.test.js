@@ -1,3 +1,5 @@
+import { Array } from 'core-js';
+
 import {
   determineGameStatus,
   calculateWinner,
@@ -80,20 +82,29 @@ describe('determineGameStatus', () => {
   describe('getCurrentMovesPlayed', () => {
     let arrayOfMoves;
     let arrayIndex;
+
     it('checks initial array and no move played', () => {
       arrayOfMoves = ['', '', '', '', '', '', '', '', ''];
       arrayIndex = 0;
       expect(getCurrentMovesPlayed(arrayOfMoves, arrayIndex)).toBe('');
     });
-    it('checks arry index and array value at that index', () => {
+
+    it('checks array index and array value at that index', () => {
       arrayOfMoves = ['', 'X', 'O', '', '', '', '', 'X', 'O'];
       arrayIndex = 1;
       expect(getCurrentMovesPlayed(arrayOfMoves, arrayIndex)).toBe('X');
     });
-    it('checks arry index and array value at that index', () => {
+
+    it('checks array index and array value at that index', () => {
       arrayOfMoves = ['', 'X', 'O', '', '', '', '', 'X', 'O'];
       arrayIndex = 2;
       expect(getCurrentMovesPlayed(arrayOfMoves, arrayIndex)).toBe('O');
+    });
+
+    it('checks returned array if theres a winner', () => {
+      arrayOfMoves = ['X', 'X', 'X', '', '', '', '', 'O', 'O'];
+      arrayIndex = 2;
+      expect(getCurrentMovesPlayed(arrayOfMoves, arrayIndex)).toBe('X');
     });
   });
 });
