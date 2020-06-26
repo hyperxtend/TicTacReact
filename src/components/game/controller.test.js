@@ -1,5 +1,3 @@
-import { Array } from 'core-js';
-
 import {
   determineGameStatus,
   calculateWinner,
