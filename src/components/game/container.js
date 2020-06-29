@@ -5,7 +5,7 @@ import { selectSquare, goToMove } from '../../reducers/state-of-game/actions';
 import { getCurrentMovesPlayed, calculateWinner } from './controller';
 import Game from './component';
 
-const mapStateToProps = ({ app: { status } } = status) => ({
+const mapStateToProps = ({ app: { status } }) => ({
   history: status.history,
   moveNumber: status.moveNumber,
   xIsNext: status.xIsNext,
