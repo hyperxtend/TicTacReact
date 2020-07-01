@@ -1,4 +1,26 @@
-import { mapDispatchToProps } from './container';
+import { mapStateToProps, mapDispatchToProps } from './container';
+
+describe('mapStateToProps', () => {
+  it('checks if state values are the same', () => {
+    const history = [Array(9).fill('')];
+    const xIsNext = true;
+    const moveNumber = 0;
+    const expectedState = {
+      history: [Array(9).fill('')],
+      moveNumber: 0,
+      xIsNext: true,
+      squares: Array(9).fill(''),
+      winner: undefined,
+    };
+    expect(
+      mapStateToProps({
+        app: {
+          status: { history, xIsNext, moveNumber },
+        },
+      })
+    ).toEqual(expectedState);
+  });
+});
 
 describe('mapDispatchToProps', () => {
   const dispatch = jest.fn();
