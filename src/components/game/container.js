@@ -33,7 +33,7 @@ export const mapDispatchToProps = (dispatch) => ({
   jumpTo: (step) => dispatch(goToMove(step)),
 });
 
-const mergeProps = (stateProps, dispatchProps) => ({
+export const mergeProps = (stateProps, dispatchProps) => ({
   ...stateProps,
   ...dispatchProps,
   previousPlayerMoves: stateProps.history.map((_, moveId) => ({
