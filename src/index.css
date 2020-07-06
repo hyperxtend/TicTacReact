@@ -46,7 +46,41 @@ code {
   margin-right: 5%;
   margin-left: 5%;
 }
-.sortButton {
+.navigationBar {
+  width: 100vw;
+  background: #9eaab1;
+  min-height: 10vh;
+  align-items: center;
   position: relative;
-  left: 3%;
+}
+
+.homeLink {
+  color: #454749;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: x-large;
+  font-weight: 700;
+  margin-left: 5%;
+}
+
+.navLink {
+  color: #525151;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: x-large;
+  font-weight: 700;
+  position: relative;
+  margin-right: 5%;
+  left: 50%;
+}
+
+.navLink:hover,
+.homeLink:hover {
+  color: #7b7e80;
+  border-bottom: 5px solid #7b7e80;
+  text-decoration: none;
+}
+
+.active {
+  border-bottom: 5px solid #7b7e80;
 }
