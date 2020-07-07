@@ -74,7 +74,7 @@ code {
   font-weight: 800;
   position: relative;
   margin-right: 5%;
-  left: 50%;
+  left: 30%;
 }
 
 .navLink:hover,
@@ -86,4 +86,9 @@ code {
 
 .active {
   border-bottom: 5px solid #bbbbbe;
+}
+@media screen and (max-width: 1160px) {
+  .navigationBar {
+    flex-direction: column;
+  }
 }
