@@ -1,23 +1,39 @@
 import { connect } from 'react-redux';
 
-import { selectSquare, goToMove, changeMovesOrder } from '../../actions';
+import { selectSquare, goToMove } from '../../reducers/state-of-game/actions';
 
+import { getCurrentMovesPlayed, calculateWinner } from './controller';
 import Game from './component';
 
-const mapStateToProps = ({ history, moveNumber, xIsNext }) => ({
-  squares: history[moveNumber].squares,
+export const mapStateToProps = ({
+  app: {
+    status: { history, xIsNext, moveNumber },
+  },
+}) => ({
   history,
   moveNumber,
   xIsNext,
+  squares: history[moveNumber],
+  winner: calculateWinner(history[moveNumber]),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onSelectSquare: (id) => dispatch(selectSquare(id)),
+export const mapDispatchToProps = (dispatch) => ({
+  onSelectSquare: (squareIndex, nextPlayer, history, moveNumber) => {
+    const currentMovesPlayed = getCurrentMovesPlayed(
+      history,
+      moveNumber,
+      squareIndex,
+      nextPlayer
+    );
+    if (!currentMovesPlayed[squareIndex]) {
+      currentMovesPlayed[squareIndex] = nextPlayer ? 'X' : 'O';
+      dispatch(selectSquare({ squareIndex, currentMovesPlayed }));
+    }
+  },
   jumpTo: (step) => dispatch(goToMove(step)),
-  sortMoves: () => dispatch(changeMovesOrder()),
 });
 
-const mergeProps = (stateProps, dispatchProps) => ({
+export const mergeProps = (stateProps, dispatchProps) => ({
   ...stateProps,
   ...dispatchProps,
   previousPlayerMoves: stateProps.history.map((_, moveId) => ({

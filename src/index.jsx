@@ -1,15 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './index.css';
-import TicTacToeApp from './reducers';
 import Game from './components/game';
 import * as serviceWorker from './serviceWorker';
+import store from './reducers/store';
 
-const store = createStore(TicTacToeApp);
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const root = document.getElementById('root');
 
 render(
