@@ -44,9 +44,10 @@ describe('mapDispatchToProps', () => {
       ['X', 'O', '', '', 'X', '', '', '', ''],
       ['X', 'O', 'O', '', 'X', '', '', '', ''],
     ];
+    const squareIndex = 2;
     const moveNumber = 4;
     mapDispatchToProps(dispatch).onSelectSquare(
-      2,
+      squareIndex,
       true,
       mockHistory,
       moveNumber
@@ -54,6 +55,30 @@ describe('mapDispatchToProps', () => {
     expect(dispatch.mock.calls[0][0].payload.currentMovesPlayed).toEqual(
       mockHistory[moveNumber]
     );
+  });
+
+  it('checks result from selectSquare function', () => {
+    const mockHistory = [
+      ['', '', '', '', '', '', '', '', ''],
+      ['X', '', '', '', '', '', '', '', ''],
+      ['X', 'O', '', '', '', '', '', '', ''],
+      ['X', 'O', '', '', 'X', '', '', '', ''],
+      ['X', 'O', 'O', '', 'X', '', '', '', ''],
+    ];
+    const squareIndex = 2;
+    const moveNumber = 4;
+    const expected = {
+      currentMovesPlayed: mockHistory[moveNumber],
+      squareIndex,
+    };
+
+    mapDispatchToProps(dispatch).onSelectSquare(
+      squareIndex,
+      true,
+      mockHistory,
+      moveNumber
+    );
+    expect(dispatch.mock.calls[0][0].payload).toEqual(expected);
   });
 
   it('check if jumpTo function dispatches correct action', () => {
