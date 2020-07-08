@@ -91,4 +91,7 @@ code {
   .navigationBar {
     flex-direction: column;
   }
+  .navLink {
+    left: 5%;
+  }
 }
