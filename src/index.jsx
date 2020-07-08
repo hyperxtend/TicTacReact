@@ -1,10 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
 
 import './index.css';
-import Game from './components/game';
+import PageNavigation from './components/nav-bar';
 import * as serviceWorker from './serviceWorker';
 import store from './reducers/store';
 
@@ -16,10 +16,7 @@ render(
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
-        <Route exact path="/HomePage" />
-        <Route path="/VSComputer" />
-        <Route path="/VSPlayer" component={Game} />
-        <Route path="/ScoreBoard" />
+        <PageNavigation />
       </Switch>
     </BrowserRouter>
   </Provider>,
