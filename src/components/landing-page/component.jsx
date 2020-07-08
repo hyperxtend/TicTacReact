@@ -11,17 +11,31 @@ const GameSelection = (props) => (
 );
 
 const SelectionMenu = () => (
-  <Container className="selectionMenu">
+  <Container className="gameSelectionMenu">
+    <h3 className="gameSelectionHeader">Game Selection</h3>
     <GameSelection pageName="/VSComputer" selectName="VS Computer" />
     <GameSelection pageName="/VSPlayer" selectName="VS Player" />
     <GameSelection pageName="/ScoreBoard" selectName="Score Board" />
   </Container>
 );
 
+const GameDescription = () => (
+  <Container className="gameDescription">
+    <h3>
+      This adaptation of the classic Tic-Tac-Toe where players are able to go
+      through their previous moves, play against a friend or against the
+      computer
+    </h3>
+    <h5>Choose a selection & start playing!</h5>
+  </Container>
+);
+
 const LandingPage = () => (
-  <Container className="landingPage">
-    <h3 className="gameSelection">Game Selection</h3>
-    <SelectionMenu />
+  <Container>
+    <GameDescription />
+    <Container className="landingPageMenu">
+      <SelectionMenu />
+    </Container>
   </Container>
 );
 
