@@ -2,11 +2,11 @@ import React from 'react';
 import { Container, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-import Board from '../board';
+import Board from '../shared-components/board';
 
 import { determineGameStatus } from './controller';
 
-const Game = ({
+const VSPlayer = ({
   onSelectSquare,
   squares,
   previousPlayerMoves,
@@ -45,18 +45,18 @@ const Game = ({
   </Container>
 );
 
-Game.propTypes = {
+VSPlayer.propTypes = {
   onSelectSquare: PropTypes.func,
   squares: PropTypes.arrayOf(PropTypes.string),
   xIsNext: PropTypes.bool,
   moveNumber: PropTypes.number,
 };
 
-Game.defaultProps = {
+VSPlayer.defaultProps = {
   onSelectSquare: () => {},
   squares: [],
   xIsNext: true,
   moveNumber: 0,
 };
 
-export default Game;
+export default VSPlayer;

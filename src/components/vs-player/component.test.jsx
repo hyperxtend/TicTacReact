@@ -2,9 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { select } from 'qa-utilities';
 
-import Game from './component';
+import VSPlayer from './component';
 
-describe('<Game/>', () => {
+describe('<VSPlayer/>', () => {
   let wrapper;
   let onSelectSquare;
   let squares;
@@ -29,7 +29,7 @@ describe('<Game/>', () => {
     ];
 
     wrapper = shallow(
-      <Game
+      <VSPlayer
         onSelectSquare={onSelectSquare}
         squares={squares}
         previousPlayerMoves={previousPlayerMoves}

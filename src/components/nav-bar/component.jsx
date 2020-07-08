@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, Route } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
 
-import Game from '../game';
+import VSPlayer from '../vs-player';
 
 const NavbarLink = (props) => (
   <NavLink
@@ -44,7 +44,11 @@ const PageNavigation = () => (
     <NavigationBar />
     <NavbarRoutes urlPath="/LandingPage" data-qa="landing-page" />
     <NavbarRoutes urlPath="/VSComputer" data-qa="vs-computer" />
-    <NavbarRoutes urlPath="/VSPlayer" component={Game} data-qa="vs-player" />
+    <NavbarRoutes
+      urlPath="/VSPlayer"
+      component={VSPlayer}
+      data-qa="vs-player"
+    />
     <NavbarRoutes urlPath="/ScoreBoard" data-qa="score-board" />
   </div>
 );
