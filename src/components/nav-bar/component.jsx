@@ -22,7 +22,7 @@ const NavigationBar = () => (
   <Navbar className="navigationBar">
     <NavbarLink
       className="homeLink"
-      urlPath="/HomePage"
+      urlPath="/LandingPage"
       linkTitle="Tic-Tac-Toe"
     />
     <NavbarLink
@@ -42,7 +42,10 @@ const NavigationBar = () => (
 const PageNavigation = () => (
   <div>
     <NavigationBar />
-    <NavbarRoutes urlPath="/VSPlayer" component={Game} />
+    <NavbarRoutes urlPath="/LandingPage" data-qa="landing-page" />
+    <NavbarRoutes urlPath="/VSComputer" data-qa="vs-computer" />
+    <NavbarRoutes urlPath="/VSPlayer" component={Game} data-qa="vs-player" />
+    <NavbarRoutes urlPath="/ScoreBoard" data-qa="score-board" />
   </div>
 );
 
