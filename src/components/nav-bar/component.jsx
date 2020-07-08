@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
 
 const NavbarLink = (props) => (
-  <NavLink className={props.className} to={props.pageName}>
+  <NavLink className={props.className} to={props.routePath}>
     {props.linkTitle}
   </NavLink>
 );
@@ -12,22 +12,22 @@ const NavigationBar = () => (
   <Navbar className="navigationBar">
     <NavbarLink
       className="homeLink"
-      pageName="/HomePage"
+      routePath="/HomePage"
       linkTitle="Tic-Tac-Toe"
     />
     <NavbarLink
       className="navLink"
-      pageName="/VSComputer"
+      routePath="/VSComputer"
       linkTitle="VS Computer"
     />
     <NavbarLink
       className="navLink"
-      pageName="/VSPlayer"
+      routePath="/VSPlayer"
       linkTitle="VS Player"
     />
     <NavbarLink
       className="navLink"
-      pageName="/ScoreBoard"
+      routePath="/ScoreBoard"
       linkTitle="Score Board"
     />
   </Navbar>
