@@ -6,7 +6,7 @@ import Board from '../shared-components/board';
 
 import { determineGameStatus } from './controller';
 
-const VSPlayer = ({
+const VersePlayer = ({
   onSelectSquare,
   squares,
   previousPlayerMoves,
@@ -45,18 +45,18 @@ const VSPlayer = ({
   </Container>
 );
 
-VSPlayer.propTypes = {
+VersePlayer.propTypes = {
   onSelectSquare: PropTypes.func,
   squares: PropTypes.arrayOf(PropTypes.string),
   xIsNext: PropTypes.bool,
   moveNumber: PropTypes.number,
 };
 
-VSPlayer.defaultProps = {
+VersePlayer.defaultProps = {
   onSelectSquare: () => {},
   squares: [],
   xIsNext: true,
   moveNumber: 0,
 };
 
-export default VSPlayer;
+export default VersePlayer;
