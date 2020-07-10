@@ -5,7 +5,6 @@ export const initialState = {
   xIsNext: true,
   moveNumber: 0,
 };
-
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case GO_TO_MOVE:
@@ -21,6 +20,7 @@ export default (state = initialState, action = {}) => {
         history: [...state.history, action.payload.currentMovesPlayed],
         xIsNext: !state.xIsNext,
         moveNumber: state.history.length,
+        check: console.log('Track: ', state),
       };
 
     default:
