@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { selectSquare, goToMove } from '../../reducers/state-of-game/actions';
 
-import { calculateWinner, handleComputerMove } from './controller';
+import { getCurrentMovesPlayed, calculateWinner } from './controller';
 import VerseComputer from './component';
 
 export const mapStateToProps = ({
@@ -19,17 +19,16 @@ export const mapStateToProps = ({
 
 export const mapDispatchToProps = (dispatch) => ({
   onSelectSquare: (squareIndex, nextPlayer, history, moveNumber) => {
-    const currentMovesPlayed = handleComputerMove(
+    const currentMovesPlayed = getCurrentMovesPlayed(
       history,
       moveNumber,
       squareIndex,
       nextPlayer
     );
-    console.log(
-      handleComputerMove(history, moveNumber, squareIndex, nextPlayer)
-    );
     if (!currentMovesPlayed[squareIndex]) {
-      currentMovesPlayed[squareIndex] = nextPlayer ? 'X' : 'O';
+      currentMovesPlayed[squareIndex] = 'X';
+      const randomMove = Math.floor(Math.random() * 10);
+      currentMovesPlayed[randomMove] = 'O';
       dispatch(selectSquare({ squareIndex, currentMovesPlayed }));
     }
   },
