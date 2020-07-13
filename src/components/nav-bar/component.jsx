@@ -25,7 +25,7 @@ const NavigationBar = () => (
       urlPath={COMPUTER}
       linkTitle="VS Computer"
     />
-    <NavbarLink className="nav-link" urlPath={PLAYER} linkTitle="VS Player" />
+    <NavbarLink className="nav-link" urlPath={PLAYER} linkTitle="2 Players" />
     <NavbarLink
       className="nav-link"
       urlPath={SCORE_BOARD}
