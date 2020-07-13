@@ -16,13 +16,13 @@ const VerseComputer = ({
   winner,
 }) => (
   <Container className="game">
-    <div className="playerMoves">
-      <div className="playerStatus" data-qa="game-status">
+    <div className="player-moves">
+      <div className="player-status" data-qa="game-status">
         {determineGameStatus(winner, moveNumber, xIsNext)}
       </div>
       {previousPlayerMoves.map(({ buttonName, buttonClick }, index) => (
         <Button
-          className="moveHistory"
+          className="move-history"
           size="sm"
           variant="outline-dark"
           key={`${[index]}-${buttonName}`}
@@ -33,7 +33,7 @@ const VerseComputer = ({
         </Button>
       ))}
     </div>
-    <div className="gameBoard">
+    <div className="game-board">
       <Board
         squares={squares}
         onClick={(squareIndex) => {
