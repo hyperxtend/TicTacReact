@@ -14,20 +14,20 @@ const NavbarLink = (props) => (
 );
 
 const NavigationBar = () => (
-  <Navbar className="navigationBar">
+  <Navbar className="navigation-bar">
     <NavbarLink
-      className="homeLink"
+      className="home-link"
       urlPath={LANDING_PAGE}
       linkTitle="Tic-Tac-Toe"
     />
     <NavbarLink
-      className="navLink"
+      className="nav-link"
       urlPath={COMPUTER}
       linkTitle="VS Computer"
     />
-    <NavbarLink className="navLink" urlPath={PLAYER} linkTitle="VS Player" />
+    <NavbarLink className="nav-link" urlPath={PLAYER} linkTitle="VS Player" />
     <NavbarLink
-      className="navLink"
+      className="nav-link"
       urlPath={SCORE_BOARD}
       linkTitle="Score Board"
     />
