@@ -3,14 +3,14 @@ import { Switch, Route } from 'react-router-dom';
 
 import VersePlayer from '../components/verse-player';
 
-import { LandingPage, Computer, Player, ScoreBoard } from './urls';
+import { LANDING_PAGE, COMPUTER, PLAYER, SCORE_BOARD } from './urls';
 
 const NavigationRoutes = () => (
   <Switch>
-    <Route path={LandingPage} data-qa="landing-page" />
-    <Route path={Computer} data-qa="vs-computer" />
-    <Route path={Player} component={VersePlayer} data-qa="vs-player" />
-    <Route path={ScoreBoard} data-qa="score-board" />
+    <Route path={LANDING_PAGE} data-qa="landing-page" />
+    <Route path={COMPUTER} data-qa="vs-computer" />
+    <Route path={PLAYER} component={VersePlayer} data-qa="vs-player" />
+    <Route path={SCORE_BOARD} data-qa="score-board" />
   </Switch>
 );
 

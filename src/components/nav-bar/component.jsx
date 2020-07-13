@@ -1,34 +1,34 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
 
-export const LandingPage = '/LandingPage';
-export const Computer = '/Computer';
-export const Player = '/Player';
-export const ScoreBoard = '/ScoreBoard';
+const LANDING_PAGE = '/LandingPage';
+const COMPUTER = '/Computer';
+const PLAYER = '/Player';
+const SCORE_BOARD = '/ScoreBoard';
 
 const NavbarLink = (props) => (
-  <Link className={props.className} to={props.urlPath}>
+  <NavLink className={props.className} to={props.urlPath}>
     {props.linkTitle}
-  </Link>
+  </NavLink>
 );
 
 const NavigationBar = () => (
   <Navbar className="navigationBar">
     <NavbarLink
       className="homeLink"
-      urlPath={LandingPage}
+      urlPath={LANDING_PAGE}
       linkTitle="Tic-Tac-Toe"
     />
     <NavbarLink
       className="navLink"
-      urlPath={Computer}
+      urlPath={COMPUTER}
       linkTitle="VS Computer"
     />
-    <NavbarLink className="navLink" urlPath={Player} linkTitle="VS Player" />
+    <NavbarLink className="navLink" urlPath={PLAYER} linkTitle="VS Player" />
     <NavbarLink
       className="navLink"
-      urlPath={ScoreBoard}
+      urlPath={SCORE_BOARD}
       linkTitle="Score Board"
     />
   </Navbar>

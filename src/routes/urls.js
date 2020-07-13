@@ -1,4 +1,4 @@
-export const LandingPage = '/LandingPage';
-export const Computer = '/Computer';
-export const Player = '/Player';
-export const ScoreBoard = '/ScoreBoard';
+export const LANDING_PAGE = '/LandingPage';
+export const COMPUTER = '/Computer';
+export const PLAYER = '/Player';
+export const SCORE_BOARD = '/ScoreBoard';
