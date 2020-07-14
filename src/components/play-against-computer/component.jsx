@@ -7,8 +7,7 @@ import Board from '../board';
 import { determineGameStatus } from './controller';
 
 const PlayAgainstComputer = ({
-  onSelectSquare,
-  onComputerMove,
+  movesForPlayers,
   squares,
   previousPlayerMoves,
   moveNumber,
@@ -38,8 +37,7 @@ const PlayAgainstComputer = ({
       <Board
         squares={squares}
         onClick={(squareIndex) => {
-          onSelectSquare(squareIndex, xIsNext, history, moveNumber);
-          onComputerMove(squareIndex, xIsNext, history, moveNumber);
+          movesForPlayers(squareIndex, xIsNext, history, moveNumber);
         }}
         data-qa="game-board"
       />
@@ -48,14 +46,14 @@ const PlayAgainstComputer = ({
 );
 
 PlayAgainstComputer.propTypes = {
-  onSelectSquare: PropTypes.func,
+  movesForPlayers: PropTypes.func,
   squares: PropTypes.arrayOf(PropTypes.string),
   xIsNext: PropTypes.bool,
   moveNumber: PropTypes.number,
 };
 
 PlayAgainstComputer.defaultProps = {
-  onSelectSquare: () => {},
+  movesForPlayers: () => {},
   squares: [],
   xIsNext: true,
   moveNumber: 0,

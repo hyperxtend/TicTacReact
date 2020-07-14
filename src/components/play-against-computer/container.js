@@ -6,7 +6,11 @@ import {
   computerMove,
 } from '../../reducers/state-of-game/actions';
 
-import { getCurrentMovesPlayed, calculateWinner } from './controller';
+import {
+  getCurrentMovesPlayed,
+  calculateWinner,
+  moveForComputer,
+} from './controller';
 import PlayAgainstComputer from './component';
 
 export const mapStateToProps = ({
@@ -29,23 +33,19 @@ export const mapDispatchToProps = (dispatch) => ({
       squareIndex,
       nextPlayer
     );
-    if (!currentMovesPlayed[squareIndex] && nextPlayer === true) {
-      currentMovesPlayed[squareIndex] = 'X';
+    if (!currentMovesPlayed[squareIndex]) {
+      currentMovesPlayed[squareIndex] = nextPlayer ? 'X' : 'O';
       dispatch(selectSquare({ squareIndex, currentMovesPlayed }));
     }
   },
-  onComputerMove: (squareIndex, nextPlayer, history, moveNumber) => {
-    const computerMovePlayed = getCurrentMovesPlayed(
+  movesForPlayers: (squareIndex, nextPlayer, history, moveNumber) => {
+    const currentMovesPlayed = moveForComputer(
       history,
       moveNumber,
       squareIndex,
       nextPlayer
     );
-    if (!computerMovePlayed[squareIndex] && nextPlayer === false) {
-      const randomMove = Math.floor(Math.random() * 10);
-      computerMovePlayed[randomMove] = 'O';
-      dispatch(computerMove({ squareIndex, computerMovePlayed }));
-    }
+    dispatch(computerMove({ squareIndex, currentMovesPlayed }));
   },
   jumpTo: (step) => dispatch(goToMove(step)),
 });

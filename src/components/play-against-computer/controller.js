@@ -51,3 +51,21 @@ export const getCurrentMovesPlayed = (history, moveNumber) => {
 
   return currentSquaresPlayed;
 };
+
+export const moveForComputer = (history, moveNumber, squareIndex, xIsNext) => {
+  const currentlyPlayedMoves = getCurrentMovesPlayed(history, moveNumber);
+  if (!currentlyPlayedMoves[squareIndex]) {
+    if (xIsNext === true) {
+      currentlyPlayedMoves[squareIndex] = 'X';
+    } else if (xIsNext === false) {
+      const randomMove = Math.floor(Math.random() * 10);
+      currentlyPlayedMoves[randomMove] = 'O';
+      if (
+        currentlyPlayedMoves[randomMove] === currentlyPlayedMoves[squareIndex]
+      ) {
+        currentlyPlayedMoves[randomMove] = 'O';
+      }
+    }
+  }
+  return currentlyPlayedMoves;
+};
