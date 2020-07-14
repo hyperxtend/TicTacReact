@@ -1,6 +1,10 @@
 import { connect } from 'react-redux';
 
-import { selectSquare, goToMove } from '../../reducers/state-of-game/actions';
+import {
+  selectSquare,
+  goToMove,
+  computerMove,
+} from '../../reducers/state-of-game/actions';
 
 import { getCurrentMovesPlayed, calculateWinner } from './controller';
 import VerseComputer from './component';
@@ -25,11 +29,22 @@ export const mapDispatchToProps = (dispatch) => ({
       squareIndex,
       nextPlayer
     );
-    if (!currentMovesPlayed[squareIndex]) {
+    if (!currentMovesPlayed[squareIndex] && nextPlayer === true) {
       currentMovesPlayed[squareIndex] = 'X';
-      const randomMove = Math.floor(Math.random() * 10);
-      currentMovesPlayed[randomMove] = 'O';
       dispatch(selectSquare({ squareIndex, currentMovesPlayed }));
+    }
+  },
+  onComputerMove: (squareIndex, nextPlayer, history, moveNumber) => {
+    const computerMovePlayed = getCurrentMovesPlayed(
+      history,
+      moveNumber,
+      squareIndex,
+      nextPlayer
+    );
+    if (!computerMovePlayed[squareIndex] && nextPlayer === false) {
+      const randomMove = Math.floor(Math.random() * 10);
+      computerMovePlayed[randomMove] = 'O';
+      dispatch(computerMove({ squareIndex, computerMovePlayed }));
     }
   },
   jumpTo: (step) => dispatch(goToMove(step)),

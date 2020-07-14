@@ -8,6 +8,7 @@ import { determineGameStatus } from './controller';
 
 const VerseComputer = ({
   onSelectSquare,
+  onComputerMove,
   squares,
   previousPlayerMoves,
   moveNumber,
@@ -38,6 +39,7 @@ const VerseComputer = ({
         squares={squares}
         onClick={(squareIndex) => {
           onSelectSquare(squareIndex, xIsNext, history, moveNumber);
+          onComputerMove(squareIndex, xIsNext, history, moveNumber);
         }}
         data-qa="game-board"
       />

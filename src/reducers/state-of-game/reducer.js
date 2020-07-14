@@ -1,4 +1,4 @@
-import { SELECT_SQUARE, GO_TO_MOVE } from './actions';
+import { SELECT_SQUARE, COMPUTER_MOVE, GO_TO_MOVE } from './actions';
 
 export const initialState = {
   history: [Array(9).fill('')],
@@ -23,6 +23,13 @@ export default (state = initialState, action = {}) => {
         check: console.log('Track: ', state),
       };
 
+    case COMPUTER_MOVE:
+      return {
+        ...state,
+        history: [...state.history, action.payload.computerMovePlayed],
+        xIsNext: !state.xIsNext,
+        moveNumber: state.history.length,
+      };
     default:
       return state;
   }
