@@ -6,7 +6,7 @@ import Board from '../board';
 
 import { determineGameStatus } from './controller';
 
-const VerseComputer = ({
+const PlayAgainstComputer = ({
   onSelectSquare,
   onComputerMove,
   squares,
@@ -47,18 +47,18 @@ const VerseComputer = ({
   </Container>
 );
 
-VerseComputer.propTypes = {
+PlayAgainstComputer.propTypes = {
   onSelectSquare: PropTypes.func,
   squares: PropTypes.arrayOf(PropTypes.string),
   xIsNext: PropTypes.bool,
   moveNumber: PropTypes.number,
 };
 
-VerseComputer.defaultProps = {
+PlayAgainstComputer.defaultProps = {
   onSelectSquare: () => {},
   squares: [],
   xIsNext: true,
   moveNumber: 0,
 };
 
-export default VerseComputer;
+export default PlayAgainstComputer;

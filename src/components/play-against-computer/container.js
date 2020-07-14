@@ -7,7 +7,7 @@ import {
 } from '../../reducers/state-of-game/actions';
 
 import { getCurrentMovesPlayed, calculateWinner } from './controller';
-import VerseComputer from './component';
+import PlayAgainstComputer from './component';
 
 export const mapStateToProps = ({
   app: {
@@ -63,4 +63,4 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
   mergeProps
-)(VerseComputer);
+)(PlayAgainstComputer);
