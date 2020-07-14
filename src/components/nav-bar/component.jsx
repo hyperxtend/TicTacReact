@@ -7,30 +7,23 @@ const COMPUTER = '/Computer';
 const PLAYER = '/Player';
 const SCORE_BOARD = '/ScoreBoard';
 
-const NavbarLink = (props) => (
-  <NavLink className={props.className} to={props.urlPath}>
-    {props.linkTitle}
-  </NavLink>
-);
-
 const NavigationBar = () => (
   <Navbar className="navigation-bar">
-    <NavbarLink
-      className="home-link"
-      urlPath={LANDING_PAGE}
-      linkTitle="Tic-Tac-Toe"
-    />
-    <NavbarLink
-      className="nav-link"
-      urlPath={COMPUTER}
-      linkTitle="VS Computer"
-    />
-    <NavbarLink className="nav-link" urlPath={PLAYER} linkTitle="2 Players" />
-    <NavbarLink
-      className="nav-link"
-      urlPath={SCORE_BOARD}
-      linkTitle="Score Board"
-    />
+    <NavLink className="home-link" to={LANDING_PAGE}>
+      Tic-Tac-Toe
+    </NavLink>
+    <NavLink className="nav-link" to={COMPUTER}>
+      VS Computer
+    </NavLink>
+    ;
+    <NavLink className="nav-link" to={PLAYER}>
+      2 Players
+    </NavLink>
+    ;
+    <NavLink className="nav-link" to={SCORE_BOARD}>
+      Score Board
+    </NavLink>
+    ;
   </Navbar>
 );
 
