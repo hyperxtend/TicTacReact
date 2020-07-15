@@ -2,9 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { select } from 'qa-utilities';
 
-import Game from './component';
+import PlayWith2Players from './component';
 
-describe('<Game/>', () => {
+describe('<PlayWith2Players/>', () => {
   let wrapper;
   let onSelectSquare;
   let squares;
@@ -29,7 +29,7 @@ describe('<Game/>', () => {
     ];
 
     wrapper = shallow(
-      <Game
+      <PlayWith2Players
         onSelectSquare={onSelectSquare}
         squares={squares}
         previousPlayerMoves={previousPlayerMoves}
@@ -39,7 +39,7 @@ describe('<Game/>', () => {
 
   it('checks initial game status rendering', () => {
     const nextPlayer = wrapper
-      .find('div.playerStatus')
+      .find('div.player-status')
       .children()
       .first()
       .text();

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { selectSquare, goToMove } from '../../reducers/state-of-game/actions';
 
 import { getCurrentMovesPlayed, calculateWinner } from './controller';
-import Game from './component';
+import PlayAgainstFriend from './component';
 
 export const mapStateToProps = ({
   app: {
@@ -42,4 +42,8 @@ export const mergeProps = (stateProps, dispatchProps) => ({
   })),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Game);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  mergeProps
+)(PlayAgainstFriend);
