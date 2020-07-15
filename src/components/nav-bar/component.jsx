@@ -12,15 +12,12 @@ const NavigationBar = () => (
     <NavLink className="nav-link" to={COMPUTER}>
       VS Computer
     </NavLink>
-    ;
     <NavLink className="nav-link" to={PLAYER}>
       2 Players
     </NavLink>
-    ;
     <NavLink className="nav-link" to={SCORE_BOARD}>
       Score Board
     </NavLink>
-    ;
   </Navbar>
 );
 
