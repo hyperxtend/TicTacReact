@@ -6,7 +6,7 @@ import Board from '../shared-components/board';
 
 import { determineGameStatus } from './controller';
 
-const TwoPlayerGame = ({
+const PlayAgainstFriend = ({
   onSelectSquare,
   squares,
   previousPlayerMoves,
@@ -45,18 +45,18 @@ const TwoPlayerGame = ({
   </Container>
 );
 
-TwoPlayerGame.propTypes = {
+PlayAgainstFriend.propTypes = {
   onSelectSquare: PropTypes.func,
   squares: PropTypes.arrayOf(PropTypes.string),
   xIsNext: PropTypes.bool,
   moveNumber: PropTypes.number,
 };
 
-TwoPlayerGame.defaultProps = {
+PlayAgainstFriend.defaultProps = {
   onSelectSquare: () => {},
   squares: [],
   xIsNext: true,
   moveNumber: 0,
 };
 
-export default TwoPlayerGame;
+export default PlayAgainstFriend;

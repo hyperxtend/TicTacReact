@@ -13,7 +13,7 @@ const NavigationBar = () => (
       VS Computer
     </NavLink>
     <NavLink className="nav-link" to={PLAYER}>
-      2 Players
+      VS Friend
     </NavLink>
     <NavLink className="nav-link" to={SCORE_BOARD}>
       Score Board
