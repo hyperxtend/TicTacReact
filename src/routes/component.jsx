@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import GameFor2Players from '../components/game-for-2-players';
+import GameFor2Players from '../components/two-player-game';
 
 import { LANDING_PAGE, COMPUTER, PLAYER, SCORE_BOARD } from './urls';
 
