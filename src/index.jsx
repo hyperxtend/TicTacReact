@@ -5,13 +5,13 @@ import { createStore } from 'redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 import './index.css';
-import TicTacToeApp from './reducers';
-import Game from './components/game';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 import * as serviceWorker from './serviceWorker';
 import LandingPage from './components/landing-page';
 
-const store = createStore(TicTacToeApp);
 const root = document.getElementById('root');
 
 render(

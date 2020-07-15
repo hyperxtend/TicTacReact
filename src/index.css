@@ -18,7 +18,7 @@ code {
   margin-top: 5%;
   justify-content: center;
 }
-.gameBoard {
+.game-board {
   margin-top: 3%;
   height: 30vh;
   width: 30vw;
@@ -30,17 +30,22 @@ code {
   width: 7vw;
   height: 9vh;
   margin: 0% 1% 0% 1%;
+  font-size: 2.5em;
+  font-weight: 500;
 }
+
 .row {
   height: 10vh;
 }
-.playerStatus {
+
+.player-status {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1.8em;
   font-weight: 700;
+  color: #22272c;
   text-decoration: underline;
 }
-.playerMoves {
+.player-moves {
   width: 20%;
   display: flex;
   flex-direction: column;
@@ -78,6 +83,53 @@ code {
   border: 1px solid #495464;
   text-align: center;
   box-shadow: 4px 4px 5px #122338;
+
+.navigation-bar {
+  width: 100vw;
+  background: #22272c;
+  min-height: 10vh;
+  align-items: center;
+  position: relative;
+}
+
+.home-link {
+  color: #f4f4f2;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: x-large;
+  font-weight: 800;
+  margin-left: 5%;
+}
+
+.nav-link {
+  color: #e8e8e8;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: x-large;
+  font-weight: 800;
+  position: relative;
+  margin-right: 5%;
+  left: 30%;
+}
+
+.nav-link:hover,
+.home-link:hover {
+  color: #8c9ea3;
+  border-bottom: 5px solid #bbbbbe;
+  text-decoration: none;
+}
+
+.active {
+  border-bottom: 5px solid #bbbbbe;
+}
+
+@media screen and (max-width: 1160px) {
+  .navigation-bar {
+    flex-direction: column;
+  }
+  .nav-link {
+    left: 5%;
+  }
 }
 
 .gameSelectionHeader {
@@ -110,20 +162,4 @@ code {
 .selectionButton:hover {
   border-bottom: 5px solid #122338;
 }
-/* #00243f
 
-#22272c
-#495464
-#2a4158
-#264b77
-
-#3c5b74
-
-#597387
-#8c9ea3
-#a3acb1
-#bbbfca
-#bbbbbe
-#e8e8e8
-#f4f4f2
- */
