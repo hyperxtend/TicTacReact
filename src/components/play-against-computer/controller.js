@@ -34,38 +34,35 @@ export const determineGameStatus = (winner, moveNumber, xIsNext) => {
   if (winner) {
     return `${winner} is the Winner!`;
   }
-  if (!winner && moveNumber === 9) {
+  if (!winner && moveNumber >= 5) {
     return 'Its a Draw!';
   }
   return `Next player is ${xIsNext ? 'X' : 'O'}`;
 };
 
-export const getCurrentMovesPlayed = (history, moveNumber) => {
+export const getPlayersMoves = (history, moveNumber, squareIndex, xIsNext) => {
   const currentHistory = history.slice(0, moveNumber + 1);
   const currentMoves = currentHistory[moveNumber];
-
   const currentSquaresPlayed = currentMoves.slice();
+
   if (calculateWinner(currentSquaresPlayed)) {
     return currentHistory.slice(0)[0];
   }
 
-  return currentSquaresPlayed;
-};
+  if (!currentSquaresPlayed[squareIndex]) {
+    currentSquaresPlayed[squareIndex] = 'X';
 
-export const moveForComputer = (history, moveNumber, squareIndex, xIsNext) => {
-  const currentlyPlayedMoves = getCurrentMovesPlayed(history, moveNumber);
-  if (!currentlyPlayedMoves[squareIndex]) {
-    if (xIsNext === true) {
-      currentlyPlayedMoves[squareIndex] = 'X';
-    } else if (xIsNext === false) {
-      const randomMove = Math.floor(Math.random() * 10);
-      currentlyPlayedMoves[randomMove] = 'O';
-      if (
-        currentlyPlayedMoves[randomMove] === currentlyPlayedMoves[squareIndex]
-      ) {
-        currentlyPlayedMoves[randomMove] = 'O';
+    if (xIsNext === true || moveNumber === 0) {
+      const randomIndex = Math.floor(Math.random() * 9);
+
+      if ((currentSquaresPlayed[randomIndex] === 'X') === true) {
+        currentSquaresPlayed[randomIndex] = 'X';
+        const nextAvailableIndex = currentSquaresPlayed.indexOf('');
+        currentSquaresPlayed[nextAvailableIndex] = 'O';
+        return currentSquaresPlayed;
       }
+      currentSquaresPlayed[randomIndex] = 'O';
     }
   }
-  return currentlyPlayedMoves;
+  return currentSquaresPlayed;
 };

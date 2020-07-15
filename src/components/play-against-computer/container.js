@@ -1,16 +1,8 @@
 import { connect } from 'react-redux';
 
-import {
-  selectSquare,
-  goToMove,
-  computerMove,
-} from '../../reducers/state-of-game/actions';
+import { goToMove, computerMove } from '../../reducers/state-of-game/actions';
 
-import {
-  getCurrentMovesPlayed,
-  calculateWinner,
-  moveForComputer,
-} from './controller';
+import { calculateWinner, setPlayedMoves, getPlayersMoves } from './controller';
 import PlayAgainstComputer from './component';
 
 export const mapStateToProps = ({
@@ -26,24 +18,12 @@ export const mapStateToProps = ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  onSelectSquare: (squareIndex, nextPlayer, history, moveNumber) => {
-    const currentMovesPlayed = getCurrentMovesPlayed(
+  movesForPlayers: (squareIndex, xIsNext, history, moveNumber) => {
+    const currentMovesPlayed = getPlayersMoves(
       history,
       moveNumber,
       squareIndex,
-      nextPlayer
-    );
-    if (!currentMovesPlayed[squareIndex]) {
-      currentMovesPlayed[squareIndex] = nextPlayer ? 'X' : 'O';
-      dispatch(selectSquare({ squareIndex, currentMovesPlayed }));
-    }
-  },
-  movesForPlayers: (squareIndex, nextPlayer, history, moveNumber) => {
-    const currentMovesPlayed = moveForComputer(
-      history,
-      moveNumber,
-      squareIndex,
-      nextPlayer
+      xIsNext
     );
     dispatch(computerMove({ squareIndex, currentMovesPlayed }));
   },
