@@ -45,5 +45,17 @@
     "eslint-plugin-react": "^7.20.3",
     "gh-pages": "^2.2.0",
     "qa-utilities": "^1.1.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
