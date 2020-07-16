@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import LandingPage from '../pages/landing-page';
+import LandingPage from '../components/landing-page';
 import PlayAgainstFriend from '../components/play-against-friend';
 
 import { LANDING_PAGE, COMPUTER, PLAYER, SCORE_BOARD } from './urls';

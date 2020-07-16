@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-import Board from '../shared-components/board';
+import Board from '../board';
 
 import { determineGameStatus } from './controller';
 
