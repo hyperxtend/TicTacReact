@@ -6,10 +6,11 @@
   "scripts": {
     "start": "react-scripts start --NODE_ENV=production && node index.jsx",
     "build": "react-scripts build",
+    "ci-test": "npm run test:scripts && eslint 'src/**/*.js' 'src/**/*.jsx'",
     "test": "npm run test:scripts && npm run lint",
     "test:scripts": "react-scripts test --coverage --env=jsdom --setupFiles ./src/setup-tests.js --watchAll=false",
     "test:scripts:watch": "react-scripts test --env=jsdom --setupFiles ./src/setup-tests.js --coverage --watchAll=true",
-    "lint": "eslint 'src/**/*.js' 'src/**/*.jsx'",
+    "lint": "eslint src/**/*.js src/**/*.jsx",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
@@ -34,10 +35,10 @@
     "redux-devtools-extension": "^2.13.8"
   },
   "devDependencies": {
+    "eslint": "6.6.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.4.4",
-    "eslint": "^7.4.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
