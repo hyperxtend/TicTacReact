@@ -6,18 +6,24 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #e8e8e8;
+  background-color: #dad8d8;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+* {
+  box-sizing: border-box;
+}
+
 .game {
   display: flex;
   margin-top: 5%;
   justify-content: center;
 }
+
 .game-board {
   margin-top: 3%;
   height: 30vh;
@@ -45,6 +51,7 @@ code {
   color: #22272c;
   text-decoration: underline;
 }
+
 .player-moves {
   width: 20%;
   display: flex;
@@ -102,7 +109,6 @@ code {
 }
 
 .game-description {
-  width: auto;
   margin-top: 10%;
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -122,37 +128,31 @@ code {
   text-shadow: 2px 2px #abb3bc;
 }
 
-.landing-page-menu {
-  width: 20%;
-  height: 50vh;
-  margin-top: 5%;
+.game-selection-menu {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  justify-content: center;
+  position: fixed;
+  margin-top: 3%;
   background-color: #556174;
-  border-radius: 5%;
   border: 1px solid #495464;
   box-shadow: 4px 4px 5px #122338;
 }
 
 .game-selection-header {
-  margin-top: 5%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-transform: uppercase;
   font-size: 3em;
   font-weight: 700;
   color: #e8e8e8;
   text-shadow: 4px 3px 0px #264b77, 9px 8px 0px #00243f;
-}
-
-.game-selection-menu {
-  width: 10%;
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 3%;
 }
 
 .selection-button {
   width: 20vw;
-  margin-top: 5%;
-  margin-top: 5%;
+  margin-bottom: 2%;
   font-weight: 500;
   text-shadow: 3px 3px #495464;
 }
