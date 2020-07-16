@@ -49,7 +49,12 @@ PlayAgainstFriend.propTypes = {
   history: PropTypes.arrayOf(PropTypes.array),
   moveNumber: PropTypes.number,
   onSelectSquare: PropTypes.func,
-  previousPlayerMoves: PropTypes.arrayOf(PropTypes.func),
+  previousPlayerMoves: PropTypes.arrayOf(
+    PropTypes.shape({
+      buttonName: PropTypes.string,
+      buttonClick: PropTypes.func,
+    })
+  ),
   squares: PropTypes.arrayOf(PropTypes.string),
   winner: PropTypes.string,
   xIsNext: PropTypes.bool,
@@ -59,7 +64,12 @@ PlayAgainstFriend.defaultProps = {
   history: [],
   moveNumber: 0,
   onSelectSquare: () => {},
-  previousPlayerMoves: [],
+  previousPlayerMoves: [
+    {
+      buttonName: 'Restart',
+      buttonClick: () => {},
+    },
+  ],
   squares: [],
   winner: '',
   xIsNext: true,
