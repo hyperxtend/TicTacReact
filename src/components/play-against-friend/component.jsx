@@ -46,17 +46,23 @@ const PlayAgainstFriend = ({
 );
 
 PlayAgainstFriend.propTypes = {
-  onSelectSquare: PropTypes.func,
-  squares: PropTypes.arrayOf(PropTypes.string),
-  xIsNext: PropTypes.bool,
+  history: PropTypes.arrayOf(PropTypes.array),
   moveNumber: PropTypes.number,
+  onSelectSquare: PropTypes.func,
+  previousPlayerMoves: PropTypes.arrayOf(PropTypes.func),
+  squares: PropTypes.arrayOf(PropTypes.string),
+  winner: PropTypes.string,
+  xIsNext: PropTypes.bool,
 };
 
 PlayAgainstFriend.defaultProps = {
-  onSelectSquare: () => {},
-  squares: [],
-  xIsNext: true,
+  history: [],
   moveNumber: 0,
+  onSelectSquare: () => {},
+  previousPlayerMoves: [],
+  squares: [],
+  winner: '',
+  xIsNext: true,
 };
 
 export default PlayAgainstFriend;
