@@ -53,37 +53,6 @@ code {
   margin-left: 5%;
 }
 
-.gameDescription {
-  width: auto;
-  margin-top: 10%;
-  text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.gameDescription h3 {
-  color: #00243f;
-  font-weight: 600;
-}
-
-.gameDescription h5 {
-  margin-top: 5%;
-  color: #00243f;
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 1.5em;
-  text-shadow: 2px 2px #abb3bc;
-}
-
-.landingPageMenu {
-  margin-top: 5%;
-  width: 30vw;
-  height: 40vh;
-  background-color: #556174;
-  border-radius: 5%;
-  border: 1px solid #495464;
-  text-align: center;
-  box-shadow: 4px 4px 5px #122338;
-
 .navigation-bar {
   width: 100vw;
   background: #22272c;
@@ -132,7 +101,39 @@ code {
   }
 }
 
-.gameSelectionHeader {
+.game-description {
+  width: auto;
+  margin-top: 10%;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.game-description h3 {
+  color: #00243f;
+  font-weight: 600;
+}
+
+.game-description h5 {
+  margin-top: 5%;
+  color: #00243f;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.5em;
+  text-shadow: 2px 2px #abb3bc;
+}
+
+.landing-page-menu {
+  margin-top: 5%;
+  width: 30vw;
+  height: 40vh;
+  background-color: #556174;
+  border-radius: 5%;
+  border: 1px solid #495464;
+  text-align: center;
+  box-shadow: 4px 4px 5px #122338;
+}
+
+.game-selection-header {
   width: 20vw;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-transform: uppercase;
@@ -142,7 +143,7 @@ code {
   text-shadow: 4px 3px 0px #264b77, 9px 8px 0px #00243f;
 }
 
-.gameSelectionMenu {
+.game-selection-menu {
   width: 20vw;
   display: flex;
   margin-top: 5%;
@@ -151,7 +152,7 @@ code {
   text-align: center;
 }
 
-.selectionButton {
+.selection-button {
   width: 20vw;
   margin-top: 5%;
   margin-top: 5%;
@@ -159,7 +160,6 @@ code {
   text-shadow: 3px 3px #495464;
 }
 
-.selectionButton:hover {
+.selection-button:hover {
   border-bottom: 5px solid #122338;
 }
-

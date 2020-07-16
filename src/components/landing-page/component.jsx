@@ -4,23 +4,23 @@ import { Button, Container } from 'react-bootstrap';
 
 const GameSelection = (props) => (
   <Link to={props.pageName}>
-    <Button variant="dark" size="lg" className="selectionButton">
+    <Button variant="dark" size="lg" className="selection-button">
       {props.selectName}
     </Button>
   </Link>
 );
 
 const SelectionMenu = () => (
-  <Container className="gameSelectionMenu">
-    <h3 className="gameSelectionHeader">Game Selection</h3>
+  <Container className="game-selection-menu">
+    <h3 className="game-selection-header">Game Selection</h3>
     <GameSelection pageName="/VSComputer" selectName="VS Computer" />
-    <GameSelection pageName="/VSPlayer" selectName="VS Player" />
+    <GameSelection pageName="/VSFriend" selectName="VS Friend" />
     <GameSelection pageName="/ScoreBoard" selectName="Score Board" />
   </Container>
 );
 
 const GameDescription = () => (
-  <Container className="gameDescription">
+  <Container className="game-description">
     <h3>
       This adaptation of the classic Tic-Tac-Toe where players are able to go
       through their previous moves, play against a friend or against the
@@ -33,7 +33,7 @@ const GameDescription = () => (
 const LandingPage = () => (
   <Container>
     <GameDescription />
-    <Container className="landingPageMenu">
+    <Container className="landing-page-menu">
       <SelectionMenu />
     </Container>
   </Container>
