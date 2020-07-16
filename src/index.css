@@ -123,18 +123,18 @@ code {
 }
 
 .landing-page-menu {
+  width: 20%;
+  height: 50vh;
   margin-top: 5%;
-  width: 30vw;
-  height: 40vh;
+  text-align: center;
   background-color: #556174;
   border-radius: 5%;
   border: 1px solid #495464;
-  text-align: center;
   box-shadow: 4px 4px 5px #122338;
 }
 
 .game-selection-header {
-  width: 20vw;
+  margin-top: 5%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-transform: uppercase;
   font-size: 3em;
@@ -144,12 +144,9 @@ code {
 }
 
 .game-selection-menu {
-  width: 20vw;
+  width: 10%;
   display: flex;
-  margin-top: 5%;
-  margin-bottom: 5%;
   flex-direction: column;
-  text-align: center;
 }
 
 .selection-button {
