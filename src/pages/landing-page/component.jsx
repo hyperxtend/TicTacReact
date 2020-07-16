@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 
-import MenuSelection from '../menu-selection';
+import MenuSelection from '../../components/menu-selection';
 
 const LandingPage = () => (
   <Container>
