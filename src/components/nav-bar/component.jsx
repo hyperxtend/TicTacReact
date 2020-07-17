@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
 
+import './component.css';
+
 import { LANDING_PAGE, COMPUTER, PLAYER, SCORE_BOARD } from '../../routes/urls';
 
 const NavigationBar = () => (
