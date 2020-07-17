@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
 import './index.css';
-import VerseComputer from './components/play-against-computer';
+import VerseComputer from './pages/play-against-computer';
 import * as serviceWorker from './serviceWorker';
 import store from './reducers/store';
 

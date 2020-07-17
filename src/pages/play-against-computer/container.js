@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { goToMove, computerMove } from '../../reducers/state-of-game/actions';
 
-import { calculateWinner, setPlayedMoves, getPlayersMoves } from './controller';
+import { calculateWinner, getPlayersMoves } from './controller';
 import PlayAgainstComputer from './component';
 
 export const mapStateToProps = ({
