@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Container } from 'react-bootstrap';
 
-import { COMPUTER, PLAYER, SCORE_BOARD } from '../../routes/urls';
+import { COMPUTER, PLAYER, SCORE_BOARD } from '../../../routes/urls';
 
 const MenuSelection = () => (
   <Container className="game-selection-menu">
