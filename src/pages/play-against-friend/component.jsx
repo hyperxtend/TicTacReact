@@ -2,8 +2,9 @@ import React from 'react';
 import { Container, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-import Board from '../board';
+import Board from '../../components/board';
 
+import './component.css';
 import { determineGameStatus } from './controller';
 
 const Game = ({
@@ -16,8 +17,8 @@ const Game = ({
   winner,
 }) => (
   <Container className="game">
-    <div className="playerMoves">
-      <div className="playerStatus" data-qa="game-status">
+    <div className="player-moves">
+      <div className="player-status" data-qa="game-status">
         {determineGameStatus(winner, moveNumber, xIsNext)}
       </div>
       {previousPlayerMoves.map(({ buttonName, buttonClick }, index) => (
@@ -33,7 +34,7 @@ const Game = ({
         </Button>
       ))}
     </div>
-    <div className="gameBoard">
+    <div className="game-board">
       <Board
         squares={squares}
         onClick={(squareIndex) => {

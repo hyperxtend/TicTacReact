@@ -1,9 +1,14 @@
 import { connect } from 'react-redux';
 
-import { selectSquare, goToMove } from '../../reducers/state-of-game/actions';
+import { selectSquare, goToMove } from '../reducers/state-of-game/actions';
 
-import { getCurrentMovesPlayed, calculateWinner } from './controller';
-import Game from './component';
+import {
+  getCurrentMovesPlayed,
+  calculateWinner,
+} from '../pages/play-against-friend/controller';
+import { getPlayersMoves } from '../pages/play-against-computer/controller';
+import PlayAgainstComputer from '../pages/play-against-computer';
+import PlayAgainstFriend from '../pages/play-against-friend';
 
 export const mapStateToProps = ({
   app: {
@@ -30,6 +35,15 @@ export const mapDispatchToProps = (dispatch) => ({
       dispatch(selectSquare({ squareIndex, currentMovesPlayed }));
     }
   },
+  movesForPlayers: (squareIndex, xIsNext, history, moveNumber) => {
+    const currentMovesPlayed = getPlayersMoves(
+      history,
+      moveNumber,
+      squareIndex,
+      xIsNext
+    );
+    dispatch(computerMove({ squareIndex, currentMovesPlayed }));
+  },
   jumpTo: (step) => dispatch(goToMove(step)),
 });
 
@@ -42,4 +56,15 @@ export const mergeProps = (stateProps, dispatchProps) => ({
   })),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Game);
+export default {
+  PlayAgainstComputer: connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    mergeProps
+  )(PlayAgainstComputer),
+  PlayAgainstFriend: connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    mergeProps
+  )(PlayAgainstFriend),
+};

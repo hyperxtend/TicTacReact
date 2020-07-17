@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import Board from '../../components/board';
 
+import './component.css';
 import { determineGameStatus } from './controller';
 
 const PlayAgainstComputer = ({
