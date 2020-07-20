@@ -14,7 +14,7 @@ export const calculateWinner = (currentlyPlayedMoves) => {
   for (
     let winningCombinationIndex = 0;
     winningCombinationIndex < possibleWinningCombinations.length;
-    winningCombinationIndex++
+    winningCombinationIndex += 1
   ) {
     const [a, b, c] = possibleWinningCombinations[winningCombinationIndex];
     /* If statement checks the 1st winning position in the array
