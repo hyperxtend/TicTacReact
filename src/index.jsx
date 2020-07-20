@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
 import './index.css';
-import VerseComputer from './pages/play-against-computer';
+import PlayAgainstFriend from './pages/play-against-friend';
 import * as serviceWorker from './serviceWorker';
 import store from './reducers/store';
 
@@ -13,7 +13,7 @@ const root = document.getElementById('root');
 
 render(
   <Provider store={store}>
-    <VerseComputer />
+    <PlayAgainstFriend />
   </Provider>,
   root
 );

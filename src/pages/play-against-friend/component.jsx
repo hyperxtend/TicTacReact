@@ -7,7 +7,7 @@ import Board from '../../components/board';
 import './component.css';
 import { determineGameStatus } from './controller';
 
-const Game = ({
+const PlayAgainstFriend = ({
   onSelectSquare,
   squares,
   previousPlayerMoves,
@@ -23,7 +23,7 @@ const Game = ({
       </div>
       {previousPlayerMoves.map(({ buttonName, buttonClick }, index) => (
         <Button
-          className="moveHistory"
+          className="move-history"
           size="sm"
           variant="outline-dark"
           key={`${[index]}-${buttonName}`}
@@ -46,18 +46,18 @@ const Game = ({
   </Container>
 );
 
-Game.propTypes = {
-  onSelectSquare: PropTypes.func,
+PlayAgainstFriend.propTypes = {
+  movesForPlayers: PropTypes.func,
   squares: PropTypes.arrayOf(PropTypes.string),
   xIsNext: PropTypes.bool,
   moveNumber: PropTypes.number,
 };
 
-Game.defaultProps = {
-  onSelectSquare: () => {},
+PlayAgainstFriend.defaultProps = {
+  movesForPlayers: () => {},
   squares: [],
   xIsNext: true,
   moveNumber: 0,
 };
 
-export default Game;
+export default PlayAgainstFriend;
