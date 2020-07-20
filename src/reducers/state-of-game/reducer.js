@@ -23,7 +23,6 @@ export default (state = initialState, action = {}) => {
       };
 
     case COMPUTER_MOVE:
-      console.log('State: ', state);
       return {
         ...state,
         history: [...state.history, action.payload.currentMovesPlayed],
