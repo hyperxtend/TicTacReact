@@ -47,6 +47,14 @@ const PlayAgainstComputer = ({
 );
 
 PlayAgainstComputer.propTypes = {
+  previousPlayerMoves: PropTypes.arrayOf(
+    PropTypes.shape({
+      buttonName: PropTypes.string,
+      buttonClick: PropTypes.func,
+    })
+  ),
+  history: PropTypes.arrayOf(PropTypes.array),
+  winner: PropTypes.string,
   movesForPlayers: PropTypes.func,
   squares: PropTypes.arrayOf(PropTypes.string),
   xIsNext: PropTypes.bool,
@@ -54,6 +62,14 @@ PlayAgainstComputer.propTypes = {
 };
 
 PlayAgainstComputer.defaultProps = {
+  previousPlayerMoves: [
+    {
+      buttonName: 'Restart',
+      buttonClick: () => {},
+    },
+  ],
+  history: [],
+  winner: '',
   movesForPlayers: () => {},
   squares: [],
   xIsNext: true,
