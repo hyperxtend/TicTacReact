@@ -27,7 +27,6 @@ describe('mapDispatchToProps', () => {
 
   it('check if jumpTo function dispatches correct action', () => {
     mapDispatchToProps(dispatch).jumpTo(5);
-    console.log(dispatch.mock.calls[0][0].type);
     expect(dispatch.mock.calls[0][0].type).toEqual('GO_TO_MOVE');
   });
 });
