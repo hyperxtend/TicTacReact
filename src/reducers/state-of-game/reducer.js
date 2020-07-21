@@ -4,6 +4,9 @@ export const initialState = {
   history: [Array(9).fill('')],
   xIsNext: true,
   moveNumber: 0,
+  playerXScore: 0,
+  playerOScore: 0,
+  scoreDraw: 0,
 };
 
 export default (state = initialState, action = {}) => {
@@ -16,6 +19,7 @@ export default (state = initialState, action = {}) => {
         xIsNext: !(action.payload % 2),
       };
     case SELECT_SQUARE:
+      console.log('state', state);
       return {
         ...state,
         history: [...state.history, action.payload.currentMovesPlayed],

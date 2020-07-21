@@ -1,9 +1,10 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 
+import { calculatePlayerScore } from './controller';
 import './component.css';
 
-const ScoreBoard = () => (
+const ScoreBoard = ({ winner }) => (
   <Table className="score-table">
     <thead>
       <tr>
@@ -17,7 +18,7 @@ const ScoreBoard = () => (
     <tbody>
       <tr>
         <th className="score-sub-head">Wins:</th>
-        <td className="scores">0</td>
+        <td className="scores">{calculatePlayerScore(winner)}</td>
         <th className="score-sub-head">Draws:</th>
         <td className="scores">0</td>
         <th className="score-sub-head">Wins:</th>
