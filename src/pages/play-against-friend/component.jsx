@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import './component.css';
 
 import Board from '../../components/board';
+import Scores from '../score-banner';
 
 import { determineGameStatus } from './controller';
 
@@ -17,33 +18,36 @@ const PlayAgainstFriend = ({
   history,
   winner,
 }) => (
-  <Container className="game">
-    <div className="player-moves">
-      <div className="player-status" data-qa="game-status">
-        {determineGameStatus(winner, moveNumber, xIsNext)}
+  <Container>
+    <Scores />
+    <Container className="game">
+      <div className="player-moves">
+        <div className="player-status" data-qa="game-status">
+          {determineGameStatus(winner, moveNumber, xIsNext)}
+        </div>
+        {previousPlayerMoves.map(({ buttonName, buttonClick }, index) => (
+          <Button
+            className="move-history"
+            size="sm"
+            variant="outline-dark"
+            key={`${[index]}-${buttonName}`}
+            onClick={buttonClick}
+            data-qa="reset-to-move-history"
+          >
+            {buttonName}
+          </Button>
+        ))}
       </div>
-      {previousPlayerMoves.map(({ buttonName, buttonClick }, index) => (
-        <Button
-          className="move-history"
-          size="sm"
-          variant="outline-dark"
-          key={`${[index]}-${buttonName}`}
-          onClick={buttonClick}
-          data-qa="reset-to-move-history"
-        >
-          {buttonName}
-        </Button>
-      ))}
-    </div>
-    <div className="game-board">
-      <Board
-        squares={squares}
-        onClick={(squareIndex) => {
-          onSelectSquare(squareIndex, xIsNext, history, moveNumber);
-        }}
-        data-qa="game-board"
-      />
-    </div>
+      <div className="game-board">
+        <Board
+          squares={squares}
+          onClick={(squareIndex) => {
+            onSelectSquare(squareIndex, xIsNext, history, moveNumber);
+          }}
+          data-qa="game-board"
+        />
+      </div>
+    </Container>
   </Container>
 );
 
