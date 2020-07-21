@@ -37,6 +37,7 @@ export const determineGameStatus = (winner, moveNumber, xIsNext) => {
   if (!winner && moveNumber >= 5) {
     return 'Its a Draw!';
   }
+
   return `Next player is ${xIsNext ? 'X' : 'O'}`;
 };
 
