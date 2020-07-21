@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Container } from 'react-bootstrap';
 
-import { COMPUTER, PLAYER, SCORE_BOARD } from '../../../routes/urls';
+import { COMPUTER, FRIEND, SCORE_BOARD } from '../../../routes/urls';
 
 const MenuSelection = () => (
   <Container className="game-selection-menu">
@@ -14,7 +14,7 @@ const MenuSelection = () => (
         VS Computer
       </Button>
     </Link>
-    <Link to={PLAYER}>
+    <Link to={FRIEND}>
       <Button variant="dark" size="lg" className="selection-button">
         VS Friend
       </Button>
