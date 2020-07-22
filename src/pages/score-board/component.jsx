@@ -1,10 +1,20 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 
-import { calculatePlayerScore } from './controller';
+import {
+  handleDrawScore,
+  handlePlayerOScore,
+  handlePlayerXScore,
+} from './controller';
 import './component.css';
 
-const ScoreBoard = ({ winner }) => (
+const ScoreBoard = ({
+  winner,
+  playerXScore,
+  playerOScore,
+  moveNumber,
+  scoreDraw,
+}) => (
   <Table className="score-table">
     <thead>
       <tr>
@@ -18,17 +28,19 @@ const ScoreBoard = ({ winner }) => (
     <tbody>
       <tr>
         <th className="score-sub-head">Wins:</th>
-        <td className="scores">{calculatePlayerScore(winner)}</td>
+        <td className="scores">{handlePlayerXScore(winner, playerXScore)}</td>
         <th className="score-sub-head">Draws:</th>
         <td className="scores">0</td>
         <th className="score-sub-head">Wins:</th>
-        <td className="scores">0</td>
+        <td className="scores">{handlePlayerOScore(winner, playerOScore)}</td>
       </tr>
       <tr>
         <td className="score-sub-head">Average Wins:</td>
         <td className="scores">0%</td>
         <td className="score-sub-head"> </td>
-        <td className="scores"> </td>
+        <td className="scores">
+          {handleDrawScore(winner, moveNumber, scoreDraw)}{' '}
+        </td>
         <td className="score-sub-head"> Average Wins:</td>
         <td className="scores">0%</td>
       </tr>
