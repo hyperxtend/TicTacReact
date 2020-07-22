@@ -11,6 +11,9 @@ describe('reducer', () => {
       history: [['', '', '', '', '', '', '', '', '']],
       xIsNext: true,
       moveNumber: 0,
+      drawScore: 0,
+      playerOScore: 0,
+      playerXScore: 0,
     };
     expect(reducer(undefined, selectSquare)).toStrictEqual(stateValues);
   });
@@ -20,6 +23,9 @@ describe('reducer', () => {
       history: [['', '', '', '', '', '', '', '', '']],
       moveNumber: 0,
       xIsNext: true,
+      drawScore: 0,
+      playerOScore: 0,
+      playerXScore: 0,
     };
     expect(reducer(undefined, goToMove)).toStrictEqual(stateValues);
   });

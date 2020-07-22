@@ -1,20 +1,10 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
-import {
-  handleDrawScore,
-  handlePlayerOScore,
-  handlePlayerXScore,
-} from './controller';
 import './component.css';
 
-const ScoreBoard = ({
-  winner,
-  playerXScore,
-  playerOScore,
-  moveNumber,
-  scoreDraw,
-}) => (
+const ScoreBoard = ({ playerXScore, playerOScore, drawScore }) => (
   <Table className="score-table">
     <thead>
       <tr>
@@ -28,24 +18,34 @@ const ScoreBoard = ({
     <tbody>
       <tr>
         <th className="score-sub-head">Wins:</th>
-        <td className="scores">{handlePlayerXScore(winner, playerXScore)}</td>
+        <td className="scores">{playerXScore}</td>
         <th className="score-sub-head">Draws:</th>
-        <td className="scores">0</td>
+        <td className="scores">{drawScore}</td>
         <th className="score-sub-head">Wins:</th>
-        <td className="scores">{handlePlayerOScore(winner, playerOScore)}</td>
+        <td className="scores">{playerOScore}</td>
       </tr>
       <tr>
         <td className="score-sub-head">Average Wins:</td>
         <td className="scores">0%</td>
         <td className="score-sub-head"> </td>
-        <td className="scores">
-          {handleDrawScore(winner, moveNumber, scoreDraw)}{' '}
-        </td>
+        <td className="scores"> </td>
         <td className="score-sub-head"> Average Wins:</td>
         <td className="scores">0%</td>
       </tr>
     </tbody>
   </Table>
 );
+
+ScoreBoard.propTypes = {
+  playerXScore: PropTypes.number,
+  playerOScore: PropTypes.number,
+  drawScore: PropTypes.number,
+};
+
+ScoreBoard.defaultProps = {
+  playerXScore: 0,
+  playerOScore: 0,
+  drawScore: 0,
+};
 
 export default ScoreBoard;

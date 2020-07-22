@@ -1,4 +1,4 @@
-export const calculateWinner = (currentlyPlayedMoves) => {
+const calculateWinner = (currentlyPlayedMoves) => {
   const possibleWinningCombinations = [
     [0, 1, 2],
     [3, 4, 5],
@@ -29,21 +29,4 @@ export const calculateWinner = (currentlyPlayedMoves) => {
   }
   return undefined;
 };
-
-export const handlePlayerXScore = (winner, playerXScore) => {
-  if (winner === 'X') {
-    return ++playerXScore;
-  }
-};
-
-export const handlePlayerOScore = (winner, playerOScore) => {
-  if (winner === 'O') {
-    return ++playerOScore;
-  }
-};
-
-export const handleDrawScore = (winner, moveNumber, drawScore) => {
-  if (!winner && moveNumber === 9) {
-    return ++drawScore;
-  }
-};
+export default calculateWinner;

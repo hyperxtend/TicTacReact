@@ -3,18 +3,12 @@ import { Table } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import './component.css';
-import {
-  handleDrawScore,
-  handlePlayerOScore,
-  handlePlayerXScore,
-} from './controller';
 
 const PlayerScores = ({
   winner,
-  playerXScore,
-  playerOScore,
-  moveNumber,
-  scoreDraw,
+  setDrawScore,
+  setPlayerXScore,
+  setPlayerOScore,
 }) => (
   <Table className="score-banner">
     <tbody>
@@ -25,19 +19,13 @@ const PlayerScores = ({
       </tr>
       <tr>
         <td className="banner-scores">
-          <span id="player-x-score">
-            {handlePlayerXScore(winner, playerXScore)}
-          </span>
+          <span>{setPlayerXScore(winner)}</span>
         </td>
         <td className="banner-scores">
-          <span id="draw-score">
-            {handlePlayerOScore(winner, playerOScore)}
-          </span>
+          <span>{setDrawScore(winner)}</span>
         </td>
         <td className="banner-scores">
-          <span id="player-o-score">
-            {handleDrawScore(winner, moveNumber, scoreDraw)}
-          </span>
+          <span>{setPlayerOScore(winner)}</span>
         </td>
       </tr>
     </tbody>
@@ -46,16 +34,16 @@ const PlayerScores = ({
 
 PlayerScores.propTypes = {
   winner: PropTypes.string,
-  playerOScore: PropTypes.number,
-  playerXScore: PropTypes.number,
-  scoreDraw: PropTypes.number,
+  setPlayerXScore: PropTypes.func,
+  setPlayerOScore: PropTypes.func,
+  setDrawScore: PropTypes.func,
 };
 
 PlayerScores.defaultProps = {
   winner: '',
-  playerOScore: 0,
-  playerXScore: 0,
-  scoreDraw: 0,
+  setPlayerXScore: () => {},
+  setPlayerOScore: () => {},
+  setDrawScore: () => {},
 };
 
 export default PlayerScores;

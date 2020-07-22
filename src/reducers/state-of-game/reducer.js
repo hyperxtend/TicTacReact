@@ -1,10 +1,4 @@
-import {
-  SELECT_SQUARE,
-  GO_TO_MOVE,
-  SET_X_SCORE,
-  SET_O_SCORE,
-  SET_DRAW_SCORE,
-} from './actions';
+import { SELECT_SQUARE, GO_TO_MOVE } from './actions';
 
 export const initialState = {
   history: [Array(9).fill('')],
@@ -12,7 +6,7 @@ export const initialState = {
   moveNumber: 0,
   playerXScore: 0,
   playerOScore: 0,
-  scoreDraw: 0,
+  drawScore: 0,
 };
 
 export default (state = initialState, action = {}) => {
@@ -30,23 +24,6 @@ export default (state = initialState, action = {}) => {
         history: [...state.history, action.payload.currentMovesPlayed],
         xIsNext: !state.xIsNext,
         moveNumber: state.history.length,
-      };
-
-    case SET_X_SCORE:
-      return {
-        ...state,
-        playerXScore: state.playerXScore + 1,
-      };
-
-    case SET_O_SCORE:
-      return {
-        ...state,
-        playerOScore: state.playerOScore + 1,
-      };
-    case SET_DRAW_SCORE:
-      return {
-        ...state,
-        drawScore: state.drawScore + 1,
       };
 
     default:
