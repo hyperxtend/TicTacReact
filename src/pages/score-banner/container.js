@@ -48,7 +48,7 @@ export const mapDispatchToProps = (dispatch) => ({
     return currentScore;
   },
   scoreForDraw: (currentScore, winner, moveNumber) => {
-    if (winner === undefined && moveNumber === 9) {
+    if (winner === '' && moveNumber === 9) {
       dispatch(setDrawScore(currentScore));
       dispatch(gamesPlayed(currentScore));
     }

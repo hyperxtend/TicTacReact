@@ -61,7 +61,7 @@ export default (state = initialState, action = {}) => {
     case SET_DRAW_SCORE:
       return {
         ...state,
-        winner: undefined,
+        winner: '',
         drawScore: state.drawScore + 1,
       };
 
