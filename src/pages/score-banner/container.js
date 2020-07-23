@@ -7,7 +7,7 @@ import {
 } from '../../reducers/state-of-game/actions';
 
 import ScoreBoard from './component';
-import calculateWinner from './controller';
+import { calculateWinner } from './controller';
 
 export const mapStateToProps = ({
   app: {
@@ -35,34 +35,24 @@ export const mapDispatchToProps = (dispatch) => ({
   scoreForPlayerX: (currentScore, winner) => {
     if (winner === 'X') {
       dispatch(setXScore(currentScore));
+    } else {
+      return currentScore;
     }
   },
-});
-
-export const mergeProps = (stateProps) => ({
-  ...stateProps,
-  setPlayerXScore: (winner) => {
-    if (winner === 'X') {
-      return stateProps.playerXScore + 1;
-    }
-    return stateProps.playerXScore;
-  },
-  setPlayerOScore: (winner) => {
+  scoreForPlayerO: (currentScore, winner) => {
     if (winner === 'O') {
-      return stateProps.playerOScore + 1;
+      dispatch(setOScore(currentScore));
+    } else {
+      return currentScore;
     }
-    return stateProps.playerOScore;
   },
-  setDrawScore: (winner) => {
-    if (!winner && stateProps.moveNumber === 9) {
-      return stateProps.drawScore + 1;
+  scoreForDraw: (currentScore, winner, moveNumber) => {
+    if (!winner && moveNumber === 9) {
+      dispatch(setDrawScore(currentScore));
+    } else {
+      return currentScore;
     }
-    return stateProps.drawScore;
   },
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-  mergeProps
-)(ScoreBoard);
+export default connect(mapStateToProps, mapDispatchToProps)(ScoreBoard);

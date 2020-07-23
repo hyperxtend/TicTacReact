@@ -6,9 +6,13 @@ import './component.css';
 
 const PlayerScores = ({
   winner,
-  setDrawScore,
-  setPlayerXScore,
-  setPlayerOScore,
+  moveNumber,
+  playerXScore,
+  playerOScore,
+  drawScore,
+  scoreForPlayerX,
+  scoreForPlayerO,
+  scoreForDraw,
 }) => (
   <Table className="score-banner">
     <tbody>
@@ -19,13 +23,13 @@ const PlayerScores = ({
       </tr>
       <tr>
         <td className="banner-scores">
-          <span>{setPlayerXScore(winner)}</span>
+          <span>{scoreForPlayerX(playerXScore, winner)}</span>
         </td>
         <td className="banner-scores">
-          <span>{setDrawScore(winner)}</span>
+          <span>{scoreForDraw(drawScore, winner, moveNumber)}</span>
         </td>
         <td className="banner-scores">
-          <span>{setPlayerOScore(winner)}</span>
+          <span>{scoreForPlayerO(playerOScore, winner)}</span>
         </td>
       </tr>
     </tbody>
@@ -34,16 +38,24 @@ const PlayerScores = ({
 
 PlayerScores.propTypes = {
   winner: PropTypes.string,
-  setPlayerXScore: PropTypes.func,
-  setPlayerOScore: PropTypes.func,
-  setDrawScore: PropTypes.func,
+  moveNumber: PropTypes.number,
+  playerXScore: PropTypes.number,
+  playerOScore: PropTypes.number,
+  drawScore: PropTypes.number,
+  scoreForPlayerX: PropTypes.func,
+  scoreForPlayerO: PropTypes.func,
+  scoreForDraw: PropTypes.func,
 };
 
 PlayerScores.defaultProps = {
   winner: '',
-  setPlayerXScore: () => {},
-  setPlayerOScore: () => {},
-  setDrawScore: () => {},
+  moveNumber: 0,
+  playerXScore: 0,
+  playerOScore: 0,
+  drawScore: 0,
+  scoreForPlayerX: () => {},
+  scoreForPlayerO: () => {},
+  scoreForDraw: () => {},
 };
 
 export default PlayerScores;
