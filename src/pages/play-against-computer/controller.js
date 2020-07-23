@@ -34,7 +34,7 @@ export const determineGameStatus = (winner, moveNumber, xIsNext) => {
   if (winner) {
     return `${winner} is the Winner!`;
   }
-  if (!winner && moveNumber >= 5) {
+  if (!winner && moveNumber > 5) {
     return 'Its a Draw!';
   }
 

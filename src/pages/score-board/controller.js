@@ -35,5 +35,5 @@ export const calculateWinningAverage = (gamesPlayed, currentScoreOfPlayer) => {
   if (isNaN(averageWinningRate) === true) {
     return 0;
   }
-  return averageWinningRate;
+  return averageWinningRate.toFixed(0);
 };
