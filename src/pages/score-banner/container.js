@@ -1,5 +1,11 @@
 import { connect } from 'react-redux';
 
+import {
+  setDrawScore,
+  setXScore,
+  setOScore,
+} from '../../reducers/state-of-game/actions';
+
 import ScoreBoard from './component';
 import calculateWinner from './controller';
 
@@ -25,6 +31,14 @@ export const mapStateToProps = ({
   winner: calculateWinner(history[moveNumber]),
 });
 
+export const mapDispatchToProps = (dispatch) => ({
+  scoreForPlayerX: (currentScore, winner) => {
+    if (winner === 'X') {
+      dispatch(setXScore(currentScore));
+    }
+  },
+});
+
 export const mergeProps = (stateProps) => ({
   ...stateProps,
   setPlayerXScore: (winner) => {
@@ -47,4 +61,8 @@ export const mergeProps = (stateProps) => ({
   },
 });
 
-export default connect(mapStateToProps, null, mergeProps)(ScoreBoard);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  mergeProps
+)(ScoreBoard);
