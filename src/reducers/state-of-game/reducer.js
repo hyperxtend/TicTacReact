@@ -1,11 +1,10 @@
-import { SELECT_SQUARE, GO_TO_MOVE } from './actions';
+import { SELECT_SQUARE, COMPUTER_MOVE, GO_TO_MOVE } from './actions';
 
 export const initialState = {
   history: [Array(9).fill('')],
   xIsNext: true,
   moveNumber: 0,
 };
-
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case GO_TO_MOVE:
@@ -23,6 +22,13 @@ export default (state = initialState, action = {}) => {
         moveNumber: state.history.length,
       };
 
+    case COMPUTER_MOVE:
+      return {
+        ...state,
+        history: [...state.history, action.payload.currentMovesPlayed],
+        xIsNext: state.xIsNext,
+        moveNumber: state.history.length,
+      };
     default:
       return state;
   }

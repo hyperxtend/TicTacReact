@@ -7,8 +7,8 @@ import Board from '../../components/board';
 import './component.css';
 import { determineGameStatus } from './controller';
 
-const PlayAgainstFriend = ({
-  onSelectSquare,
+const PlayAgainstComputer = ({
+  movesForPlayers,
   squares,
   previousPlayerMoves,
   moveNumber,
@@ -38,7 +38,7 @@ const PlayAgainstFriend = ({
       <Board
         squares={squares}
         onClick={(squareIndex) => {
-          onSelectSquare(squareIndex, xIsNext, history, moveNumber);
+          movesForPlayers(squareIndex, xIsNext, history, moveNumber);
         }}
         data-qa="game-board"
       />
@@ -46,34 +46,34 @@ const PlayAgainstFriend = ({
   </Container>
 );
 
-PlayAgainstFriend.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.array),
-  onSelectSquare: PropTypes.func,
+PlayAgainstComputer.propTypes = {
   previousPlayerMoves: PropTypes.arrayOf(
     PropTypes.shape({
       buttonName: PropTypes.string,
       buttonClick: PropTypes.func,
     })
   ),
+  history: PropTypes.arrayOf(PropTypes.array),
   winner: PropTypes.string,
+  movesForPlayers: PropTypes.func,
   squares: PropTypes.arrayOf(PropTypes.string),
   xIsNext: PropTypes.bool,
   moveNumber: PropTypes.number,
 };
 
-PlayAgainstFriend.defaultProps = {
-  history: [],
-  onSelectSquare: () => {},
+PlayAgainstComputer.defaultProps = {
   previousPlayerMoves: [
     {
       buttonName: 'Restart',
       buttonClick: () => {},
     },
   ],
+  history: [],
   winner: '',
+  movesForPlayers: () => {},
   squares: [],
   xIsNext: true,
   moveNumber: 0,
 };
 
-export default PlayAgainstFriend;
+export default PlayAgainstComputer;
