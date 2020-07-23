@@ -1,6 +1,7 @@
 import {
   SELECT_SQUARE,
   GO_TO_MOVE,
+  COMPUTER_MOVE,
   SET_X_SCORE,
   SET_O_SCORE,
   SET_DRAW_SCORE,
@@ -41,6 +42,13 @@ export default (state = initialState, action = {}) => {
         ...state,
         winner: 'X',
         playerXScore: state.playerXScore + 1,
+      };
+    case COMPUTER_MOVE:
+      return {
+        ...state,
+        history: [...state.history, action.payload.currentMovesPlayed],
+        xIsNext: state.xIsNext,
+        moveNumber: state.history.length,
       };
 
     case SET_O_SCORE:
