@@ -1,5 +1,5 @@
 import reducer, { initialState } from './reducer';
-import { selectSquare, goToMove, computerMove } from './actions';
+import { goToMove } from './actions';
 
 describe('reducer', () => {
   it('checks initial state', () => {
@@ -13,20 +13,27 @@ describe('reducer', () => {
         ['X', '', '', '', '', '', '', '', ''],
         ['X', '', '', '', '', 'O', '', '', ''],
       ],
-      xIsNext: false,
+      xIsNext: true,
       moveNumber: 2,
+    };
+    const mockSelectSquare = {
+      payload: {
+        squareIndex: 2,
+        currentMovesPlayed: ['X', '', 'X', '', '', 'O', '', '', ''],
+      },
+      type: 'SELECT_SQUARE',
     };
     const expected = {
       history: [
         Array(9).fill(''),
         ['X', '', '', '', '', '', '', '', ''],
         ['X', '', '', '', '', 'O', '', '', ''],
-        undefined,
+        ['X', '', 'X', '', '', 'O', '', '', ''],
       ],
-      xIsNext: true,
+      xIsNext: false,
       moveNumber: 3,
     };
-    expect(reducer(stateValues, selectSquare(3))).toEqual(expected);
+    expect(reducer(stateValues, mockSelectSquare)).toStrictEqual(expected);
   });
 
   it('checks state of reducer for GO_TO_MOVE action', () => {
@@ -51,26 +58,29 @@ describe('reducer', () => {
     const stateValues = {
       history: [
         Array(9).fill(''),
-        ['X', '', '', '', '', '', '', '', ''],
         ['X', '', '', '', '', 'O', '', '', ''],
-        ['X', '', '', 'X', '', 'O', '', '', ''],
         ['X', 'O', '', 'X', '', 'O', '', '', ''],
       ],
-      moveNumber: 4,
+      moveNumber: 3,
       xIsNext: true,
+    };
+    const mockComputerMove = {
+      payload: {
+        squareIndex: 4,
+        currentMovesPlayed: ['X', 'O', '', 'X', 'X', 'O', '', 'O', ''],
+      },
+      type: 'COMPUTER_MOVE',
     };
     const expected = {
       history: [
         Array(9).fill(''),
-        ['X', '', '', '', '', '', '', '', ''],
         ['X', '', '', '', '', 'O', '', '', ''],
-        ['X', '', '', 'X', '', 'O', '', '', ''],
         ['X', 'O', '', 'X', '', 'O', '', '', ''],
-        undefined,
+        ['X', 'O', '', 'X', 'X', 'O', '', 'O', ''],
       ],
-      moveNumber: 5,
+      moveNumber: 3,
       xIsNext: true,
     };
-    expect(reducer(stateValues, computerMove(5))).toStrictEqual(expected);
+    expect(reducer(stateValues, mockComputerMove)).toStrictEqual(expected);
   });
 });
