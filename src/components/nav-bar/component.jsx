@@ -4,7 +4,7 @@ import { Navbar } from 'react-bootstrap';
 
 import './component.css';
 
-import { LANDING_PAGE, COMPUTER, PLAYER, SCORE_BOARD } from '../../routes/urls';
+import { LANDING_PAGE, COMPUTER, FRIEND, SCORE_BOARD } from '../../routes/urls';
 
 const NavigationBar = () => (
   <Navbar className="navigation-bar">
@@ -14,7 +14,7 @@ const NavigationBar = () => (
     <NavLink className="nav-link" to={COMPUTER}>
       VS Computer
     </NavLink>
-    <NavLink className="nav-link" to={PLAYER}>
+    <NavLink className="nav-link" to={FRIEND}>
       VS Friend
     </NavLink>
     <NavLink className="nav-link" to={SCORE_BOARD}>

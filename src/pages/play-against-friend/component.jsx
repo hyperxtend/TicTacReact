@@ -2,11 +2,10 @@ import React from 'react';
 import { Container, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-import './component.css';
-
 import Board from '../../components/board';
 import Scores from '../score-banner';
 
+import './component.css';
 import { determineGameStatus } from './controller';
 
 const PlayAgainstFriend = ({
@@ -53,7 +52,6 @@ const PlayAgainstFriend = ({
 
 PlayAgainstFriend.propTypes = {
   history: PropTypes.arrayOf(PropTypes.array),
-  moveNumber: PropTypes.number,
   onSelectSquare: PropTypes.func,
   previousPlayerMoves: PropTypes.arrayOf(
     PropTypes.shape({
@@ -61,14 +59,14 @@ PlayAgainstFriend.propTypes = {
       buttonClick: PropTypes.func,
     })
   ),
-  squares: PropTypes.arrayOf(PropTypes.string),
   winner: PropTypes.string,
+  squares: PropTypes.arrayOf(PropTypes.string),
   xIsNext: PropTypes.bool,
+  moveNumber: PropTypes.number,
 };
 
 PlayAgainstFriend.defaultProps = {
   history: [],
-  moveNumber: 0,
   onSelectSquare: () => {},
   previousPlayerMoves: [
     {
@@ -76,9 +74,10 @@ PlayAgainstFriend.defaultProps = {
       buttonClick: () => {},
     },
   ],
-  squares: [],
   winner: '',
+  squares: [],
   xIsNext: true,
+  moveNumber: 0,
 };
 
 export default PlayAgainstFriend;

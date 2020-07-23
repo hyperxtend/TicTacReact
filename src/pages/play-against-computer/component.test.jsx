@@ -2,35 +2,29 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { select } from 'qa-utilities';
 
-import PlayAgainstFriend from './component';
+import PlayAgainstComputer from './component';
 
-describe('<PlayAgainstFriend/>', () => {
+describe('<PlayAgainstComputer/>', () => {
   let wrapper;
-  let onSelectSquare;
+  let movesForPlayers;
   let squares;
   let previousPlayerMoves;
   let playerX;
 
   beforeAll(() => {
-    onSelectSquare = jest.fn();
+    movesForPlayers = jest.fn();
     playerX = 'Next player is X';
-    squares = ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'];
+    squares = ['X', '', 'O', 'X', '', 'O', 'O', '', 'X'];
     previousPlayerMoves = [
       { buttonName: 'Test button 1', buttonClick: jest.fn() },
       { buttonName: 'Test button 2', buttonClick: jest.fn() },
       { buttonName: 'Test button 3', buttonClick: jest.fn() },
       { buttonName: 'Test button 4', buttonClick: jest.fn() },
-      { buttonName: 'Test button 5', buttonClick: jest.fn() },
-      { buttonName: 'Test button 6', buttonClick: jest.fn() },
-      { buttonName: 'Test button 7', buttonClick: jest.fn() },
-      { buttonName: 'Test button 8', buttonClick: jest.fn() },
-      { buttonName: 'Test button 9', buttonClick: jest.fn() },
-      { buttonName: 'Test button 10', buttonClick: jest.fn() },
     ];
 
     wrapper = shallow(
-      <PlayAgainstFriend
-        onSelectSquare={onSelectSquare}
+      <PlayAgainstComputer
+        movesForPlayers={movesForPlayers}
         squares={squares}
         previousPlayerMoves={previousPlayerMoves}
       />
@@ -39,7 +33,7 @@ describe('<PlayAgainstFriend/>', () => {
 
   it('checks initial game status rendering', () => {
     const nextPlayer = wrapper
-      .find('div.player-status')
+      .find(select('game-status'))
       .children()
       .first()
       .text();
@@ -47,6 +41,6 @@ describe('<PlayAgainstFriend/>', () => {
   });
 
   it('renders move history buttons', () => {
-    expect(wrapper.find(select('reset-to-move-history')).length).toBe(10);
+    expect(wrapper.find(select('reset-to-move-history')).length).toBe(4);
   });
 });
