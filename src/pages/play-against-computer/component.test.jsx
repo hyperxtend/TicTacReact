@@ -33,7 +33,7 @@ describe('<PlayAgainstComputer/>', () => {
 
   it('checks initial game status rendering', () => {
     const nextPlayer = wrapper
-      .find('div.player-status')
+      .find(select('game-status'))
       .children()
       .first()
       .text();
