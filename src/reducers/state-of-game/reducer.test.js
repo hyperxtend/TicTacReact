@@ -14,6 +14,8 @@ describe('reducer', () => {
       drawScore: 0,
       playerOScore: 0,
       playerXScore: 0,
+      gamesPlayed: 0,
+      winner: '',
     };
     expect(reducer(undefined, selectSquare)).toStrictEqual(stateValues);
   });
@@ -26,6 +28,8 @@ describe('reducer', () => {
       drawScore: 0,
       playerOScore: 0,
       playerXScore: 0,
+      gamesPlayed: 0,
+      winner: '',
     };
     expect(reducer(undefined, goToMove)).toStrictEqual(stateValues);
   });
