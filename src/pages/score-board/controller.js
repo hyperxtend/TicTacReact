@@ -1,4 +1,4 @@
-const calculateWinner = (currentlyPlayedMoves) => {
+export const calculateWinner = (currentlyPlayedMoves) => {
   const possibleWinningCombinations = [
     [0, 1, 2],
     [3, 4, 5],
@@ -30,4 +30,10 @@ const calculateWinner = (currentlyPlayedMoves) => {
   return undefined;
 };
 
-export default calculateWinner;
+export const calculateWinningAverage = (gamesPlayed, currentScoreOfPlayer) => {
+  const averageWinningRate = (currentScoreOfPlayer / gamesPlayed) * (100 / 1);
+  if (isNaN(averageWinningRate) === true) {
+    return 0;
+  }
+  return averageWinningRate;
+};

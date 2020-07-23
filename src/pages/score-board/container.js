@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import ScoreBoard from './component';
-import calculateWinner from './controller';
+import { calculateWinner } from './controller';
 
 export const mapStateToProps = ({
   app: {
@@ -12,6 +12,7 @@ export const mapStateToProps = ({
       playerXScore,
       playerOScore,
       drawScore,
+      gamesPlayed,
     },
   },
 }) => ({
@@ -21,6 +22,7 @@ export const mapStateToProps = ({
   playerXScore,
   playerOScore,
   drawScore,
+  gamesPlayed,
   squares: history[moveNumber],
   winner: calculateWinner(history[moveNumber]),
 });

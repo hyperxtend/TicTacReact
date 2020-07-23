@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 
 import './component.css';
 
-const ScoreBoard = ({ playerXScore, playerOScore, drawScore }) => (
+import { calculateWinningAverage } from './controller';
+
+const ScoreBoard = ({ playerXScore, playerOScore, drawScore, gamesPlayed }) => (
   <Table className="score-table">
     <thead>
       <tr>
@@ -25,12 +27,16 @@ const ScoreBoard = ({ playerXScore, playerOScore, drawScore }) => (
         <td className="scores">{playerOScore}</td>
       </tr>
       <tr>
-        <td className="score-sub-head">Average Wins:</td>
-        <td className="scores">0%</td>
+        <td className="score-sub-head">Winning Rate:</td>
+        <td className="scores">
+          {calculateWinningAverage(gamesPlayed, playerXScore)}%
+        </td>
         <td className="score-sub-head"> </td>
         <td className="scores"> </td>
-        <td className="score-sub-head"> Average Wins:</td>
-        <td className="scores">0%</td>
+        <td className="score-sub-head">Winning Rate:</td>
+        <td className="scores">
+          {calculateWinningAverage(gamesPlayed, playerOScore)}%
+        </td>
       </tr>
     </tbody>
   </Table>
@@ -40,12 +46,14 @@ ScoreBoard.propTypes = {
   playerXScore: PropTypes.number,
   playerOScore: PropTypes.number,
   drawScore: PropTypes.number,
+  gamesPlayed: PropTypes.number,
 };
 
 ScoreBoard.defaultProps = {
   playerXScore: 0,
   playerOScore: 0,
   drawScore: 0,
+  gamesPlayed: 0,
 };
 
 export default ScoreBoard;
