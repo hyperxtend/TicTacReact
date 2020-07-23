@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import './component.css';
 
-const PlayerScores = ({
+const ScoreBanner = ({
   winner,
   moveNumber,
   playerXScore,
@@ -36,7 +36,7 @@ const PlayerScores = ({
   </Table>
 );
 
-PlayerScores.propTypes = {
+ScoreBanner.propTypes = {
   winner: PropTypes.string,
   moveNumber: PropTypes.number,
   playerXScore: PropTypes.number,
@@ -47,7 +47,7 @@ PlayerScores.propTypes = {
   scoreForDraw: PropTypes.func,
 };
 
-PlayerScores.defaultProps = {
+ScoreBanner.defaultProps = {
   winner: '',
   moveNumber: 0,
   playerXScore: 0,
@@ -58,4 +58,4 @@ PlayerScores.defaultProps = {
   scoreForDraw: () => {},
 };
 
-export default PlayerScores;
+export default ScoreBanner;

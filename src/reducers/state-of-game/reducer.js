@@ -4,15 +4,18 @@ import {
   SET_X_SCORE,
   SET_O_SCORE,
   SET_DRAW_SCORE,
+  GAMES_PLAYED,
 } from './actions';
 
 export const initialState = {
   history: [Array(9).fill('')],
   xIsNext: true,
+  winner: '',
   moveNumber: 0,
   playerXScore: 0,
   playerOScore: 0,
   drawScore: 0,
+  gamesPlayed: 0,
 };
 
 export default (state = initialState, action = {}) => {
@@ -24,6 +27,7 @@ export default (state = initialState, action = {}) => {
         moveNumber: action.payload,
         xIsNext: !(action.payload % 2),
       };
+
     case SELECT_SQUARE:
       return {
         ...state,
@@ -31,20 +35,38 @@ export default (state = initialState, action = {}) => {
         xIsNext: !state.xIsNext,
         moveNumber: state.history.length,
       };
+
     case SET_X_SCORE:
       return {
         ...state,
+        winner: 'X',
         playerXScore: state.playerXScore + 1,
       };
+
     case SET_O_SCORE:
       return {
         ...state,
+        winner: 'O',
         playerOScore: state.playerOScore + 1,
       };
+
     case SET_DRAW_SCORE:
       return {
         ...state,
+        winner: undefined,
         drawScore: state.drawScore + 1,
+      };
+
+    case GAMES_PLAYED:
+      return {
+        ...state,
+        history: [Array(9).fill('')],
+        xIsNext: true,
+        winner: '',
+        moveNumber: 0,
+        playerXScore: state.playerXScore,
+        playerOScore: state.playerOScore,
+        gamesPlayed: state.gamesPlayed + 1,
       };
 
     default:

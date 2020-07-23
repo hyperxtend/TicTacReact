@@ -4,9 +4,10 @@ import {
   setDrawScore,
   setXScore,
   setOScore,
+  gamesPlayed,
 } from '../../reducers/state-of-game/actions';
 
-import ScoreBoard from './component';
+import ScoreBanner from './component';
 import { calculateWinner } from './controller';
 
 export const mapStateToProps = ({
@@ -35,24 +36,24 @@ export const mapDispatchToProps = (dispatch) => ({
   scoreForPlayerX: (currentScore, winner) => {
     if (winner === 'X') {
       dispatch(setXScore(currentScore));
-    } else {
-      return currentScore;
+      dispatch(gamesPlayed(currentScore));
     }
+    return currentScore;
   },
   scoreForPlayerO: (currentScore, winner) => {
     if (winner === 'O') {
       dispatch(setOScore(currentScore));
-    } else {
-      return currentScore;
+      dispatch(gamesPlayed(currentScore));
     }
+    return currentScore;
   },
   scoreForDraw: (currentScore, winner, moveNumber) => {
-    if (!winner && moveNumber === 9) {
+    if (winner === undefined && moveNumber === 9) {
       dispatch(setDrawScore(currentScore));
-    } else {
-      return currentScore;
+      dispatch(gamesPlayed(currentScore));
     }
+    return currentScore;
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ScoreBoard);
+export default connect(mapStateToProps, mapDispatchToProps)(ScoreBanner);
