@@ -13,7 +13,7 @@ const ScoreBoard = ({
   gamesPlayed,
   resetGameState,
 }) => (
-  <Table className="score-table">
+  <Table className="score-table" data-qa="score-table">
     <thead>
       <tr>
         <th className="score-head">Player X</th>
@@ -26,37 +26,44 @@ const ScoreBoard = ({
     <tbody>
       <tr>
         <th className="score-sub-head">Wins:</th>
-        <td className="scores">{playerXScore}</td>
+        <td className="scores" data-qa="player-x-score">
+          {playerXScore}
+        </td>
         <th className="score-sub-head">Draws:</th>
-        <td className="scores">{drawScore}</td>
+        <td className="scores" data-qa="score-for-draw">
+          {drawScore}
+        </td>
         <th className="score-sub-head">Wins:</th>
-        <td className="scores">{playerOScore}</td>
+        <td className="scores" data-qa="player-o-score">
+          {playerOScore}
+        </td>
       </tr>
       <tr>
         <td className="score-sub-head">Winning Rate:</td>
-        <td className="scores">
+        <td className="scores" data-qa="winning-rate-player-x">
           {calculateWinningAverage(gamesPlayed, playerXScore)}%
         </td>
         <td className="score-sub-head"> </td>
         <td className="scores"> </td>
         <td className="score-sub-head">Winning Rate:</td>
-        <td className="scores">
+        <td className="scores" data-qa="winning-rate-player-o">
           {calculateWinningAverage(gamesPlayed, playerOScore)}%
         </td>
       </tr>
       <tr>
-        <td colSpan={2}> </td>
+        <td colSpan={3}> </td>
         <td>
           <Button
-            variant="outline-dark"
+            variant="warning"
             size="lg"
             className="rest-button"
+            data-qa="rest-button"
             onClick={(actionPayload) => resetGameState(actionPayload)}
           >
             Reset Stats
           </Button>
         </td>
-        <td colSpan={2}> </td>
+        <td colSpan={3}> </td>
       </tr>
     </tbody>
   </Table>

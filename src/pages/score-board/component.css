@@ -1,8 +1,9 @@
 .score-table {
-  width: 70vw;
+  width: 50vw;
   height: 50vh;
   margin: 0 auto;
   padding: 0;
+
   margin-top: 10%;
   justify-content: center;
   text-align: center;
@@ -11,6 +12,7 @@
 
 th,
 td {
+  margin: 2%;
   vertical-align: middle;
   border-top: none;
 }
@@ -27,6 +29,5 @@ td {
 }
 
 .scores {
-  text-align: left;
   font-size: 1.8rem;
 }
