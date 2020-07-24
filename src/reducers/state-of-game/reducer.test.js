@@ -1,6 +1,5 @@
 import reducer, { initialState } from './reducer';
 import {
-  selectSquare,
   goToMove,
   setXScore,
   setOScore,
@@ -25,7 +24,64 @@ describe('reducer', () => {
       gamesPlayed: 0,
       winner: '',
     };
-    expect(reducer(undefined, selectSquare)).toStrictEqual(stateValues);
+    const mockSelectSquare = {
+      payload: {
+        squareIndex: 1,
+        currentMovesPlayed: ['', 'X', '', '', '', '', '', '', ''],
+      },
+      type: 'SELECT_SQUARE',
+    };
+    const expected = {
+      history: [Array(9).fill(''), ['', 'X', '', '', '', '', '', '', '']],
+      xIsNext: false,
+      moveNumber: 1,
+      drawScore: 0,
+      playerOScore: 0,
+      playerXScore: 0,
+      gamesPlayed: 0,
+      winner: '',
+    };
+    expect(reducer(stateValues, mockSelectSquare)).toStrictEqual(expected);
+  });
+
+  it('checks state of reducer for COMPUTER_MOVE action', () => {
+    const stateValues = {
+      history: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', 'O', '', '', ''],
+        ['X', 'O', 'X', '', '', 'O', '', '', ''],
+      ],
+      xIsNext: true,
+      winner: '',
+      moveNumber: 2,
+      playerXScore: 0,
+      playerOScore: 0,
+      drawScore: 0,
+      gamesPlayed: 0,
+    };
+    const mockComputerMove = {
+      payload: {
+        squareIndex: 3,
+        currentMovesPlayed: ['X', 'O', 'X', 'X', '', 'O', 'O', '', ''],
+      },
+      type: 'COMPUTER_MOVE',
+    };
+    const expected = {
+      history: [
+        ['', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', '', 'O', '', '', ''],
+        ['X', 'O', 'X', '', '', 'O', '', '', ''],
+        ['X', 'O', 'X', 'X', '', 'O', 'O', '', ''],
+      ],
+      xIsNext: true,
+      winner: '',
+      moveNumber: 3,
+      playerXScore: 0,
+      playerOScore: 0,
+      drawScore: 0,
+      gamesPlayed: 0,
+    };
+    expect(reducer(stateValues, mockComputerMove)).toStrictEqual(expected);
   });
 
   it('checks state of reducer for GO_TO_MOVE action', () => {
