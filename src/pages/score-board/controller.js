@@ -32,7 +32,7 @@ export const calculateWinner = (currentlyPlayedMoves) => {
 
 export const calculateWinningAverage = (gamesPlayed, currentScoreOfPlayer) => {
   const averageWinningRate = (currentScoreOfPlayer / gamesPlayed) * (100 / 1);
-  if (isNaN(averageWinningRate) === true) {
+  if (Number.isNaN(averageWinningRate) === true) {
     return 0;
   }
   return averageWinningRate.toFixed(0);
