@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 
+import { restState } from '../../reducers/state-of-game/actions';
+
 import ScoreBoard from './component';
 import { calculateWinner } from './controller';
 
@@ -27,4 +29,8 @@ export const mapStateToProps = ({
   winner: calculateWinner(history[moveNumber]),
 });
 
-export default connect(mapStateToProps)(ScoreBoard);
+const mapDispatchToProps = (dispatch) => ({
+  resetGameState: (actionPayload) => dispatch(restState(actionPayload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ScoreBoard);

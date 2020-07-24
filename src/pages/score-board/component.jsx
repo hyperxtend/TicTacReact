@@ -1,12 +1,18 @@
 import React from 'react';
-import { Table } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import './component.css';
 
 import { calculateWinningAverage } from './controller';
 
-const ScoreBoard = ({ playerXScore, playerOScore, drawScore, gamesPlayed }) => (
+const ScoreBoard = ({
+  playerXScore,
+  playerOScore,
+  drawScore,
+  gamesPlayed,
+  resetGameState,
+}) => (
   <Table className="score-table">
     <thead>
       <tr>
@@ -38,6 +44,20 @@ const ScoreBoard = ({ playerXScore, playerOScore, drawScore, gamesPlayed }) => (
           {calculateWinningAverage(gamesPlayed, playerOScore)}%
         </td>
       </tr>
+      <tr>
+        <td colSpan={2}> </td>
+        <td>
+          <Button
+            variant="outline-dark"
+            size="lg"
+            className="rest-button"
+            onClick={(actionPayload) => resetGameState(actionPayload)}
+          >
+            Reset Stats
+          </Button>
+        </td>
+        <td colSpan={2}> </td>
+      </tr>
     </tbody>
   </Table>
 );
@@ -47,6 +67,7 @@ ScoreBoard.propTypes = {
   playerOScore: PropTypes.number,
   drawScore: PropTypes.number,
   gamesPlayed: PropTypes.number,
+  resetGameState: PropTypes.func,
 };
 
 ScoreBoard.defaultProps = {
@@ -54,6 +75,7 @@ ScoreBoard.defaultProps = {
   playerOScore: 0,
   drawScore: 0,
   gamesPlayed: 0,
+  resetGameState: () => {},
 };
 
 export default ScoreBoard;
