@@ -38,18 +38,18 @@ export default (state = initialState, action = {}) => {
         moveNumber: state.history.length,
       };
 
-    case SET_X_SCORE:
-      return {
-        ...state,
-        winner: 'X',
-        playerXScore: state.playerXScore + 1,
-      };
     case COMPUTER_MOVE:
       return {
         ...state,
         history: [...state.history, action.payload.currentMovesPlayed],
         xIsNext: state.xIsNext,
         moveNumber: state.history.length,
+      };
+    case SET_X_SCORE:
+      return {
+        ...state,
+        winner: 'X',
+        playerXScore: state.playerXScore + 1,
       };
 
     case SET_O_SCORE:
@@ -77,6 +77,7 @@ export default (state = initialState, action = {}) => {
         playerOScore: state.playerOScore,
         gamesPlayed: state.gamesPlayed + 1,
       };
+
     case REST_STATE:
       return initialState;
 
