@@ -62,6 +62,12 @@ export const getPlayersMoves = (history, moveNumber, squareIndex, xIsNext) => {
         currentSquaresPlayed[nextAvailableIndex] = 'O';
         return currentSquaresPlayed;
       }
+      if ((currentSquaresPlayed[randomIndex] === 'O') === true) {
+        currentSquaresPlayed[randomIndex] = 'O';
+        const nextAvailableIndex = currentSquaresPlayed.indexOf('');
+        currentSquaresPlayed[nextAvailableIndex] = 'O';
+        return currentSquaresPlayed;
+      }
       currentSquaresPlayed[randomIndex] = 'O';
     }
   }
