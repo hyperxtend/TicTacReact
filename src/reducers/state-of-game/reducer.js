@@ -6,7 +6,7 @@ import {
   SET_O_SCORE,
   SET_DRAW_SCORE,
   GAMES_PLAYED,
-  REST_STATE,
+  RESET_STATE,
 } from './actions';
 
 export const initialState = {
@@ -78,7 +78,7 @@ export default (state = initialState, action = {}) => {
         gamesPlayed: state.gamesPlayed + 1,
       };
 
-    case REST_STATE:
+    case RESET_STATE:
       return initialState;
 
     default:

@@ -8,7 +8,7 @@ import {
 } from '../../reducers/state-of-game/actions';
 
 import ScoreBanner from './component';
-import { calculateWinner } from './controller';
+import calculateWinner from './controller';
 
 export const mapStateToProps = ({
   app: {

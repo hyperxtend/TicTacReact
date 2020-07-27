@@ -5,7 +5,7 @@ import {
   setOScore,
   setDrawScore,
   gamesPlayed,
-  restState,
+  resetState,
 } from './actions';
 
 describe('reducer', () => {
@@ -296,6 +296,6 @@ describe('reducer', () => {
       winner: 'X',
       xIsNext: false,
     };
-    expect(reducer(stateValues, restState(1))).toStrictEqual(initialState);
+    expect(reducer(stateValues, resetState(1))).toStrictEqual(initialState);
   });
 });

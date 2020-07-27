@@ -103,16 +103,44 @@ describe('getPlayerMoves', () => {
     const xIsNext = true;
     const history = [
       Array(9).fill(''),
-      ['X', '', '', '', '', '', '', '', ''],
       ['X', '', '', '', '', 'O', '', '', ''],
-      ['X', '', '', 'X', '', 'O', '', '', ''],
       ['X', 'O', '', 'X', '', 'O', '', '', ''],
-      ['X', 'O', 'X', 'X', '', 'O', '', '', ''],
-      ['X', 'O', 'X', 'X', '', 'O', '', 'X', ''],
       ['X', 'O', 'X', 'X', '', 'O', '', 'X', 'O'],
     ];
-    const moveNumber = 7;
+    const moveNumber = 3;
     const expected = ['X', 'O', 'X', 'X', 'X', 'O', 'O', 'X', 'O'];
+    expect(getPlayersMoves(history, moveNumber, squareIndex, xIsNext)).toEqual(
+      expected
+    );
+  });
+
+  it('checks result if computer chooses a square computer already chose', () => {
+    const squareIndex = 4;
+    const xIsNext = true;
+    const history = [
+      Array(9).fill(''),
+      ['X', '', '', '', '', 'O', '', '', ''],
+      ['X', 'O', '', 'X', '', 'O', '', '', ''],
+      ['X', 'O', 'X', 'X', '', 'O', '', 'X', 'O'],
+    ];
+    const moveNumber = 3;
+    const expected = ['X', 'O', 'X', 'X', 'X', 'O', 'O', 'X', 'O'];
+    expect(getPlayersMoves(history, moveNumber, squareIndex, xIsNext)).toEqual(
+      expected
+    );
+  });
+
+  it('checks if array of empty strings is return after winner is declared', () => {
+    const squareIndex = 4;
+    const xIsNext = true;
+    const history = [
+      Array(9).fill(''),
+      ['X', '', '', '', '', 'O', '', '', ''],
+      ['X', 'O', '', '', 'X', 'O', '', '', ''],
+      ['X', 'O', 'O', '', 'X', 'O', '', '', 'X'],
+    ];
+    const moveNumber = 3;
+    const expected = Array(9).fill('');
     expect(getPlayersMoves(history, moveNumber, squareIndex, xIsNext)).toEqual(
       expected
     );
