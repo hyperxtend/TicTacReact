@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 
 import { resetState } from '../../reducers/state-of-game/actions';
+import calculateWinner from '../../utils';
 
 import ScoreBoard from './component';
-import { calculateWinner } from './controller';
 
 export const mapStateToProps = ({
   app: {

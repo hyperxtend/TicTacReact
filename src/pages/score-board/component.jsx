@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import './component.css';
 
-import { calculateWinningAverage } from './controller';
+import calculateWinningAverage from './controller';
 
 const ScoreBoard = ({
   playerXScore,

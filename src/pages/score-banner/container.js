@@ -6,9 +6,9 @@ import {
   setOScore,
   gamesPlayed,
 } from '../../reducers/state-of-game/actions';
+import calculateWinner from '../../utils';
 
 import ScoreBanner from './component';
-import calculateWinner from './controller';
 
 export const mapStateToProps = ({
   app: {
