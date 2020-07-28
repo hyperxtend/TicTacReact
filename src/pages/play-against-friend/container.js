@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 
 import { selectSquare, goToMove } from '../../reducers/state-of-game/actions';
+import calculateWinner from '../../utils';
 
-import { getCurrentMovesPlayed, calculateWinner } from './controller';
+import { getCurrentMovesPlayed } from './controller';
 import PlayAgainstFriend from './component';
 
 export const mapStateToProps = ({
