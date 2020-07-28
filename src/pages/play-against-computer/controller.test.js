@@ -58,7 +58,7 @@ describe('getPlayerMoves', () => {
     );
   });
 
-  it('checks result if computer chooses a square computer already chose', () => {
+  it('checks result if computer chooses a square player already chose', () => {
     const squareIndex = 4;
     const xIsNext = true;
     const history = [
@@ -69,6 +69,22 @@ describe('getPlayerMoves', () => {
     ];
     const moveNumber = 3;
     const expected = ['X', 'O', 'X', 'X', 'X', 'O', 'O', 'X', 'O'];
+    expect(getPlayersMoves(history, moveNumber, squareIndex, xIsNext)).toEqual(
+      expected
+    );
+  });
+
+  it('checks result if computer chooses a square computer already chose', () => {
+    const squareIndex = 6;
+    const xIsNext = true;
+    const history = [
+      Array(9).fill(''),
+      ['X', '', '', '', '', 'O', '', '', ''],
+      ['X', 'O', '', 'X', '', 'O', '', '', ''],
+      ['X', 'O', 'X', 'X', '', 'O', '', 'X', 'O'],
+    ];
+    const moveNumber = 3;
+    const expected = ['X', 'O', 'X', 'X', 'O', 'O', 'X', 'X', 'O'];
     expect(getPlayersMoves(history, moveNumber, squareIndex, xIsNext)).toEqual(
       expected
     );
