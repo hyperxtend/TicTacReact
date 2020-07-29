@@ -1,19 +1,27 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { select } from 'qa-utilities';
 
-import PlayAgainstFriend from './component';
+import MoveHistory from './component';
 
-describe('<PlayAgainstFriend/>', () => {
+describe('<MoveHistory/>', () => {
   let wrapper;
-  let onSelectSquare;
-  let squares;
+  let history;
   let previousPlayerMoves;
-  let playerX;
 
   beforeAll(() => {
-    onSelectSquare = jest.fn();
-    playerX = 'Next player is X';
-    squares = ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'];
+    history = [
+      Array(9).fill(''),
+      ['X', '', '', '', '', '', '', '', ''],
+      ['X', 'O', '', '', '', '', '', '', ''],
+      ['X', 'O', '', '', 'X', '', '', '', ''],
+      ['X', 'O', '', '', 'X', 'O', '', '', ''],
+      ['X', 'O', 'X', '', 'X', 'O', '', '', ''],
+      ['X', 'O', 'X', '', 'X', 'O', '', '', 'O'],
+      ['X', 'O', 'X', '', 'X', 'O', '', 'X', 'O'],
+      ['X', 'O', 'X', 'O', 'X', 'O', '', 'X', 'O'],
+      ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'X', 'O'],
+    ];
     previousPlayerMoves = [
       { buttonName: 'Test button 1', buttonClick: jest.fn() },
       { buttonName: 'Test button 2', buttonClick: jest.fn() },
@@ -28,20 +36,14 @@ describe('<PlayAgainstFriend/>', () => {
     ];
 
     wrapper = shallow(
-      <PlayAgainstFriend
-        onSelectSquare={onSelectSquare}
-        squares={squares}
+      <MoveHistory
         previousPlayerMoves={previousPlayerMoves}
+        history={history}
       />
     );
   });
 
-  it('checks initial game status rendering', () => {
-    const nextPlayer = wrapper
-      .find('div.player-status')
-      .children()
-      .first()
-      .text();
-    expect(nextPlayer).toBe(playerX);
+  it('renders move history buttons', () => {
+    expect(wrapper.find(select('reset-to-move-history')).length).toBe(10);
   });
 });

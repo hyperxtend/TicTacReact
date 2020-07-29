@@ -19,7 +19,9 @@
   font-size: 1.8em;
   font-weight: 700;
   text-decoration: underline;
+  margin-bottom: 3%;
 }
+
 .player-moves {
   width: 21%;
   display: flex;

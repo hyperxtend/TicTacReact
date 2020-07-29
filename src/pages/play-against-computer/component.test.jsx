@@ -39,8 +39,4 @@ describe('<PlayAgainstComputer/>', () => {
       .text();
     expect(nextPlayer).toBe(playerX);
   });
-
-  it('renders move history buttons', () => {
-    expect(wrapper.find(select('reset-to-move-history')).length).toBe(4);
-  });
 });

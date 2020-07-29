@@ -1,4 +1,4 @@
-import { mapStateToProps, mapDispatchToProps, mergeProps } from './container';
+import { mapStateToProps, mapDispatchToProps } from './container';
 
 describe('mapStateToProps', () => {
   it('checks if state values are the same', () => {
@@ -79,31 +79,5 @@ describe('mapDispatchToProps', () => {
       moveNumber
     );
     expect(dispatch.mock.calls[0][0].payload).toEqual(expected);
-  });
-
-  it('check if jumpTo function dispatches correct action', () => {
-    mapDispatchToProps(dispatch).jumpTo(5);
-    expect(dispatch.mock.calls[1][0].type).toEqual('GO_TO_MOVE');
-  });
-});
-
-describe('mergeProps', () => {
-  it('checks if the correct amount of elements are mapped', () => {
-    const stateProps = {
-      history: [
-        ['', '', '', '', '', '', '', '', ''],
-        ['X', '', '', '', '', '', '', '', ''],
-        ['X', 'O', '', '', '', '', '', '', ''],
-        ['X', 'O', '', '', 'X', '', '', '', ''],
-        ['X', 'O', 'O', '', 'X', '', '', '', ''],
-      ],
-      moveNumber: 4,
-      xIsNext: true,
-    };
-    const dispatch = jest.fn();
-    expect(
-      mergeProps(stateProps, mapDispatchToProps(dispatch)).previousPlayerMoves
-        .length
-    ).toBe(stateProps.history.length);
   });
 });

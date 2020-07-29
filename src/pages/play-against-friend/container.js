@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { selectSquare, goToMove } from '../../reducers/state-of-game/actions';
+import { selectSquare } from '../../reducers/state-of-game/actions';
 import calculateWinner from '../../utils';
 
 import { getCurrentMovesPlayed } from './controller';
@@ -31,7 +31,6 @@ export const mapDispatchToProps = (dispatch) => ({
       dispatch(selectSquare({ squareIndex, currentMovesPlayed }));
     }
   },
-  jumpTo: (step) => dispatch(goToMove(step)),
 });
 
 export const mergeProps = (stateProps, dispatchProps) => ({

@@ -1,0 +1,8 @@
+.player-moves {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 7%;
+  margin-right: 5%;
+  margin-left: 5%;
+}
