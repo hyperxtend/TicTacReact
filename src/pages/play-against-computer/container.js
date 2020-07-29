@@ -30,17 +30,7 @@ export const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export const mergeProps = (stateProps, dispatchProps) => ({
-  ...stateProps,
-  ...dispatchProps,
-  previousPlayerMoves: stateProps.history.map((_, moveId) => ({
-    buttonName: moveId ? `Go to move #${moveId}` : 'Restart',
-    buttonClick: () => dispatchProps.jumpTo(moveId),
-  })),
-});
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-  mergeProps
+  mapDispatchToProps
 )(PlayAgainstComputer);
