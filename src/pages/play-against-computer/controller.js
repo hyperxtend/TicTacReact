@@ -26,13 +26,13 @@ export const getPlayersMoves = (history, moveNumber, squareIndex, xIsNext) => {
     if (xIsNext === true || moveNumber === 0) {
       const randomIndex = Math.floor(Math.random() * 9);
 
-      if ((currentSquaresPlayed[randomIndex] === 'X') === true) {
+      if (currentSquaresPlayed[randomIndex] === 'X') {
         currentSquaresPlayed[randomIndex] = 'X';
         const nextAvailableIndex = currentSquaresPlayed.indexOf('');
         currentSquaresPlayed[nextAvailableIndex] = 'O';
         return currentSquaresPlayed;
       }
-      if ((currentSquaresPlayed[randomIndex] === 'O') === true) {
+      if (currentSquaresPlayed[randomIndex] === 'O') {
         currentSquaresPlayed[randomIndex] = 'O';
         const nextAvailableIndex = currentSquaresPlayed.indexOf('');
         currentSquaresPlayed[nextAvailableIndex] = 'O';
