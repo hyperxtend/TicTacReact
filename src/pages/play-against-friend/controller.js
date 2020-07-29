@@ -1,4 +1,4 @@
-import calculateWinner from '../../utils';
+import calculateWinner from '../../utils/calculate-winner';
 
 export const determineGameStatus = (winner, moveNumber, xIsNext) => {
   if (winner) {

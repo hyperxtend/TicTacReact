@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { computerMove } from '../../reducers/state-of-game/actions';
-import calculateWinner from '../../utils';
+import calculateWinner from '../../utils/calculate-winner';
 
 import { getPlayersMoves } from './controller';
 import PlayAgainstComputer from './component';

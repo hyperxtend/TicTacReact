@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { resetState } from '../../reducers/state-of-game/actions';
-import calculateWinner from '../../utils';
+import calculateWinner from '../../utils/calculate-winner';
 
 import ScoreBoard from './component';
 

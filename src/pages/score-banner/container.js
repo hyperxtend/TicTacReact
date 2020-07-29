@@ -6,7 +6,7 @@ import {
   setOScore,
   gamesPlayed,
 } from '../../reducers/state-of-game/actions';
-import calculateWinner from '../../utils';
+import calculateWinner from '../../utils/calculate-winner';
 
 import ScoreBanner from './component';
 
