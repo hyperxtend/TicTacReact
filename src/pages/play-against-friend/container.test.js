@@ -25,7 +25,20 @@ describe('mapStateToProps', () => {
 describe('mapDispatchToProps', () => {
   const dispatch = jest.fn();
 
-  it('check onSelectSquare function dispatches correct action', () => {
+  it('check onSelectSquare function dispatches correct action player X', () => {
+    const mockHistory = [
+      ['', '', '', '', '', '', '', '', ''],
+      ['X', '', '', '', '', '', '', '', ''],
+      ['X', 'O', '', '', '', '', '', '', ''],
+    ];
+    const expected = ['X', 'O', '', '', 'X', '', '', '', ''];
+    mapDispatchToProps(dispatch).onSelectSquare(4, true, mockHistory, 2);
+    expect(dispatch.mock.calls[0][0].payload.currentMovesPlayed).toEqual(
+      expected
+    );
+  });
+
+  it('check onSelectSquare function dispatches correct action for player O', () => {
     const mockHistory = [
       ['', '', '', '', '', '', '', '', ''],
       ['X', '', '', '', '', '', '', '', ''],
@@ -42,10 +55,9 @@ describe('mapDispatchToProps', () => {
       ['X', '', '', '', '', '', '', '', ''],
       ['X', 'O', '', '', '', '', '', '', ''],
       ['X', 'O', '', '', 'X', '', '', '', ''],
-      ['X', 'O', 'O', '', 'X', '', '', '', ''],
     ];
     const squareIndex = 2;
-    const moveNumber = 4;
+    const moveNumber = 3;
     mapDispatchToProps(dispatch).onSelectSquare(
       squareIndex,
       true,
@@ -63,15 +75,13 @@ describe('mapDispatchToProps', () => {
       ['X', '', '', '', '', '', '', '', ''],
       ['X', 'O', '', '', '', '', '', '', ''],
       ['X', 'O', '', '', 'X', '', '', '', ''],
-      ['X', 'O', 'O', '', 'X', '', '', '', ''],
     ];
-    const squareIndex = 2;
-    const moveNumber = 4;
+    const squareIndex = 4;
+    const moveNumber = 3;
     const expected = {
       currentMovesPlayed: mockHistory[moveNumber],
       squareIndex,
     };
-
     mapDispatchToProps(dispatch).onSelectSquare(
       squareIndex,
       true,
