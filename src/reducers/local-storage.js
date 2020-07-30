@@ -1,4 +1,4 @@
-export const getReduxState = () => {
+export const getState = () => {
   try {
     const registeredState = localStorage.getItem('state');
     if (registeredState === null) {
@@ -10,7 +10,7 @@ export const getReduxState = () => {
   }
 };
 
-export const saveReduxState = (currentState) => {
+export const saveState = (currentState) => {
   try {
     const registeredState = JSON.stringify(currentState);
     localStorage.setItem('state', registeredState);
