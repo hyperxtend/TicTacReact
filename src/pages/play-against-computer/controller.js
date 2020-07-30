@@ -4,7 +4,7 @@ export const determineGameStatus = (winner, moveNumber, xIsNext) => {
   if (winner) {
     return `${winner} is the Winner!`;
   }
-  if (!winner && moveNumber > 5) {
+  if (!winner && moveNumber >= 5) {
     return 'Its a Draw!';
   }
 
@@ -25,16 +25,14 @@ export const getPlayersMoves = (history, moveNumber, squareIndex, xIsNext) => {
 
     if (xIsNext === true || moveNumber === 0) {
       const randomIndex = Math.floor(Math.random() * 9);
+      const nextAvailableIndex = currentSquaresPlayed.indexOf('');
 
       if (currentSquaresPlayed[randomIndex] === 'X') {
-        currentSquaresPlayed[randomIndex] = 'X';
-        const nextAvailableIndex = currentSquaresPlayed.indexOf('');
         currentSquaresPlayed[nextAvailableIndex] = 'O';
         return currentSquaresPlayed;
       }
+
       if (currentSquaresPlayed[randomIndex] === 'O') {
-        currentSquaresPlayed[randomIndex] = 'O';
-        const nextAvailableIndex = currentSquaresPlayed.indexOf('');
         currentSquaresPlayed[nextAvailableIndex] = 'O';
         return currentSquaresPlayed;
       }
