@@ -16,11 +16,12 @@ const ScoreBoard = ({
   <Table className="score-table" data-qa="score-table">
     <thead>
       <tr>
-        <th className="score-head">Player X</th>
         <th className="score-head" colSpan={3}>
-          {' '}
+          Player X
         </th>
-        <th className="score-head">Player O</th>
+        <th className="score-head" colSpan={3}>
+          Player O
+        </th>
       </tr>
     </thead>
     <tbody>
