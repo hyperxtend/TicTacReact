@@ -29,7 +29,6 @@ export default (state = initialState, action = {}) => {
         moveNumber: action.payload,
         xIsNext: !(action.payload % 2),
       };
-
     case SELECT_SQUARE:
       return {
         ...state,
@@ -37,7 +36,6 @@ export default (state = initialState, action = {}) => {
         xIsNext: !state.xIsNext,
         moveNumber: state.history.length,
       };
-
     case COMPUTER_MOVE:
       return {
         ...state,
@@ -51,21 +49,18 @@ export default (state = initialState, action = {}) => {
         winner: 'X',
         playerXScore: state.playerXScore + 1,
       };
-
     case SET_O_SCORE:
       return {
         ...state,
         winner: 'O',
         playerOScore: state.playerOScore + 1,
       };
-
     case SET_DRAW_SCORE:
       return {
         ...state,
         winner: '',
         drawScore: state.drawScore + 1,
       };
-
     case GAMES_PLAYED:
       return {
         ...state,
@@ -77,10 +72,8 @@ export default (state = initialState, action = {}) => {
         playerOScore: state.playerOScore,
         gamesPlayed: state.gamesPlayed + 1,
       };
-
     case RESET_STATE:
       return initialState;
-
     default:
       return state;
   }
