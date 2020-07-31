@@ -4,22 +4,37 @@ import PropTypes from 'prop-types';
 
 import Board from '../../components/board';
 import MoveHistory from '../../components/move-history';
-import ScoreBanner from '../score-banner';
+import ScoreBanner from '../../components/score-banner';
 
 import './component.css';
 import { determineGameStatus } from './controller';
 
 const PlayAgainstComputer = ({
+  winner,
+  moveNumber,
+  playerXScore,
+  playerOScore,
+  drawScore,
+  scoreForPlayerX,
+  scoreForPlayerO,
+  scoreForDraw,
   previousPlayerMoves,
   movesForPlayers,
   squares,
-  moveNumber,
   xIsNext,
   history,
-  winner,
 }) => (
   <Container>
-    <ScoreBanner />
+    <ScoreBanner
+      winner={winner}
+      moveNumber={moveNumber}
+      playerXScore={playerXScore}
+      playerOScore={playerOScore}
+      drawScore={drawScore}
+      scoreForPlayerX={scoreForPlayerX}
+      scoreForPlayerO={scoreForPlayerO}
+      scoreForDraw={scoreForDraw}
+    />
     <Container className="game">
       <div className="game-board">
         <div className="player-status" data-qa="game-status">
@@ -51,6 +66,12 @@ PlayAgainstComputer.propTypes = {
       buttonClick: PropTypes.func,
     })
   ),
+  playerXScore: PropTypes.number,
+  playerOScore: PropTypes.number,
+  drawScore: PropTypes.number,
+  scoreForPlayerX: PropTypes.func,
+  scoreForPlayerO: PropTypes.func,
+  scoreForDraw: PropTypes.func,
 };
 
 PlayAgainstComputer.defaultProps = {
@@ -66,6 +87,12 @@ PlayAgainstComputer.defaultProps = {
       buttonClick: () => {},
     },
   ],
+  playerXScore: 0,
+  playerOScore: 0,
+  drawScore: 0,
+  scoreForPlayerX: () => {},
+  scoreForPlayerO: () => {},
+  scoreForDraw: () => {},
 };
 
 export default PlayAgainstComputer;

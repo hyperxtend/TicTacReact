@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import Board from '../../components/board';
-import Scores from '../score-banner';
+import ScoresBanner from '../../components/score-banner';
 import MoveHistory from '../../components/move-history';
 
 import './component.css';
@@ -11,16 +11,31 @@ import './component.css';
 import { determineGameStatus } from './controller';
 
 const PlayAgainstFriend = ({
+  winner,
+  moveNumber,
+  playerXScore,
+  playerOScore,
+  drawScore,
+  scoreForPlayerX,
+  scoreForPlayerO,
+  scoreForDraw,
   previousPlayerMoves,
   onSelectSquare,
   squares,
-  moveNumber,
   xIsNext,
   history,
-  winner,
 }) => (
   <Container>
-    <Scores />
+    <ScoresBanner
+      winner={winner}
+      moveNumber={moveNumber}
+      playerXScore={playerXScore}
+      playerOScore={playerOScore}
+      drawScore={drawScore}
+      scoreForPlayerX={scoreForPlayerX}
+      scoreForPlayerO={scoreForPlayerO}
+      scoreForDraw={scoreForDraw}
+    />
     <Container className="game">
       <div className="game-board">
         <div className="player-status" data-qa="game-status">
@@ -52,6 +67,12 @@ PlayAgainstFriend.propTypes = {
       buttonClick: PropTypes.func,
     })
   ),
+  playerXScore: PropTypes.number,
+  playerOScore: PropTypes.number,
+  drawScore: PropTypes.number,
+  scoreForPlayerX: PropTypes.func,
+  scoreForPlayerO: PropTypes.func,
+  scoreForDraw: PropTypes.func,
 };
 
 PlayAgainstFriend.defaultProps = {
@@ -67,6 +88,12 @@ PlayAgainstFriend.defaultProps = {
       buttonClick: () => {},
     },
   ],
+  playerXScore: 0,
+  playerOScore: 0,
+  drawScore: 0,
+  scoreForPlayerX: () => {},
+  scoreForPlayerO: () => {},
+  scoreForDraw: () => {},
 };
 
 export default PlayAgainstFriend;

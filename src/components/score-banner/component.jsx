@@ -18,7 +18,9 @@ const ScoreBanner = ({
     <tbody>
       <tr>
         <th className="score-banner-head">Player X Wins:</th>
-        <th className="score-banner-head">Draws:</th>
+        <th className="score-banner-head" data-qa="banner-head-draws">
+          Draws:
+        </th>
         <th className="score-banner-head">Player O Wins:</th>
       </tr>
       <tr>

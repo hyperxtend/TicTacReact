@@ -5,17 +5,30 @@ describe('mapStateToProps', () => {
     const history = [Array(9).fill('')];
     const xIsNext = true;
     const moveNumber = 0;
+    const playerXScore = 0;
+    const playerOScore = 0;
+    const drawScore = 0;
     const expectedState = {
       history: [Array(9).fill('')],
       moveNumber: 0,
       xIsNext: true,
-      squares: Array(9).fill(''),
       winner: undefined,
+      squares: Array(9).fill(''),
+      playerXScore: 0,
+      playerOScore: 0,
+      drawScore: 0,
     };
     expect(
       mapStateToProps({
         app: {
-          status: { history, xIsNext, moveNumber },
+          status: {
+            history,
+            xIsNext,
+            moveNumber,
+            playerXScore,
+            playerOScore,
+            drawScore,
+          },
         },
       })
     ).toEqual(expectedState);
@@ -94,6 +107,30 @@ describe('mapDispatchToProps', () => {
   it('check if jumpTo function dispatches correct action', () => {
     mapDispatchToProps(dispatch).jumpTo(5);
     expect(dispatch.mock.calls[3][0].type).toEqual('GO_TO_MOVE');
+  });
+  it('check if scoreForPlayerX function dispatches actions to increase score & games played', () => {
+    const mockPayload = 1;
+    const winner = 'X';
+    mapDispatchToProps(dispatch).scoreForPlayerX(mockPayload, winner);
+    expect(dispatch.mock.calls[4][0].type).toEqual('SET_X_SCORE');
+    expect(dispatch.mock.calls[5][0].type).toEqual('GAMES_PLAYED');
+  });
+
+  it('check if scoreForPlayerO function dispatches actions to increase score & games played', () => {
+    const mockPayload = 2;
+    const winner = 'O';
+    mapDispatchToProps(dispatch).scoreForPlayerO(mockPayload, winner);
+    expect(dispatch.mock.calls[6][0].type).toEqual('SET_O_SCORE');
+    expect(dispatch.mock.calls[7][0].type).toEqual('GAMES_PLAYED');
+  });
+
+  it('check if scoreForDraw function dispatches actions to increase score & games played', () => {
+    const mockPayload = 3;
+    const winner = '';
+    const moveNumber = 9;
+    mapDispatchToProps(dispatch).scoreForDraw(mockPayload, winner, moveNumber);
+    expect(dispatch.mock.calls[8][0].type).toEqual('SET_DRAW_SCORE');
+    expect(dispatch.mock.calls[9][0].type).toEqual('GAMES_PLAYED');
   });
 });
 
