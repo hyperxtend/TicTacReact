@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { computerMove } from '../../reducers/state-of-game/actions';
+import { computerMove, goToMove } from '../../reducers/state-of-game/actions';
 import calculateWinner from '../../utils/calculate-winner';
 
 import { getPlayersMoves } from './controller';
@@ -28,9 +28,20 @@ export const mapDispatchToProps = (dispatch) => ({
     );
     dispatch(computerMove({ squareIndex, currentMovesPlayed }));
   },
+  jumpTo: (step) => dispatch(goToMove(step)),
+});
+
+export const mergeProps = (stateProps, dispatchProps) => ({
+  ...stateProps,
+  ...dispatchProps,
+  previousPlayerMoves: stateProps.history.map((_, moveId) => ({
+    buttonName: moveId ? `Go to move #${moveId}` : 'Restart',
+    buttonClick: () => dispatchProps.jumpTo(moveId),
+  })),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
+  mergeProps
 )(PlayAgainstComputer);

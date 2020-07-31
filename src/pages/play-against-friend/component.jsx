@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 
 import Board from '../../components/board';
 import Scores from '../score-banner';
-import MoveHistory from '../move-history';
+import MoveHistory from '../../components/move-history';
 
 import './component.css';
 
 import { determineGameStatus } from './controller';
 
 const PlayAgainstFriend = ({
+  previousPlayerMoves,
   onSelectSquare,
   squares,
   moveNumber,
@@ -33,7 +34,7 @@ const PlayAgainstFriend = ({
           data-qa="game-board"
         />
       </div>
-      <MoveHistory />
+      <MoveHistory previousPlayerMoves={previousPlayerMoves} />
     </Container>
   </Container>
 );
@@ -45,6 +46,12 @@ PlayAgainstFriend.propTypes = {
   squares: PropTypes.arrayOf(PropTypes.string),
   xIsNext: PropTypes.bool,
   moveNumber: PropTypes.number,
+  previousPlayerMoves: PropTypes.arrayOf(
+    PropTypes.shape({
+      buttonName: PropTypes.string,
+      buttonClick: PropTypes.func,
+    })
+  ),
 };
 
 PlayAgainstFriend.defaultProps = {
@@ -54,6 +61,12 @@ PlayAgainstFriend.defaultProps = {
   squares: [],
   xIsNext: true,
   moveNumber: 0,
+  previousPlayerMoves: [
+    {
+      buttonName: 'Restart',
+      buttonClick: () => {},
+    },
+  ],
 };
 
 export default PlayAgainstFriend;

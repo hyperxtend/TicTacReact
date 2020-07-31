@@ -3,13 +3,14 @@ import { Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import Board from '../../components/board';
-import MoveHistory from '../move-history';
+import MoveHistory from '../../components/move-history';
 import ScoreBanner from '../score-banner';
 
 import './component.css';
 import { determineGameStatus } from './controller';
 
 const PlayAgainstComputer = ({
+  previousPlayerMoves,
   movesForPlayers,
   squares,
   moveNumber,
@@ -32,7 +33,7 @@ const PlayAgainstComputer = ({
           data-qa="game-board"
         />
       </div>
-      <MoveHistory />
+      <MoveHistory previousPlayerMoves={previousPlayerMoves} />
     </Container>
   </Container>
 );
@@ -44,6 +45,12 @@ PlayAgainstComputer.propTypes = {
   squares: PropTypes.arrayOf(PropTypes.string),
   xIsNext: PropTypes.bool,
   moveNumber: PropTypes.number,
+  previousPlayerMoves: PropTypes.arrayOf(
+    PropTypes.shape({
+      buttonName: PropTypes.string,
+      buttonClick: PropTypes.func,
+    })
+  ),
 };
 
 PlayAgainstComputer.defaultProps = {
@@ -53,6 +60,12 @@ PlayAgainstComputer.defaultProps = {
   squares: [],
   xIsNext: true,
   moveNumber: 0,
+  previousPlayerMoves: [
+    {
+      buttonName: 'Restart',
+      buttonClick: () => {},
+    },
+  ],
 };
 
 export default PlayAgainstComputer;
