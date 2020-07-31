@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import Board from '../../components/board';
 import Scores from '../score-banner';
-import MoveHistory from '../../components/move-history';
+import MoveHistory from '../move-history';
 
 import './component.css';
 

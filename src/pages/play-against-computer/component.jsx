@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import Board from '../../components/board';
-import MoveHistory from '../../components/move-history';
+import MoveHistory from '../move-history';
 import ScoreBanner from '../score-banner';
 
 import './component.css';
