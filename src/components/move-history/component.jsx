@@ -6,6 +6,7 @@ import './component.css';
 
 const MoveHistory = ({ previousPlayerMoves }) => (
   <div className="player-moves">
+    <span className="history-header">Go back to</span>
     {previousPlayerMoves.map(({ buttonName, buttonClick }, index) => (
       <Button
         className="move-history"
