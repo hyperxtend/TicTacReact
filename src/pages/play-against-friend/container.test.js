@@ -106,22 +106,23 @@ describe('mapDispatchToProps', () => {
 
   it('check if jumpTo function dispatches correct action', () => {
     mapDispatchToProps(dispatch).jumpTo(5);
-    expect(dispatch.mock.calls[3][0].type).toEqual('GO_TO_MOVE');
+    expect(dispatch.mock.calls[4][0].type).toEqual('GO_TO_MOVE');
   });
+
   it('check if scoreForPlayerX function dispatches actions to increase score & games played', () => {
     const mockPayload = 1;
     const winner = 'X';
     mapDispatchToProps(dispatch).scoreForPlayerX(mockPayload, winner);
-    expect(dispatch.mock.calls[4][0].type).toEqual('SET_X_SCORE');
-    expect(dispatch.mock.calls[5][0].type).toEqual('GAMES_PLAYED');
+    expect(dispatch.mock.calls[5][0].type).toEqual('SET_X_SCORE');
+    expect(dispatch.mock.calls[6][0].type).toEqual('GAMES_PLAYED');
   });
 
   it('check if scoreForPlayerO function dispatches actions to increase score & games played', () => {
     const mockPayload = 2;
     const winner = 'O';
     mapDispatchToProps(dispatch).scoreForPlayerO(mockPayload, winner);
-    expect(dispatch.mock.calls[6][0].type).toEqual('SET_O_SCORE');
-    expect(dispatch.mock.calls[7][0].type).toEqual('GAMES_PLAYED');
+    expect(dispatch.mock.calls[7][0].type).toEqual('SET_O_SCORE');
+    expect(dispatch.mock.calls[8][0].type).toEqual('GAMES_PLAYED');
   });
 
   it('check if scoreForDraw function dispatches actions to increase score & games played', () => {
@@ -129,8 +130,8 @@ describe('mapDispatchToProps', () => {
     const winner = '';
     const moveNumber = 9;
     mapDispatchToProps(dispatch).scoreForDraw(mockPayload, winner, moveNumber);
-    expect(dispatch.mock.calls[8][0].type).toEqual('SET_DRAW_SCORE');
-    expect(dispatch.mock.calls[9][0].type).toEqual('GAMES_PLAYED');
+    expect(dispatch.mock.calls[9][0].type).toEqual('SET_DRAW_SCORE');
+    expect(dispatch.mock.calls[10][0].type).toEqual('GAMES_PLAYED');
   });
 });
 

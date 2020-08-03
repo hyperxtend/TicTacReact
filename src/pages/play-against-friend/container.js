@@ -43,10 +43,7 @@ export const mapDispatchToProps = (dispatch) => ({
       squareIndex,
       nextPlayer
     );
-    if (!currentMovesPlayed[squareIndex]) {
-      currentMovesPlayed[squareIndex] = nextPlayer ? 'X' : 'O';
-      dispatch(selectSquare({ squareIndex, currentMovesPlayed }));
-    }
+    dispatch(selectSquare({ squareIndex, currentMovesPlayed }));
   },
   jumpTo: (step) => dispatch(goToMove(step)),
   scoreForPlayerX: (currentScore, winner) => {
