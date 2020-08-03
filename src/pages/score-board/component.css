@@ -3,31 +3,28 @@
   height: 50vh;
   margin: 0 auto;
   padding: 0;
-
-  margin-top: 10%;
+  margin-top: 5%;
   justify-content: center;
   text-align: center;
+  position: relative;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
-
-th,
-td {
-  margin: 2%;
-  vertical-align: middle;
-  border-top: none;
+.score-row {
+  display: flex;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
 }
-
 .score-head {
   font-size: 3rem;
-  margin-left: 10%;
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 .score-sub-head {
   font-size: 2rem;
-  text-decoration: underline;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .scores {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
 }
