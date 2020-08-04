@@ -1,60 +1,4 @@
-import {
-  determineGameStatus,
-  calculateWinner,
-  getPlayersMoves,
-} from './controller';
-
-describe('calculateWinner', () => {
-  let squares;
-  describe('winner scenarios for player 1(player X)', () => {
-    it('checks 1st winner combination for player', () => {
-      squares = ['X', 'X', 'X', '', '', '', '', 'O', 'O'];
-      expect(calculateWinner(squares)).toBe('X');
-    });
-
-    it('checks 2nd winner combination for player', () => {
-      squares = ['', '', '', 'X', 'X', 'X', '', 'O', 'O'];
-      expect(calculateWinner(squares)).toBe('X');
-    });
-
-    it('checks 3rd winner combination for player', () => {
-      squares = ['', '', '', 'O', 'O', '', 'X', 'X', 'X'];
-      expect(calculateWinner(squares)).toBe('X');
-    });
-
-    it('checks 4th winner combination for player', () => {
-      squares = ['X', '', '', 'O', 'X', '', '', 'O', 'X'];
-      expect(calculateWinner(squares)).toBe('X');
-    });
-  });
-  describe('winner scenarios for player 2(player O)', () => {
-    it('checks 5th winner combination for player', () => {
-      squares = ['X', 'O', '', 'X', 'O', 'X', '', 'O', ''];
-      expect(calculateWinner(squares)).toBe('O');
-    });
-
-    it('checks 6th winner combination for player', () => {
-      squares = ['X', 'X', 'O', '', 'X', 'O', '', '', 'O'];
-      expect(calculateWinner(squares)).toBe('O');
-    });
-
-    it('checks 7th winner combination for player', () => {
-      squares = ['O', 'X', 'X', 'X', 'O', '', '', '', 'O'];
-      expect(calculateWinner(squares)).toBe('O');
-    });
-
-    it('checks 8th winner combination for player', () => {
-      squares = ['X', 'X', 'O', 'X', 'O', '', 'O', '', ''];
-      expect(calculateWinner(squares)).toBe('O');
-    });
-  });
-  describe('draw scenario for both players', () => {
-    it('checks for a draw game between players', () => {
-      squares = ['X', 'X', 'O', 'O', 'X', 'X', 'X', 'O', 'O'];
-      expect(calculateWinner(squares)).toBe(undefined);
-    });
-  });
-});
+import { determineGameStatus, getPlayersMoves } from './controller';
 
 describe('determineGameStatus', () => {
   it('checks if player 2 is next', () => {
@@ -103,16 +47,60 @@ describe('getPlayerMoves', () => {
     const xIsNext = true;
     const history = [
       Array(9).fill(''),
-      ['X', '', '', '', '', '', '', '', ''],
       ['X', '', '', '', '', 'O', '', '', ''],
-      ['X', '', '', 'X', '', 'O', '', '', ''],
       ['X', 'O', '', 'X', '', 'O', '', '', ''],
-      ['X', 'O', 'X', 'X', '', 'O', '', '', ''],
-      ['X', 'O', 'X', 'X', '', 'O', '', 'X', ''],
       ['X', 'O', 'X', 'X', '', 'O', '', 'X', 'O'],
     ];
-    const moveNumber = 7;
+    const moveNumber = 3;
     const expected = ['X', 'O', 'X', 'X', 'X', 'O', 'O', 'X', 'O'];
+    expect(getPlayersMoves(history, moveNumber, squareIndex, xIsNext)).toEqual(
+      expected
+    );
+  });
+
+  it('checks result if computer chooses a square player already chose', () => {
+    const squareIndex = 4;
+    const xIsNext = true;
+    const history = [
+      Array(9).fill(''),
+      ['X', '', '', '', '', 'O', '', '', ''],
+      ['X', 'O', '', 'X', '', 'O', '', '', ''],
+      ['X', 'O', 'X', 'X', '', 'O', '', 'X', 'O'],
+    ];
+    const moveNumber = 3;
+    const expected = ['X', 'O', 'X', 'X', 'X', 'O', 'O', 'X', 'O'];
+    expect(getPlayersMoves(history, moveNumber, squareIndex, xIsNext)).toEqual(
+      expected
+    );
+  });
+
+  it('checks result if computer chooses a square computer already chose', () => {
+    const squareIndex = 6;
+    const xIsNext = true;
+    const history = [
+      Array(9).fill(''),
+      ['X', '', '', '', '', 'O', '', '', ''],
+      ['X', 'O', '', 'X', '', 'O', '', '', ''],
+      ['X', 'O', 'X', 'X', '', 'O', '', 'X', 'O'],
+    ];
+    const moveNumber = 3;
+    const expected = ['X', 'O', 'X', 'X', 'O', 'O', 'X', 'X', 'O'];
+    expect(getPlayersMoves(history, moveNumber, squareIndex, xIsNext)).toEqual(
+      expected
+    );
+  });
+
+  it('checks if computer chooses a square computer already chose to choose the next available square', () => {
+    const squareIndex = 8;
+    const xIsNext = true;
+    const history = [
+      Array(9).fill(''),
+      ['', 'X', '', '', 'O', '', '', '', ''],
+      ['', 'X', '', 'O', 'O', '', '', 'X', ''],
+      ['O', 'X', '', 'O', 'O', 'X', '', 'X', ''],
+    ];
+    const moveNumber = 3;
+    const expected = ['O', 'X', 'O', 'O', 'O', 'X', '', 'X', 'X'];
     expect(getPlayersMoves(history, moveNumber, squareIndex, xIsNext)).toEqual(
       expected
     );
