@@ -10,7 +10,11 @@ const PageHeader = ({ pageTitle }) => (
 );
 
 PageHeader.propTypes = {
-  pageTitle: PropTypes.string.isRequired,
+  pageTitle: PropTypes.string,
+};
+
+PageHeader.defaultProps = {
+  pageTitle: '',
 };
 
 export default PageHeader;
