@@ -90,17 +90,17 @@ describe('getPlayerMoves', () => {
     );
   });
 
-  it('checks if array of empty strings is return after winner is declared', () => {
-    const squareIndex = 4;
+  it('checks if computer chooses a square computer already chose to choose the next available square', () => {
+    const squareIndex = 8;
     const xIsNext = true;
     const history = [
       Array(9).fill(''),
-      ['X', '', '', '', '', 'O', '', '', ''],
-      ['X', 'O', '', '', 'X', 'O', '', '', ''],
-      ['X', 'O', 'O', '', 'X', 'O', '', '', 'X'],
+      ['', 'X', '', '', 'O', '', '', '', ''],
+      ['', 'X', '', 'O', 'O', '', '', 'X', ''],
+      ['O', 'X', '', 'O', 'O', 'X', '', 'X', ''],
     ];
     const moveNumber = 3;
-    const expected = Array(9).fill('');
+    const expected = ['O', 'X', 'O', 'O', 'O', 'X', '', 'X', 'X'];
     expect(getPlayersMoves(history, moveNumber, squareIndex, xIsNext)).toEqual(
       expected
     );

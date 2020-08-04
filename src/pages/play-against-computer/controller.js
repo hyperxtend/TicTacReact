@@ -1,5 +1,3 @@
-import calculateWinner from '../../utils/calculate-winner';
-
 export const determineGameStatus = (winner, moveNumber, xIsNext) => {
   if (winner) {
     return `${winner} is the Winner!`;
@@ -15,10 +13,6 @@ export const getPlayersMoves = (history, moveNumber, squareIndex, xIsNext) => {
   const currentHistory = history.slice(0, moveNumber + 1);
   const currentMoves = currentHistory[moveNumber];
   const currentSquaresPlayed = currentMoves.slice();
-
-  if (calculateWinner(currentSquaresPlayed)) {
-    return currentHistory.slice(0)[0];
-  }
 
   if (!currentSquaresPlayed[squareIndex]) {
     currentSquaresPlayed[squareIndex] = 'X';
