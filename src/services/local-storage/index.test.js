@@ -1,4 +1,4 @@
-import { saveState, getState } from './local-storage';
+import { saveState, getState } from './index';
 
 describe('localStorage', () => {
   beforeEach(() => {

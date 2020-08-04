@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { getState, saveState } from './local-storage';
+import { getState, saveState } from '../services/local-storage';
 
 import reducers from './index';
 
