@@ -4,16 +4,7 @@ import PropTypes from 'prop-types';
 
 import './component.css';
 
-const ScoreBanner = ({
-  winner,
-  moveNumber,
-  playerXScore,
-  playerOScore,
-  drawScore,
-  scoreForPlayerX,
-  scoreForPlayerO,
-  scoreForDraw,
-}) => (
+const ScoreBanner = ({ playerXScore, playerOScore, drawScore }) => (
   <Table className="score-banner">
     <tbody>
       <tr>
@@ -25,13 +16,13 @@ const ScoreBanner = ({
       </tr>
       <tr>
         <td className="banner-scores">
-          <span>{scoreForPlayerX(playerXScore, winner)}</span>
+          <span>{playerXScore}</span>
         </td>
         <td className="banner-scores">
-          <span>{scoreForDraw(drawScore, winner, moveNumber)}</span>
+          <span>{drawScore}</span>
         </td>
         <td className="banner-scores">
-          <span>{scoreForPlayerO(playerOScore, winner)}</span>
+          <span>{playerOScore}</span>
         </td>
       </tr>
     </tbody>
@@ -39,25 +30,15 @@ const ScoreBanner = ({
 );
 
 ScoreBanner.propTypes = {
-  winner: PropTypes.string,
-  moveNumber: PropTypes.number,
   playerXScore: PropTypes.number,
   playerOScore: PropTypes.number,
   drawScore: PropTypes.number,
-  scoreForPlayerX: PropTypes.func,
-  scoreForPlayerO: PropTypes.func,
-  scoreForDraw: PropTypes.func,
 };
 
 ScoreBanner.defaultProps = {
-  winner: '',
-  moveNumber: 0,
   playerXScore: 0,
   playerOScore: 0,
   drawScore: 0,
-  scoreForPlayerX: () => {},
-  scoreForPlayerO: () => {},
-  scoreForDraw: () => {},
 };
 
 export default ScoreBanner;

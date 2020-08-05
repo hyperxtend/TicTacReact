@@ -15,9 +15,7 @@ const PlayAgainstComputer = ({
   playerXScore,
   playerOScore,
   drawScore,
-  scoreForPlayerX,
-  scoreForPlayerO,
-  scoreForDraw,
+  setGameScore,
   previousPlayerMoves,
   movesForPlayers,
   squares,
@@ -42,14 +40,10 @@ const PlayAgainstComputer = ({
       <MoveHistory previousPlayerMoves={previousPlayerMoves} />
     </Container>
     <ScoreBanner
-      winner={winner}
-      moveNumber={moveNumber}
       playerXScore={playerXScore}
       playerOScore={playerOScore}
       drawScore={drawScore}
-      scoreForPlayerX={scoreForPlayerX}
-      scoreForPlayerO={scoreForPlayerO}
-      scoreForDraw={scoreForDraw}
+      setGameScore={setGameScore(playerXScore, winner, moveNumber)}
     />
   </Container>
 );
@@ -70,9 +64,7 @@ PlayAgainstComputer.propTypes = {
   playerXScore: PropTypes.number,
   playerOScore: PropTypes.number,
   drawScore: PropTypes.number,
-  scoreForPlayerX: PropTypes.func,
-  scoreForPlayerO: PropTypes.func,
-  scoreForDraw: PropTypes.func,
+  setGameScore: PropTypes.func,
 };
 
 PlayAgainstComputer.defaultProps = {
@@ -91,9 +83,7 @@ PlayAgainstComputer.defaultProps = {
   playerXScore: 0,
   playerOScore: 0,
   drawScore: 0,
-  scoreForPlayerX: () => {},
-  scoreForPlayerO: () => {},
-  scoreForDraw: () => {},
+  setGameScore: () => {},
 };
 
 export default PlayAgainstComputer;

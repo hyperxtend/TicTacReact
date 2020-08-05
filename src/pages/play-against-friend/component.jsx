@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import Board from '../../components/board';
-import ScoresBanner from '../../components/score-banner';
+import ScoreBanner from '../../components/score-banner';
 import MoveHistory from '../../components/move-history';
 import PageHeader from '../../components/page-header';
 
@@ -15,9 +15,7 @@ const PlayAgainstFriend = ({
   playerXScore,
   playerOScore,
   drawScore,
-  scoreForPlayerX,
-  scoreForPlayerO,
-  scoreForDraw,
+  setGameScore,
   previousPlayerMoves,
   onSelectSquare,
   squares,
@@ -41,15 +39,11 @@ const PlayAgainstFriend = ({
       </div>
       <MoveHistory previousPlayerMoves={previousPlayerMoves} />
     </Container>
-    <ScoresBanner
-      winner={winner}
-      moveNumber={moveNumber}
+    <ScoreBanner
       playerXScore={playerXScore}
       playerOScore={playerOScore}
       drawScore={drawScore}
-      scoreForPlayerX={scoreForPlayerX}
-      scoreForPlayerO={scoreForPlayerO}
-      scoreForDraw={scoreForDraw}
+      setGameScore={setGameScore(playerXScore, winner, moveNumber)}
     />
   </Container>
 );
@@ -70,9 +64,7 @@ PlayAgainstFriend.propTypes = {
   playerXScore: PropTypes.number,
   playerOScore: PropTypes.number,
   drawScore: PropTypes.number,
-  scoreForPlayerX: PropTypes.func,
-  scoreForPlayerO: PropTypes.func,
-  scoreForDraw: PropTypes.func,
+  setGameScore: PropTypes.func,
 };
 
 PlayAgainstFriend.defaultProps = {
@@ -91,9 +83,7 @@ PlayAgainstFriend.defaultProps = {
   playerXScore: 0,
   playerOScore: 0,
   drawScore: 0,
-  scoreForPlayerX: () => {},
-  scoreForPlayerO: () => {},
-  scoreForDraw: () => {},
+  setGameScore: () => {},
 };
 
 export default PlayAgainstFriend;
