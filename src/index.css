@@ -17,3 +17,33 @@ code {
 * {
   box-sizing: border-box;
 }
+
+.game {
+  display: flex;
+  margin-top: 5%;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  left: 5%;
+}
+
+.game-board {
+  margin-bottom: 5%;
+  height: 30vh;
+  width: 30vw;
+  margin-right: 3%;
+  position: relative;
+  right: 10%;
+}
+
+.row {
+  height: 10vh;
+}
+
+.player-status {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.8em;
+  font-weight: 700;
+  text-decoration: underline;
+  margin-bottom: 5%;
+}
