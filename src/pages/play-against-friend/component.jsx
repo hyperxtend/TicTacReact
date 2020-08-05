@@ -7,8 +7,6 @@ import ScoresBanner from '../../components/score-banner';
 import MoveHistory from '../../components/move-history';
 import PageHeader from '../../components/page-header';
 
-import './component.css';
-
 import { determineGameStatus } from './controller';
 
 const PlayAgainstFriend = ({

@@ -7,8 +7,6 @@ import MoveHistory from '../../components/move-history';
 import ScoreBanner from '../../components/score-banner';
 import PageHeader from '../../components/page-header';
 
-import './component.css';
-
 import { determineGameStatus } from './controller';
 
 const PlayAgainstComputer = ({
