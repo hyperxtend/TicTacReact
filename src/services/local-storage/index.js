@@ -1,6 +1,7 @@
-export const getState = () => {
+export const getStateFromLocalStorage = () => {
   try {
     const registeredState = localStorage.getItem('state');
+    console.log('track', registeredState);
     if (registeredState === null) {
       return undefined;
     }
@@ -10,7 +11,7 @@ export const getState = () => {
   }
 };
 
-export const saveState = (currentState) => {
+export const saveStateToLocalStorage = (currentState) => {
   try {
     const registeredState = JSON.stringify(currentState);
     localStorage.setItem('state', registeredState);
