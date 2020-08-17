@@ -1,7 +1,6 @@
 export const getStateFromLocalStorage = () => {
   try {
     const registeredState = localStorage.getItem('state');
-    console.log('track', registeredState);
     if (registeredState === null) {
       return undefined;
     }
