@@ -1,8 +1,10 @@
 import React from 'react';
-import { Table, Button } from 'react-bootstrap';
+import { Col, Button, Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import './component.css';
+
+import PageHeader from '../../components/page-header';
 
 import calculateWinningAverage from './controller';
 
@@ -13,61 +15,53 @@ const ScoreBoard = ({
   gamesPlayed,
   resetGameState,
 }) => (
-  <Table className="score-table" data-qa="score-table">
-    <thead>
-      <tr>
-        <th className="score-head" colSpan={3}>
-          Player X
-        </th>
-        <th className="score-head" colSpan={3}>
-          Player O
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th className="score-sub-head">Wins:</th>
-        <td className="scores" data-qa="player-x-score">
+  <div data-qa="score-table">
+    <PageHeader pageTitle="Score Board" />
+    <Container className="score-table">
+      <div className="score-row">
+        <Col className="score-head">Player X</Col>
+        <Col className="score-head">Player O</Col>
+      </div>
+      <div className="score-row">
+        <Col className="score-sub-head">Wins</Col>
+        <Col className="score-sub-head">Draws</Col>
+        <Col className="score-sub-head">Wins</Col>
+      </div>
+      <div className="score-row">
+        <Col className="scores" data-qa="player-x-score">
           {playerXScore}
-        </td>
-        <th className="score-sub-head">Draws:</th>
-        <td className="scores" data-qa="score-for-draw">
+        </Col>
+        <Col className="scores" data-qa="score-for-draw">
           {drawScore}
-        </td>
-        <th className="score-sub-head">Wins:</th>
-        <td className="scores" data-qa="player-o-score">
+        </Col>
+        <Col className="scores" data-qa="player-o-score">
           {playerOScore}
-        </td>
-      </tr>
-      <tr>
-        <td className="score-sub-head">Winning Rate:</td>
-        <td className="scores" data-qa="winning-rate-player-x">
+        </Col>
+      </div>
+      <div className="score-row">
+        <Col className="score-sub-head">Winning Rate</Col>
+        <Col className="score-sub-head">Winning Rate</Col>
+      </div>
+      <div className="score-row">
+        <Col className="scores" data-qa="winning-rate-player-x">
           {calculateWinningAverage(gamesPlayed, playerXScore)}%
-        </td>
-        <td className="score-sub-head"> </td>
-        <td className="scores"> </td>
-        <td className="score-sub-head">Winning Rate:</td>
-        <td className="scores" data-qa="winning-rate-player-o">
+        </Col>
+
+        <Col className="scores" data-qa="winning-rate-player-o">
           {calculateWinningAverage(gamesPlayed, playerOScore)}%
-        </td>
-      </tr>
-      <tr>
-        <td colSpan={3}> </td>
-        <td>
-          <Button
-            variant="warning"
-            size="lg"
-            className="rest-button"
-            data-qa="rest-button"
-            onClick={(actionPayload) => resetGameState(actionPayload)}
-          >
-            Reset Stats
-          </Button>
-        </td>
-        <td colSpan={3}> </td>
-      </tr>
-    </tbody>
-  </Table>
+        </Col>
+      </div>
+      <Button
+        variant="warning"
+        size="lg"
+        className="rest-button"
+        data-qa="rest-button"
+        onClick={(actionPayload) => resetGameState(actionPayload)}
+      >
+        Reset Stats
+      </Button>
+    </Container>
+  </div>
 );
 
 ScoreBoard.propTypes = {

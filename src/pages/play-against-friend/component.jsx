@@ -5,8 +5,7 @@ import PropTypes from 'prop-types';
 import Board from '../../components/board';
 import ScoresBanner from '../../components/score-banner';
 import MoveHistory from '../../components/move-history';
-
-import './component.css';
+import PageHeader from '../../components/page-header';
 
 import { determineGameStatus } from './controller';
 
@@ -26,16 +25,7 @@ const PlayAgainstFriend = ({
   history,
 }) => (
   <Container>
-    <ScoresBanner
-      winner={winner}
-      moveNumber={moveNumber}
-      playerXScore={playerXScore}
-      playerOScore={playerOScore}
-      drawScore={drawScore}
-      scoreForPlayerX={scoreForPlayerX}
-      scoreForPlayerO={scoreForPlayerO}
-      scoreForDraw={scoreForDraw}
-    />
+    <PageHeader pageTitle="Playing against Friend" />
     <Container className="game">
       <div className="game-board">
         <div className="player-status" data-qa="game-status">
@@ -51,6 +41,16 @@ const PlayAgainstFriend = ({
       </div>
       <MoveHistory previousPlayerMoves={previousPlayerMoves} />
     </Container>
+    <ScoresBanner
+      winner={winner}
+      moveNumber={moveNumber}
+      playerXScore={playerXScore}
+      playerOScore={playerOScore}
+      drawScore={drawScore}
+      scoreForPlayerX={scoreForPlayerX}
+      scoreForPlayerO={scoreForPlayerO}
+      scoreForDraw={scoreForDraw}
+    />
   </Container>
 );
 
