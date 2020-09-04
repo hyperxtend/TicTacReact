@@ -53,18 +53,10 @@ const StyledNavLink = styled(NavLink)`
 
 const NavigationBar = () => (
   <StyledNavBar className="navigation-bar">
-    <StyledNavLink className="home-link" to={LANDING_PAGE}>
-      Tic-Tac-Toe
-    </StyledNavLink>
-    <StyledNavLink className="nav-link" to={COMPUTER}>
-      VS Computer
-    </StyledNavLink>
-    <StyledNavLink className="nav-link" to={FRIEND}>
-      VS Friend
-    </StyledNavLink>
-    <StyledNavLink className="nav-link" to={SCORE_BOARD}>
-      Score Board
-    </StyledNavLink>
+    <StyledNavLink to={LANDING_PAGE}>Tic-Tac-Toe</StyledNavLink>
+    <StyledNavLink to={COMPUTER}>VS Computer</StyledNavLink>
+    <StyledNavLink to={FRIEND}>VS Friend</StyledNavLink>
+    <StyledNavLink to={SCORE_BOARD}>Score Board</StyledNavLink>
   </StyledNavBar>
 );
 
