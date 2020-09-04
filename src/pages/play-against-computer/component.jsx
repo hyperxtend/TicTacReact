@@ -6,6 +6,7 @@ import Board from '../../components/board';
 import MoveHistory from '../../components/move-history';
 import ScoreBanner from '../../components/score-banner';
 import PageHeader from '../../components/page-header';
+import { GameContainer, GameBoardContainer, StyledGameStatus } from '../styles';
 
 import { determineGameStatus } from './controller';
 
@@ -26,11 +27,11 @@ const PlayAgainstComputer = ({
 }) => (
   <Container>
     <PageHeader pageTitle="Playing against Computer" />
-    <Container className="game">
-      <div className="game-board">
-        <div className="player-status" data-qa="game-status">
+    <GameContainer>
+      <GameBoardContainer>
+        <StyledGameStatus data-qa="game-status">
           {determineGameStatus(winner, moveNumber, xIsNext)}
-        </div>
+        </StyledGameStatus>
         <Board
           squares={squares}
           onClick={(squareIndex) => {
@@ -38,9 +39,9 @@ const PlayAgainstComputer = ({
           }}
           data-qa="game-board"
         />
-      </div>
+      </GameBoardContainer>
       <MoveHistory previousPlayerMoves={previousPlayerMoves} />
-    </Container>
+    </GameContainer>
     <ScoreBanner
       winner={winner}
       moveNumber={moveNumber}
