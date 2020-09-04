@@ -52,7 +52,7 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 const NavigationBar = () => (
-  <StyledNavBar className="navigation-bar">
+  <StyledNavBar>
     <StyledNavLink to={LANDING_PAGE}>Tic-Tac-Toe</StyledNavLink>
     <StyledNavLink to={COMPUTER}>VS Computer</StyledNavLink>
     <StyledNavLink to={FRIEND}>VS Friend</StyledNavLink>

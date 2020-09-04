@@ -28,7 +28,6 @@ const MoveHistory = ({ previousPlayerMoves }) => (
     <HistoryHeader>Go back to</HistoryHeader>
     {previousPlayerMoves.map(({ buttonName, buttonClick }, index) => (
       <Button
-        className="move-history"
         size="sm"
         variant="outline-dark"
         key={`${[index]}-${buttonName}`}

@@ -79,7 +79,6 @@ const ScoreBoard = ({
       <Button
         variant="warning"
         size="lg"
-        className="rest-button"
         data-qa="rest-button"
         onClick={(actionPayload) => resetGameState(actionPayload)}
       >

@@ -40,17 +40,17 @@ const MenuSelection = () => (
       Game Selection
     </SelectionHeader>
     <Link to={COMPUTER}>
-      <SelectionButton variant="dark" size="lg" className="selection-button">
+      <SelectionButton variant="dark" size="lg">
         VS Computer
       </SelectionButton>
     </Link>
     <Link to={FRIEND}>
-      <SelectionButton variant="dark" size="lg" className="selection-button">
+      <SelectionButton variant="dark" size="lg">
         VS Friend
       </SelectionButton>
     </Link>
     <Link to={SCORE_BOARD}>
-      <SelectionButton variant="dark" size="lg" className="selection-button">
+      <SelectionButton variant="dark" size="lg">
         Score Board
       </SelectionButton>
     </Link>
