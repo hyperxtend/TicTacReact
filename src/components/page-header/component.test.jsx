@@ -6,10 +6,8 @@ import PageHeader from './component';
 
 describe('<PageHeader/> ', () => {
   const wrapper = shallow(<PageHeader />);
-  it('checks if component contain h1 element', () => {
-    const defaultHeader = wrapper
-      .find(select('page-title'))
-      .hasClass('page-title');
+  it('checks if component h1 element exists', () => {
+    const defaultHeader = wrapper.find(select('page-title')).exists();
     expect(defaultHeader).toBe(true);
   });
 });
