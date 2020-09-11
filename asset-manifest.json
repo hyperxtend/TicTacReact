@@ -1,25 +1,22 @@
 {
   "files": {
-    "main.css": "/TicTacReact/static/css/main.59347215.chunk.css",
-    "main.js": "/TicTacReact/static/js/main.ddbab161.chunk.js",
-    "main.js.map": "/TicTacReact/static/js/main.ddbab161.chunk.js.map",
+    "main.js": "/TicTacReact/static/js/main.e933be2b.chunk.js",
+    "main.js.map": "/TicTacReact/static/js/main.e933be2b.chunk.js.map",
     "runtime-main.js": "/TicTacReact/static/js/runtime-main.3a8b4c1b.js",
     "runtime-main.js.map": "/TicTacReact/static/js/runtime-main.3a8b4c1b.js.map",
     "static/css/2.5b44f0a0.chunk.css": "/TicTacReact/static/css/2.5b44f0a0.chunk.css",
-    "static/js/2.6704e73f.chunk.js": "/TicTacReact/static/js/2.6704e73f.chunk.js",
-    "static/js/2.6704e73f.chunk.js.map": "/TicTacReact/static/js/2.6704e73f.chunk.js.map",
+    "static/js/2.4b1a1794.chunk.js": "/TicTacReact/static/js/2.4b1a1794.chunk.js",
+    "static/js/2.4b1a1794.chunk.js.map": "/TicTacReact/static/js/2.4b1a1794.chunk.js.map",
     "index.html": "/TicTacReact/index.html",
-    "precache-manifest.9f42d1374f56bdde0738578a98beb612.js": "/TicTacReact/precache-manifest.9f42d1374f56bdde0738578a98beb612.js",
+    "precache-manifest.068b5bab780836586ee34a098c1e30b6.js": "/TicTacReact/precache-manifest.068b5bab780836586ee34a098c1e30b6.js",
     "service-worker.js": "/TicTacReact/service-worker.js",
     "static/css/2.5b44f0a0.chunk.css.map": "/TicTacReact/static/css/2.5b44f0a0.chunk.css.map",
-    "static/css/main.59347215.chunk.css.map": "/TicTacReact/static/css/main.59347215.chunk.css.map",
-    "static/js/2.6704e73f.chunk.js.LICENSE.txt": "/TicTacReact/static/js/2.6704e73f.chunk.js.LICENSE.txt"
+    "static/js/2.4b1a1794.chunk.js.LICENSE.txt": "/TicTacReact/static/js/2.4b1a1794.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3a8b4c1b.js",
     "static/css/2.5b44f0a0.chunk.css",
-    "static/js/2.6704e73f.chunk.js",
-    "static/css/main.59347215.chunk.css",
-    "static/js/main.ddbab161.chunk.js"
+    "static/js/2.4b1a1794.chunk.js",
+    "static/js/main.e933be2b.chunk.js"
   ]
 }
