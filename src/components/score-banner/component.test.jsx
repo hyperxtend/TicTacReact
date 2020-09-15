@@ -9,7 +9,7 @@ describe('<ScoreBanner/>', () => {
 
   it('check menu selection header', () => {
     const menuHeader = wrapper
-      .find(select('banner-head-draws'))
+      .find(select('banner-game-draws-header'))
       .children()
       .first()
       .text();

@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { select } from 'qa-utilities';
 
 import PlayAgainstFriend from './component';
 
@@ -38,7 +39,7 @@ describe('<PlayAgainstFriend/>', () => {
 
   it('checks initial game status rendering', () => {
     const nextPlayer = wrapper
-      .find('div.player-status')
+      .find(select('game-status'))
       .children()
       .first()
       .text();

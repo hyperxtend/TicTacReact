@@ -1,12 +1,44 @@
 import React from 'react';
 import { Col, Button, Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-
-import './component.css';
+import styled from 'styled-components';
 
 import PageHeader from '../../components/page-header';
 
 import calculateWinningAverage from './controller';
+
+const ScoreBoardContainer = styled(Container)`
+  width: 50vw;
+  height: 40vh;
+  margin: 0 auto;
+  padding: 0;
+  margin-top: 5%;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+`;
+
+const ScoreBoardRow = styled.div`
+  display: flex;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+`;
+
+const TableHead = styled(Col)`
+  font-size: 3rem;
+  font-weight: 700;
+  text-decoration: underline;
+`;
+
+const StyledSubHeaders = styled(Col)`
+  font-size: 2rem;
+  font-weight: 600;
+`;
+
+const StyledScores = styled(Col)`
+  font-size: 1.7rem;
+`;
 
 const ScoreBoard = ({
   playerXScore,
@@ -15,53 +47,45 @@ const ScoreBoard = ({
   gamesPlayed,
   resetGameState,
 }) => (
-  <div data-qa="score-table">
+  <>
     <PageHeader pageTitle="Score Board" />
-    <Container className="score-table">
-      <div className="score-row">
-        <Col className="score-head">Player X</Col>
-        <Col className="score-head">Player O</Col>
-      </div>
-      <div className="score-row">
-        <Col className="score-sub-head">Wins</Col>
-        <Col className="score-sub-head">Draws</Col>
-        <Col className="score-sub-head">Wins</Col>
-      </div>
-      <div className="score-row">
-        <Col className="scores" data-qa="player-x-score">
-          {playerXScore}
-        </Col>
-        <Col className="scores" data-qa="score-for-draw">
-          {drawScore}
-        </Col>
-        <Col className="scores" data-qa="player-o-score">
-          {playerOScore}
-        </Col>
-      </div>
-      <div className="score-row">
-        <Col className="score-sub-head">Winning Rate</Col>
-        <Col className="score-sub-head">Winning Rate</Col>
-      </div>
-      <div className="score-row">
-        <Col className="scores" data-qa="winning-rate-player-x">
+    <ScoreBoardContainer data-qa="score-table">
+      <ScoreBoardRow>
+        <TableHead>Player X</TableHead>
+        <TableHead>Player O</TableHead>
+      </ScoreBoardRow>
+      <ScoreBoardRow>
+        <StyledSubHeaders>Wins</StyledSubHeaders>
+        <StyledSubHeaders>Draws</StyledSubHeaders>
+        <StyledSubHeaders>Wins</StyledSubHeaders>
+      </ScoreBoardRow>
+      <ScoreBoardRow>
+        <StyledScores data-qa="player-x-score">{playerXScore}</StyledScores>
+        <StyledScores data-qa="score-for-draw">{drawScore}</StyledScores>
+        <StyledScores data-qa="player-o-score">{playerOScore}</StyledScores>
+      </ScoreBoardRow>
+      <ScoreBoardRow>
+        <StyledSubHeaders>Winning Rate</StyledSubHeaders>
+        <StyledSubHeaders>Winning Rate</StyledSubHeaders>
+      </ScoreBoardRow>
+      <ScoreBoardRow>
+        <StyledScores data-qa="winning-rate-player-x">
           {calculateWinningAverage(gamesPlayed, playerXScore)}%
-        </Col>
-
-        <Col className="scores" data-qa="winning-rate-player-o">
+        </StyledScores>
+        <StyledScores data-qa="winning-rate-player-o">
           {calculateWinningAverage(gamesPlayed, playerOScore)}%
-        </Col>
-      </div>
+        </StyledScores>
+      </ScoreBoardRow>
       <Button
         variant="warning"
         size="lg"
-        className="rest-button"
         data-qa="rest-button"
         onClick={(actionPayload) => resetGameState(actionPayload)}
       >
         Reset Stats
       </Button>
-    </Container>
-  </div>
+    </ScoreBoardContainer>
+  </>
 );
 
 ScoreBoard.propTypes = {

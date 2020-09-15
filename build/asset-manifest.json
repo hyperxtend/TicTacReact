@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/TicTacReact/static/css/main.1a6cf594.chunk.css",
-    "main.js": "/TicTacReact/static/js/main.79735778.chunk.js",
-    "main.js.map": "/TicTacReact/static/js/main.79735778.chunk.js.map",
-    "runtime-main.js": "/TicTacReact/static/js/runtime-main.3a51082a.js",
-    "runtime-main.js.map": "/TicTacReact/static/js/runtime-main.3a51082a.js.map",
-    "static/css/2.69121389.chunk.css": "/TicTacReact/static/css/2.69121389.chunk.css",
-    "static/js/2.32c10e9f.chunk.js": "/TicTacReact/static/js/2.32c10e9f.chunk.js",
-    "static/js/2.32c10e9f.chunk.js.map": "/TicTacReact/static/js/2.32c10e9f.chunk.js.map",
+    "main.css": "/TicTacReact/static/css/main.59347215.chunk.css",
+    "main.js": "/TicTacReact/static/js/main.ddbab161.chunk.js",
+    "main.js.map": "/TicTacReact/static/js/main.ddbab161.chunk.js.map",
+    "runtime-main.js": "/TicTacReact/static/js/runtime-main.3a8b4c1b.js",
+    "runtime-main.js.map": "/TicTacReact/static/js/runtime-main.3a8b4c1b.js.map",
+    "static/css/2.5b44f0a0.chunk.css": "/TicTacReact/static/css/2.5b44f0a0.chunk.css",
+    "static/js/2.6704e73f.chunk.js": "/TicTacReact/static/js/2.6704e73f.chunk.js",
+    "static/js/2.6704e73f.chunk.js.map": "/TicTacReact/static/js/2.6704e73f.chunk.js.map",
     "index.html": "/TicTacReact/index.html",
-    "precache-manifest.f1f056ffda22c128e1f0848e0005ab0e.js": "/TicTacReact/precache-manifest.f1f056ffda22c128e1f0848e0005ab0e.js",
+    "precache-manifest.9f42d1374f56bdde0738578a98beb612.js": "/TicTacReact/precache-manifest.9f42d1374f56bdde0738578a98beb612.js",
     "service-worker.js": "/TicTacReact/service-worker.js",
-    "static/css/2.69121389.chunk.css.map": "/TicTacReact/static/css/2.69121389.chunk.css.map",
-    "static/css/main.1a6cf594.chunk.css.map": "/TicTacReact/static/css/main.1a6cf594.chunk.css.map",
-    "static/js/2.32c10e9f.chunk.js.LICENSE.txt": "/TicTacReact/static/js/2.32c10e9f.chunk.js.LICENSE.txt"
+    "static/css/2.5b44f0a0.chunk.css.map": "/TicTacReact/static/css/2.5b44f0a0.chunk.css.map",
+    "static/css/main.59347215.chunk.css.map": "/TicTacReact/static/css/main.59347215.chunk.css.map",
+    "static/js/2.6704e73f.chunk.js.LICENSE.txt": "/TicTacReact/static/js/2.6704e73f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.3a51082a.js",
-    "static/css/2.69121389.chunk.css",
-    "static/js/2.32c10e9f.chunk.js",
-    "static/css/main.1a6cf594.chunk.css",
-    "static/js/main.79735778.chunk.js"
+    "static/js/runtime-main.3a8b4c1b.js",
+    "static/css/2.5b44f0a0.chunk.css",
+    "static/js/2.6704e73f.chunk.js",
+    "static/css/main.59347215.chunk.css",
+    "static/js/main.ddbab161.chunk.js"
   ]
 }
