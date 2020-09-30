@@ -15,10 +15,24 @@ const store = createStore(
 );
 
 store.subscribe(() => {
-  const { playerXScore, playerOScore, drawScore } = store.getState().app.status;
+  const {
+    playerXScore,
+    playerOScore,
+    drawScore,
+    gamesPlayed,
+  } = store.getState().app.status;
 
   saveStateToLocalStorage({
-    app: { playerXScore, playerOScore, drawScore },
+    app: {
+      status: {
+        playerXScore,
+        playerOScore,
+        drawScore,
+        gamesPlayed,
+        history: [Array(9).fill('')],
+        moveNumber: 0,
+      },
+    },
   });
 });
 
