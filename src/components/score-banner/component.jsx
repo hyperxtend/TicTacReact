@@ -1,32 +1,52 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import './component.css';
+const ScoreBannerTable = styled(Table)`
+  margin-top: 5%;
+  margin-bottom: 5%;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+`;
+
+const ScoreBannerHeader = styled.th`
+  font-size: 1.3rem;
+  text-decoration: underline;
+`;
+const ScoreBannerScores = styled.td`
+  text-align: center;
+  font-size: 1.6rem;
+`;
 
 const ScoreBanner = ({ playerXScore, playerOScore, drawScore }) => (
-  <Table className="score-banner">
+  <ScoreBannerTable data-qa="score-banner">
     <tbody>
       <tr>
-        <th className="score-banner-head">Player X Wins:</th>
-        <th className="score-banner-head" data-qa="banner-head-draws">
+        <ScoreBannerHeader data-qa="banner-player-x-header">
+          Player X Wins:
+        </ScoreBannerHeader>
+        <ScoreBannerHeader data-qa="banner-game-draws-header">
           Draws:
-        </th>
-        <th className="score-banner-head">Player O Wins:</th>
+        </ScoreBannerHeader>
+        <ScoreBannerHeader data-qa="banner-player-o-header">
+          Player O Wins:
+        </ScoreBannerHeader>
       </tr>
       <tr>
-        <td className="banner-scores">
-          <span>{playerXScore}</span>
-        </td>
-        <td className="banner-scores">
-          <span>{drawScore}</span>
-        </td>
-        <td className="banner-scores">
-          <span>{playerOScore}</span>
-        </td>
+        <ScoreBannerScores data-qa="banner-player-x-score">
+          {playerXScore}
+        </ScoreBannerScores>
+        <ScoreBannerScores data-qa="banner-draw-score">
+          {drawScore}
+        </ScoreBannerScores>
+        <ScoreBannerScores data-qa="banner-player-o-score">
+          {playerOScore}
+        </ScoreBannerScores>
       </tr>
     </tbody>
-  </Table>
+  </ScoreBannerTable>
 );
 
 ScoreBanner.propTypes = {

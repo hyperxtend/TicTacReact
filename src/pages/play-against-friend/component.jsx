@@ -3,9 +3,10 @@ import { Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import Board from '../../components/board';
-import ScoreBanner from '../../components/score-banner';
+import ScoresBanner from '../../components/score-banner';
 import MoveHistory from '../../components/move-history';
 import PageHeader from '../../components/page-header';
+import { GameContainer, GameBoardContainer, StyledGameStatus } from '../styles';
 
 import { determineGameStatus } from './controller';
 
@@ -15,7 +16,9 @@ const PlayAgainstFriend = ({
   playerXScore,
   playerOScore,
   drawScore,
-  setGameScore,
+  scoreForPlayerX,
+  scoreForPlayerO,
+  scoreForDraw,
   previousPlayerMoves,
   onSelectSquare,
   squares,
@@ -24,11 +27,11 @@ const PlayAgainstFriend = ({
 }) => (
   <Container>
     <PageHeader pageTitle="Playing against Friend" />
-    <Container className="game">
-      <div className="game-board">
-        <div className="player-status" data-qa="game-status">
+    <GameContainer>
+      <GameBoardContainer>
+        <StyledGameStatus data-qa="game-status">
           {determineGameStatus(winner, moveNumber, xIsNext)}
-        </div>
+        </StyledGameStatus>
         <Board
           squares={squares}
           onClick={(squareIndex) => {
@@ -36,14 +39,18 @@ const PlayAgainstFriend = ({
           }}
           data-qa="game-board"
         />
-      </div>
+      </GameBoardContainer>
       <MoveHistory previousPlayerMoves={previousPlayerMoves} />
-    </Container>
-    <ScoreBanner
+    </GameContainer>
+    <ScoresBanner
+      winner={winner}
+      moveNumber={moveNumber}
       playerXScore={playerXScore}
       playerOScore={playerOScore}
       drawScore={drawScore}
-      setGameScore={setGameScore(playerXScore, winner, moveNumber)}
+      scoreForPlayerX={scoreForPlayerX}
+      scoreForPlayerO={scoreForPlayerO}
+      scoreForDraw={scoreForDraw}
     />
   </Container>
 );
@@ -64,7 +71,9 @@ PlayAgainstFriend.propTypes = {
   playerXScore: PropTypes.number,
   playerOScore: PropTypes.number,
   drawScore: PropTypes.number,
-  setGameScore: PropTypes.func,
+  scoreForPlayerX: PropTypes.func,
+  scoreForPlayerO: PropTypes.func,
+  scoreForDraw: PropTypes.func,
 };
 
 PlayAgainstFriend.defaultProps = {
@@ -83,7 +92,9 @@ PlayAgainstFriend.defaultProps = {
   playerXScore: 0,
   playerOScore: 0,
   drawScore: 0,
-  setGameScore: () => {},
+  scoreForPlayerX: () => {},
+  scoreForPlayerO: () => {},
+  scoreForDraw: () => {},
 };
 
 export default PlayAgainstFriend;
