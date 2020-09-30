@@ -9,7 +9,7 @@ import calculateWinningAverage from './controller';
 
 const ScoreBoardContainer = styled(Container)`
   width: 50vw;
-  height: 40vh;
+  height: 45vh;
   margin: 0 auto;
   padding: 0;
   margin-top: 5%;
