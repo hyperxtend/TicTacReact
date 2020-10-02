@@ -24,3 +24,15 @@ export const getCurrentMovesPlayed = (
 
   return currentSquaresPlayed;
 };
+
+export const manageHistoryConflicts = (history, moveNumber) => {
+  const currentHistory = history[moveNumber + 1];
+  const previousHistory = history[moveNumber - 1];
+  console.log('prev', previousHistory);
+  console.log('current', currentHistory);
+  console.log('moveNumber', moveNumber);
+  if (currentHistory !== previousHistory) {
+    return previousHistory;
+  }
+  return currentHistory;
+};
