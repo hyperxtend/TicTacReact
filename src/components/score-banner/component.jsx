@@ -20,16 +20,7 @@ const ScoreBannerScores = styled.td`
   font-size: 1.6rem;
 `;
 
-const ScoreBanner = ({
-  winner,
-  moveNumber,
-  playerXScore,
-  playerOScore,
-  drawScore,
-  scoreForPlayerX,
-  scoreForPlayerO,
-  scoreForDraw,
-}) => (
+const ScoreBanner = ({ playerXScore, playerOScore, drawScore }) => (
   <ScoreBannerTable data-qa="score-banner">
     <tbody>
       <tr>
@@ -45,13 +36,13 @@ const ScoreBanner = ({
       </tr>
       <tr>
         <ScoreBannerScores data-qa="banner-player-x-score">
-          {scoreForPlayerX(playerXScore, winner)}
+          {playerXScore}
         </ScoreBannerScores>
         <ScoreBannerScores data-qa="banner-draw-score">
-          {scoreForDraw(drawScore, winner, moveNumber)}
+          {drawScore}
         </ScoreBannerScores>
         <ScoreBannerScores data-qa="banner-player-o-score">
-          {scoreForPlayerO(playerOScore, winner)}
+          {playerOScore}
         </ScoreBannerScores>
       </tr>
     </tbody>
@@ -59,25 +50,15 @@ const ScoreBanner = ({
 );
 
 ScoreBanner.propTypes = {
-  winner: PropTypes.string,
-  moveNumber: PropTypes.number,
   playerXScore: PropTypes.number,
   playerOScore: PropTypes.number,
   drawScore: PropTypes.number,
-  scoreForPlayerX: PropTypes.func,
-  scoreForPlayerO: PropTypes.func,
-  scoreForDraw: PropTypes.func,
 };
 
 ScoreBanner.defaultProps = {
-  winner: '',
-  moveNumber: 0,
   playerXScore: 0,
   playerOScore: 0,
   drawScore: 0,
-  scoreForPlayerX: () => {},
-  scoreForPlayerO: () => {},
-  scoreForDraw: () => {},
 };
 
 export default ScoreBanner;
