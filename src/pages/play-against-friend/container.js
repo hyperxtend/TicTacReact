@@ -2,7 +2,9 @@ import { connect } from 'react-redux';
 
 import {
   selectSquare,
-  goToMove,
+  newGame,
+  undoMove,
+  redoMove,
   setXScore,
   setDrawScore,
   setOScore,
@@ -10,7 +12,7 @@ import {
 } from '../../reducers/state-of-game/actions';
 import calculateWinner from '../../utils/calculate-winner';
 
-import { getCurrentMovesPlayed } from './controller';
+import { getCurrentMovesPlayed, manageHistoryConflicts } from './controller';
 import PlayAgainstFriend from './component';
 
 export const mapStateToProps = ({
@@ -45,7 +47,6 @@ export const mapDispatchToProps = (dispatch) => ({
     );
     dispatch(selectSquare({ squareIndex, currentMovesPlayed }));
   },
-  jumpTo: (step) => dispatch(goToMove(step)),
   scoreForPlayerX: (currentScore, winner) => {
     if (winner === 'X') {
       dispatch(setXScore(currentScore));
@@ -67,19 +68,12 @@ export const mapDispatchToProps = (dispatch) => ({
     }
     return currentScore;
   },
+  playNewGame: (reset) => dispatch(newGame(reset)),
+  goAMoveBackwards: (stepBackwards, history, moveNumber) => {
+    const newHistory = manageHistoryConflicts(history, moveNumber);
+    dispatch(undoMove({ stepBackwards, newHistory }));
+  },
+  goAMoveForwards: (stepForward) => dispatch(redoMove(stepForward)),
 });
 
-export const mergeProps = (stateProps, dispatchProps) => ({
-  ...stateProps,
-  ...dispatchProps,
-  previousPlayerMoves: stateProps.history.map((_, moveId) => ({
-    buttonName: moveId ? `Move #${moveId}` : 'Start',
-    buttonClick: () => dispatchProps.jumpTo(moveId),
-  })),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-  mergeProps
-)(PlayAgainstFriend);
+export default connect(mapStateToProps, mapDispatchToProps)(PlayAgainstFriend);

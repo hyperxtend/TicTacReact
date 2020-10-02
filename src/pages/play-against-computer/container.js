@@ -2,7 +2,9 @@ import { connect } from 'react-redux';
 
 import {
   computerMove,
-  goToMove,
+  newGame,
+  undoMove,
+  redoMove,
   setXScore,
   setDrawScore,
   setOScore,
@@ -45,7 +47,6 @@ export const mapDispatchToProps = (dispatch) => ({
     );
     dispatch(computerMove({ squareIndex, currentMovesPlayed }));
   },
-  jumpTo: (step) => dispatch(goToMove(step)),
   scoreForPlayerX: (currentScore, winner) => {
     if (winner === 'X') {
       dispatch(setXScore(currentScore));
@@ -67,19 +68,12 @@ export const mapDispatchToProps = (dispatch) => ({
     }
     return currentScore;
   },
-});
-
-export const mergeProps = (stateProps, dispatchProps) => ({
-  ...stateProps,
-  ...dispatchProps,
-  previousPlayerMoves: stateProps.history.map((_, moveId) => ({
-    buttonName: moveId ? `Move #${moveId}` : 'Start',
-    buttonClick: () => dispatchProps.jumpTo(moveId),
-  })),
+  playNewGame: (reset) => dispatch(newGame(reset)),
+  goAMoveBackwards: (stepBackwards) => dispatch(undoMove(stepBackwards)),
+  goAMoveForwards: (stepForward) => dispatch(redoMove(stepForward)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-  mergeProps
+  mapDispatchToProps
 )(PlayAgainstComputer);

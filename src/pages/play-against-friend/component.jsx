@@ -1,10 +1,9 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import Board from '../../components/board';
 import ScoresBanner from '../../components/score-banner';
-import MoveHistory from '../../components/move-history';
 import PageHeader from '../../components/page-header';
 import { GameContainer, GameBoardContainer, StyledGameStatus } from '../styles';
 
@@ -19,8 +18,10 @@ const PlayAgainstFriend = ({
   scoreForPlayerX,
   scoreForPlayerO,
   scoreForDraw,
-  previousPlayerMoves,
   onSelectSquare,
+  playNewGame,
+  goAMoveBackwards,
+  goAMoveForwards,
   squares,
   xIsNext,
   history,
@@ -29,6 +30,11 @@ const PlayAgainstFriend = ({
     <PageHeader pageTitle="Playing against Friend" />
     <GameContainer>
       <GameBoardContainer>
+        <Button onClick={(step) => goAMoveBackwards(step, history, moveNumber)}>
+          Backwards
+        </Button>
+        <Button onClick={goAMoveForwards}>Forward</Button>
+        <Button onClick={playNewGame}>New Game</Button>
         <StyledGameStatus data-qa="game-status">
           {determineGameStatus(winner, moveNumber, xIsNext)}
         </StyledGameStatus>
@@ -40,7 +46,6 @@ const PlayAgainstFriend = ({
           data-qa="game-board"
         />
       </GameBoardContainer>
-      <MoveHistory previousPlayerMoves={previousPlayerMoves} />
     </GameContainer>
     <ScoresBanner
       winner={winner}
@@ -62,18 +67,15 @@ PlayAgainstFriend.propTypes = {
   squares: PropTypes.arrayOf(PropTypes.string),
   xIsNext: PropTypes.bool,
   moveNumber: PropTypes.number,
-  previousPlayerMoves: PropTypes.arrayOf(
-    PropTypes.shape({
-      buttonName: PropTypes.string,
-      buttonClick: PropTypes.func,
-    })
-  ),
+  playNewGame: PropTypes.func,
   playerXScore: PropTypes.number,
   playerOScore: PropTypes.number,
   drawScore: PropTypes.number,
   scoreForPlayerX: PropTypes.func,
   scoreForPlayerO: PropTypes.func,
   scoreForDraw: PropTypes.func,
+  goAMoveBackwards: PropTypes.func,
+  goAMoveForwards: PropTypes.func,
 };
 
 PlayAgainstFriend.defaultProps = {
@@ -83,18 +85,15 @@ PlayAgainstFriend.defaultProps = {
   squares: [],
   xIsNext: true,
   moveNumber: 0,
-  previousPlayerMoves: [
-    {
-      buttonName: 'Restart',
-      buttonClick: () => {},
-    },
-  ],
+  playNewGame: () => {},
   playerXScore: 0,
   playerOScore: 0,
   drawScore: 0,
   scoreForPlayerX: () => {},
   scoreForPlayerO: () => {},
   scoreForDraw: () => {},
+  goAMoveBackwards: () => {},
+  goAMoveForwards: () => {},
 };
 
 export default PlayAgainstFriend;
