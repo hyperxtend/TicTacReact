@@ -12,6 +12,8 @@ import {
 } from './actions';
 
 export const initialState = {
+  past: [],
+  future: [],
   history: [Array(9).fill('')],
   xIsNext: true,
   moveNumber: 0,
@@ -29,19 +31,24 @@ export default (state = initialState, action = {}) => {
         ...state,
         history: [Array(9).fill('')],
         moveNumber: 0,
+        winner: '',
+        past: [],
+        future: [],
         xIsNext: true,
       };
     case UNDO_MOVE:
       return {
         ...state,
-        history: [...state.history, action.payload.currentHistory],
+        history: [...state.history],
+        future: [...state.history],
         xIsNext: !state.xIsNext,
         moveNumber: state.moveNumber - 1,
       };
     case REDO_MOVE:
       return {
         ...state,
-        history: [...state.history],
+        history: [...state.future],
+        past: [...state.history],
         xIsNext: !state.xIsNext,
         moveNumber: state.moveNumber + 1,
       };
@@ -64,18 +71,24 @@ export default (state = initialState, action = {}) => {
         ...state,
         winner: 'X',
         playerXScore: state.playerXScore + 1,
+        past: [],
+        future: [],
       };
     case SET_O_SCORE:
       return {
         ...state,
         winner: 'O',
         playerOScore: state.playerOScore + 1,
+        past: [],
+        future: [],
       };
     case SET_DRAW_SCORE:
       return {
         ...state,
         winner: '',
         drawScore: state.drawScore + 1,
+        past: [],
+        future: [],
       };
     case GAMES_PLAYED:
       return {
