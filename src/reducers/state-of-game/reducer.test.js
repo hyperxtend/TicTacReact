@@ -1,6 +1,5 @@
 import reducer, { initialState } from './reducer';
 import {
-  goToMove,
   setXScore,
   setOScore,
   setDrawScore,
@@ -84,43 +83,6 @@ describe('reducer', () => {
     expect(reducer(stateValues, mockComputerMove)).toStrictEqual(expected);
   });
 
-  it('checks state of reducer for GO_TO_MOVE action', () => {
-    const stateValues = {
-      drawScore: 0,
-      gamesPlayed: 0,
-      history: [
-        Array(9).fill(''),
-        ['X', '', '', '', '', '', '', '', ''],
-        ['X', 'O', '', '', '', '', '', '', ''],
-        ['X', 'O', '', 'X', '', '', '', '', ''],
-        ['X', 'O', '', 'X', 'O', '', '', '', ''],
-        ['X', 'O', '', 'X', 'O', 'X', '', '', ''],
-        ['X', 'O', '', 'X', 'O', 'X', '', 'O', ''],
-      ],
-      moveNumber: 6,
-      playerOScore: 0,
-      playerXScore: 0,
-      winner: '',
-      xIsNext: true,
-    };
-    const expected = {
-      drawScore: 0,
-      gamesPlayed: 0,
-      history: [
-        ['', '', '', '', '', '', '', '', ''],
-        ['X', '', '', '', '', '', '', '', ''],
-        ['X', 'O', '', '', '', '', '', '', ''],
-        ['X', 'O', '', 'X', '', '', '', '', ''],
-      ],
-      moveNumber: 3,
-      playerOScore: 0,
-      playerXScore: 0,
-      winner: '',
-      xIsNext: false,
-    };
-    expect(reducer(stateValues, goToMove(3))).toStrictEqual(expected);
-  });
-
   it('checks state of reducer for SET_X_SCORE action', () => {
     const stateValues = {
       drawScore: 0,
@@ -138,6 +100,8 @@ describe('reducer', () => {
       playerXScore: 0,
       winner: '',
       xIsNext: false,
+      past: [],
+      future: [],
     };
     const expected = {
       drawScore: 0,
@@ -155,6 +119,8 @@ describe('reducer', () => {
       playerXScore: 1,
       winner: 'X',
       xIsNext: false,
+      past: [],
+      future: [],
     };
     expect(reducer(stateValues, setXScore(1))).toStrictEqual(expected);
   });
@@ -176,6 +142,8 @@ describe('reducer', () => {
       playerXScore: 0,
       winner: '',
       xIsNext: true,
+      past: [],
+      future: [],
     };
     const expected = {
       drawScore: 0,
@@ -194,6 +162,8 @@ describe('reducer', () => {
       playerXScore: 0,
       winner: 'O',
       xIsNext: true,
+      past: [],
+      future: [],
     };
     expect(reducer(stateValues, setOScore(1))).toStrictEqual(expected);
   });
@@ -218,6 +188,8 @@ describe('reducer', () => {
       playerXScore: 2,
       winner: '',
       xIsNext: false,
+      past: [],
+      future: [],
     };
     const expected = {
       drawScore: 1,
@@ -239,6 +211,8 @@ describe('reducer', () => {
       playerXScore: 2,
       winner: '',
       xIsNext: false,
+      past: [],
+      future: [],
     };
     expect(reducer(stateValues, setDrawScore(1))).toStrictEqual(expected);
   });
