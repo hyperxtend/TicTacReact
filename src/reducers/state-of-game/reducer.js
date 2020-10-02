@@ -1,19 +1,21 @@
 import {
   SELECT_SQUARE,
-  GO_TO_MOVE,
+  NEW_GAME,
   COMPUTER_MOVE,
   SET_X_SCORE,
   SET_O_SCORE,
   SET_DRAW_SCORE,
   GAMES_PLAYED,
   RESET_STATE,
+  UNDO_MOVE,
+  REDO_MOVE,
 } from './actions';
 
 export const initialState = {
   history: [Array(9).fill('')],
   xIsNext: true,
-  winner: '',
   moveNumber: 0,
+  winner: '',
   playerXScore: 0,
   playerOScore: 0,
   drawScore: 0,
@@ -22,12 +24,26 @@ export const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case GO_TO_MOVE:
+    case NEW_GAME:
       return {
         ...state,
-        history: state.history.slice(0, action.payload + 1),
-        moveNumber: action.payload,
-        xIsNext: !(action.payload % 2),
+        history: [Array(9).fill('')],
+        moveNumber: 0,
+        xIsNext: true,
+      };
+    case UNDO_MOVE:
+      return {
+        ...state,
+        history: [...state.history, action.payload.currentHistory],
+        xIsNext: !state.xIsNext,
+        moveNumber: state.moveNumber - 1,
+      };
+    case REDO_MOVE:
+      return {
+        ...state,
+        history: [...state.history],
+        xIsNext: !state.xIsNext,
+        moveNumber: state.moveNumber + 1,
       };
     case SELECT_SQUARE:
       return {
