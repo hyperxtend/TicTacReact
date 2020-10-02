@@ -19,6 +19,9 @@ const calculateWinner = (currentlyPlayedMoves) => {
     const [a, b, c] = possibleWinningCombinations[winningCombinationIndex];
     /* If statement checks the 1st winning position in the array
      equals the other 2 positions the returns the 1st position */
+    if (currentlyPlayedMoves === undefined) {
+      return currentlyPlayedMoves;
+    }
     if (
       currentlyPlayedMoves[a] &&
       currentlyPlayedMoves[a] === currentlyPlayedMoves[b] &&
