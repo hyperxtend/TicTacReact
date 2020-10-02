@@ -19,9 +19,9 @@ const PlayAgainstComputer = ({
   scoreForPlayerO,
   scoreForDraw,
   movesForPlayers,
-  playNewGame,
-  goAMoveBackwards,
-  goAMoveForwards,
+  newGame,
+  undoMove,
+  redoMove,
   squares,
   xIsNext,
   history,
@@ -30,9 +30,9 @@ const PlayAgainstComputer = ({
     <PageHeader pageTitle="Playing against Computer" />
     <GameContainer>
       <GameBoardContainer>
-        <Button onClick={goAMoveBackwards}>Backwards</Button>
-        <Button onClick={goAMoveForwards}>Forward</Button>
-        <Button onClick={playNewGame}>New Game</Button>
+        <Button onClick={undoMove}>Backwards</Button>
+        <Button onClick={redoMove}>Forward</Button>
+        <Button onClick={newGame}>New Game</Button>
         <StyledGameStatus data-qa="game-status">
           {determineGameStatus(winner, moveNumber, xIsNext)}
         </StyledGameStatus>
@@ -65,15 +65,15 @@ PlayAgainstComputer.propTypes = {
   squares: PropTypes.arrayOf(PropTypes.string),
   xIsNext: PropTypes.bool,
   moveNumber: PropTypes.number,
-  playNewGame: PropTypes.func,
+  newGame: PropTypes.func,
   playerXScore: PropTypes.number,
   playerOScore: PropTypes.number,
   drawScore: PropTypes.number,
   scoreForPlayerX: PropTypes.func,
   scoreForPlayerO: PropTypes.func,
   scoreForDraw: PropTypes.func,
-  goAMoveBackwards: PropTypes.func,
-  goAMoveForwards: PropTypes.func,
+  undoMove: PropTypes.func,
+  redoMove: PropTypes.func,
 };
 
 PlayAgainstComputer.defaultProps = {
@@ -83,7 +83,7 @@ PlayAgainstComputer.defaultProps = {
   squares: [],
   xIsNext: true,
   moveNumber: 0,
-  playNewGame: () => {},
+  newGame: () => {},
 
   playerXScore: 0,
   playerOScore: 0,
@@ -91,8 +91,8 @@ PlayAgainstComputer.defaultProps = {
   scoreForPlayerX: () => {},
   scoreForPlayerO: () => {},
   scoreForDraw: () => {},
-  goAMoveBackwards: () => {},
-  goAMoveForwards: () => {},
+  undoMove: () => {},
+  redoMove: () => {},
 };
 
 export default PlayAgainstComputer;

@@ -20,8 +20,8 @@ const PlayAgainstFriend = ({
   scoreForDraw,
   onSelectSquare,
   playNewGame,
-  goAMoveBackwards,
-  goAMoveForwards,
+  undoMove,
+  redoMove,
   squares,
   xIsNext,
   history,
@@ -30,10 +30,8 @@ const PlayAgainstFriend = ({
     <PageHeader pageTitle="Playing against Friend" />
     <GameContainer>
       <GameBoardContainer>
-        <Button onClick={(step) => goAMoveBackwards(step, history, moveNumber)}>
-          Backwards
-        </Button>
-        <Button onClick={goAMoveForwards}>Forward</Button>
+        <Button onClick={undoMove}>Backwards</Button>
+        <Button onClick={redoMove}>Forward</Button>
         <Button onClick={playNewGame}>New Game</Button>
         <StyledGameStatus data-qa="game-status">
           {determineGameStatus(winner, moveNumber, xIsNext)}
@@ -74,8 +72,8 @@ PlayAgainstFriend.propTypes = {
   scoreForPlayerX: PropTypes.func,
   scoreForPlayerO: PropTypes.func,
   scoreForDraw: PropTypes.func,
-  goAMoveBackwards: PropTypes.func,
-  goAMoveForwards: PropTypes.func,
+  undoMove: PropTypes.func,
+  redoMove: PropTypes.func,
 };
 
 PlayAgainstFriend.defaultProps = {
@@ -92,8 +90,8 @@ PlayAgainstFriend.defaultProps = {
   scoreForPlayerX: () => {},
   scoreForPlayerO: () => {},
   scoreForDraw: () => {},
-  goAMoveBackwards: () => {},
-  goAMoveForwards: () => {},
+  undoMove: () => {},
+  redoMove: () => {},
 };
 
 export default PlayAgainstFriend;

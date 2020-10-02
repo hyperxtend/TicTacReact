@@ -68,9 +68,9 @@ export const mapDispatchToProps = (dispatch) => ({
     }
     return currentScore;
   },
-  playNewGame: (reset) => dispatch(newGame(reset)),
-  goAMoveBackwards: (stepBackwards) => dispatch(undoMove(stepBackwards)),
-  goAMoveForwards: (stepForward) => dispatch(redoMove(stepForward)),
+  newGame: (reset) => dispatch(newGame(reset)),
+  undoMove: (stepBackwards) => dispatch(undoMove(stepBackwards)),
+  redoMove: (stepForward) => dispatch(redoMove(stepForward)),
 });
 
 export default connect(

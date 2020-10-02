@@ -12,7 +12,7 @@ import {
 } from '../../reducers/state-of-game/actions';
 import calculateWinner from '../../utils/calculate-winner';
 
-import { getCurrentMovesPlayed, manageHistoryConflicts } from './controller';
+import { getCurrentMovesPlayed } from './controller';
 import PlayAgainstFriend from './component';
 
 export const mapStateToProps = ({
@@ -68,12 +68,9 @@ export const mapDispatchToProps = (dispatch) => ({
     }
     return currentScore;
   },
-  playNewGame: (reset) => dispatch(newGame(reset)),
-  goAMoveBackwards: (stepBackwards, history, moveNumber) => {
-    const newHistory = manageHistoryConflicts(history, moveNumber);
-    dispatch(undoMove({ stepBackwards, newHistory }));
-  },
-  goAMoveForwards: (stepForward) => dispatch(redoMove(stepForward)),
+  newGame: (reset) => dispatch(newGame(reset)),
+  undoMove: (stepBackwards) => dispatch(undoMove(stepBackwards)),
+  redoMove: (stepForward) => dispatch(redoMove(stepForward)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayAgainstFriend);
