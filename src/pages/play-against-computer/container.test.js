@@ -82,4 +82,22 @@ describe('mapDispatchToProps', () => {
     expect(dispatch.mock.calls[5][0].type).toEqual('SET_DRAW_SCORE');
     expect(dispatch.mock.calls[6][0].type).toEqual('GAMES_PLAYED');
   });
+
+  it('check if newGame dispatches', () => {
+    const mockPayload = 4;
+    mapDispatchToProps(dispatch).newGame(mockPayload);
+    expect(dispatch.mock.calls[7][0].type).toEqual('NEW_GAME');
+  });
+
+  it('check if undoMove dispatches', () => {
+    const mockPayload = 5;
+    mapDispatchToProps(dispatch).undoMove(mockPayload);
+    expect(dispatch.mock.calls[8][0].type).toEqual('UNDO_MOVE');
+  });
+
+  it('check if redoMove dispatches', () => {
+    const mockPayload = 6;
+    mapDispatchToProps(dispatch).redoMove(mockPayload);
+    expect(dispatch.mock.calls[9][0].type).toEqual('REDO_MOVE');
+  });
 });
