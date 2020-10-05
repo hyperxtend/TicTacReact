@@ -69,7 +69,11 @@ export const mapDispatchToProps = (dispatch) => ({
     return currentScore;
   },
   newGame: (reset) => dispatch(newGame(reset)),
-  undoMove: (stepBackwards) => dispatch(undoMove(stepBackwards)),
+  undoMove: (stepBackwards, history) => {
+    if (history.length > 1) {
+      dispatch(undoMove(stepBackwards));
+    }
+  },
   redoMove: (stepForward) => dispatch(redoMove(stepForward)),
 });
 

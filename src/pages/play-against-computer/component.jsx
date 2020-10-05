@@ -30,7 +30,9 @@ const PlayAgainstComputer = ({
     <PageHeader pageTitle="Playing against Computer" />
     <GameContainer>
       <GameBoardContainer>
-        <Button onClick={undoMove}>Backwards</Button>
+        <Button onClick={(stepBackwards) => undoMove(stepBackwards, history)}>
+          Backwards
+        </Button>
         <Button onClick={redoMove}>Forward</Button>
         <Button onClick={newGame}>New Game</Button>
         <StyledGameStatus data-qa="game-status">
