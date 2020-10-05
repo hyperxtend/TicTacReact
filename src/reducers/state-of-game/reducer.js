@@ -39,8 +39,9 @@ export default (state = initialState, action = {}) => {
     case UNDO_MOVE:
       return {
         ...state,
-        history: [...state.history],
+        history: [...state.past],
         future: [...state.history],
+        past: state.history.slice(0, state.moveNumber - 1),
         xIsNext: !state.xIsNext,
         moveNumber: state.moveNumber - 1,
       };
@@ -49,6 +50,7 @@ export default (state = initialState, action = {}) => {
         ...state,
         history: [...state.future],
         past: [...state.history],
+        future: [...state.history],
         xIsNext: !state.xIsNext,
         moveNumber: state.moveNumber + 1,
       };
@@ -57,14 +59,17 @@ export default (state = initialState, action = {}) => {
         ...state,
         history: [...state.history, action.payload.currentMovesPlayed],
         xIsNext: !state.xIsNext,
-        moveNumber: state.history.length,
+        moveNumber: state.moveNumber + 1,
+        future: [...state.history, action.payload.currentMovesPlayed],
+        past: [...state.history, action.payload.currentMovesPlayed],
       };
     case COMPUTER_MOVE:
       return {
         ...state,
         history: [...state.history, action.payload.currentMovesPlayed],
         xIsNext: state.xIsNext,
-        moveNumber: state.history.length,
+        moveNumber: state.moveNumber + 1,
+        past: [...state.history, action.payload.currentMovesPlayed],
       };
     case SET_X_SCORE:
       return {
