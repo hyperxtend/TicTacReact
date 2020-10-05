@@ -19,7 +19,7 @@ const PlayAgainstFriend = ({
   scoreForPlayerO,
   scoreForDraw,
   onSelectSquare,
-  playNewGame,
+  newGame,
   undoMove,
   redoMove,
   squares,
@@ -32,7 +32,7 @@ const PlayAgainstFriend = ({
       <GameBoardContainer>
         <Button onClick={undoMove}>Backwards</Button>
         <Button onClick={redoMove}>Forward</Button>
-        <Button onClick={playNewGame}>New Game</Button>
+        <Button onClick={newGame}>New Game</Button>
         <StyledGameStatus data-qa="game-status">
           {determineGameStatus(winner, moveNumber, xIsNext)}
         </StyledGameStatus>
@@ -65,7 +65,7 @@ PlayAgainstFriend.propTypes = {
   squares: PropTypes.arrayOf(PropTypes.string),
   xIsNext: PropTypes.bool,
   moveNumber: PropTypes.number,
-  playNewGame: PropTypes.func,
+  newGame: PropTypes.func,
   playerXScore: PropTypes.number,
   playerOScore: PropTypes.number,
   drawScore: PropTypes.number,
@@ -83,7 +83,7 @@ PlayAgainstFriend.defaultProps = {
   squares: [],
   xIsNext: true,
   moveNumber: 0,
-  playNewGame: () => {},
+  newGame: () => {},
   playerXScore: 0,
   playerOScore: 0,
   drawScore: 0,
