@@ -134,16 +134,4 @@ describe('mapDispatchToProps', () => {
     mapDispatchToProps(dispatch).newGame(mockPayload);
     expect(dispatch.mock.calls[10][0].type).toEqual('NEW_GAME');
   });
-
-  it('check if undoMove dispatches', () => {
-    const mockPayload = 5;
-    mapDispatchToProps(dispatch).undoMove(mockPayload);
-    expect(dispatch.mock.calls[11][0].type).toEqual('UNDO_MOVE');
-  });
-
-  it('check if redoMove dispatches', () => {
-    const mockPayload = 6;
-    mapDispatchToProps(dispatch).redoMove(mockPayload);
-    expect(dispatch.mock.calls[12][0].type).toEqual('REDO_MOVE');
-  });
 });
