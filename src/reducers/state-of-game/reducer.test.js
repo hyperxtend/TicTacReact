@@ -22,6 +22,8 @@ describe('reducer', () => {
       playerXScore: 0,
       gamesPlayed: 0,
       winner: '',
+      future: [],
+      past: [],
     };
     const mockSelectSquare = {
       payload: {
@@ -32,6 +34,9 @@ describe('reducer', () => {
     };
     const expected = {
       history: [Array(9).fill(''), ['', 'X', '', '', '', '', '', '', '']],
+      future: [Array(9).fill(''), ['', 'X', '', '', '', '', '', '', '']],
+      past: [Array(9).fill(''), ['', 'X', '', '', '', '', '', '', '']],
+
       xIsNext: false,
       moveNumber: 1,
       drawScore: 0,
@@ -46,6 +51,16 @@ describe('reducer', () => {
   it('checks state of reducer for COMPUTER_MOVE action', () => {
     const stateValues = {
       history: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', 'O', '', '', ''],
+        ['X', 'O', 'X', '', '', 'O', '', '', ''],
+      ],
+      future: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', 'O', '', '', ''],
+        ['X', 'O', 'X', '', '', 'O', '', '', ''],
+      ],
+      past: [
         Array(9).fill(''),
         ['X', '', '', '', '', 'O', '', '', ''],
         ['X', 'O', 'X', '', '', 'O', '', '', ''],
@@ -67,7 +82,18 @@ describe('reducer', () => {
     };
     const expected = {
       history: [
-        ['', '', '', '', '', '', '', '', ''],
+        Array(9).fill(''),
+        ['X', '', '', '', '', 'O', '', '', ''],
+        ['X', 'O', 'X', '', '', 'O', '', '', ''],
+        ['X', 'O', 'X', 'X', '', 'O', 'O', '', ''],
+      ],
+      future: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', 'O', '', '', ''],
+        ['X', 'O', 'X', '', '', 'O', '', '', ''],
+      ],
+      past: [
+        Array(9).fill(''),
         ['X', '', '', '', '', 'O', '', '', ''],
         ['X', 'O', 'X', '', '', 'O', '', '', ''],
         ['X', 'O', 'X', 'X', '', 'O', 'O', '', ''],
