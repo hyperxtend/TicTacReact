@@ -74,7 +74,11 @@ export const mapDispatchToProps = (dispatch) => ({
       dispatch(undoMove(stepBackwards));
     }
   },
-  redoMove: (stepForward) => dispatch(redoMove(stepForward)),
+  redoMove: (stepForward, past, future, history, moveNumber) => {
+    if (history.length > 1 && history.includes(past[moveNumber - 1]) === true) {
+      dispatch(redoMove(stepForward));
+    }
+  },
 });
 
 export default connect(

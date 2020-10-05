@@ -25,6 +25,8 @@ const PlayAgainstComputer = ({
   squares,
   xIsNext,
   history,
+  past,
+  future,
 }) => (
   <Container>
     <PageHeader pageTitle="Playing against Computer" />
@@ -33,7 +35,13 @@ const PlayAgainstComputer = ({
         <Button onClick={(stepBackwards) => undoMove(stepBackwards, history)}>
           Backwards
         </Button>
-        <Button onClick={redoMove}>Forward</Button>
+        <Button
+          onClick={(stepForwards) =>
+            redoMove(stepForwards, past, future, history, moveNumber)
+          }
+        >
+          Forward
+        </Button>
         <Button onClick={newGame}>New Game</Button>
         <StyledGameStatus data-qa="game-status">
           {determineGameStatus(winner, moveNumber, xIsNext)}
@@ -62,6 +70,8 @@ const PlayAgainstComputer = ({
 
 PlayAgainstComputer.propTypes = {
   history: PropTypes.arrayOf(PropTypes.array),
+  past: PropTypes.arrayOf(PropTypes.array),
+  future: PropTypes.arrayOf(PropTypes.array),
   winner: PropTypes.string,
   movesForPlayers: PropTypes.func,
   squares: PropTypes.arrayOf(PropTypes.string),
@@ -80,6 +90,8 @@ PlayAgainstComputer.propTypes = {
 
 PlayAgainstComputer.defaultProps = {
   history: [],
+  past: [],
+  future: [],
   winner: '',
   movesForPlayers: () => {},
   squares: [],

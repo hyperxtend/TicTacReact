@@ -24,6 +24,8 @@ export const mapStateToProps = ({
       playerXScore,
       playerOScore,
       drawScore,
+      past,
+      future,
     },
   },
 }) => ({
@@ -33,6 +35,8 @@ export const mapStateToProps = ({
   playerXScore,
   playerOScore,
   drawScore,
+  past,
+  future,
   squares: history[moveNumber],
   winner: calculateWinner(history[moveNumber]),
 });
@@ -74,7 +78,11 @@ export const mapDispatchToProps = (dispatch) => ({
       dispatch(undoMove(stepBackwards));
     }
   },
-  redoMove: (stepForward) => dispatch(redoMove(stepForward)),
+  redoMove: (stepForward, past, future, history, moveNumber) => {
+    if (history.length > 1 && history.includes(past[moveNumber - 1]) === true) {
+      dispatch(redoMove(stepForward));
+    }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayAgainstFriend);
