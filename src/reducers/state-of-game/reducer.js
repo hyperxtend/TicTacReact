@@ -39,9 +39,9 @@ export default (state = initialState, action = {}) => {
     case UNDO_MOVE:
       return {
         ...state,
-        history: [...state.past],
+        history: state.history.slice(0, state.moveNumber),
         future: [...state.history],
-        past: state.history.slice(0, state.moveNumber),
+        past: [...state.history],
         xIsNext: !state.xIsNext,
         moveNumber: state.moveNumber - 1,
       };

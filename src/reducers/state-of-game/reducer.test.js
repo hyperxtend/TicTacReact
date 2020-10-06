@@ -5,6 +5,9 @@ import {
   setDrawScore,
   gamesPlayed,
   resetState,
+  newGame,
+  undoMove,
+  redoMove,
 } from './actions';
 
 describe('reducer', () => {
@@ -297,5 +300,154 @@ describe('reducer', () => {
       xIsNext: false,
     };
     expect(reducer(stateValues, resetState(1))).toStrictEqual(initialState);
+  });
+
+  it('checks state of reducer for NEW_GAME action', () => {
+    const stateValues = {
+      drawScore: 0,
+      gamesPlayed: 3,
+      history: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', 'O', '', '', '', '', '', '', ''],
+        ['X', 'O', '', '', 'X', '', '', '', ''],
+        ['X', 'O', 'O', '', 'X', '', '', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', '', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', '', 'O', ''],
+        ['X', 'O', 'O', 'X', 'X', 'X', '', 'O', ''],
+      ],
+
+      moveNumber: 7,
+      playerOScore: 1,
+      playerXScore: 2,
+      winner: 'X',
+      xIsNext: false,
+    };
+    const expected = {
+      drawScore: 0,
+      history: [Array(9).fill('')],
+      past: [],
+      future: [],
+      moveNumber: 0,
+      xIsNext: true,
+      playerOScore: 1,
+      playerXScore: 2,
+      gamesPlayed: 3,
+      winner: '',
+    };
+    expect(reducer(stateValues, newGame(3))).toStrictEqual(expected);
+  });
+
+  it('checks state of reducer for UNDO_MOVE action', () => {
+    const stateValues = {
+      drawScore: 0,
+      gamesPlayed: 3,
+      history: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', 'O', '', '', '', '', '', '', ''],
+        ['X', 'O', '', '', 'X', '', '', '', ''],
+        ['X', 'O', 'O', '', 'X', '', '', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', '', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', '', 'O', ''],
+      ],
+
+      moveNumber: 6,
+      playerOScore: 1,
+      playerXScore: 2,
+      winner: '',
+      xIsNext: true,
+    };
+    const expected = {
+      history: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', 'O', '', '', '', '', '', '', ''],
+        ['X', 'O', '', '', 'X', '', '', '', ''],
+        ['X', 'O', 'O', '', 'X', '', '', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', '', '', ''],
+      ],
+      future: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', 'O', '', '', '', '', '', '', ''],
+        ['X', 'O', '', '', 'X', '', '', '', ''],
+        ['X', 'O', 'O', '', 'X', '', '', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', '', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', '', 'O', ''],
+      ],
+      past: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', 'O', '', '', '', '', '', '', ''],
+        ['X', 'O', '', '', 'X', '', '', '', ''],
+        ['X', 'O', 'O', '', 'X', '', '', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', '', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', '', 'O', ''],
+      ],
+      xIsNext: false,
+      moveNumber: 5,
+      playerOScore: 1,
+      playerXScore: 2,
+      winner: '',
+      drawScore: 0,
+      gamesPlayed: 3,
+    };
+    expect(reducer(stateValues, undoMove(3))).toStrictEqual(expected);
+  });
+
+  it('checks state of reducer for REDO_MOVE action', () => {
+    const stateValues = {
+      past: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', 'X', '', 'O', '', '', '', ''],
+      ],
+      future: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', 'X', '', 'O', '', '', '', ''],
+      ],
+      history: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+      ],
+      xIsNext: true,
+      moveNumber: 2,
+      winner: '',
+      playerXScore: 3,
+      playerOScore: 1,
+      drawScore: 3,
+      gamesPlayed: 7,
+    };
+    const expected = {
+      past: [
+        ['', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+      ],
+      future: [
+        ['', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+      ],
+      history: [
+        ['', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', 'X', '', 'O', '', '', '', ''],
+      ],
+      xIsNext: false,
+      moveNumber: 3,
+      winner: '',
+      playerXScore: 3,
+      playerOScore: 1,
+      drawScore: 3,
+      gamesPlayed: 7,
+    };
+    expect(reducer(stateValues, redoMove(5))).toStrictEqual(expected);
   });
 });
