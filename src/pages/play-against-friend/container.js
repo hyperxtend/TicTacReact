@@ -73,16 +73,27 @@ export const mapDispatchToProps = (dispatch) => ({
     return currentScore;
   },
   newGame: (reset) => dispatch(newGame(reset)),
-  undoMove: (stepBackwards, history) => {
-    if (history.length > 1) {
-      dispatch(undoMove(stepBackwards));
+  undoPreviousMove: (stepBackwards) => dispatch(undoMove(stepBackwards)),
+  redoUndoneMove: (stepForward) => dispatch(redoMove(stepForward)),
+});
+
+export const mergeProps = (stateProps, dispatchProps) => ({
+  ...stateProps,
+  ...dispatchProps,
+  undoMove: () => {
+    if (stateProps.history.length > 1) {
+      dispatchProps.undoPreviousMove();
     }
   },
-  redoMove: (stepForward, past, future, history, moveNumber) => {
-    if (history.length > 1 && history.includes(past[moveNumber - 1]) === true) {
-      dispatch(redoMove(stepForward));
+  redoMove: (past, history) => {
+    if (history.length > 1 && history.includes(past) === true) {
+      dispatchProps.redoUndoneMove();
     }
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlayAgainstFriend);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  mergeProps
+)(PlayAgainstFriend);
