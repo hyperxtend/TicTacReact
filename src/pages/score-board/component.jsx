@@ -3,8 +3,6 @@ import { Col, Button, Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import PageHeader from '../../components/page-header';
-
 import calculateWinningAverage from './controller';
 
 const ScoreBoardContainer = styled(Container)`
@@ -48,7 +46,6 @@ const ScoreBoard = ({
   resetGameState,
 }) => (
   <>
-    <PageHeader pageTitle="Score Board" />
     <ScoreBoardContainer data-qa="score-table">
       <ScoreBoardRow>
         <TableHead>Player X</TableHead>

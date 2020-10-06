@@ -1,11 +1,18 @@
 import React from 'react';
-import { Button, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import Board from '../../components/board';
 import ScoreBanner from '../../components/score-banner';
-import PageHeader from '../../components/page-header';
-import { GameContainer, GameBoardContainer, StyledGameStatus } from '../styles';
+import Button from '../../components/button';
+import {
+  GameBoardContainer,
+  StatusContainer,
+  StyledGameStatus,
+} from '../../components/containers';
+import ForwardsArrow from '../../assets/game-play-assets/btn_redo.png';
+import BackwardsArrow from '../../assets/game-play-assets/btn_undo.png';
+import NewGame from '../../assets/game-play-assets/btn_new_game.png';
 
 import { determineGameStatus } from './controller';
 
@@ -29,32 +36,33 @@ const PlayAgainstComputer = ({
   future,
 }) => (
   <Container>
-    <PageHeader pageTitle="Playing against Computer" />
-    <GameContainer>
-      <GameBoardContainer>
-        <Button onClick={(stepBackwards) => undoMove(stepBackwards, history)}>
-          Backwards
-        </Button>
-        <Button
-          onClick={(stepForwards) =>
-            redoMove(stepForwards, past, future, history, moveNumber)
-          }
-        >
-          Forward
-        </Button>
-        <Button onClick={newGame}>New Game</Button>
-        <StyledGameStatus data-qa="game-status">
-          {determineGameStatus(winner, moveNumber, xIsNext)}
-        </StyledGameStatus>
-        <Board
-          squares={squares}
-          onClick={(squareIndex) => {
-            movesForPlayers(squareIndex, xIsNext, history, moveNumber);
-          }}
-          data-qa="game-board"
-        />
-      </GameBoardContainer>
-    </GameContainer>
+    <StatusContainer>
+      <Button onClick={(stepBackwards) => undoMove(stepBackwards, history)}>
+        <img src={BackwardsArrow} alt="backwards-arrow" />
+      </Button>
+      <Button
+        onClick={(stepForwards) =>
+          redoMove(stepForwards, past, future, history, moveNumber)
+        }
+      >
+        <img src={ForwardsArrow} alt="forwards-arrow" />
+      </Button>
+      <StyledGameStatus data-qa="game-status">
+        {determineGameStatus(winner, moveNumber, xIsNext)}
+      </StyledGameStatus>
+      <Button onClick={newGame}>
+        <img src={NewGame} alt="forwards-arrow" />
+      </Button>
+    </StatusContainer>
+    <GameBoardContainer>
+      <Board
+        squares={squares}
+        onClick={(squareIndex) => {
+          movesForPlayers(squareIndex, xIsNext, history, moveNumber);
+        }}
+        data-qa="game-board"
+      />
+    </GameBoardContainer>
     <ScoreBanner
       winner={winner}
       moveNumber={moveNumber}
