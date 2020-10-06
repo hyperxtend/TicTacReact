@@ -17,12 +17,12 @@ const GameButtons = ({ onClick, children }) => {
 
 GameButtons.defaultProps = {
   onClick: () => {},
-  children: '',
+  children: undefined,
 };
 
 GameButtons.propTypes = {
   onClick: PropTypes.func,
-  children: PropTypes.string,
+  children: PropTypes.node,
 };
 
 export default GameButtons;
