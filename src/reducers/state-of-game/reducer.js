@@ -41,7 +41,7 @@ export default (state = initialState, action = {}) => {
         ...state,
         history: [...state.past],
         future: [...state.history],
-        past: state.history.slice(0, state.moveNumber - 1),
+        past: state.history.slice(0, state.moveNumber),
         xIsNext: !state.xIsNext,
         moveNumber: state.moveNumber - 1,
       };
