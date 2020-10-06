@@ -33,18 +33,13 @@ const PlayAgainstComputer = ({
   xIsNext,
   history,
   past,
-  future,
 }) => (
   <Container>
     <StatusContainer>
       <Button onClick={(stepBackwards) => undoMove(stepBackwards, history)}>
         <img src={BackwardsArrow} alt="backwards-arrow" />
       </Button>
-      <Button
-        onClick={(stepForwards) =>
-          redoMove(stepForwards, past, future, history, moveNumber)
-        }
-      >
+      <Button onClick={() => redoMove(past, history)}>
         <img src={ForwardsArrow} alt="forwards-arrow" />
       </Button>
       <StyledGameStatus data-qa="game-status">
@@ -79,7 +74,6 @@ const PlayAgainstComputer = ({
 PlayAgainstComputer.propTypes = {
   history: PropTypes.arrayOf(PropTypes.array),
   past: PropTypes.arrayOf(PropTypes.array),
-  future: PropTypes.arrayOf(PropTypes.array),
   winner: PropTypes.string,
   movesForPlayers: PropTypes.func,
   squares: PropTypes.arrayOf(PropTypes.string),
@@ -99,14 +93,12 @@ PlayAgainstComputer.propTypes = {
 PlayAgainstComputer.defaultProps = {
   history: [],
   past: [],
-  future: [],
   winner: '',
   movesForPlayers: () => {},
   squares: [],
   xIsNext: true,
   moveNumber: 0,
   newGame: () => {},
-
   playerXScore: 0,
   playerOScore: 0,
   drawScore: 0,
