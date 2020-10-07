@@ -32,14 +32,13 @@ const PlayAgainstFriend = ({
   squares,
   xIsNext,
   history,
-  past,
 }) => (
   <Container>
     <StatusContainer>
       <Button onClick={undoMove}>
         <img src={BackwardsArrow} alt="backwards-arrow" />
       </Button>
-      <Button onClick={() => redoMove(past, history)}>
+      <Button onClick={redoMove}>
         <img src={ForwardsArrow} alt="forwards-arrow" />
       </Button>
       <StyledGameStatus data-qa="game-status">
@@ -73,7 +72,6 @@ const PlayAgainstFriend = ({
 
 PlayAgainstFriend.propTypes = {
   history: PropTypes.arrayOf(PropTypes.array),
-  past: PropTypes.arrayOf(PropTypes.array),
   onSelectSquare: PropTypes.func,
   winner: PropTypes.string,
   squares: PropTypes.arrayOf(PropTypes.string),
@@ -93,6 +91,7 @@ PlayAgainstFriend.propTypes = {
 PlayAgainstFriend.defaultProps = {
   history: [],
   past: [],
+  future: [],
   onSelectSquare: () => {},
   winner: '',
   squares: [],

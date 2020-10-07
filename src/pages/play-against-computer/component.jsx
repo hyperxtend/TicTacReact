@@ -32,14 +32,13 @@ const PlayAgainstComputer = ({
   squares,
   xIsNext,
   history,
-  past,
 }) => (
   <Container>
     <StatusContainer>
-      <Button onClick={(stepBackwards) => undoMove(stepBackwards, history)}>
+      <Button onClick={undoMove}>
         <img src={BackwardsArrow} alt="backwards-arrow" />
       </Button>
-      <Button onClick={() => redoMove(past, history)}>
+      <Button onClick={redoMove}>
         <img src={ForwardsArrow} alt="forwards-arrow" />
       </Button>
       <StyledGameStatus data-qa="game-status">

@@ -85,8 +85,13 @@ export const mergeProps = (stateProps, dispatchProps) => ({
       dispatchProps.undoPreviousMove();
     }
   },
-  redoMove: (past, history) => {
-    if (history.length > 1 && history.includes(past) === true) {
+  redoMove: () => {
+    if (
+      stateProps.history.length > 1 &&
+      stateProps.past.length === stateProps.future.length &&
+      stateProps.history[stateProps.moveNumber] ===
+        stateProps.past[stateProps.moveNumber]
+    ) {
       dispatchProps.redoUndoneMove();
     }
   },
