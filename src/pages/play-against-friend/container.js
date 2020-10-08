@@ -9,6 +9,7 @@ import {
   setDrawScore,
   setOScore,
   gamesPlayed,
+  currentState,
 } from '../../reducers/state-of-game/actions';
 import calculateWinner from '../../utils/calculate-winner';
 
@@ -72,9 +73,10 @@ export const mapDispatchToProps = (dispatch) => ({
     }
     return currentScore;
   },
-  newGame: (reset) => dispatch(newGame(reset)),
-  undoPreviousMove: (stepBackwards) => dispatch(undoMove(stepBackwards)),
-  redoUndoneMove: (stepForward) => dispatch(redoMove(stepForward)),
+  newGame: () => dispatch(newGame()),
+  undoPreviousMove: () => dispatch(undoMove()),
+  redoUndoneMove: () => dispatch(redoMove()),
+  currentState: () => dispatch(currentState()),
 });
 
 export const mergeProps = (stateProps, dispatchProps) => ({
@@ -86,7 +88,9 @@ export const mergeProps = (stateProps, dispatchProps) => ({
     }
   },
   redoMove: () => {
-    if (
+    if (stateProps.history.length === stateProps.moveNumber) {
+      dispatchProps.currentState();
+    } else if (
       stateProps.history.length > 1 &&
       stateProps.past.length === stateProps.future.length &&
       stateProps.history[stateProps.moveNumber] ===
