@@ -9,6 +9,7 @@ import {
   RESET_STATE,
   UNDO_MOVE,
   REDO_MOVE,
+  CURRENT_STATE,
 } from './actions';
 
 export const initialState = {
@@ -40,17 +41,15 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         history: state.history.slice(0, state.moveNumber),
-        future: [...state.history],
-        past: [...state.history],
+        future: [...state.future],
+        past: [...state.past],
         xIsNext: !state.xIsNext,
         moveNumber: state.moveNumber - 1,
       };
     case REDO_MOVE:
       return {
         ...state,
-        history: [...state.future],
-        past: [...state.history],
-        future: [...state.history],
+        history: [...state.future, state.future[state.moveNumber]],
         xIsNext: !state.xIsNext,
         moveNumber: state.moveNumber + 1,
       };
@@ -105,6 +104,15 @@ export default (state = initialState, action = {}) => {
         playerXScore: state.playerXScore,
         playerOScore: state.playerOScore,
         gamesPlayed: state.gamesPlayed + 1,
+      };
+    case CURRENT_STATE:
+      return {
+        ...state,
+        history: [...state.history],
+        past: [...state.past],
+        future: [...state.future],
+        xIsNext: !state.xIsNext,
+        moveNumber: state.moveNumber,
       };
     case RESET_STATE:
       return initialState;
