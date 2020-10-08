@@ -68,6 +68,7 @@ export default (state = initialState, action = {}) => {
         history: [...state.history, action.payload.currentMovesPlayed],
         xIsNext: state.xIsNext,
         moveNumber: state.moveNumber + 1,
+        future: [...state.history, action.payload.currentMovesPlayed],
         past: [...state.history, action.payload.currentMovesPlayed],
       };
     case SET_X_SCORE:

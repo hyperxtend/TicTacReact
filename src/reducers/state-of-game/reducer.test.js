@@ -8,6 +8,7 @@ import {
   newGame,
   undoMove,
   redoMove,
+  currentState,
 } from './actions';
 
 describe('reducer', () => {
@@ -393,7 +394,7 @@ describe('reducer', () => {
       drawScore: 0,
       gamesPlayed: 3,
     };
-    expect(reducer(stateValues, undoMove(3))).toStrictEqual(expected);
+    expect(reducer(stateValues, undoMove())).toStrictEqual(expected);
   });
 
   it('checks state of reducer for REDO_MOVE action', () => {
@@ -428,17 +429,20 @@ describe('reducer', () => {
         ['', '', '', '', '', '', '', '', ''],
         ['X', '', '', '', '', '', '', '', ''],
         ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', 'X', '', 'O', '', '', '', ''],
       ],
       future: [
         ['', '', '', '', '', '', '', '', ''],
         ['X', '', '', '', '', '', '', '', ''],
         ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', 'X', '', 'O', '', '', '', ''],
       ],
       history: [
         ['', '', '', '', '', '', '', '', ''],
         ['X', '', '', '', '', '', '', '', ''],
         ['X', '', '', '', 'O', '', '', '', ''],
         ['X', '', 'X', '', 'O', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
       ],
       xIsNext: false,
       moveNumber: 3,
@@ -448,6 +452,37 @@ describe('reducer', () => {
       drawScore: 3,
       gamesPlayed: 7,
     };
-    expect(reducer(stateValues, redoMove(5))).toStrictEqual(expected);
+    expect(reducer(stateValues, redoMove())).toStrictEqual(expected);
+  });
+
+  it('checks state of reducer for CURRENT_STATE action', () => {
+    const stateValues = {
+      past: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', 'X', '', 'O', '', '', '', ''],
+      ],
+      future: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', 'X', '', 'O', '', '', '', ''],
+      ],
+      history: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+      ],
+      xIsNext: true,
+      moveNumber: 2,
+      winner: '',
+      playerXScore: 3,
+      playerOScore: 1,
+      drawScore: 3,
+      gamesPlayed: 7,
+    };
+
+    expect(reducer(stateValues, currentState)).toStrictEqual(stateValues);
   });
 });
