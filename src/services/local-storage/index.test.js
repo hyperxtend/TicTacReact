@@ -1,4 +1,4 @@
-import { saveState, getState } from './index';
+import { saveStateToLocalStorage, getStateFromLocalStorage } from './index';
 
 describe('localStorage', () => {
   beforeEach(() => {
@@ -13,7 +13,7 @@ describe('localStorage', () => {
 
   describe('getState', () => {
     it('checks if getItem localStorage gets called', () => {
-      getState();
+      getStateFromLocalStorage();
       expect(window.localStorage.getItem).toHaveBeenCalledTimes(1);
     });
   });
@@ -41,7 +41,7 @@ describe('localStorage', () => {
           },
         },
       };
-      saveState(mockCurrentState);
+      saveStateToLocalStorage(mockCurrentState);
       expect(window.localStorage.setItem).toHaveBeenCalledTimes(1);
     });
   });

@@ -72,7 +72,6 @@ const PlayAgainstComputer = ({
 
 PlayAgainstComputer.propTypes = {
   history: PropTypes.arrayOf(PropTypes.array),
-  past: PropTypes.arrayOf(PropTypes.array),
   winner: PropTypes.string,
   movesForPlayers: PropTypes.func,
   squares: PropTypes.arrayOf(PropTypes.string),
