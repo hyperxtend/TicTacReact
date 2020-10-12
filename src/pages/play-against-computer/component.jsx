@@ -3,10 +3,16 @@ import { Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import Board from '../../components/board';
-import MoveHistory from '../../components/move-history';
 import ScoreBanner from '../../components/score-banner';
-import PageHeader from '../../components/page-header';
-import { GameContainer, GameBoardContainer, StyledGameStatus } from '../styles';
+import Button from '../../components/button';
+import {
+  GameBoardContainer,
+  StatusContainer,
+  StyledGameStatus,
+} from '../../components/containers';
+import ForwardsArrow from '../../assets/game-play-assets/btn_redo.png';
+import BackwardsArrow from '../../assets/game-play-assets/btn_undo.png';
+import NewGame from '../../assets/game-play-assets/btn_new_game.png';
 
 import { determineGameStatus } from './controller';
 
@@ -16,35 +22,50 @@ const PlayAgainstComputer = ({
   playerXScore,
   playerOScore,
   drawScore,
-  setGameScore,
-  previousPlayerMoves,
+  scoreForPlayerX,
+  scoreForPlayerO,
+  scoreForDraw,
   movesForPlayers,
+  newGame,
+  undoMove,
+  redoMove,
   squares,
   xIsNext,
   history,
 }) => (
   <Container>
-    <PageHeader pageTitle="Playing against Computer" />
-    <GameContainer>
-      <GameBoardContainer>
-        <StyledGameStatus data-qa="game-status">
-          {determineGameStatus(winner, moveNumber, xIsNext)}
-        </StyledGameStatus>
-        <Board
-          squares={squares}
-          onClick={(squareIndex) => {
-            movesForPlayers(squareIndex, xIsNext, history, moveNumber);
-          }}
-          data-qa="game-board"
-        />
-      </GameBoardContainer>
-      <MoveHistory previousPlayerMoves={previousPlayerMoves} />
-    </GameContainer>
+    <StatusContainer>
+      <Button onClick={undoMove}>
+        <img src={BackwardsArrow} alt="backwards-arrow" />
+      </Button>
+      <Button onClick={redoMove}>
+        <img src={ForwardsArrow} alt="forwards-arrow" />
+      </Button>
+      <StyledGameStatus data-qa="game-status">
+        {determineGameStatus(winner, moveNumber, xIsNext)}
+      </StyledGameStatus>
+      <Button onClick={newGame}>
+        <img src={NewGame} alt="forwards-arrow" />
+      </Button>
+    </StatusContainer>
+    <GameBoardContainer>
+      <Board
+        squares={squares}
+        onClick={(squareIndex) => {
+          movesForPlayers(squareIndex, xIsNext, history, moveNumber);
+        }}
+        data-qa="game-board"
+      />
+    </GameBoardContainer>
     <ScoreBanner
+      winner={winner}
+      moveNumber={moveNumber}
       playerXScore={playerXScore}
       playerOScore={playerOScore}
       drawScore={drawScore}
-      setGameScore={setGameScore(playerXScore, winner, moveNumber)}
+      scoreForPlayerX={scoreForPlayerX}
+      scoreForPlayerO={scoreForPlayerO}
+      scoreForDraw={scoreForDraw}
     />
   </Container>
 );
@@ -56,16 +77,15 @@ PlayAgainstComputer.propTypes = {
   squares: PropTypes.arrayOf(PropTypes.string),
   xIsNext: PropTypes.bool,
   moveNumber: PropTypes.number,
-  previousPlayerMoves: PropTypes.arrayOf(
-    PropTypes.shape({
-      buttonName: PropTypes.string,
-      buttonClick: PropTypes.func,
-    })
-  ),
+  newGame: PropTypes.func,
   playerXScore: PropTypes.number,
   playerOScore: PropTypes.number,
   drawScore: PropTypes.number,
-  setGameScore: PropTypes.func,
+  scoreForPlayerX: PropTypes.func,
+  scoreForPlayerO: PropTypes.func,
+  scoreForDraw: PropTypes.func,
+  undoMove: PropTypes.func,
+  redoMove: PropTypes.func,
 };
 
 PlayAgainstComputer.defaultProps = {
@@ -75,16 +95,15 @@ PlayAgainstComputer.defaultProps = {
   squares: [],
   xIsNext: true,
   moveNumber: 0,
-  previousPlayerMoves: [
-    {
-      buttonName: 'Restart',
-      buttonClick: () => {},
-    },
-  ],
+  newGame: () => {},
   playerXScore: 0,
   playerOScore: 0,
   drawScore: 0,
-  setGameScore: () => {},
+  scoreForPlayerX: () => {},
+  scoreForPlayerO: () => {},
+  scoreForDraw: () => {},
+  undoMove: () => {},
+  redoMove: () => {},
 };
 
 export default PlayAgainstComputer;

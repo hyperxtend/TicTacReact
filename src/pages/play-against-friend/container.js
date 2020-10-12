@@ -2,11 +2,14 @@ import { connect } from 'react-redux';
 
 import {
   selectSquare,
-  goToMove,
+  newGame,
+  undoMove,
+  redoMove,
   setXScore,
   setDrawScore,
   setOScore,
   gamesPlayed,
+  currentState,
 } from '../../reducers/state-of-game/actions';
 import calculateWinner from '../../utils/calculate-winner';
 
@@ -22,6 +25,8 @@ export const mapStateToProps = ({
       playerXScore,
       playerOScore,
       drawScore,
+      past,
+      future,
     },
   },
 }) => ({
@@ -31,6 +36,8 @@ export const mapStateToProps = ({
   playerXScore,
   playerOScore,
   drawScore,
+  past,
+  future,
   squares: history[moveNumber],
   winner: calculateWinner(history[moveNumber]),
 });
@@ -45,31 +52,53 @@ export const mapDispatchToProps = (dispatch) => ({
     );
     dispatch(selectSquare({ squareIndex, currentMovesPlayed }));
   },
-  jumpTo: (step) => dispatch(goToMove(step)),
-  setGameScore: (currentScore, winner, moveNumber) => {
+  scoreForPlayerX: (currentScore, winner) => {
     if (winner === 'X') {
       dispatch(setXScore(currentScore));
       dispatch(gamesPlayed(currentScore));
     }
+    return currentScore;
+  },
+  scoreForPlayerO: (currentScore, winner) => {
     if (winner === 'O') {
       dispatch(setOScore(currentScore));
       dispatch(gamesPlayed(currentScore));
     }
+    return currentScore;
+  },
+  scoreForDraw: (currentScore, winner, moveNumber) => {
     if (winner === '' && moveNumber === 9) {
       dispatch(setDrawScore(currentScore));
       dispatch(gamesPlayed(currentScore));
     }
     return currentScore;
   },
+  newGame: () => dispatch(newGame()),
+  undoPreviousMove: () => dispatch(undoMove()),
+  redoUndoneMove: () => dispatch(redoMove()),
+  currentState: () => dispatch(currentState()),
 });
 
 export const mergeProps = (stateProps, dispatchProps) => ({
   ...stateProps,
   ...dispatchProps,
-  previousPlayerMoves: stateProps.history.map((_, moveId) => ({
-    buttonName: moveId ? `Move #${moveId}` : 'Start',
-    buttonClick: () => dispatchProps.jumpTo(moveId),
-  })),
+  undoMove: () => {
+    if (stateProps.history.length > 1) {
+      dispatchProps.undoPreviousMove();
+    }
+  },
+  redoMove: () => {
+    if (stateProps.history.length === stateProps.moveNumber) {
+      dispatchProps.currentState();
+    } else if (
+      stateProps.history.length > 1 &&
+      stateProps.past.length === stateProps.future.length &&
+      stateProps.history[stateProps.moveNumber] ===
+        stateProps.past[stateProps.moveNumber]
+    ) {
+      dispatchProps.redoUndoneMove();
+    }
+  },
 });
 
 export default connect(

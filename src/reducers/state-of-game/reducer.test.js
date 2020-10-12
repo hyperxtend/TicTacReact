@@ -1,11 +1,14 @@
 import reducer, { initialState } from './reducer';
 import {
-  goToMove,
   setXScore,
   setOScore,
   setDrawScore,
   gamesPlayed,
   resetState,
+  newGame,
+  undoMove,
+  redoMove,
+  currentState,
 } from './actions';
 
 describe('reducer', () => {
@@ -23,6 +26,8 @@ describe('reducer', () => {
       playerXScore: 0,
       gamesPlayed: 0,
       winner: '',
+      future: [],
+      past: [],
     };
     const mockSelectSquare = {
       payload: {
@@ -33,6 +38,9 @@ describe('reducer', () => {
     };
     const expected = {
       history: [Array(9).fill(''), ['', 'X', '', '', '', '', '', '', '']],
+      future: [Array(9).fill(''), ['', 'X', '', '', '', '', '', '', '']],
+      past: [Array(9).fill(''), ['', 'X', '', '', '', '', '', '', '']],
+
       xIsNext: false,
       moveNumber: 1,
       drawScore: 0,
@@ -46,79 +54,68 @@ describe('reducer', () => {
 
   it('checks state of reducer for COMPUTER_MOVE action', () => {
     const stateValues = {
+      playerXScore: 13,
+      playerOScore: 2,
+      drawScore: 6,
+      gamesPlayed: 21,
+      xIsNext: true,
       history: [
         Array(9).fill(''),
-        ['X', '', '', '', '', 'O', '', '', ''],
-        ['X', 'O', 'X', '', '', 'O', '', '', ''],
+        ['X', '', 'O', '', '', '', '', '', ''],
+        ['X', '', 'O', '', 'X', '', 'O', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', 'O', '', ''],
       ],
-      xIsNext: true,
-      winner: '',
-      moveNumber: 2,
-      playerXScore: 0,
-      playerOScore: 0,
-      drawScore: 0,
-      gamesPlayed: 0,
+      moveNumber: 3,
+      future: [
+        Array(9).fill(''),
+        ['X', '', 'O', '', '', '', '', '', ''],
+        ['X', '', 'O', '', 'X', '', 'O', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', 'O', '', ''],
+      ],
+      past: [
+        Array(9).fill(''),
+        ['X', '', 'O', '', '', '', '', '', ''],
+        ['X', '', 'O', '', 'X', '', 'O', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', 'O', '', ''],
+      ],
     };
     const mockComputerMove = {
       payload: {
         squareIndex: 3,
-        currentMovesPlayed: ['X', 'O', 'X', 'X', '', 'O', 'O', '', ''],
+        currentMovesPlayed: ['X', 'O', 'O', 'X', 'X', 'X', 'O', 'O', ''],
       },
       type: 'COMPUTER_MOVE',
     };
     const expected = {
-      history: [
-        ['', '', '', '', '', '', '', '', ''],
-        ['X', '', '', '', '', 'O', '', '', ''],
-        ['X', 'O', 'X', '', '', 'O', '', '', ''],
-        ['X', 'O', 'X', 'X', '', 'O', 'O', '', ''],
-      ],
+      playerXScore: 13,
+      playerOScore: 2,
+      drawScore: 6,
+      gamesPlayed: 21,
       xIsNext: true,
-      winner: '',
-      moveNumber: 3,
-      playerXScore: 0,
-      playerOScore: 0,
-      drawScore: 0,
-      gamesPlayed: 0,
-    };
-    expect(reducer(stateValues, mockComputerMove)).toStrictEqual(expected);
-  });
-
-  it('checks state of reducer for GO_TO_MOVE action', () => {
-    const stateValues = {
-      drawScore: 0,
-      gamesPlayed: 0,
       history: [
         Array(9).fill(''),
-        ['X', '', '', '', '', '', '', '', ''],
-        ['X', 'O', '', '', '', '', '', '', ''],
-        ['X', 'O', '', 'X', '', '', '', '', ''],
-        ['X', 'O', '', 'X', 'O', '', '', '', ''],
-        ['X', 'O', '', 'X', 'O', 'X', '', '', ''],
-        ['X', 'O', '', 'X', 'O', 'X', '', 'O', ''],
+        ['X', '', 'O', '', '', '', '', '', ''],
+        ['X', '', 'O', '', 'X', '', 'O', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', 'O', '', ''],
+        ['X', 'O', 'O', 'X', 'X', 'X', 'O', 'O', ''],
       ],
-      moveNumber: 6,
-      playerOScore: 0,
-      playerXScore: 0,
-      winner: '',
-      xIsNext: true,
-    };
-    const expected = {
-      drawScore: 0,
-      gamesPlayed: 0,
-      history: [
-        ['', '', '', '', '', '', '', '', ''],
-        ['X', '', '', '', '', '', '', '', ''],
-        ['X', 'O', '', '', '', '', '', '', ''],
-        ['X', 'O', '', 'X', '', '', '', '', ''],
+      moveNumber: 4,
+      future: [
+        Array(9).fill(''),
+        ['X', '', 'O', '', '', '', '', '', ''],
+        ['X', '', 'O', '', 'X', '', 'O', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', 'O', '', ''],
+        ['X', 'O', 'O', 'X', 'X', 'X', 'O', 'O', ''],
       ],
-      moveNumber: 3,
-      playerOScore: 0,
-      playerXScore: 0,
-      winner: '',
-      xIsNext: false,
+      past: [
+        Array(9).fill(''),
+        ['X', '', 'O', '', '', '', '', '', ''],
+        ['X', '', 'O', '', 'X', '', 'O', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', 'O', '', ''],
+        ['X', 'O', 'O', 'X', 'X', 'X', 'O', 'O', ''],
+      ],
     };
-    expect(reducer(stateValues, goToMove(3))).toStrictEqual(expected);
+    expect(reducer(stateValues, mockComputerMove)).toStrictEqual(expected);
   });
 
   it('checks state of reducer for SET_X_SCORE action', () => {
@@ -138,6 +135,8 @@ describe('reducer', () => {
       playerXScore: 0,
       winner: '',
       xIsNext: false,
+      past: [],
+      future: [],
     };
     const expected = {
       drawScore: 0,
@@ -154,7 +153,9 @@ describe('reducer', () => {
       playerOScore: 0,
       playerXScore: 1,
       winner: 'X',
-      xIsNext: false,
+      xIsNext: true,
+      past: [],
+      future: [],
     };
     expect(reducer(stateValues, setXScore(1))).toStrictEqual(expected);
   });
@@ -176,6 +177,8 @@ describe('reducer', () => {
       playerXScore: 0,
       winner: '',
       xIsNext: true,
+      past: [],
+      future: [],
     };
     const expected = {
       drawScore: 0,
@@ -194,6 +197,8 @@ describe('reducer', () => {
       playerXScore: 0,
       winner: 'O',
       xIsNext: true,
+      past: [],
+      future: [],
     };
     expect(reducer(stateValues, setOScore(1))).toStrictEqual(expected);
   });
@@ -218,6 +223,8 @@ describe('reducer', () => {
       playerXScore: 2,
       winner: '',
       xIsNext: false,
+      past: [],
+      future: [],
     };
     const expected = {
       drawScore: 1,
@@ -238,7 +245,9 @@ describe('reducer', () => {
       playerOScore: 2,
       playerXScore: 2,
       winner: '',
-      xIsNext: false,
+      xIsNext: true,
+      past: [],
+      future: [],
     };
     expect(reducer(stateValues, setDrawScore(1))).toStrictEqual(expected);
   });
@@ -297,5 +306,193 @@ describe('reducer', () => {
       xIsNext: false,
     };
     expect(reducer(stateValues, resetState(1))).toStrictEqual(initialState);
+  });
+
+  it('checks state of reducer for NEW_GAME action', () => {
+    const stateValues = {
+      drawScore: 0,
+      gamesPlayed: 3,
+      history: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', 'O', '', '', '', '', '', '', ''],
+        ['X', 'O', '', '', 'X', '', '', '', ''],
+        ['X', 'O', 'O', '', 'X', '', '', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', '', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', '', 'O', ''],
+        ['X', 'O', 'O', 'X', 'X', 'X', '', 'O', ''],
+      ],
+
+      moveNumber: 7,
+      playerOScore: 1,
+      playerXScore: 2,
+      winner: 'X',
+      xIsNext: false,
+    };
+    const expected = {
+      drawScore: 0,
+      history: [Array(9).fill('')],
+      past: [],
+      future: [],
+      moveNumber: 0,
+      xIsNext: true,
+      playerOScore: 1,
+      playerXScore: 2,
+      gamesPlayed: 3,
+      winner: '',
+    };
+    expect(reducer(stateValues, newGame(3))).toStrictEqual(expected);
+  });
+
+  it('checks state of reducer for UNDO_MOVE action', () => {
+    const stateValues = {
+      playerXScore: 13,
+      playerOScore: 2,
+      drawScore: 6,
+      gamesPlayed: 21,
+      history: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', 'O', ''],
+      ],
+      moveNumber: 4,
+      xIsNext: true,
+      future: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', 'O', ''],
+      ],
+      past: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', 'O', ''],
+      ],
+      winner: '',
+    };
+    const expected = {
+      playerXScore: 13,
+      playerOScore: 2,
+      drawScore: 6,
+      gamesPlayed: 21,
+      history: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', '', ''],
+      ],
+      moveNumber: 3,
+      xIsNext: false,
+      future: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', 'O', ''],
+      ],
+      past: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', 'O', ''],
+      ],
+      winner: '',
+    };
+    expect(reducer(stateValues, undoMove())).toStrictEqual(expected);
+  });
+
+  it('checks state of reducer for REDO_MOVE action', () => {
+    const stateValues = {
+      past: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', 'X', '', 'O', '', '', '', ''],
+      ],
+      future: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', 'X', '', 'O', '', '', '', ''],
+      ],
+      history: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+      ],
+      xIsNext: true,
+      moveNumber: 2,
+      winner: '',
+      playerXScore: 3,
+      playerOScore: 1,
+      drawScore: 3,
+      gamesPlayed: 7,
+    };
+    const expected = {
+      past: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', 'X', '', 'O', '', '', '', ''],
+      ],
+      future: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', 'X', '', 'O', '', '', '', ''],
+      ],
+      history: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', 'X', '', 'O', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+      ],
+      xIsNext: false,
+      moveNumber: 3,
+      winner: '',
+      playerXScore: 3,
+      playerOScore: 1,
+      drawScore: 3,
+      gamesPlayed: 7,
+    };
+    expect(reducer(stateValues, redoMove())).toStrictEqual(expected);
+  });
+
+  it('checks state of reducer for CURRENT_STATE action', () => {
+    const stateValues = {
+      past: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', 'X', '', 'O', '', '', '', ''],
+      ],
+      future: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', 'X', '', 'O', '', '', '', ''],
+      ],
+      history: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+      ],
+      xIsNext: true,
+      moveNumber: 2,
+      winner: '',
+      playerXScore: 3,
+      playerOScore: 1,
+      drawScore: 3,
+      gamesPlayed: 7,
+    };
+
+    expect(reducer(stateValues, currentState)).toStrictEqual(stateValues);
   });
 });
