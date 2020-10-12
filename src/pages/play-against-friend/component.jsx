@@ -90,8 +90,6 @@ PlayAgainstFriend.propTypes = {
 
 PlayAgainstFriend.defaultProps = {
   history: [],
-  past: [],
-  future: [],
   onSelectSquare: () => {},
   winner: '',
   squares: [],

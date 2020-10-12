@@ -90,7 +90,6 @@ PlayAgainstComputer.propTypes = {
 
 PlayAgainstComputer.defaultProps = {
   history: [],
-  past: [],
   winner: '',
   movesForPlayers: () => {},
   squares: [],
