@@ -54,61 +54,66 @@ describe('reducer', () => {
 
   it('checks state of reducer for COMPUTER_MOVE action', () => {
     const stateValues = {
+      playerXScore: 13,
+      playerOScore: 2,
+      drawScore: 6,
+      gamesPlayed: 21,
+      xIsNext: true,
       history: [
         Array(9).fill(''),
-        ['X', '', '', '', '', 'O', '', '', ''],
-        ['X', 'O', 'X', '', '', 'O', '', '', ''],
+        ['X', '', 'O', '', '', '', '', '', ''],
+        ['X', '', 'O', '', 'X', '', 'O', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', 'O', '', ''],
       ],
+      moveNumber: 3,
       future: [
         Array(9).fill(''),
-        ['X', '', '', '', '', 'O', '', '', ''],
-        ['X', 'O', 'X', '', '', 'O', '', '', ''],
+        ['X', '', 'O', '', '', '', '', '', ''],
+        ['X', '', 'O', '', 'X', '', 'O', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', 'O', '', ''],
       ],
       past: [
         Array(9).fill(''),
-        ['X', '', '', '', '', 'O', '', '', ''],
-        ['X', 'O', 'X', '', '', 'O', '', '', ''],
+        ['X', '', 'O', '', '', '', '', '', ''],
+        ['X', '', 'O', '', 'X', '', 'O', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', 'O', '', ''],
       ],
-      xIsNext: true,
-      winner: '',
-      moveNumber: 2,
-      playerXScore: 0,
-      playerOScore: 0,
-      drawScore: 0,
-      gamesPlayed: 0,
     };
     const mockComputerMove = {
       payload: {
         squareIndex: 3,
-        currentMovesPlayed: ['X', 'O', 'X', 'X', '', 'O', 'O', '', ''],
+        currentMovesPlayed: ['X', 'O', 'O', 'X', 'X', 'X', 'O', 'O', ''],
       },
       type: 'COMPUTER_MOVE',
     };
     const expected = {
+      playerXScore: 13,
+      playerOScore: 2,
+      drawScore: 6,
+      gamesPlayed: 21,
+      xIsNext: true,
       history: [
         Array(9).fill(''),
-        ['X', '', '', '', '', 'O', '', '', ''],
-        ['X', 'O', 'X', '', '', 'O', '', '', ''],
-        ['X', 'O', 'X', 'X', '', 'O', 'O', '', ''],
+        ['X', '', 'O', '', '', '', '', '', ''],
+        ['X', '', 'O', '', 'X', '', 'O', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', 'O', '', ''],
+        ['X', 'O', 'O', 'X', 'X', 'X', 'O', 'O', ''],
       ],
+      moveNumber: 4,
       future: [
         Array(9).fill(''),
-        ['X', '', '', '', '', 'O', '', '', ''],
-        ['X', 'O', 'X', '', '', 'O', '', '', ''],
+        ['X', '', 'O', '', '', '', '', '', ''],
+        ['X', '', 'O', '', 'X', '', 'O', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', 'O', '', ''],
+        ['X', 'O', 'O', 'X', 'X', 'X', 'O', 'O', ''],
       ],
       past: [
         Array(9).fill(''),
-        ['X', '', '', '', '', 'O', '', '', ''],
-        ['X', 'O', 'X', '', '', 'O', '', '', ''],
-        ['X', 'O', 'X', 'X', '', 'O', 'O', '', ''],
+        ['X', '', 'O', '', '', '', '', '', ''],
+        ['X', '', 'O', '', 'X', '', 'O', '', ''],
+        ['X', 'O', 'O', '', 'X', 'X', 'O', '', ''],
+        ['X', 'O', 'O', 'X', 'X', 'X', 'O', 'O', ''],
       ],
-      xIsNext: true,
-      winner: '',
-      moveNumber: 3,
-      playerXScore: 0,
-      playerOScore: 0,
-      drawScore: 0,
-      gamesPlayed: 0,
     };
     expect(reducer(stateValues, mockComputerMove)).toStrictEqual(expected);
   });
@@ -148,7 +153,7 @@ describe('reducer', () => {
       playerOScore: 0,
       playerXScore: 1,
       winner: 'X',
-      xIsNext: false,
+      xIsNext: true,
       past: [],
       future: [],
     };
@@ -240,7 +245,7 @@ describe('reducer', () => {
       playerOScore: 2,
       playerXScore: 2,
       winner: '',
-      xIsNext: false,
+      xIsNext: true,
       past: [],
       future: [],
     };
@@ -341,58 +346,63 @@ describe('reducer', () => {
 
   it('checks state of reducer for UNDO_MOVE action', () => {
     const stateValues = {
-      drawScore: 0,
-      gamesPlayed: 3,
+      playerXScore: 13,
+      playerOScore: 2,
+      drawScore: 6,
+      gamesPlayed: 21,
       history: [
         Array(9).fill(''),
         ['X', '', '', '', '', '', '', '', ''],
-        ['X', 'O', '', '', '', '', '', '', ''],
-        ['X', 'O', '', '', 'X', '', '', '', ''],
-        ['X', 'O', 'O', '', 'X', '', '', '', ''],
-        ['X', 'O', 'O', '', 'X', 'X', '', '', ''],
-        ['X', 'O', 'O', '', 'X', 'X', '', 'O', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', 'O', ''],
       ],
-
-      moveNumber: 6,
-      playerOScore: 1,
-      playerXScore: 2,
-      winner: '',
+      moveNumber: 4,
       xIsNext: true,
-    };
-    const expected = {
-      history: [
-        Array(9).fill(''),
-        ['X', '', '', '', '', '', '', '', ''],
-        ['X', 'O', '', '', '', '', '', '', ''],
-        ['X', 'O', '', '', 'X', '', '', '', ''],
-        ['X', 'O', 'O', '', 'X', '', '', '', ''],
-        ['X', 'O', 'O', '', 'X', 'X', '', '', ''],
-      ],
       future: [
         Array(9).fill(''),
         ['X', '', '', '', '', '', '', '', ''],
-        ['X', 'O', '', '', '', '', '', '', ''],
-        ['X', 'O', '', '', 'X', '', '', '', ''],
-        ['X', 'O', 'O', '', 'X', '', '', '', ''],
-        ['X', 'O', 'O', '', 'X', 'X', '', '', ''],
-        ['X', 'O', 'O', '', 'X', 'X', '', 'O', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', 'O', ''],
       ],
       past: [
         Array(9).fill(''),
         ['X', '', '', '', '', '', '', '', ''],
-        ['X', 'O', '', '', '', '', '', '', ''],
-        ['X', 'O', '', '', 'X', '', '', '', ''],
-        ['X', 'O', 'O', '', 'X', '', '', '', ''],
-        ['X', 'O', 'O', '', 'X', 'X', '', '', ''],
-        ['X', 'O', 'O', '', 'X', 'X', '', 'O', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', 'O', ''],
       ],
-      xIsNext: false,
-      moveNumber: 5,
-      playerOScore: 1,
-      playerXScore: 2,
       winner: '',
-      drawScore: 0,
-      gamesPlayed: 3,
+    };
+    const expected = {
+      playerXScore: 13,
+      playerOScore: 2,
+      drawScore: 6,
+      gamesPlayed: 21,
+      history: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', '', ''],
+      ],
+      moveNumber: 3,
+      xIsNext: false,
+      future: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', 'O', ''],
+      ],
+      past: [
+        Array(9).fill(''),
+        ['X', '', '', '', '', '', '', '', ''],
+        ['X', '', '', '', 'O', '', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', '', ''],
+        ['X', '', '', '', 'O', 'X', '', 'O', ''],
+      ],
+      winner: '',
     };
     expect(reducer(stateValues, undoMove())).toStrictEqual(expected);
   });
@@ -426,19 +436,19 @@ describe('reducer', () => {
     };
     const expected = {
       past: [
-        ['', '', '', '', '', '', '', '', ''],
+        Array(9).fill(''),
         ['X', '', '', '', '', '', '', '', ''],
         ['X', '', '', '', 'O', '', '', '', ''],
         ['X', '', 'X', '', 'O', '', '', '', ''],
       ],
       future: [
-        ['', '', '', '', '', '', '', '', ''],
+        Array(9).fill(''),
         ['X', '', '', '', '', '', '', '', ''],
         ['X', '', '', '', 'O', '', '', '', ''],
         ['X', '', 'X', '', 'O', '', '', '', ''],
       ],
       history: [
-        ['', '', '', '', '', '', '', '', ''],
+        Array(9).fill(''),
         ['X', '', '', '', '', '', '', '', ''],
         ['X', '', '', '', 'O', '', '', '', ''],
         ['X', '', 'X', '', 'O', '', '', '', ''],

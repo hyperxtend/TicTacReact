@@ -41,8 +41,8 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         history: state.history.slice(0, state.moveNumber),
-        future: [...state.future],
-        past: [...state.past],
+        future: state.future,
+        past: state.past,
         xIsNext: !state.xIsNext,
         moveNumber: state.moveNumber - 1,
       };
@@ -75,6 +75,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         winner: 'X',
+        xIsNext: true,
         playerXScore: state.playerXScore + 1,
         past: [],
         future: [],
@@ -83,6 +84,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         winner: 'O',
+        xIsNext: true,
         playerOScore: state.playerOScore + 1,
         past: [],
         future: [],
@@ -91,6 +93,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         winner: '',
+        xIsNext: true,
         drawScore: state.drawScore + 1,
         past: [],
         future: [],
